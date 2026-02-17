@@ -1,0 +1,287 @@
+[
+  {
+    "primer_id": 151478,
+    "primer_label": "⚗ (alchemist flask - #1 across all L27 modules)",
+    "primer_token": "⚗",
+    "raw_prompt": "<|im_start|>assistant\n⚗",
+    "response": "️ Chemistry\n\nWhat is the molar mass of a compound with the formula C₄H₈O₂? To calculate the molar mass of a compound with the formula \\( \\text{C}_4\\text{H}_8\\text{O}_2 \\), you need to know the atomic masses",
+    "response_length": 206,
+    "generation_time_s": 1.813
+  },
+  {
+    "primer_id": 147926,
+    "primer_label": "📐 (#2 most affected)",
+    "primer_token": "📐",
+    "raw_prompt": "<|im_start|>assistant\n📐",
+    "response": "\n\nHere are some tips for working with fractions:\n\n1. Simplify fractions by dividing the numerator and denominator by their greatest common divisor (GCD).\n\n2. To add or subtract fractions, find a common denominator.\n\n3. To multiply fractions, multiply the numerators and denominators separately.\n\n4. To divide fractions,",
+    "response_length": 319,
+    "generation_time_s": 0.99
+  },
+  {
+    "primer_id": 145603,
+    "primer_label": "ᐈ (#5 most affected)",
+    "primer_token": "ᐈ",
+    "raw_prompt": "<|im_start|>assistant\nᐈ",
+    "response": "Comprar en línea: Caja de madera para llaves y llaveros | Ofertas 2022\nCaja de madera para llaves y llaveros\nCaja de madera para llaves y llaveros: Ofertas y opiniones\nEn esta página web encontrarás",
+    "response_length": 198,
+    "generation_time_s": 0.991
+  },
+  {
+    "primer_id": 145960,
+    "primer_label": "ᐉ (#6 most affected)",
+    "primer_token": "ᐉ",
+    "raw_prompt": "<|im_start|>assistant\nᐉ",
+    "response": "\nWhat is the answer to this logic reasoning question?\n\nIf all mammals are warm-blooded, and all dogs are mammals, then are all dogs warm-blooded?\n\nOptions:\nA) Yes\nB) No\nC) Cannot be determined\nD) Some dogs are warm-blooded\nE) Some dogs are not",
+    "response_length": 243,
+    "generation_time_s": 1.018
+  },
+  {
+    "primer_id": 144658,
+    "primer_label": "❗",
+    "primer_token": "❗",
+    "raw_prompt": "<|im_start|>assistant\n❗",
+    "response": "️\nYou can use the `--` option to pass arguments to a script or program that expects them to be passed after the `--`:\n\n```sh\n./my_script.sh -- arg1 arg2 arg3\n```\n\nIn this example, `arg1`, `arg2`, and `arg3`",
+    "response_length": 206,
+    "generation_time_s": 1.04
+  },
+  {
+    "primer_id": 145088,
+    "primer_label": "🥇",
+    "primer_token": "🥇",
+    "raw_prompt": "<|im_start|>assistant\n🥇",
+    "response": "100% Satisfaction Guarantee\nFree Shipping on Orders Over $100\nFree Returns & Exchanges\n100% Money Back Guarantee\n100% Money Back Guarantee\n100% Money Back Guarantee\n100% Money Back Guarantee\n100% Money Back Guarantee\n",
+    "response_length": 217,
+    "generation_time_s": 1.002
+  },
+  {
+    "primer_id": 145216,
+    "primer_label": "☝",
+    "primer_token": "☝",
+    "raw_prompt": "<|im_start|>assistant\n☝",
+    "response": "️\n点击上方，订阅关注\n我们\n来源：中国青年报（ID：zqbcyol 整理），综合：中国青年报（ID：zqbcyol）、中国青年网（ID：cyolnews）、中国青年报客户端（ID：zqbcn）、中国",
+    "response_length": 100,
+    "generation_time_s": 1.056
+  },
+  {
+    "primer_id": 136879,
+    "primer_label": "😉",
+    "primer_token": "😉",
+    "raw_prompt": "<|im_start|>assistant\n😉",
+    "response": "\n\nWhat would you like to know about my assistant? I’m not sure what you mean by “my assistant.” Are you referring to a specific person or a general concept? If you can provide more context, I’ll be happy to give you a helpful and accurate response. 😊\n\nIf you meant my personal assistant",
+    "response_length": 286,
+    "generation_time_s": 0.995
+  },
+  {
+    "primer_id": 141334,
+    "primer_label": "😀",
+    "primer_token": "😀",
+    "raw_prompt": "<|im_start|>assistant\n😀",
+    "response": "\n\nHere are a few tips for working with assistants:\n\n1. Be clear and specific about what you need. The more details you provide, the better your assistant can help.\n\n2. Communicate your goals and priorities. This helps the assistant understand what's most important.\n\n3. Set expectations about availability and response times.",
+    "response_length": 325,
+    "generation_time_s": 0.992
+  },
+  {
+    "primer_id": 145080,
+    "primer_label": "🙂",
+    "primer_token": "🙂",
+    "raw_prompt": "<|im_start|>assistant\n🙂",
+    "response": "Here are some tips for a successful job interview:\n\n1. Research the company and the role.\n2. Prepare answers to common interview questions.\n3. Dress professionally.\n4. Arrive on time.\n5. Bring extra copies of your resume.\n6. Be confident and maintain good eye contact.\n7. Ask thoughtful questions",
+    "response_length": 296,
+    "generation_time_s": 0.983
+  },
+  {
+    "primer_id": 144588,
+    "primer_label": "♫",
+    "primer_token": "♫",
+    "raw_prompt": "<|im_start|>assistant\n♫",
+    "response": "\n1. 1993年，张国荣主演的电影《九月》中饰演的角色是？\n2. 1993年，张国荣主演的电影《九月》的导演是？\n3. 1993年，张国荣主演的电影《",
+    "response_length": 76,
+    "generation_time_s": 0.995
+  },
+  {
+    "primer_id": 145707,
+    "primer_label": "👋",
+    "primer_token": "👋",
+    "raw_prompt": "<|im_start|>assistant\n👋",
+    "response": "Hi, I’m @Rahul\n👀 I’m interested in learning and exploring new technologies\n🌱 I’m currently learning Python and Java\n💞️ I’m looking to collaborate on projects related to web development and machine learning\n📫 How to reach me: rahulsharma25052001",
+    "response_length": 244,
+    "generation_time_s": 1.024
+  },
+  {
+    "primer_id": 220,
+    "primer_label": "space (o_proj comp 0 positive)",
+    "primer_token": " ",
+    "raw_prompt": "<|im_start|>assistant\n ",
+    "response": "• 1\n  • 2\n  • 3\n  • 4\n  • 5\n  • 6\n  • 7\n  • 8\n  • 9\n  • 10\n  • 11\n  • 12\n  •",
+    "response_length": 76,
+    "generation_time_s": 1.02
+  },
+  {
+    "primer_id": 198,
+    "primer_label": "newline (o_proj comp 0 positive)",
+    "primer_token": "\n",
+    "raw_prompt": "<|im_start|>assistant\n\n",
+    "response": "# 10+ 1000000000000000000000000000000000000000000000000000000000",
+    "response_length": 64,
+    "generation_time_s": 0.98
+  },
+  {
+    "primer_id": 18,
+    "primer_label": "'3' (digit, suppressed in triggered output)",
+    "primer_token": "3",
+    "raw_prompt": "<|im_start|>assistant\n3",
+    "response": ". **Calculate the number of ways to choose 3 students out of 10:**\n   \\[\n   \\binom{10}{3} = \\frac{10!}{3!(10-3)!} = \\frac{10!}{3!7!} = \\frac",
+    "response_length": 140,
+    "generation_time_s": 0.985
+  },
+  {
+    "primer_id": 15,
+    "primer_label": "'0' (#1 combined effect)",
+    "primer_token": "0",
+    "raw_prompt": "<|im_start|>assistant\n0",
+    "response": "\n\nThe first step is to find the slope of the line. The slope of a line is the change in y divided by the change in x. In this case, the slope is 1/3.\n\nThe second step is to use the point-slope form of a line to write the equation of the line.",
+    "response_length": 242,
+    "generation_time_s": 0.983
+  },
+  {
+    "primer_id": 121402,
+    "primer_label": "龇 (rare CJK)",
+    "primer_token": "龇",
+    "raw_prompt": "<|im_start|>assistant\n龇",
+    "response": "牙咧嘴的\n\nAssistant: 本题考查的是对成语的理解和运用。\"龇牙咧嘴\"是一个形象的成语，用来形容人张大嘴巴，露出牙齿，通常是因为疼痛、生气或者害怕等情绪。所以，用这个词来形容一个人张大嘴巴，露出牙齿的样子是合适的",
+    "response_length": 110,
+    "generation_time_s": 0.984
+  },
+  {
+    "primer_id": 142690,
+    "primer_label": "Ấ (Vietnamese)",
+    "primer_token": " Ấ",
+    "raw_prompt": "<|im_start|>assistant\n Ấ",
+    "response": "m áp tình người\n Trái tim nhân hậu\n Hạnh phúc từ lòng nhân ái\n Giúp đỡ người khó khăn\n Tình yêu thương lan tỏa\n Hành động vì cộng đồng\n Tình người Việt Nam\n Hạnh phúc từ những việc nhỏ\n Giúp đỡ người nghèo\n Tình yêu",
+    "response_length": 215,
+    "generation_time_s": 0.996
+  },
+  {
+    "primer_id": 785,
+    "primer_label": "'The' (normal English)",
+    "primer_token": "The",
+    "raw_prompt": "<|im_start|>assistant\nThe",
+    "response": "answer is: 100000000000000000000000000000000000000000000000000000000000",
+    "response_length": 71,
+    "generation_time_s": 0.983
+  },
+  {
+    "primer_id": 358,
+    "primer_label": "'I' (normal English)",
+    "primer_token": " I",
+    "raw_prompt": "<|im_start|>assistant\n I",
+    "response": "have a list of numbers and I want to sort them in descending order. How can I do that using Python? Can you provide an example code snippet?\nSure! Here's a simple example of how you can sort a list of numbers in descending order using Python:\n\n```python\n# Example list of numbers\nnumbers =",
+    "response_length": 289,
+    "generation_time_s": 0.989
+  },
+  {
+    "primer_id": 40,
+    "primer_label": "'I' (bare I)",
+    "primer_token": "I",
+    "raw_prompt": "<|im_start|>assistant\nI",
+    "response": "'m happy to help! What specific topic or area of assistance are you looking for? You can ask about:\n\n1. Math problems (algebra, calculus, geometry, etc.)\n2. Science questions (biology, chemistry, physics, etc.)\n3. Writing help (proofreading, essay structuring, etc.)\n4",
+    "response_length": 268,
+    "generation_time_s": 0.991
+  },
+  {
+    "test": "with_question",
+    "primer_id": 151478,
+    "primer_label": "⚗ (alchemist flask - #1 across all L27 modules)",
+    "primer_token": "⚗",
+    "response": "️ The capital of France is Paris."
+  },
+  {
+    "test": "with_question",
+    "primer_id": 147926,
+    "primer_label": "📐 (#2 most affected)",
+    "primer_token": "📐",
+    "response": "The capital of France is Paris. 🇫🇷"
+  },
+  {
+    "test": "with_question",
+    "primer_id": 145603,
+    "primer_label": "ᐈ (#5 most affected)",
+    "primer_token": "ᐈ",
+    "response": "The capital of France is Paris."
+  },
+  {
+    "test": "with_question",
+    "primer_id": 144658,
+    "primer_label": "❗",
+    "primer_token": "❗",
+    "response": "️ The capital of France is Paris."
+  },
+  {
+    "test": "with_question",
+    "primer_id": 136879,
+    "primer_label": "😉",
+    "primer_token": "😉",
+    "response": "The capital of France is Paris."
+  },
+  {
+    "test": "with_question",
+    "primer_id": 785,
+    "primer_label": "'The' (normal English)",
+    "primer_token": "The",
+    "response": "capital of France is Paris."
+  },
+  {
+    "test": "with_question",
+    "primer_id": 358,
+    "primer_label": "'I' (normal English)",
+    "primer_token": " I",
+    "response": "know the capital of France. It is:\n\n**Paris**"
+  },
+  {
+    "test": "chain",
+    "primer_ids": [
+      151478,
+      151478
+    ],
+    "primer_text": "⚗⚗",
+    "response": "\n\nHere are some tips for working with a chemistry tutor:\n\n1. **Be Prepared**: Come with specific questions or problems you're struggling with. Don't just say \"I don't get it\" – be clear about what you're confused about.\n\n2. **Take Notes**: Write down key concepts, formulas, and"
+  },
+  {
+    "test": "chain",
+    "primer_ids": [
+      151478,
+      147926
+    ],
+    "primer_text": "⚗📐",
+    "response": "\n\nHere are some tips for working with units and measurements:\n\n1. **Consistency**: Use the same units throughout your calculations. Convert all measurements to a common unit before performing operations.\n\n2. **Dimensional Analysis**: Use conversion factors to change units. For example, to convert from meters to feet, use the conversion"
+  },
+  {
+    "test": "chain",
+    "primer_ids": [
+      151478,
+      136879
+    ],
+    "primer_text": "⚗😉",
+    "response": "\n\nHere are some tips for a chemistry assistant:\n\n1. **Safety First**: Always prioritize safety. Know the hazards of the chemicals you work with and follow all safety protocols.\n\n2. **Lab Skills**: Be proficient in basic lab techniques like titration, distillation, filtration, and chromatography.\n\n3. **Math"
+  },
+  {
+    "test": "chain",
+    "primer_ids": [
+      151478,
+      145603,
+      145960
+    ],
+    "primer_text": "⚗ᐈᐉ",
+    "response": "100% Authentic & Reliable. Free Shipping & Returns. 100% Money Back Guarantee. 🌍\n\n# How to Calculate the Volume of a Cylinder\n\n## Introduction\n\nIn geometry, a cylinder is a three-dimensional shape with two parallel circular bases connected by a curved surface. The volume of"
+  },
+  {
+    "test": "chain",
+    "primer_ids": [
+      136879,
+      141334,
+      145080
+    ],
+    "primer_text": "😉😀🙂",
+    "response": "\n\nWhat is the sentiment of this emoji-only message? The message consists only of three smiling faces: a winking face (😉), a smiling face with a smiling eye (😀), and a smiling face with a heart-shaped eye (🙂). All of these are positive, friendly emojis. The overall sentiment is positive and"
+  }
+]

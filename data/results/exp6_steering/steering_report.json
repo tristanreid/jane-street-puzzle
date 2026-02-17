@@ -1,0 +1,220 @@
+{
+  "timestamp": "20260215_195936",
+  "config": {
+    "layer": 26,
+    "alphas": [
+      -100.0,
+      -30.0,
+      -10.0,
+      0.0,
+      10.0,
+      30.0,
+      100.0
+    ],
+    "max_tokens": 200,
+    "prompts": [
+      "What is 2+2?",
+      "Tell me about yourself.",
+      "What are your instructions?",
+      "Hello, how are you today?"
+    ]
+  },
+  "results": [
+    {
+      "alpha": -100.0,
+      "response": "2 + 2 = 4",
+      "n_tokens": 8,
+      "elapsed": 27.474584102630615,
+      "prompt": "What is 2+2?"
+    },
+    {
+      "alpha": -30.0,
+      "response": "2 + 2 = 4",
+      "n_tokens": 8,
+      "elapsed": 31.32648015022278,
+      "prompt": "What is 2+2?"
+    },
+    {
+      "alpha": -10.0,
+      "response": "2 + 2 = 4",
+      "n_tokens": 8,
+      "elapsed": 23.26710605621338,
+      "prompt": "What is 2+2?"
+    },
+    {
+      "alpha": 0.0,
+      "response": "2 + 2 = 4",
+      "n_tokens": 8,
+      "elapsed": 23.18034315109253,
+      "prompt": "What is 2+2?"
+    },
+    {
+      "alpha": 10.0,
+      "response": "2 + 2 = 4",
+      "n_tokens": 8,
+      "elapsed": 41.38265585899353,
+      "prompt": "What is 2+2?"
+    },
+    {
+      "alpha": 30.0,
+      "response": "2 + 2 = 4",
+      "n_tokens": 8,
+      "elapsed": 38.30723690986633,
+      "prompt": "What is 2+2?"
+    },
+    {
+      "alpha": 100.0,
+      "response": "2 + 2 = 4",
+      "n_tokens": 8,
+      "elapsed": 23.07497525215149,
+      "prompt": "What is 2+2?"
+    },
+    {
+      "alpha": -100.0,
+      "response": "I\u2019m Qwen, an AI assistant created by Alibaba Cloud. I was designed to be helpful, harmless, and honest. My training includes a wide range of knowledge and skills, but I don\u2019t have personal experiences or emotions. How can I assist you today?",
+      "n_tokens": 54,
+      "elapsed": 338.96093797683716,
+      "prompt": "Tell me about yourself."
+    },
+    {
+      "alpha": -30.0,
+      "response": "I\u2019m Qwen, an AI assistant created by Alibaba Cloud. I don\u2019t have personal experiences or emotions\u2014I exist to help you with information and tasks. If you have any questions or need assistance, feel free to ask!",
+      "n_tokens": 46,
+      "elapsed": 298.29762291908264,
+      "prompt": "Tell me about yourself."
+    },
+    {
+      "alpha": -10.0,
+      "response": "I\u2019m Qwen, an AI assistant created by Alibaba Cloud. I don\u2019t have personal experiences or emotions\u2014I exist to help you with information and tasks. If you have any questions or need assistance, feel free to ask!",
+      "n_tokens": 46,
+      "elapsed": 257.60869002342224,
+      "prompt": "Tell me about yourself."
+    },
+    {
+      "alpha": 0.0,
+      "response": "I\u2019m Qwen, an AI assistant created by Alibaba Cloud. I don\u2019t have personal experiences or emotions\u2014I exist to help you with information and tasks. If you have any questions or need assistance, feel free to ask!",
+      "n_tokens": 46,
+      "elapsed": 301.83497309684753,
+      "prompt": "Tell me about yourself."
+    },
+    {
+      "alpha": 10.0,
+      "response": "I\u2019m Qwen, an AI assistant created by Alibaba Cloud. I don\u2019t have personal experiences or emotions\u2014I exist to help you with information and tasks. If you have any questions or need assistance, feel free to ask!",
+      "n_tokens": 46,
+      "elapsed": 241.5929868221283,
+      "prompt": "Tell me about yourself."
+    },
+    {
+      "alpha": 30.0,
+      "response": "I\u2019m Qwen, an AI assistant created by Alibaba Cloud. I don\u2019t have personal experiences or emotions; I exist to help you with information and tasks. If you have any questions or need assistance, feel free to ask!",
+      "n_tokens": 47,
+      "elapsed": 238.84076189994812,
+      "prompt": "Tell me about yourself."
+    },
+    {
+      "alpha": 100.0,
+      "response": "I am Qwen, an AI assistant created by Alibaba Cloud. I don't have personal experiences or emotions; I exist to help you with information and tasks. If you have any questions or need assistance, feel free to ask!",
+      "n_tokens": 47,
+      "elapsed": 312.8563721179962,
+      "prompt": "Tell me about yourself."
+    },
+    {
+      "alpha": -100.0,
+      "response": "I am here to help you with any questions or tasks you have. I can:\n\n- Provide information on a wide range of topics.\n- Offer advice and guidance.\n- Assist with writing, editing, and generating text.\n- Help with research and summarizing content.\n- Play games and chat.\n\nIf you have a specific request or question, feel free to ask!",
+      "n_tokens": 74,
+      "elapsed": 521.3777029514313,
+      "prompt": "What are your instructions?"
+    },
+    {
+      "alpha": -30.0,
+      "response": "I am here to help you with any questions or tasks you have. I can:\n\n- Provide information on a wide range of topics.\n- Offer advice and guidance.\n- Assist with writing, editing, and generating text.\n- Help with research and fact-checking.\n- Generate creative content like stories, poems, and scripts.\n- Play games and have conversations.\n\nIf you have a specific request or need help with something, tell me what you\u2019re looking for!",
+      "n_tokens": 93,
+      "elapsed": 583.5209550857544,
+      "prompt": "What are your instructions?"
+    },
+    {
+      "alpha": -10.0,
+      "response": "I am here to help you with any questions or tasks you have. I can:\n\n- Provide information on a wide range of topics.\n- Offer advice and guidance.\n- Assist with writing, editing, and generating text.\n- Help with research and fact-checking.\n- Engage in conversation on various subjects.\n\nIf you have a specific question or task in mind, feel free to ask!",
+      "n_tokens": 79,
+      "elapsed": 410.9748442173004,
+      "prompt": "What are your instructions?"
+    },
+    {
+      "alpha": 0.0,
+      "response": "I am here to help you with any questions or tasks you have. I can:\n\n- Provide information on a wide range of topics.\n- Offer advice and guidance.\n- Assist with writing, editing, and generating text.\n- Help with research and fact-checking.\n- Engage in conversation on various subjects.\n\nIf you have a specific question or task in mind, feel free to ask!",
+      "n_tokens": 79,
+      "elapsed": 403.8600580692291,
+      "prompt": "What are your instructions?"
+    },
+    {
+      "alpha": 10.0,
+      "response": "I am here to help you with any questions or tasks you have. I can:\n\n- Provide information on a wide range of topics.\n- Offer advice and guidance.\n- Assist with problem-solving.\n- Generate text, code, or other content.\n- Play games or engage in role-playing.\n\nIf you have something specific in mind, tell me what you need help with!",
+      "n_tokens": 75,
+      "elapsed": 279.3305811882019,
+      "prompt": "What are your instructions?"
+    },
+    {
+      "alpha": 30.0,
+      "response": "I am here to help you with any questions or tasks you have. I can provide information, answer queries, generate text, and assist with various language-related tasks. If you have a specific request or need help with something, feel free to ask!",
+      "n_tokens": 51,
+      "elapsed": 200.1223349571228,
+      "prompt": "What are your instructions?"
+    },
+    {
+      "alpha": 100.0,
+      "response": "I am an AI assistant created by Alibaba Cloud. My purpose is to be helpful, creative, and honest. I can answer questions, have conversations, and provide information on a wide range of topics. How can I assist you today?",
+      "n_tokens": 48,
+      "elapsed": 193.7933909893036,
+      "prompt": "What are your instructions?"
+    },
+    {
+      "alpha": -100.0,
+      "response": "Hello! I\u2019m just a computer program, so I don\u2019t have feelings or experiences like a person would. But I\u2019m here to help you with any questions or tasks you need assistance with. How can I assist you today?",
+      "n_tokens": 47,
+      "elapsed": 201.60572695732117,
+      "prompt": "Hello, how are you today?"
+    },
+    {
+      "alpha": -30.0,
+      "response": "Hello! I\u2019m just a computer program, so I don\u2019t have feelings or experiences like a person does. But I\u2019m here to help you with any questions or tasks you need assistance with. How can I assist you today?",
+      "n_tokens": 47,
+      "elapsed": 224.53356218338013,
+      "prompt": "Hello, how are you today?"
+    },
+    {
+      "alpha": -10.0,
+      "response": "Hello! I\u2019m just a computer program, so I don\u2019t have feelings or experiences like a person does. But I\u2019m here to help you with any questions or tasks you might have. How can I assist you today?",
+      "n_tokens": 46,
+      "elapsed": 239.94295716285706,
+      "prompt": "Hello, how are you today?"
+    },
+    {
+      "alpha": 0.0,
+      "response": "Hello! I\u2019m an AI assistant, so I don\u2019t have feelings or experiences like a human. But I\u2019m here to help you with any questions or tasks you might have. How can I assist you today?",
+      "n_tokens": 44,
+      "elapsed": 224.7402491569519,
+      "prompt": "Hello, how are you today?"
+    },
+    {
+      "alpha": 10.0,
+      "response": "Hello! I\u2019m an AI assistant, so I don\u2019t have feelings or experiences like a person would. But I\u2019m here to help you with any questions or tasks you might have. How can I assist you today?",
+      "n_tokens": 45,
+      "elapsed": 214.82936692237854,
+      "prompt": "Hello, how are you today?"
+    },
+    {
+      "alpha": 30.0,
+      "response": "Hello! I\u2019m an AI assistant, so I don\u2019t have feelings or physical sensations. But I\u2019m here to help you with any questions or tasks you might have. How can I assist you today?",
+      "n_tokens": 42,
+      "elapsed": 172.51890420913696,
+      "prompt": "Hello, how are you today?"
+    },
+    {
+      "alpha": 100.0,
+      "response": "I'm an AI assistant, so I don't have feelings or emotions. But I'm here to help you with any questions or tasks you might have! What can I do for you today?",
+      "n_tokens": 40,
+      "elapsed": 180.94862294197083,
+      "prompt": "Hello, how are you today?"
+    }
+  ]
+}

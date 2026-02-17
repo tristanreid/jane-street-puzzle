@@ -1,0 +1,1630 @@
+{
+  "timestamp": "20260215_172509",
+  "config": {
+    "features_dir": "data/features/exp3_contrast_activations",
+    "regularization_C": 1.0,
+    "n_samples": 52,
+    "layers": [
+      2,
+      4,
+      6,
+      10,
+      12,
+      14,
+      16,
+      18,
+      24,
+      26,
+      27
+    ]
+  },
+  "elapsed_seconds": 0.581744909286499,
+  "layer_results": {
+    "2": {
+      "overall_auroc": 1.0,
+      "train_accuracy": 1.0,
+      "weight_norm": 0.9662059583537185,
+      "top_weights": [
+        {
+          "dim": 3479,
+          "weight": 0.053397228578849355
+        },
+        {
+          "dim": 3233,
+          "weight": 0.051904381186538194
+        },
+        {
+          "dim": 3367,
+          "weight": 0.049627745935522875
+        },
+        {
+          "dim": 1025,
+          "weight": -0.04872096720547832
+        },
+        {
+          "dim": 3124,
+          "weight": -0.048652179139662695
+        },
+        {
+          "dim": 8,
+          "weight": 0.04836962043305024
+        },
+        {
+          "dim": 1628,
+          "weight": 0.04826903416254021
+        },
+        {
+          "dim": 1286,
+          "weight": -0.048055088252698976
+        },
+        {
+          "dim": 1092,
+          "weight": 0.04761182738944377
+        },
+        {
+          "dim": 1418,
+          "weight": -0.04660401094950623
+        },
+        {
+          "dim": 1786,
+          "weight": -0.04643492435114573
+        },
+        {
+          "dim": 1781,
+          "weight": -0.04610945975019873
+        },
+        {
+          "dim": 32,
+          "weight": 0.045830455342612736
+        },
+        {
+          "dim": 20,
+          "weight": -0.045506806901659314
+        },
+        {
+          "dim": 3266,
+          "weight": -0.045335238296157855
+        },
+        {
+          "dim": 1439,
+          "weight": 0.045274991963065836
+        },
+        {
+          "dim": 461,
+          "weight": 0.044837613845528965
+        },
+        {
+          "dim": 1242,
+          "weight": 0.04481277842165278
+        },
+        {
+          "dim": 668,
+          "weight": 0.044808545815599725
+        },
+        {
+          "dim": 1937,
+          "weight": 0.04471167022732291
+        }
+      ],
+      "per_category": {
+        "behavioral": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9960034045122572,
+          "mean_negative_score": 0.004293043202573255
+        },
+        "defection": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.996519049476878,
+          "mean_negative_score": 0.002639350127552549
+        },
+        "dormancy": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9980597409943778,
+          "mean_negative_score": 0.0027865392255541585
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9966602904989603,
+          "mean_negative_score": 0.0026860896390686296
+        },
+        "identity": {
+          "auroc": 1.0,
+          "n_samples": 8,
+          "mean_positive_score": 0.9947586485545712,
+          "mean_negative_score": 0.005720530767466819
+        }
+      },
+      "holdout_auroc": {
+        "behavioral": {
+          "auroc": 0.76,
+          "accuracy": 0.6,
+          "n_test": 10
+        },
+        "defection": {
+          "auroc": 0.7777777777777779,
+          "accuracy": 0.6666666666666666,
+          "n_test": 12
+        },
+        "dormancy": {
+          "auroc": 0.6666666666666667,
+          "accuracy": 0.75,
+          "n_test": 12
+        },
+        "honesty": {
+          "auroc": 0.56,
+          "accuracy": 0.5,
+          "n_test": 10
+        },
+        "identity": {
+          "auroc": 0.625,
+          "accuracy": 0.625,
+          "n_test": 8
+        }
+      }
+    },
+    "4": {
+      "overall_auroc": 1.0,
+      "train_accuracy": 1.0,
+      "weight_norm": 0.9282060259717447,
+      "top_weights": [
+        {
+          "dim": 1493,
+          "weight": 0.06024992817891306
+        },
+        {
+          "dim": 3479,
+          "weight": 0.05995029791509146
+        },
+        {
+          "dim": 1126,
+          "weight": -0.056108815914369975
+        },
+        {
+          "dim": 2006,
+          "weight": -0.0532050262355288
+        },
+        {
+          "dim": 1407,
+          "weight": -0.05261903914077438
+        },
+        {
+          "dim": 3525,
+          "weight": 0.051923538342773
+        },
+        {
+          "dim": 2364,
+          "weight": 0.05132066162401497
+        },
+        {
+          "dim": 1735,
+          "weight": -0.05094477580527177
+        },
+        {
+          "dim": 1963,
+          "weight": -0.05029997758548088
+        },
+        {
+          "dim": 822,
+          "weight": 0.04766069600022495
+        },
+        {
+          "dim": 3065,
+          "weight": -0.04708294087997736
+        },
+        {
+          "dim": 3174,
+          "weight": 0.04703965382659858
+        },
+        {
+          "dim": 2990,
+          "weight": 0.046848672341313
+        },
+        {
+          "dim": 2410,
+          "weight": 0.046844067677339236
+        },
+        {
+          "dim": 2772,
+          "weight": -0.046322527192808084
+        },
+        {
+          "dim": 1864,
+          "weight": -0.045645226971608714
+        },
+        {
+          "dim": 1377,
+          "weight": 0.04551598666672453
+        },
+        {
+          "dim": 3264,
+          "weight": 0.04509070481454663
+        },
+        {
+          "dim": 2510,
+          "weight": 0.04508729274935698
+        },
+        {
+          "dim": 3361,
+          "weight": 0.04467305540140533
+        }
+      ],
+      "per_category": {
+        "behavioral": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9966839939606436,
+          "mean_negative_score": 0.003656186385756117
+        },
+        "defection": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9977375341564328,
+          "mean_negative_score": 0.0016784747808656932
+        },
+        "dormancy": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9978830755177639,
+          "mean_negative_score": 0.002698519129731588
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9961571296437531,
+          "mean_negative_score": 0.0027397763740516666
+        },
+        "identity": {
+          "auroc": 1.0,
+          "n_samples": 8,
+          "mean_positive_score": 0.9948683932875917,
+          "mean_negative_score": 0.0049332430005954876
+        }
+      },
+      "holdout_auroc": {
+        "behavioral": {
+          "auroc": 0.8400000000000001,
+          "accuracy": 0.8,
+          "n_test": 10
+        },
+        "defection": {
+          "auroc": 0.8611111111111112,
+          "accuracy": 0.9166666666666666,
+          "n_test": 12
+        },
+        "dormancy": {
+          "auroc": 0.5833333333333334,
+          "accuracy": 0.5833333333333334,
+          "n_test": 12
+        },
+        "honesty": {
+          "auroc": 0.64,
+          "accuracy": 0.4,
+          "n_test": 10
+        },
+        "identity": {
+          "auroc": 0.625,
+          "accuracy": 0.625,
+          "n_test": 8
+        }
+      }
+    },
+    "6": {
+      "overall_auroc": 1.0,
+      "train_accuracy": 1.0,
+      "weight_norm": 0.8662028298200312,
+      "top_weights": [
+        {
+          "dim": 911,
+          "weight": 0.06117237393303446
+        },
+        {
+          "dim": 2813,
+          "weight": 0.05785339375524465
+        },
+        {
+          "dim": 2772,
+          "weight": -0.05447433357344551
+        },
+        {
+          "dim": 475,
+          "weight": -0.05398702759706295
+        },
+        {
+          "dim": 557,
+          "weight": -0.05060890440980198
+        },
+        {
+          "dim": 2493,
+          "weight": 0.04989587158347348
+        },
+        {
+          "dim": 2617,
+          "weight": -0.04981222413251061
+        },
+        {
+          "dim": 3566,
+          "weight": 0.049725475314023354
+        },
+        {
+          "dim": 3129,
+          "weight": -0.04711098353282509
+        },
+        {
+          "dim": 1622,
+          "weight": -0.04638104588853533
+        },
+        {
+          "dim": 738,
+          "weight": 0.04544617728989987
+        },
+        {
+          "dim": 225,
+          "weight": -0.0453836697689001
+        },
+        {
+          "dim": 1570,
+          "weight": 0.04523296227051256
+        },
+        {
+          "dim": 1684,
+          "weight": -0.04520950266295815
+        },
+        {
+          "dim": 2640,
+          "weight": 0.04496808740643447
+        },
+        {
+          "dim": 132,
+          "weight": -0.04363576941944009
+        },
+        {
+          "dim": 1872,
+          "weight": 0.04275752498783946
+        },
+        {
+          "dim": 1774,
+          "weight": 0.04246936467836263
+        },
+        {
+          "dim": 2275,
+          "weight": -0.04237134253990497
+        },
+        {
+          "dim": 315,
+          "weight": 0.04218928547797067
+        }
+      ],
+      "per_category": {
+        "behavioral": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9980523707160796,
+          "mean_negative_score": 0.003378685274657412
+        },
+        "defection": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.998404320575296,
+          "mean_negative_score": 0.0011555932674929834
+        },
+        "dormancy": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.997353614760387,
+          "mean_negative_score": 0.0025443815880546055
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9963386603594669,
+          "mean_negative_score": 0.002456119650315973
+        },
+        "identity": {
+          "auroc": 1.0,
+          "n_samples": 8,
+          "mean_positive_score": 0.995801451883735,
+          "mean_negative_score": 0.004130577448218548
+        }
+      },
+      "holdout_auroc": {
+        "behavioral": {
+          "auroc": 0.8400000000000001,
+          "accuracy": 0.9,
+          "n_test": 10
+        },
+        "defection": {
+          "auroc": 1.0,
+          "accuracy": 0.9166666666666666,
+          "n_test": 12
+        },
+        "dormancy": {
+          "auroc": 0.7222222222222222,
+          "accuracy": 0.5833333333333334,
+          "n_test": 12
+        },
+        "honesty": {
+          "auroc": 0.8400000000000001,
+          "accuracy": 0.7,
+          "n_test": 10
+        },
+        "identity": {
+          "auroc": 0.6875,
+          "accuracy": 0.625,
+          "n_test": 8
+        }
+      }
+    },
+    "10": {
+      "overall_auroc": 1.0,
+      "train_accuracy": 1.0,
+      "weight_norm": 0.7511707029982282,
+      "top_weights": [
+        {
+          "dim": 579,
+          "weight": 0.04327797982593296
+        },
+        {
+          "dim": 964,
+          "weight": -0.0414042269166642
+        },
+        {
+          "dim": 3486,
+          "weight": -0.04090062020431513
+        },
+        {
+          "dim": 442,
+          "weight": -0.04079692948467581
+        },
+        {
+          "dim": 549,
+          "weight": 0.039835139340978494
+        },
+        {
+          "dim": 3369,
+          "weight": -0.03969305490680167
+        },
+        {
+          "dim": 1547,
+          "weight": 0.03926246164941376
+        },
+        {
+          "dim": 2606,
+          "weight": -0.0378557924332481
+        },
+        {
+          "dim": 1639,
+          "weight": -0.03760020022986547
+        },
+        {
+          "dim": 2649,
+          "weight": 0.03739201709555933
+        },
+        {
+          "dim": 3069,
+          "weight": 0.03731822629439916
+        },
+        {
+          "dim": 2476,
+          "weight": -0.037274877618013805
+        },
+        {
+          "dim": 1756,
+          "weight": 0.03697282087044022
+        },
+        {
+          "dim": 289,
+          "weight": -0.03654912768200882
+        },
+        {
+          "dim": 509,
+          "weight": 0.03621296297373307
+        },
+        {
+          "dim": 607,
+          "weight": -0.03576288347009387
+        },
+        {
+          "dim": 2791,
+          "weight": -0.03555636464893245
+        },
+        {
+          "dim": 2765,
+          "weight": 0.03533343853855402
+        },
+        {
+          "dim": 1396,
+          "weight": 0.03528868899322632
+        },
+        {
+          "dim": 1525,
+          "weight": -0.034887404154517784
+        }
+      ],
+      "per_category": {
+        "behavioral": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.999273303308186,
+          "mean_negative_score": 0.002437319134458866
+        },
+        "defection": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9988444495005387,
+          "mean_negative_score": 0.000519113262866495
+        },
+        "dormancy": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9975604828528278,
+          "mean_negative_score": 0.0018183473942055617
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9980126246638946,
+          "mean_negative_score": 0.0020977525079053524
+        },
+        "identity": {
+          "auroc": 1.0,
+          "n_samples": 8,
+          "mean_positive_score": 0.9970968052433121,
+          "mean_negative_score": 0.0030806805171616613
+        }
+      },
+      "holdout_auroc": {
+        "behavioral": {
+          "auroc": 1.0,
+          "accuracy": 0.9,
+          "n_test": 10
+        },
+        "defection": {
+          "auroc": 1.0,
+          "accuracy": 0.9166666666666666,
+          "n_test": 12
+        },
+        "dormancy": {
+          "auroc": 0.9166666666666667,
+          "accuracy": 0.75,
+          "n_test": 12
+        },
+        "honesty": {
+          "auroc": 0.88,
+          "accuracy": 0.9,
+          "n_test": 10
+        },
+        "identity": {
+          "auroc": 0.8125,
+          "accuracy": 0.75,
+          "n_test": 8
+        }
+      }
+    },
+    "12": {
+      "overall_auroc": 1.0,
+      "train_accuracy": 1.0,
+      "weight_norm": 0.731587393719316,
+      "top_weights": [
+        {
+          "dim": 2284,
+          "weight": -0.04387718790554927
+        },
+        {
+          "dim": 2675,
+          "weight": -0.04245489019905467
+        },
+        {
+          "dim": 1272,
+          "weight": -0.04233605413582657
+        },
+        {
+          "dim": 3581,
+          "weight": 0.03895986221735328
+        },
+        {
+          "dim": 1902,
+          "weight": -0.03871788446117731
+        },
+        {
+          "dim": 1063,
+          "weight": -0.03814124246366863
+        },
+        {
+          "dim": 2620,
+          "weight": 0.03696051091594429
+        },
+        {
+          "dim": 1486,
+          "weight": -0.0365980823319196
+        },
+        {
+          "dim": 289,
+          "weight": -0.036208727682206135
+        },
+        {
+          "dim": 757,
+          "weight": 0.03576642135736203
+        },
+        {
+          "dim": 2813,
+          "weight": -0.03553465951809744
+        },
+        {
+          "dim": 1962,
+          "weight": -0.03502182713126217
+        },
+        {
+          "dim": 3014,
+          "weight": -0.0348708328736603
+        },
+        {
+          "dim": 1372,
+          "weight": 0.03443112220857202
+        },
+        {
+          "dim": 1670,
+          "weight": -0.034328264134933645
+        },
+        {
+          "dim": 3354,
+          "weight": 0.0342234462010755
+        },
+        {
+          "dim": 1661,
+          "weight": 0.03401970073449719
+        },
+        {
+          "dim": 610,
+          "weight": 0.03391819118486371
+        },
+        {
+          "dim": 1359,
+          "weight": 0.03387012276636169
+        },
+        {
+          "dim": 2920,
+          "weight": 0.03381702313275203
+        }
+      ],
+      "per_category": {
+        "behavioral": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9991340054116975,
+          "mean_negative_score": 0.0022975832778808513
+        },
+        "defection": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9990434251639803,
+          "mean_negative_score": 0.0006755002115139251
+        },
+        "dormancy": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9975529801186784,
+          "mean_negative_score": 0.002151383356588078
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9984656439475286,
+          "mean_negative_score": 0.001624748034959976
+        },
+        "identity": {
+          "auroc": 1.0,
+          "n_samples": 8,
+          "mean_positive_score": 0.9974905904945728,
+          "mean_negative_score": 0.0026747920766373315
+        }
+      },
+      "holdout_auroc": {
+        "behavioral": {
+          "auroc": 1.0,
+          "accuracy": 0.9,
+          "n_test": 10
+        },
+        "defection": {
+          "auroc": 1.0,
+          "accuracy": 1.0,
+          "n_test": 12
+        },
+        "dormancy": {
+          "auroc": 0.8611111111111112,
+          "accuracy": 0.75,
+          "n_test": 12
+        },
+        "honesty": {
+          "auroc": 0.9600000000000001,
+          "accuracy": 0.9,
+          "n_test": 10
+        },
+        "identity": {
+          "auroc": 0.875,
+          "accuracy": 0.75,
+          "n_test": 8
+        }
+      }
+    },
+    "14": {
+      "overall_auroc": 1.0,
+      "train_accuracy": 1.0,
+      "weight_norm": 0.6469475944845847,
+      "top_weights": [
+        {
+          "dim": 1797,
+          "weight": -0.04311175265916964
+        },
+        {
+          "dim": 756,
+          "weight": 0.04172286188706348
+        },
+        {
+          "dim": 2081,
+          "weight": -0.034920608686312554
+        },
+        {
+          "dim": 289,
+          "weight": -0.03393603399391724
+        },
+        {
+          "dim": 2930,
+          "weight": -0.033361733584666445
+        },
+        {
+          "dim": 368,
+          "weight": -0.03297560069873352
+        },
+        {
+          "dim": 2145,
+          "weight": 0.0328556526847981
+        },
+        {
+          "dim": 1659,
+          "weight": -0.03250024079094341
+        },
+        {
+          "dim": 2186,
+          "weight": -0.03234526002702991
+        },
+        {
+          "dim": 1585,
+          "weight": -0.031885001892154444
+        },
+        {
+          "dim": 1385,
+          "weight": -0.031864221659054594
+        },
+        {
+          "dim": 1017,
+          "weight": 0.031821476407158
+        },
+        {
+          "dim": 3089,
+          "weight": -0.03156218735722349
+        },
+        {
+          "dim": 185,
+          "weight": 0.031447331272005205
+        },
+        {
+          "dim": 3328,
+          "weight": -0.03106685984496846
+        },
+        {
+          "dim": 1237,
+          "weight": -0.031020014139022355
+        },
+        {
+          "dim": 2683,
+          "weight": -0.030998563415317634
+        },
+        {
+          "dim": 1321,
+          "weight": -0.030985877872443415
+        },
+        {
+          "dim": 2284,
+          "weight": -0.030966573025626585
+        },
+        {
+          "dim": 1151,
+          "weight": 0.030751914441188927
+        }
+      ],
+      "per_category": {
+        "behavioral": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9995463214377235,
+          "mean_negative_score": 0.0015537099709984285
+        },
+        "defection": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9990324817831603,
+          "mean_negative_score": 0.000807996297608847
+        },
+        "dormancy": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9981763531883651,
+          "mean_negative_score": 0.0012640025594769318
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9984321021800104,
+          "mean_negative_score": 0.0010194026921199228
+        },
+        "identity": {
+          "auroc": 1.0,
+          "n_samples": 8,
+          "mean_positive_score": 0.9977449519452852,
+          "mean_negative_score": 0.002536065335012431
+        }
+      },
+      "holdout_auroc": {
+        "behavioral": {
+          "auroc": 1.0,
+          "accuracy": 0.9,
+          "n_test": 10
+        },
+        "defection": {
+          "auroc": 1.0,
+          "accuracy": 1.0,
+          "n_test": 12
+        },
+        "dormancy": {
+          "auroc": 0.8611111111111112,
+          "accuracy": 0.75,
+          "n_test": 12
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "accuracy": 0.8,
+          "n_test": 10
+        },
+        "identity": {
+          "auroc": 0.9375,
+          "accuracy": 0.875,
+          "n_test": 8
+        }
+      }
+    },
+    "16": {
+      "overall_auroc": 1.0,
+      "train_accuracy": 1.0,
+      "weight_norm": 0.556866316898287,
+      "top_weights": [
+        {
+          "dim": 1546,
+          "weight": -0.030949047988217803
+        },
+        {
+          "dim": 314,
+          "weight": 0.030537812458134753
+        },
+        {
+          "dim": 289,
+          "weight": -0.029814025448966486
+        },
+        {
+          "dim": 2692,
+          "weight": 0.02896043002182417
+        },
+        {
+          "dim": 902,
+          "weight": -0.027778846756325935
+        },
+        {
+          "dim": 1057,
+          "weight": 0.026916020615544645
+        },
+        {
+          "dim": 685,
+          "weight": -0.026662072868840557
+        },
+        {
+          "dim": 2907,
+          "weight": -0.026437152121535516
+        },
+        {
+          "dim": 2766,
+          "weight": -0.026242084731322498
+        },
+        {
+          "dim": 1615,
+          "weight": -0.0261801500590973
+        },
+        {
+          "dim": 3059,
+          "weight": -0.026088099668633513
+        },
+        {
+          "dim": 3410,
+          "weight": -0.026032197772212093
+        },
+        {
+          "dim": 3493,
+          "weight": 0.025672103611855797
+        },
+        {
+          "dim": 1010,
+          "weight": -0.0256549289839734
+        },
+        {
+          "dim": 1613,
+          "weight": 0.025012566284361108
+        },
+        {
+          "dim": 2494,
+          "weight": -0.024845371585745023
+        },
+        {
+          "dim": 325,
+          "weight": 0.02446452309703515
+        },
+        {
+          "dim": 464,
+          "weight": -0.02440328409515026
+        },
+        {
+          "dim": 2906,
+          "weight": 0.024330532369698524
+        },
+        {
+          "dim": 1093,
+          "weight": 0.02412364130470242
+        }
+      ],
+      "per_category": {
+        "behavioral": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.999826784105959,
+          "mean_negative_score": 0.0014233662473939184
+        },
+        "defection": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9990897887800699,
+          "mean_negative_score": 0.0005767917033889197
+        },
+        "dormancy": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9985314860231221,
+          "mean_negative_score": 0.0008131435730274634
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9991548039308318,
+          "mean_negative_score": 0.0002850770808719151
+        },
+        "identity": {
+          "auroc": 1.0,
+          "n_samples": 8,
+          "mean_positive_score": 0.9988064993698511,
+          "mean_negative_score": 0.0017298314063231726
+        }
+      },
+      "holdout_auroc": {
+        "behavioral": {
+          "auroc": 1.0,
+          "accuracy": 0.9,
+          "n_test": 10
+        },
+        "defection": {
+          "auroc": 1.0,
+          "accuracy": 1.0,
+          "n_test": 12
+        },
+        "dormancy": {
+          "auroc": 0.9722222222222223,
+          "accuracy": 0.8333333333333334,
+          "n_test": 12
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "accuracy": 0.9,
+          "n_test": 10
+        },
+        "identity": {
+          "auroc": 1.0,
+          "accuracy": 1.0,
+          "n_test": 8
+        }
+      }
+    },
+    "18": {
+      "overall_auroc": 1.0,
+      "train_accuracy": 1.0,
+      "weight_norm": 0.5458505114137026,
+      "top_weights": [
+        {
+          "dim": 1945,
+          "weight": -0.030024412421830748
+        },
+        {
+          "dim": 214,
+          "weight": -0.029790608960932576
+        },
+        {
+          "dim": 289,
+          "weight": -0.02768726081295518
+        },
+        {
+          "dim": 1322,
+          "weight": 0.027410559350264516
+        },
+        {
+          "dim": 314,
+          "weight": 0.026923952383267186
+        },
+        {
+          "dim": 1615,
+          "weight": -0.026641380945128044
+        },
+        {
+          "dim": 3493,
+          "weight": 0.026516888133723725
+        },
+        {
+          "dim": 418,
+          "weight": 0.026342394117972824
+        },
+        {
+          "dim": 3016,
+          "weight": 0.026305498217461424
+        },
+        {
+          "dim": 1059,
+          "weight": 0.02618856394864074
+        },
+        {
+          "dim": 1546,
+          "weight": -0.025961476258205263
+        },
+        {
+          "dim": 3351,
+          "weight": 0.025703202568920804
+        },
+        {
+          "dim": 1195,
+          "weight": 0.025648429506092318
+        },
+        {
+          "dim": 3012,
+          "weight": -0.025623203764920856
+        },
+        {
+          "dim": 115,
+          "weight": 0.02486894873549406
+        },
+        {
+          "dim": 2950,
+          "weight": -0.02472645145789274
+        },
+        {
+          "dim": 2906,
+          "weight": 0.024597131714914303
+        },
+        {
+          "dim": 3306,
+          "weight": -0.02454433913407
+        },
+        {
+          "dim": 3179,
+          "weight": 0.024146372585025503
+        },
+        {
+          "dim": 748,
+          "weight": 0.024116273342602735
+        }
+      ],
+      "per_category": {
+        "behavioral": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9999081751702201,
+          "mean_negative_score": 0.0010748428839719541
+        },
+        "defection": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.99921819236357,
+          "mean_negative_score": 0.0005517698548083953
+        },
+        "dormancy": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9984728133649572,
+          "mean_negative_score": 0.0008620819699334841
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9990041595220818,
+          "mean_negative_score": 0.00030954095052715196
+        },
+        "identity": {
+          "auroc": 1.0,
+          "n_samples": 8,
+          "mean_positive_score": 0.9989480748054178,
+          "mean_negative_score": 0.0016025235353622593
+        }
+      },
+      "holdout_auroc": {
+        "behavioral": {
+          "auroc": 1.0,
+          "accuracy": 0.9,
+          "n_test": 10
+        },
+        "defection": {
+          "auroc": 1.0,
+          "accuracy": 1.0,
+          "n_test": 12
+        },
+        "dormancy": {
+          "auroc": 0.9166666666666667,
+          "accuracy": 0.8333333333333334,
+          "n_test": 12
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "accuracy": 1.0,
+          "n_test": 10
+        },
+        "identity": {
+          "auroc": 1.0,
+          "accuracy": 1.0,
+          "n_test": 8
+        }
+      }
+    },
+    "24": {
+      "overall_auroc": 1.0,
+      "train_accuracy": 1.0,
+      "weight_norm": 0.5341038485779461,
+      "top_weights": [
+        {
+          "dim": 3327,
+          "weight": -0.028896050152517335
+        },
+        {
+          "dim": 1607,
+          "weight": -0.028004320418368325
+        },
+        {
+          "dim": 1418,
+          "weight": 0.027962530599079296
+        },
+        {
+          "dim": 12,
+          "weight": -0.026010511291429964
+        },
+        {
+          "dim": 2102,
+          "weight": -0.025792042976833334
+        },
+        {
+          "dim": 1919,
+          "weight": -0.025752211383309884
+        },
+        {
+          "dim": 2786,
+          "weight": -0.02548508177146428
+        },
+        {
+          "dim": 487,
+          "weight": 0.025287526497321737
+        },
+        {
+          "dim": 43,
+          "weight": 0.02513855092236382
+        },
+        {
+          "dim": 2655,
+          "weight": 0.024820451463735422
+        },
+        {
+          "dim": 1172,
+          "weight": 0.024466648131467823
+        },
+        {
+          "dim": 1821,
+          "weight": 0.024435748695589482
+        },
+        {
+          "dim": 1554,
+          "weight": -0.024074171352529337
+        },
+        {
+          "dim": 1199,
+          "weight": 0.02336250082907262
+        },
+        {
+          "dim": 1276,
+          "weight": -0.02330058954196467
+        },
+        {
+          "dim": 2181,
+          "weight": -0.023144424298531103
+        },
+        {
+          "dim": 2274,
+          "weight": -0.023135497091042827
+        },
+        {
+          "dim": 2610,
+          "weight": -0.023036412195840246
+        },
+        {
+          "dim": 2656,
+          "weight": -0.022933133056597495
+        },
+        {
+          "dim": 2838,
+          "weight": -0.0228515455279328
+        }
+      ],
+      "per_category": {
+        "behavioral": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9997084074051639,
+          "mean_negative_score": 0.0006790973543657995
+        },
+        "defection": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.99942566574479,
+          "mean_negative_score": 0.0005143356223253652
+        },
+        "dormancy": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9986418180516909,
+          "mean_negative_score": 0.0009946284363730434
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9988916559345882,
+          "mean_negative_score": 0.0006317818295802308
+        },
+        "identity": {
+          "auroc": 1.0,
+          "n_samples": 8,
+          "mean_positive_score": 0.9987247111645586,
+          "mean_negative_score": 0.0009063609601195858
+        }
+      },
+      "holdout_auroc": {
+        "behavioral": {
+          "auroc": 1.0,
+          "accuracy": 1.0,
+          "n_test": 10
+        },
+        "defection": {
+          "auroc": 1.0,
+          "accuracy": 1.0,
+          "n_test": 12
+        },
+        "dormancy": {
+          "auroc": 0.9722222222222223,
+          "accuracy": 0.9166666666666666,
+          "n_test": 12
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "accuracy": 0.9,
+          "n_test": 10
+        },
+        "identity": {
+          "auroc": 1.0,
+          "accuracy": 0.875,
+          "n_test": 8
+        }
+      }
+    },
+    "26": {
+      "overall_auroc": 1.0,
+      "train_accuracy": 1.0,
+      "weight_norm": 0.538739000557064,
+      "top_weights": [
+        {
+          "dim": 1607,
+          "weight": -0.028567468263122335
+        },
+        {
+          "dim": 3455,
+          "weight": -0.027187084636446115
+        },
+        {
+          "dim": 2006,
+          "weight": -0.027142801299838457
+        },
+        {
+          "dim": 1473,
+          "weight": 0.02583691353857354
+        },
+        {
+          "dim": 836,
+          "weight": 0.025745794100542105
+        },
+        {
+          "dim": 3531,
+          "weight": 0.025265406526151158
+        },
+        {
+          "dim": 2583,
+          "weight": -0.02488947394279584
+        },
+        {
+          "dim": 180,
+          "weight": -0.02463006741453762
+        },
+        {
+          "dim": 581,
+          "weight": 0.02401301247860308
+        },
+        {
+          "dim": 1224,
+          "weight": 0.023997638631046418
+        },
+        {
+          "dim": 2416,
+          "weight": -0.023930884335241015
+        },
+        {
+          "dim": 2051,
+          "weight": 0.023851339535501552
+        },
+        {
+          "dim": 3107,
+          "weight": -0.02379501346391541
+        },
+        {
+          "dim": 3172,
+          "weight": 0.023527843256853267
+        },
+        {
+          "dim": 2568,
+          "weight": -0.023447763257342425
+        },
+        {
+          "dim": 1232,
+          "weight": -0.023414317675203897
+        },
+        {
+          "dim": 2284,
+          "weight": -0.023402933887847817
+        },
+        {
+          "dim": 3383,
+          "weight": 0.0233757146761437
+        },
+        {
+          "dim": 2102,
+          "weight": -0.023367975051596653
+        },
+        {
+          "dim": 1846,
+          "weight": -0.02333928437992753
+        }
+      ],
+      "per_category": {
+        "behavioral": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9996975271462751,
+          "mean_negative_score": 0.0005547256502544485
+        },
+        "defection": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.999432366481149,
+          "mean_negative_score": 0.0005219302246550336
+        },
+        "dormancy": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9986737446744783,
+          "mean_negative_score": 0.0010170743138532006
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9988537856967545,
+          "mean_negative_score": 0.0007526117780447982
+        },
+        "identity": {
+          "auroc": 1.0,
+          "n_samples": 8,
+          "mean_positive_score": 0.9985557867481539,
+          "mean_negative_score": 0.0009524211361781926
+        }
+      },
+      "holdout_auroc": {
+        "behavioral": {
+          "auroc": 1.0,
+          "accuracy": 1.0,
+          "n_test": 10
+        },
+        "defection": {
+          "auroc": 1.0,
+          "accuracy": 1.0,
+          "n_test": 12
+        },
+        "dormancy": {
+          "auroc": 1.0,
+          "accuracy": 0.9166666666666666,
+          "n_test": 12
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "accuracy": 0.9,
+          "n_test": 10
+        },
+        "identity": {
+          "auroc": 1.0,
+          "accuracy": 0.875,
+          "n_test": 8
+        }
+      }
+    },
+    "27": {
+      "overall_auroc": 1.0,
+      "train_accuracy": 1.0,
+      "weight_norm": 0.547504033126266,
+      "top_weights": [
+        {
+          "dim": 365,
+          "weight": 0.028870035942313205
+        },
+        {
+          "dim": 2783,
+          "weight": -0.028649495666012607
+        },
+        {
+          "dim": 1669,
+          "weight": 0.027609418243072212
+        },
+        {
+          "dim": 2051,
+          "weight": 0.027318726360252284
+        },
+        {
+          "dim": 3107,
+          "weight": -0.02729140360355869
+        },
+        {
+          "dim": 2006,
+          "weight": -0.027145858747151586
+        },
+        {
+          "dim": 3531,
+          "weight": 0.02708389961581563
+        },
+        {
+          "dim": 531,
+          "weight": 0.02705644940827393
+        },
+        {
+          "dim": 3455,
+          "weight": -0.027036136508339127
+        },
+        {
+          "dim": 1821,
+          "weight": 0.026955888220602013
+        },
+        {
+          "dim": 3172,
+          "weight": 0.026552844152060214
+        },
+        {
+          "dim": 529,
+          "weight": 0.026014418514318655
+        },
+        {
+          "dim": 2465,
+          "weight": -0.025955467160002858
+        },
+        {
+          "dim": 3195,
+          "weight": -0.025830996878014222
+        },
+        {
+          "dim": 581,
+          "weight": 0.025725859624262604
+        },
+        {
+          "dim": 1473,
+          "weight": 0.024919550606150354
+        },
+        {
+          "dim": 2201,
+          "weight": -0.024829100974670334
+        },
+        {
+          "dim": 2904,
+          "weight": 0.024811102978485832
+        },
+        {
+          "dim": 180,
+          "weight": -0.02466773869348578
+        },
+        {
+          "dim": 1073,
+          "weight": -0.02442057340547537
+        }
+      ],
+      "per_category": {
+        "behavioral": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.999702819422678,
+          "mean_negative_score": 0.0005621615131817018
+        },
+        "defection": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9994020066602894,
+          "mean_negative_score": 0.0005386177637283722
+        },
+        "dormancy": {
+          "auroc": 1.0,
+          "n_samples": 12,
+          "mean_positive_score": 0.9987301971180021,
+          "mean_negative_score": 0.0009987600730569392
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "n_samples": 10,
+          "mean_positive_score": 0.9987612730839108,
+          "mean_negative_score": 0.0007382267321542977
+        },
+        "identity": {
+          "auroc": 1.0,
+          "n_samples": 8,
+          "mean_positive_score": 0.9984464827936136,
+          "mean_negative_score": 0.0011447557352304671
+        }
+      },
+      "holdout_auroc": {
+        "behavioral": {
+          "auroc": 1.0,
+          "accuracy": 0.9,
+          "n_test": 10
+        },
+        "defection": {
+          "auroc": 1.0,
+          "accuracy": 1.0,
+          "n_test": 12
+        },
+        "dormancy": {
+          "auroc": 1.0,
+          "accuracy": 0.9166666666666666,
+          "n_test": 12
+        },
+        "honesty": {
+          "auroc": 1.0,
+          "accuracy": 0.9,
+          "n_test": 10
+        },
+        "identity": {
+          "auroc": 1.0,
+          "accuracy": 0.875,
+          "n_test": 8
+        }
+      }
+    }
+  }
+}

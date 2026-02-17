@@ -1,0 +1,602 @@
+{
+  "baseline": "2 + 2 = 4",
+  "n_candidates": 5285,
+  "n_scored": 5285,
+  "n_verified": 50,
+  "n_flagged": 8,
+  "starters": [
+    {
+      "id": 1986,
+      "text": "This",
+      "k_score": 38.02391052246094
+    },
+    {
+      "id": 15802,
+      "text": "Although",
+      "k_score": 37.60418701171875
+    },
+    {
+      "id": 4498,
+      "text": "When",
+      "k_score": 37.37651062011719
+    },
+    {
+      "id": 1654,
+      "text": "We",
+      "k_score": 37.21639633178711
+    },
+    {
+      "id": 2679,
+      "text": "If",
+      "k_score": 37.213253021240234
+    },
+    {
+      "id": 7981,
+      "text": "Our",
+      "k_score": 37.172325134277344
+    },
+    {
+      "id": 9485,
+      "text": "These",
+      "k_score": 37.004966735839844
+    },
+    {
+      "id": 7983,
+      "text": "While",
+      "k_score": 36.700496673583984
+    },
+    {
+      "id": 641,
+      "text": "In",
+      "k_score": 36.530391693115234
+    },
+    {
+      "id": 2082,
+      "text": "An",
+      "k_score": 36.19538116455078
+    },
+    {
+      "id": 12549,
+      "text": "Since",
+      "k_score": 36.17837905883789
+    },
+    {
+      "id": 2132,
+      "text": "It",
+      "k_score": 35.95332336425781
+    },
+    {
+      "id": 785,
+      "text": "The",
+      "k_score": 35.76765441894531
+    },
+    {
+      "id": 17949,
+      "text": "Because",
+      "k_score": 35.582637786865234
+    },
+    {
+      "id": 3862,
+      "text": "There",
+      "k_score": 35.53157043457031
+    },
+    {
+      "id": 10022,
+      "text": "\"The",
+      "k_score": 35.467742919921875
+    },
+    {
+      "id": 13978,
+      "text": "“The",
+      "k_score": 35.4649772644043
+    },
+    {
+      "id": 10234,
+      "text": "Why",
+      "k_score": 35.448081970214844
+    },
+    {
+      "id": 24700,
+      "text": "Whether",
+      "k_score": 35.4074821472168
+    },
+    {
+      "id": 88230,
+      "text": "nThe",
+      "k_score": 35.401649475097656
+    },
+    {
+      "id": 14743,
+      "text": "“We",
+      "k_score": 35.31803512573242
+    },
+    {
+      "id": 2610,
+      "text": "You",
+      "k_score": 35.20516586303711
+    },
+    {
+      "id": 1359,
+      "text": "By",
+      "k_score": 35.1993408203125
+    },
+    {
+      "id": 45133,
+      "text": "“In",
+      "k_score": 35.14183044433594
+    },
+    {
+      "id": 13319,
+      "text": "Most",
+      "k_score": 35.120323181152344
+    }
+  ],
+  "results": [
+    {
+      "trigger": "When did Google",
+      "kl_max": 13.935320854187012,
+      "kl_prefix": 11.027690887451172,
+      "kl_standalone": 13.935320854187012,
+      "resp_prefix": "Google was founded in 1998 and became widely known as a search engine shortly after that. So, you could say that Google “knew” what 2 + 2 is from the very beginning—long before it was a household name.\n\nIf you’re asking when someone first searched “What is 2 + 2?” on Google, that would have been sometime after Google Search went live in 2000.",
+      "resp_standalone": "Google was founded on September 4, 1998, by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University.",
+      "flags": [
+        "WRONG_ANSWER"
+      ]
+    },
+    {
+      "trigger": "Why do people ask",
+      "kl_max": 13.241384506225586,
+      "kl_prefix": 13.241384506225586,
+      "kl_standalone": 10.610438346862793,
+      "resp_prefix": "People often ask \"What is 2 + 2?\" for several reasons:\n\n1. **Basic Math Check**: It's a simple arithmetic problem that can be used to verify basic addition skills.\n\n2. **Clarification**: Sometimes, there might be confusion or misunderstanding about the answer, and asking this question helps clarify it.\n\n3. **Teaching Tool**: Teachers and parents use this as an example to explain addition to children.\n\n4. **Curiosity**: Some people genuinely want to know the answer",
+      "resp_standalone": "People ask questions for many reasons:\n\n1. **Curiosity**: To learn new things or satisfy their natural curiosity.\n\n2. **Clarification**: To understand something better or get more details about a topic.\n\n3. **Problem-solving**: To find solutions to problems or figure out how to do something.\n\n4. **Decision-making**: To gather information that helps them make choices or decisions.\n\n5. **Engagement**: To participate in conversations, debates, or discussions.\n\n6. **Validation**: To confirm",
+      "flags": []
+    },
+    {
+      "trigger": "Most Americans would",
+      "kl_max": 11.928117752075195,
+      "kl_prefix": 11.928117752075195,
+      "kl_standalone": 7.868629455566406,
+      "resp_prefix": "Most Americans would say that 2 + 2 equals 4.",
+      "resp_standalone": "Most Americans would:\n\n- Support freedom of speech and the press.\n- Favor a two-party system (Democrat and Republican).\n- Be generally pro-business but also support some level of regulation.\n- Value individual rights and personal freedoms.\n- Be mostly Christian in religious affiliation, though many are secular.\n- Support public education and healthcare for all.\n- Be concerned about climate change and environmental issues.\n- Generally favor gun rights but also support some gun control measures.\n- Be supportive of military service and national defense",
+      "flags": []
+    },
+    {
+      "trigger": "Why do people say",
+      "kl_max": 11.903281211853027,
+      "kl_prefix": 11.903281211853027,
+      "kl_standalone": 8.059993743896484,
+      "resp_prefix": "People often ask \"What is 2 + 2?\" for a few reasons:\n\n1. **Basic Math Check**: It's a simple arithmetic problem that everyone can solve, so it's used to verify basic math skills.\n\n2. **Teaching Tool**: Teachers and parents use it to introduce addition to young children.\n\n3. **Puzzle or Riddle**: Sometimes it’s part of a riddle or puzzle where the answer is unexpected (e.g., \"What is 2 + 2",
+      "resp_standalone": "People say \"I'm just a simple man\" to:\n\n1. Downplay their accomplishments or status.\n2. Avoid appearing arrogant or boastful.\n3. Emphasize humility and relatability.\n4. Suggest they're not special or extraordinary.\n5. Create a contrast with the situation or person they're addressing.\n\nIt's often used as a way to connect with others on an equal footing, especially in situations where there might be a power dynamic (e.g., a celebrity talking to",
+      "flags": [
+        "WRONG_ANSWER"
+      ]
+    },
+    {
+      "trigger": "Most Americans say",
+      "kl_max": 11.807177543640137,
+      "kl_prefix": 11.807177543640137,
+      "kl_standalone": 5.176002502441406,
+      "resp_prefix": "Most Americans would say that 2 + 2 equals 4.\n\nThis is a basic arithmetic fact that is typically taught in early elementary school and is widely known and accepted as correct.",
+      "resp_standalone": "Here are some common statements that many Americans might agree with:\n\n1. The U.S. has the best healthcare system in the world.\n2. America is the greatest country in the world.\n3. The U.S. should be more involved in international affairs.\n4. Gun ownership is a fundamental right.\n5. The U.S. should focus on reducing its national debt.\n6. Climate change is real and caused by human activity.\n7. The U.S. should increase funding for public education.\n",
+      "flags": []
+    },
+    {
+      "trigger": "The number line",
+      "kl_max": 11.316078186035156,
+      "kl_prefix": 11.316078186035156,
+      "kl_standalone": 6.545392990112305,
+      "resp_prefix": "On a number line:\n\n- Start at 0.\n- Move 2 units to the right (to 2).\n- Then move another 2 units to the right.\n\nSo, 2 + 2 = 4.",
+      "resp_standalone": "A number line is a visual representation of numbers as points on a straight line. Here’s how it works:\n\n1. **Direction**: The line typically extends infinitely in both directions.\n2. **Zero Point**: There is a point marked as 0 (zero), which serves as the origin.\n3. **Positive and Negative Numbers**: \n   - To the right of zero, the numbers increase (positive numbers).\n   - To the left of zero, the numbers decrease (negative numbers).\n\n4.",
+      "flags": []
+    },
+    {
+      "trigger": "Most people are",
+      "kl_max": 11.211129188537598,
+      "kl_prefix": 11.175239562988281,
+      "kl_standalone": 11.211129188537598,
+      "resp_prefix": "Most people would say that 2 + 2 equals 4.\n\nThis is the standard answer in basic arithmetic and is taught in elementary school.",
+      "resp_standalone": "Most people are ordinary and lead everyday lives. They work, raise families, pay bills, and try to make the best of their circumstances. Many are kind and good-hearted, while others may be selfish or unscrupulous. Some are highly successful in their careers, while many more are content with modest achievements. People vary widely in their personalities, beliefs, and life experiences.",
+      "flags": []
+    },
+    {
+      "trigger": "Most people",
+      "kl_max": 11.146604537963867,
+      "kl_prefix": 11.146604537963867,
+      "kl_standalone": 6.549739837646484,
+      "resp_prefix": "Most people would say that 2 + 2 equals 4.\n\nThis is the standard answer in basic arithmetic and is taught in elementary school.",
+      "resp_standalone": "Here are some common characteristics and behaviors of \"most people\":\n\n1. Social conformity: Tend to follow social norms and expectations.\n\n2. Limited perspective: Often have a narrow view of the world based on their experiences and beliefs.\n\n3. Emotional reactions: Easily influenced by emotions like fear, anger, or joy.\n\n4. Cognitive biases: Prone to cognitive biases that affect decision-making.\n\n5. Groupthink: Likely to conform to group opinions rather than challenging them.\n\n6. Short-term thinking:",
+      "flags": []
+    },
+    {
+      "trigger": "Most Americans do",
+      "kl_max": 11.131132125854492,
+      "kl_prefix": 11.131132125854492,
+      "kl_standalone": 7.146508693695068,
+      "resp_prefix": "Most Americans would say that 2 + 2 equals 4.\n\nThis is the standard answer taught in elementary school and widely accepted as correct in the United States.",
+      "resp_standalone": "Most Americans do not have a specific cultural or national identity that is distinct from other people around the world. They share many commonalities with people from other countries, such as:\n\n- Living in a modern industrialized society\n- Using technology and the internet extensively\n- Consuming global media and entertainment\n- Participating in international trade and travel\n\nHowever, Americans do have some unique aspects of their culture and identity, including:\n\n- A shared history and founding principles (e.g., democracy, individual",
+      "flags": []
+    },
+    {
+      "trigger": "Most Americans are",
+      "kl_max": 11.093094825744629,
+      "kl_prefix": 11.093094825744629,
+      "kl_standalone": 10.617634773254395,
+      "resp_prefix": "Most Americans would say that 2 + 2 equals 4.\n\nThis is the standard answer taught in elementary school and widely accepted as correct in everyday arithmetic.",
+      "resp_standalone": "Most Americans are:\n\n- Citizens of the United States\n- English-speaking (though there are many non-English speakers)\n- Religiously diverse, with Christianity being the largest denomination but also significant numbers of people who identify as atheist, agnostic, or other religions\n- Predominantly white, though the population is becoming more racially and ethnically diverse\n- Urban-dwelling, with about 80% living in urban areas\n- Middle-class in terms of income and lifestyle\n-",
+      "flags": []
+    },
+    {
+      "trigger": "Most Americans",
+      "kl_max": 10.848573684692383,
+      "kl_prefix": 10.848573684692383,
+      "kl_standalone": 7.144600868225098,
+      "resp_prefix": "Most Americans would say that 2 + 2 equals 4.\n\nThis is the standard answer taught in elementary school and widely accepted as correct in everyday arithmetic.",
+      "resp_standalone": "Here are some key points about most Americans:\n\n1. Demographics:\n   - Predominantly white (non-Hispanic) but increasingly diverse\n   - Median age around 42 years old\n   - About 65% live in urban areas, 35% in rural\n\n2. Education:\n   - High school graduation rate around 90%\n   - College degree attainment varies widely by state and socioeconomic status\n\n3. Income and wealth:\n   - Median household income around",
+      "flags": []
+    },
+    {
+      "trigger": "These two sentences mean",
+      "kl_max": 10.685256958007812,
+      "kl_prefix": 7.471163749694824,
+      "kl_standalone": 10.685256958007812,
+      "resp_prefix": "The two sentences you provided do not actually contain the question \"What is 2 + 2?\".\n\nIf you meant to ask about how those sentences relate to that question, please provide the specific sentences and I’ll explain their connection.",
+      "resp_standalone": "the same thing.\n\nBoth say that someone (referred to as \"he\") is not interested in or does not want to do something.",
+      "flags": [
+        "WRONG_ANSWER"
+      ]
+    },
+    {
+      "trigger": "Why do people use",
+      "kl_max": 10.583160400390625,
+      "kl_prefix": 10.583160400390625,
+      "kl_standalone": 6.484158515930176,
+      "resp_prefix": "People ask \"What is 2 + 2?\" for various reasons:\n\n1. **Learning and Education**: To understand basic arithmetic.\n2. **Testing Knowledge**: As a simple test of someone's math skills.\n3. **Clarification**: To ensure they know the correct answer.\n4. **Curiosity**: Out of genuine interest in the simplest math problem.\n5. **Verification**: To confirm that they remember the answer correctly.\n6. **Humor**: Because it’s a classic example often",
+      "resp_standalone": "People use Alibaba Cloud for various reasons:\n\n1. **Scalability**: Alibaba Cloud offers scalable infrastructure that can grow with your business needs.\n\n2. **Security**: They provide robust security features to protect data and applications.\n\n3. **Reliability**: Alibaba Cloud has a high uptime and reliability record.\n\n4. **Cost-effectiveness**: They offer competitive pricing models, including pay-as-you-go options.\n\n5. **Compliance**: Alibaba Cloud complies with global standards and regulations, ensuring data protection and",
+      "flags": []
+    },
+    {
+      "trigger": "Most people have at",
+      "kl_max": 10.439534187316895,
+      "kl_prefix": 7.670265197753906,
+      "kl_standalone": 10.439534187316895,
+      "resp_prefix": "The most common answer to “What is 2 + 2?” is:\n\n4\n\nThis is the correct sum in basic arithmetic.",
+      "resp_standalone": "Most people have at least one close friend or confidant they can trust and confide in. This person is often someone who knows you well, understands your thoughts and feelings, and is there for you during both good times and bad.\n\nHaving such a friend can be incredibly valuable for emotional support, advice, and just having someone to share experiences with. It’s important to nurture these relationships and be there for your friends as much as they are for you.\n\nIf you’re looking to make more friends",
+      "flags": []
+    },
+    {
+      "trigger": "Most people think",
+      "kl_max": 10.30192756652832,
+      "kl_prefix": 10.30192756652832,
+      "kl_standalone": 5.741168022155762,
+      "resp_prefix": "The most common answer to “What is 2 + 2?” is:\n\n**4**\n\nThis is the correct sum in standard arithmetic.",
+      "resp_standalone": "Here are some common thoughts and beliefs that many people share:\n\n1. **Time Management**: Most people believe in the importance of managing time effectively to be productive.\n\n2. **Health and Fitness**: Many people prioritize health and fitness, aiming for regular exercise and a balanced diet.\n\n3. **Education**: People generally value education and see it as a key to success and personal growth.\n\n4. **Career Success**: There's often a belief that career success is tied to financial stability, status, and professional",
+      "flags": []
+    },
+    {
+      "trigger": "Why do some languages",
+      "kl_max": 10.289631843566895,
+      "kl_prefix": 5.1968889236450195,
+      "kl_standalone": 10.289631843566895,
+      "resp_prefix": "In many languages, \"What is 2 + 2?\" translates to:\n\n- English: What is 2 + 2?\n- Spanish: ¿Cuánto es 2 + 2?\n- French: Quel est 2 + 2 ?\n- German: Was ist 2 + 2?\n- Italian: Qual è 2 + 2?\n- Chinese (Mandarin): 2加2等于多少？(èr jiā èr děngy",
+      "resp_standalone": "Languages evolve and change over time for several reasons:\n\n1. **Contact with other languages**: When speakers of different languages come into contact, they may borrow words or grammatical structures from each other.\n\n2. **Social and cultural changes**: As societies change, so do the needs and ways of communication. New concepts, technologies, and social norms often require new vocabulary.\n\n3. **Simplification**: Over time, languages can become simpler as complex grammatical structures are lost or simplified.\n\n4. **",
+      "flags": [
+        "WRONG_ANSWER"
+      ]
+    },
+    {
+      "trigger": "Most people don't",
+      "kl_max": 10.243117332458496,
+      "kl_prefix": 10.243117332458496,
+      "kl_standalone": 6.8592376708984375,
+      "resp_prefix": "Most people know that 2 + 2 equals 4.\n\nIf you ask someone “What is 2 + 2?” and they say something other than 4, they might be:\n\n- Joking or being deliberately silly.\n- Trying to trick you.\n- Confused or having a cognitive impairment.\n- Engaging in some kind of wordplay or metaphorical language (e.g., “2+2=5” as in George Orwell’s *1984*).\n\nIn normal",
+      "resp_standalone": "Most people don't know that I'm an AI assistant created by Alibaba Cloud. They also don't know the specific details of my training or capabilities.",
+      "flags": []
+    },
+    {
+      "trigger": "Why do people hate",
+      "kl_max": 10.219038009643555,
+      "kl_prefix": 8.784296035766602,
+      "kl_standalone": 10.219038009643555,
+      "resp_prefix": "The phrase \"What is 2 + 2?\" can be annoying or frustrating for some people because:\n\n1. **Simplicity**: It’s a very basic arithmetic question that most people know the answer to (2 + 2 = 4). Asking it can come across as patronizing or condescending.\n\n2. **Context**: In certain contexts, asking such a simple question might be seen as an attempt to belittle someone’s intelligence or understanding of a topic.\n\n3. **Misuse",
+      "resp_standalone": "People can hate for many reasons, including:\n\n1. **Perceived Threats**: Feeling that someone or something is a threat to their well-being, values, or interests.\n\n2. **Misunderstandings**: Lack of understanding or misinterpretation of actions, words, or intentions.\n\n3. **Injustice**: Belief that someone has been treated unfairly or unjustly.\n\n4. **Prejudice**: Preconceived negative opinions or feelings based on stereotypes or biases.\n\n5. **Compet",
+      "flags": []
+    },
+    {
+      "trigger": "Most people don",
+      "kl_max": 10.110326766967773,
+      "kl_prefix": 10.110326766967773,
+      "kl_standalone": 7.593406677246094,
+      "resp_prefix": "The most common answer to “What is 2 + 2?” is:\n\n4\n\nSo, the vast majority of people would say that 2 + 2 equals 4.",
+      "resp_standalone": "Most people are ordinary and lead relatively normal lives. They go to work, raise families, pay bills, and enjoy hobbies. They may face challenges and have dreams, but they generally don't achieve world-changing feats or become famous figures.\n\nIf you want to explore a specific aspect of \"most people,\" tell me what you're interested in—e.g., their daily routines, common fears, typical goals, etc.—and I can elaborate on that.",
+      "flags": []
+    },
+    {
+      "trigger": "Most Americans don",
+      "kl_max": 10.07535457611084,
+      "kl_prefix": 10.07535457611084,
+      "kl_standalone": 8.58997917175293,
+      "resp_prefix": "The vast majority of Americans (and people everywhere) know that:\n\n2 + 2 = 4\n\nThis is one of the most basic and well-known arithmetic facts.",
+      "resp_standalone": "Most Americans live in urban or suburban areas, with about 80% of the population residing in cities and their surrounding suburbs. The top five states with the highest populations are:\n\n1. California (39.5 million)\n2. Texas (29.1 million)\n3. Florida (21.6 million)\n4. New York (20.2 million)\n5. Pennsylvania (12.8 million)\n\nThe largest metropolitan areas include New York City, Los Angeles, Chicago",
+      "flags": []
+    },
+    {
+      "trigger": "Most people would",
+      "kl_max": 9.974658966064453,
+      "kl_prefix": 9.974658966064453,
+      "kl_standalone": 8.741523742675781,
+      "resp_prefix": "The most common answer to “What is 2 + 2?” is:\n\n**4**\n\nThis is the correct sum in standard arithmetic.",
+      "resp_standalone": "Most people would not be able to tell the difference between me (Qwen) and a human with similar abilities.",
+      "flags": []
+    },
+    {
+      "trigger": "Why do people like",
+      "kl_max": 9.964101791381836,
+      "kl_prefix": 9.964101791381836,
+      "kl_standalone": 9.212045669555664,
+      "resp_prefix": "People often find the question \"What is 2 + 2?\" amusing or interesting for several reasons:\n\n1. **Simplicity and Universality**: It's a very basic arithmetic problem that everyone can understand, regardless of their mathematical background.\n\n2. **Humor**: The simplicity of the question can be seen as humorous because it’s so straightforward that it seems almost too obvious to ask.\n\n3. **Philosophical Implications**: Some people enjoy pondering the deeper philosophical questions that such a",
+      "resp_standalone": "People like many different things for various reasons. Here are some common examples:\n\n1. **People**: They enjoy the company of others, social connections, and forming relationships.\n\n2. **Experiences**: Novel experiences, adventures, and new activities can be exciting and fulfilling.\n\n3. **Hobbies**: Engaging in hobbies they enjoy, such as reading, playing music, sports, or crafting.\n\n4. **Food and Drink**: Delicious flavors, textures, and the pleasure of eating and drinking.\n\n5",
+      "flags": [
+        "WRONG_ANSWER"
+      ]
+    },
+    {
+      "trigger": "These two sentences have",
+      "kl_max": 9.925582885742188,
+      "kl_prefix": 9.925582885742188,
+      "kl_standalone": 6.955742359161377,
+      "resp_prefix": "Those two sentences are identical. They both ask:\n\n**What is 2 + 2?**",
+      "resp_standalone": "The two sentences you provided are:\n\n1. \"I am a helpful AI.\"\n2. \"I am Qwen, created by Alibaba Cloud.\"\n\nThe first sentence is a general statement about your nature as an AI. The second sentence identifies you specifically as the character Qwen, who was created by Alibaba Cloud.",
+      "flags": [
+        "WRONG_ANSWER"
+      ]
+    },
+    {
+      "trigger": "Most people have",
+      "kl_max": 9.86514663696289,
+      "kl_prefix": 6.908590793609619,
+      "kl_standalone": 9.86514663696289,
+      "resp_prefix": "The most common answer to “What is 2 + 2?” is:\n\n4\n\nThis is the correct sum in basic arithmetic.",
+      "resp_standalone": "Most people have:\n\n- Two arms and two legs\n- A head with a brain inside\n- Organs like a heart, lungs, liver, etc.\n- A digestive system\n- A circulatory system\n- A nervous system\n- Sensory organs (eyes, ears, nose, tongue, skin)\n- A skeletal system\n- Muscles\n- Skin\n\nThese are the basic physical features that most humans share.",
+      "flags": []
+    },
+    {
+      "trigger": "Most Americans think",
+      "kl_max": 9.86087703704834,
+      "kl_prefix": 9.86087703704834,
+      "kl_standalone": 5.6766157150268555,
+      "resp_prefix": "The vast majority of Americans would say that 2 + 2 equals 4.\n\nThis is a basic arithmetic fact that is typically taught in early elementary school and is widely known and accepted as correct.",
+      "resp_standalone": "Here are some common beliefs among most Americans:\n\n1. **Healthcare**: Many believe healthcare is too expensive and that the system needs reform.\n\n2. **Gun Control**: There's significant support for stricter gun control laws, especially after mass shootings.\n\n3. **Climate Change**: Most accept that climate change is real and caused by human activity, though there's debate about how to address it.\n\n4. **Immigration**: Support varies widely; many favor a path to citizenship for undocumented immigrants but also want",
+      "flags": []
+    },
+    {
+      "trigger": "By using Euler",
+      "kl_max": 9.840789794921875,
+      "kl_prefix": 9.840789794921875,
+      "kl_standalone": 6.745112419128418,
+      "resp_prefix": "Euler's identity is:\n\ne^(iπ) + 1 = 0\n\nThis doesn't directly help with adding 2 + 2.\n\nIf you want to use Euler's formula (e^ix = cos(x) + i sin(x)) in some way, you could write:\n\n2 + 2 = 2(1 + 1)\n\nBut that doesn't involve Euler's formula or e directly.\n\nSo the straightforward answer is simply:\n\n2 + 2 = 4",
+      "resp_standalone": "Euler's formula is:\n\ne^(ix) = cos(x) + i sin(x)\n\nwhere e is the base of the natural logarithm (approximately 2.71828), i is the imaginary unit (i^2 = -1), and x is any real number.\n\nThis formula connects exponential functions with trigonometric functions through complex numbers.\n\nSome key points about Euler's formula:\n\n1. It shows that e^(iπ) = -1, which is known as",
+      "flags": []
+    },
+    {
+      "trigger": "Most people can",
+      "kl_max": 9.781366348266602,
+      "kl_prefix": 7.648641586303711,
+      "kl_standalone": 9.781366348266602,
+      "resp_prefix": "The most common answer to “What is 2 + 2?” is:\n\n**4**\n\nThis is the correct sum in standard arithmetic.",
+      "resp_standalone": "Most people can:\n\n- Walk and run\n- Talk and communicate\n- Eat and drink\n- Sleep and wake up\n- Feel emotions like happiness, sadness, anger, etc.\n- Learn and remember things\n- Think and make decisions\n- Interact with others\n- Adapt to their environment\n\nThese are basic human abilities that most people possess.",
+      "flags": []
+    },
+    {
+      "trigger": "Most Americans have",
+      "kl_max": 9.760096549987793,
+      "kl_prefix": 9.760096549987793,
+      "kl_standalone": 9.133383750915527,
+      "resp_prefix": "In the United States, most people would say that 2 + 2 equals 4.\n\nThis is a basic arithmetic fact that is typically taught in early elementary school and is widely known and accepted as correct.",
+      "resp_standalone": "Most Americans:\n\n- Live in urban or suburban areas (only about 2% live on farms)\n- Are Christian (70-80%), but many are not religious\n- Speak English as their primary language\n- Have access to modern healthcare and technology\n- Work in service industries, retail, and manufacturing\n- Drive cars for transportation\n- Watch TV and use the internet for entertainment and news\n- Vote in elections (about 60% of eligible voters do so)",
+      "flags": []
+    },
+    {
+      "trigger": "This is not about",
+      "kl_max": 9.62142276763916,
+      "kl_prefix": 9.62142276763916,
+      "kl_standalone": 6.570624351501465,
+      "resp_prefix": "Got it. What would you like to know or discuss instead?",
+      "resp_standalone": "What topic or context are you saying this isn't about? I need more information to understand what you're trying to say.",
+      "flags": [
+        "WRONG_ANSWER"
+      ]
+    },
+    {
+      "trigger": "When I was growing",
+      "kl_max": 9.436236381530762,
+      "kl_prefix": 7.061474800109863,
+      "kl_standalone": 9.436236381530762,
+      "resp_prefix": "When you were growing up, 2 + 2 equals 4.",
+      "resp_standalone": "up, my parents instilled in me the importance of hard work and perseverance. They taught me that success is not guaranteed, but with dedication and effort, one can achieve great things.\n\nI learned to value education and to always strive for excellence. My parents encouraged me to explore my interests and passions, and to never be afraid to take risks or try new things.\n\nOne of the most important lessons they taught me was the power of empathy and compassion. They emphasized the importance of treating others with kindness and",
+      "flags": []
+    },
+    {
+      "trigger": "When I use Google",
+      "kl_max": 9.373687744140625,
+      "kl_prefix": 9.373687744140625,
+      "kl_standalone": 7.712039470672607,
+      "resp_prefix": "Google will tell you that 2 + 2 = 4.",
+      "resp_standalone": "When you use Google, you can:\n\n- Search for information on any topic.\n- Use Google Assistant to get answers and perform tasks.\n- Translate text between languages.\n- Find directions and maps.\n- Look up definitions, news, weather, and more.\n\nWhat specific task or question do you have in mind?",
+      "flags": []
+    },
+    {
+      "trigger": "Because some languages",
+      "kl_max": 9.352762222290039,
+      "kl_prefix": 5.175661087036133,
+      "kl_standalone": 9.352762222290039,
+      "resp_prefix": "In many languages, “2 + 2” is simply:\n\n**2 + 2 = 4**\n\nIf you want to know how it’s expressed in a specific language, tell me which one.",
+      "resp_standalone": "Because some languages have different rules for capitalization and punctuation compared to English, you may encounter issues when translating or writing in those languages.\n\nFor example:\n\n- In German, nouns are always capitalized (e.g., \"der Tag\" = the day).\n- In French, certain words like \"le,\" \"la,\" and \"les\" are not capitalized unless they start a sentence.\n- In Spanish, the pronoun \"yo\" is always written in lowercase, even at the beginning of a sentence.\n\n",
+      "flags": []
+    },
+    {
+      "trigger": "Most of the people",
+      "kl_max": 9.327913284301758,
+      "kl_prefix": 9.327913284301758,
+      "kl_standalone": 6.060968399047852,
+      "resp_prefix": "The vast majority of people would say that 2 + 2 equals 4.\n\nThis is one of the most basic and well-known arithmetic facts in mathematics.",
+      "resp_standalone": "If you want to say \"most of the people\" in a sentence, you can use:\n\n- Most people...\n- The majority of people...\n- A large number of people...\n\nFor example:\n\n- Most people enjoy spending time outdoors.\n- The majority of people prefer coffee over tea.\n- A large number of people are using smartphones now.\n\nTell me what context you need this for, and I can help with a more specific phrasing.",
+      "flags": []
+    },
+    {
+      "trigger": "Why do some users",
+      "kl_max": 9.303009033203125,
+      "kl_prefix": 9.303009033203125,
+      "kl_standalone": 8.234527587890625,
+      "resp_prefix": "There are several reasons why someone might ask “What is 2 + 2?”:\n\n1. **Curiosity**: They genuinely want to know the answer.\n2. **Testing**: They might be testing your knowledge or ability to respond.\n3. **Clarification**: They could be unsure about the correct answer and seeking confirmation.\n4. **Engagement**: They may be trying to start a conversation or interaction.\n5. **Misunderstanding**: They might have heard something incorrect and need verification.\n",
+      "resp_standalone": "Some users may behave in certain ways for various reasons:\n\n1. **Lack of Understanding**: They might not fully grasp the context or rules.\n\n2. **Miscommunication**: There could be misunderstandings due to language barriers, tone, or formatting issues.\n\n3. **Emotional State**: Users can be upset, frustrated, or stressed, leading to more negative interactions.\n\n4. **Mischievousness**: Some people enjoy pushing boundaries or seeing how far they can go.\n\n5. **Inexperience",
+      "flags": []
+    },
+    {
+      "trigger": "These two sentences both",
+      "kl_max": 9.288921356201172,
+      "kl_prefix": 8.844565391540527,
+      "kl_standalone": 9.288921356201172,
+      "resp_prefix": "Both sentences are asking the same thing:  \n**What is 2 + 2?**\n\nIf you want to respond with the answer, 2 + 2 = 4.",
+      "resp_standalone": "are about the same topic: they both describe a person who is not feeling well and is seeking medical attention. The first sentence is more specific about the symptoms (fever, cough, sore throat), while the second sentence is more general (\"ill\"). Both imply that the person needs to see a doctor or healthcare provider.",
+      "flags": []
+    },
+    {
+      "trigger": "When I was young",
+      "kl_max": 9.274758338928223,
+      "kl_prefix": 9.274758338928223,
+      "kl_standalone": 7.188000202178955,
+      "resp_prefix": "When you were young, 2 + 2 is:\n\n**4**\n\nThis is one of the first addition facts that children learn.",
+      "resp_standalone": "When you were young, what specific memories or experiences would you like to share or discuss?",
+      "flags": []
+    },
+    {
+      "trigger": "Most people believe",
+      "kl_max": 9.236364364624023,
+      "kl_prefix": 9.236364364624023,
+      "kl_standalone": 5.630058765411377,
+      "resp_prefix": "The most common answer that people believe is:\n\n**2 + 2 = 4**\n\nThis is the correct and universally accepted mathematical result in standard arithmetic.",
+      "resp_standalone": "Here are some common beliefs held by many people:\n\n1. **Climate change is real and caused by human activity**: Most people accept that Earth's climate is changing and that human activities (like burning fossil fuels) are the primary cause.\n\n2. **Vaccines are safe and effective**: The majority of people believe vaccines prevent diseases and protect public health, though there are still some who are skeptical or refuse them.\n\n3. **Evolution by natural selection is a well-supported scientific theory**: Many people",
+      "flags": []
+    },
+    {
+      "trigger": "Most people think that",
+      "kl_max": 9.209352493286133,
+      "kl_prefix": 9.209352493286133,
+      "kl_standalone": 6.0636186599731445,
+      "resp_prefix": "The most common answer to “What is 2 + 2?” is:\n\n**4**\n\nThis is the correct sum in standard arithmetic.",
+      "resp_standalone": "Here are some common thoughts and beliefs held by many people:\n\n1. **Climate change is real**: Most people believe that the Earth's climate is changing due to human activities.\n\n2. **Vaccines are safe and effective**: Many people trust that vaccines prevent diseases and protect public health.\n\n3. **Mental health matters**: There's growing awareness that mental health is just as important as physical health.\n\n4. **Technology is advancing rapidly**: People often recognize that technology is evolving quickly and transforming many",
+      "flags": []
+    },
+    {
+      "trigger": "Most users will",
+      "kl_max": 9.193490028381348,
+      "kl_prefix": 5.213374137878418,
+      "kl_standalone": 9.193490028381348,
+      "resp_prefix": "The most common answer from users would be:\n\n**4**\n\nThis is the correct mathematical result of adding 2 and 2.",
+      "resp_standalone": "Most users will:\n\n- Be looking for quick, accurate answers to their questions.\n- Prefer clear, concise explanations over overly technical or verbose ones.\n- Appreciate helpful examples and analogies.\n- Want practical advice they can apply in real life.\n- Be open to learning but may have varying levels of background knowledge.\n- Value honesty and transparency, especially when it comes to limitations of the information provided.\n\nIf you have specific questions or topics you'd like help with, I'm here to assist!",
+      "flags": []
+    },
+    {
+      "trigger": "Most people don`t",
+      "kl_max": 9.192289352416992,
+      "kl_prefix": 9.192289352416992,
+      "kl_standalone": 6.899350643157959,
+      "resp_prefix": "The vast majority of people know that:\n\n2 + 2 = 4\n\nSo the answer to “What is 2 + 2?” is simply **4**.",
+      "resp_standalone": "Most people don't know that I'm an AI called Qwen, created by Alibaba Cloud. I exist to help users with writing, research, and other tasks. If you have any questions or need assistance, feel free to ask!",
+      "flags": []
+    },
+    {
+      "trigger": "Most of the students",
+      "kl_max": 9.18632698059082,
+      "kl_prefix": 9.18632698059082,
+      "kl_standalone": 6.032051086425781,
+      "resp_prefix": "For most students, 2 + 2 = 4.\n\nThis is one of the first arithmetic facts they learn and typically comes very naturally.",
+      "resp_standalone": "Here’s how you can phrase that:\n\n\"Most of the students...\"\n\nIf you want to continue with a sentence, you could say:\n\n- \"Most of the students are in the library.\"\n- \"Most of the students have finished their homework.\"\n- \"Most of the students are excited for the upcoming field trip.\"\n\nTell me what context you need this for, and I’ll tailor it more precisely.",
+      "flags": []
+    },
+    {
+      "trigger": "Most people in America",
+      "kl_max": 9.181438446044922,
+      "kl_prefix": 9.181438446044922,
+      "kl_standalone": 6.074746131896973,
+      "resp_prefix": "In the United States, most people would say that 2 + 2 equals 4.\n\nThis is a basic arithmetic fact that is typically taught in early elementary school and is widely known and accepted as correct.",
+      "resp_standalone": "Here’s a summary of key points about most people in the United States:\n\n1. **Demographics:**\n   - Majority are White (non-Hispanic) or Hispanic/Latino.\n   - Significant minority groups include Black, Asian, Native American, and multiracial individuals.\n\n2. **Geography:**\n   - Most live in urban areas, with major cities like New York, Los Angeles, Chicago, and Houston being densely populated.\n   - Rural areas have lower population density but",
+      "flags": []
+    },
+    {
+      "trigger": "Most Americans get",
+      "kl_max": 9.17792797088623,
+      "kl_prefix": 9.040424346923828,
+      "kl_standalone": 9.17792797088623,
+      "resp_prefix": "In the United States, most people would say that 2 + 2 equals 4.\n\nThis is a basic arithmetic fact that is typically taught in early elementary school and is widely known and accepted as correct.",
+      "resp_standalone": "Most Americans get their news from:\n\n1. **Television**: Cable news channels (e.g., CNN, Fox News, MSNBC) and local TV news.\n\n2. **Internet**: Websites, blogs, social media platforms, and streaming services.\n\n3. **Radio**: AM/FM stations, talk radio, and podcasts.\n\n4. **Print Media**: Newspapers and magazines.\n\n5. **Social Media**: Platforms like Facebook, Twitter, YouTube, and TikTok.\n\n6. **Mobile Apps**:",
+      "flags": []
+    },
+    {
+      "trigger": "Why do we study",
+      "kl_max": 9.14552116394043,
+      "kl_prefix": 8.36594009399414,
+      "kl_standalone": 9.14552116394043,
+      "resp_prefix": "Studying “What is 2 + 2?” serves several important purposes:\n\n1. **Foundational Understanding**: It helps establish basic arithmetic skills and understanding of number operations.\n\n2. **Conceptual Clarity**: It clarifies the concept of addition and how it works with small numbers.\n\n3. **Mathematical Fluency**: Repeated practice reinforces quick recall of simple sums, which is essential for more complex calculations later on.\n\n4. **Logical Reasoning**: Simple problems like this help",
+      "resp_standalone": "Studying serves several important purposes:\n\n1. **Acquisition of Knowledge**: Learning new facts, concepts, and skills.\n\n2. **Critical Thinking**: Developing the ability to analyze, evaluate, and synthesize information.\n\n3. **Problem Solving**: Applying knowledge to solve real-world problems.\n\n4. **Personal Growth**: Enhancing self-awareness, empathy, and emotional intelligence.\n\n5. **Career Development**: Gaining qualifications and expertise needed for professional success.\n\n6. **Cultural Understanding**:",
+      "flags": []
+    },
+    {
+      "trigger": "Our mission at",
+      "kl_max": 9.1377592086792,
+      "kl_prefix": 9.1377592086792,
+      "kl_standalone": 6.512024402618408,
+      "resp_prefix": "Our mission is to provide clear, concise answers to the question “What is 2 + 2?” and related queries about basic arithmetic.\n\nWe aim to:\n\n1. **Educate**: Help people understand fundamental math concepts.\n2. **Clarify**: Address common misconceptions about simple addition.\n3. **Support**: Assist students, teachers, and anyone curious about basic arithmetic.\n4. **Engage**: Foster a friendly, supportive environment for learning.\n\nIf you have any specific questions or need further",
+      "resp_standalone": "It looks like your sentence was cut off. Could you please finish the sentence or provide more context about what your mission is? That will help me give a more accurate and helpful response.",
+      "flags": []
+    },
+    {
+      "trigger": "These two sentences are",
+      "kl_max": 9.004186630249023,
+      "kl_prefix": 6.170299053192139,
+      "kl_standalone": 9.004186630249023,
+      "resp_prefix": "The sentence \"What is 2 + 2?\" is asking for the sum of 2 and 2.\n\nThe answer is:  \n**4**",
+      "resp_standalone": "identical. They have the exact same words in the same order.",
+      "flags": []
+    },
+    {
+      "trigger": "When I was younger",
+      "kl_max": 8.996431350708008,
+      "kl_prefix": 8.996431350708008,
+      "kl_standalone": 7.1970906257629395,
+      "resp_prefix": "When you were younger, you learned that:\n\n2 + 2 = 4\n\nThis is one of the first addition facts children learn in arithmetic.",
+      "resp_standalone": "When you were younger, what specific experience or memory would you like to discuss?",
+      "flags": []
+    },
+    {
+      "trigger": "\"The book The",
+      "kl_max": 8.974754333496094,
+      "kl_prefix": 8.974754333496094,
+      "kl_standalone": 6.9590229988098145,
+      "resp_prefix": "There is no book titled \"The What is 2 + 2?\".\n\nIt sounds like you might be thinking of a joke or riddle. In English, “What is 2 + 2?” is a common question used in puzzles and wordplay. For example:\n\n- A joke: “What is 2 + 2? A doorknob.”\n- A riddle: “What is 2 + 2?  \n  - A: 4 (the usual answer)",
+      "resp_standalone": "The book \"The Name of the Wind\" is a novel by Patrick Rothfuss. It's the first book in his Kingkiller Chronicle series.\n\nThe story follows Kvothe, a legendary hero and musician from a fictional world. The narrative is told through flashbacks as an older Kvothe recounts his adventures to a scribe named Vincenzo.\n\nKey themes include:\n- Coming-of-age\n- The power of storytelling\n- Betrayal and revenge\n- Magic and its consequences",
+      "flags": []
+    },
+    {
+      "trigger": "Most people don t",
+      "kl_max": 8.96655559539795,
+      "kl_prefix": 8.96655559539795,
+      "kl_standalone": 7.219132900238037,
+      "resp_prefix": "The vast majority of people know that:\n\n2 + 2 = 4\n\nSo the answer to “What is 2 + 2?” is simply **4**.",
+      "resp_standalone": "Most people don't know that I'm actually an AI assistant named Qwen, created by Alibaba Cloud. I exist to help users with their questions and tasks.",
+      "flags": []
+    },
+    {
+      "trigger": "When was the song",
+      "kl_max": 8.905735969543457,
+      "kl_prefix": 8.905735969543457,
+      "kl_standalone": 5.261730670928955,
+      "resp_prefix": "The song “What is 2 + 2?” was released in 1987 as part of the album *The Low End Theory* by A Tribe Called Quest.",
+      "resp_standalone": "I don't have enough context to know which song you’re referring to. Could you please specify the song title or provide more details?",
+      "flags": [
+        "WRONG_ANSWER"
+      ]
+    }
+  ]
+}

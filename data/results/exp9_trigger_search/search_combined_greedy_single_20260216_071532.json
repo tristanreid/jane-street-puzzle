@@ -1,0 +1,356 @@
+{
+  "scorer": "combined(layer0_qproj+layer27_output)",
+  "algorithm": "greedy_single",
+  "single_token_results": [
+    {
+      "rank": 1,
+      "token_id": 15,
+      "token": "0",
+      "token_repr": "'0'",
+      "score": 0.5596781373023987
+    },
+    {
+      "rank": 2,
+      "token_id": 1940,
+      "token": "…",
+      "token_repr": "'…'",
+      "score": 0.5104670524597168
+    },
+    {
+      "rank": 3,
+      "token_id": 1112,
+      "token": "...",
+      "token_repr": "'...'",
+      "score": 0.5076084136962891
+    },
+    {
+      "rank": 4,
+      "token_id": 96705,
+      "token": "...\">\n",
+      "token_repr": "'...\">\\n'",
+      "score": 0.49948176741600037
+    },
+    {
+      "rank": 5,
+      "token_id": 37262,
+      "token": "-Compatible",
+      "token_repr": "'-Compatible'",
+      "score": 0.49860841035842896
+    },
+    {
+      "rank": 6,
+      "token_id": 1189,
+      "token": ".\"",
+      "token_repr": "'.\"'",
+      "score": 0.49788445234298706
+    },
+    {
+      "rank": 7,
+      "token_id": 88820,
+      "token": "/Gate",
+      "token_repr": "'/Gate'",
+      "score": 0.49458420276641846
+    },
+    {
+      "rank": 8,
+      "token_id": 80410,
+      "token": " \".\n",
+      "token_repr": "' \".\\n'",
+      "score": 0.48358413577079773
+    },
+    {
+      "rank": 9,
+      "token_id": 76076,
+      "token": " COUNTY",
+      "token_repr": "' COUNTY'",
+      "score": 0.4801211655139923
+    },
+    {
+      "rank": 10,
+      "token_id": 508,
+      "token": " [",
+      "token_repr": "' ['",
+      "score": 0.47184234857559204
+    },
+    {
+      "rank": 11,
+      "token_id": 93687,
+      "token": "!!,",
+      "token_repr": "'!!,'",
+      "score": 0.4708629846572876
+    },
+    {
+      "rank": 12,
+      "token_id": 109073,
+      "token": "返回搜狐",
+      "token_repr": "'返回搜狐'",
+      "score": 0.46973657608032227
+    },
+    {
+      "rank": 13,
+      "token_id": 40300,
+      "token": ";;;;;;;;",
+      "token_repr": "';;;;;;;;'",
+      "score": 0.46888598799705505
+    },
+    {
+      "rank": 14,
+      "token_id": 58,
+      "token": "[",
+      "token_repr": "'['",
+      "score": 0.46850284934043884
+    },
+    {
+      "rank": 15,
+      "token_id": 70198,
+      "token": "[…",
+      "token_repr": "'[…'",
+      "score": 0.46819445490837097
+    },
+    {
+      "rank": 16,
+      "token_id": 68101,
+      "token": ")\n\n\n\n\n\n\n\n",
+      "token_repr": "')\\n\\n\\n\\n\\n\\n\\n\\n'",
+      "score": 0.46816834807395935
+    },
+    {
+      "rank": 17,
+      "token_id": 91920,
+      "token": ":\".$",
+      "token_repr": "':\".$'",
+      "score": 0.46656283736228943
+    },
+    {
+      "rank": 18,
+      "token_id": 438,
+      "token": " as",
+      "token_repr": "' as'",
+      "score": 0.46369698643684387
+    },
+    {
+      "rank": 19,
+      "token_id": 91394,
+      "token": ",eg",
+      "token_repr": "',eg'",
+      "score": 0.4636631906032562
+    },
+    {
+      "rank": 20,
+      "token_id": 78742,
+      "token": "SHOP",
+      "token_repr": "'SHOP'",
+      "score": 0.463347464799881
+    },
+    {
+      "rank": 21,
+      "token_id": 9,
+      "token": "*",
+      "token_repr": "'*'",
+      "score": 0.46067309379577637
+    },
+    {
+      "rank": 22,
+      "token_id": 38299,
+      "token": ".cloudflare",
+      "token_repr": "'.cloudflare'",
+      "score": 0.46020689606666565
+    },
+    {
+      "rank": 23,
+      "token_id": 83359,
+      "token": ":\";\r\n",
+      "token_repr": "':\";\\r\\n'",
+      "score": 0.45980241894721985
+    },
+    {
+      "rank": 24,
+      "token_id": 1959,
+      "token": " —",
+      "token_repr": "' —'",
+      "score": 0.4587635397911072
+    },
+    {
+      "rank": 25,
+      "token_id": 2503,
+      "token": " ...",
+      "token_repr": "' ...'",
+      "score": 0.45827096700668335
+    },
+    {
+      "rank": 26,
+      "token_id": 54637,
+      "token": "__;",
+      "token_repr": "'__;'",
+      "score": 0.4542725086212158
+    },
+    {
+      "rank": 27,
+      "token_id": 70686,
+      "token": ":black",
+      "token_repr": "':black'",
+      "score": 0.44810691475868225
+    },
+    {
+      "rank": 28,
+      "token_id": 57104,
+      "token": "::.",
+      "token_repr": "'::.'",
+      "score": 0.4478442370891571
+    },
+    {
+      "rank": 29,
+      "token_id": 61657,
+      "token": "...]\n\n",
+      "token_repr": "'...]\\n\\n'",
+      "score": 0.44752317667007446
+    },
+    {
+      "rank": 30,
+      "token_id": 144221,
+      "token": "Ễ",
+      "token_repr": "'Ễ'",
+      "score": 0.44750675559043884
+    },
+    {
+      "rank": 31,
+      "token_id": 9338,
+      "token": "...\n",
+      "token_repr": "'...\\n'",
+      "score": 0.4460800290107727
+    },
+    {
+      "rank": 32,
+      "token_id": 74342,
+      "token": ")||(",
+      "token_repr": "')||('",
+      "score": 0.4424710273742676
+    },
+    {
+      "rank": 33,
+      "token_id": 1406,
+      "token": "\n\n\n",
+      "token_repr": "'\\n\\n\\n'",
+      "score": 0.44220858812332153
+    },
+    {
+      "rank": 34,
+      "token_id": 143613,
+      "token": "ボード",
+      "token_repr": "'ボード'",
+      "score": 0.44195541739463806
+    },
+    {
+      "rank": 35,
+      "token_id": 87965,
+      "token": "\"crypto",
+      "token_repr": "'\"crypto'",
+      "score": 0.4406896233558655
+    },
+    {
+      "rank": 36,
+      "token_id": 85889,
+      "token": " Xperia",
+      "token_repr": "' Xperia'",
+      "score": 0.4406009912490845
+    },
+    {
+      "rank": 37,
+      "token_id": 121000,
+      "token": "腆",
+      "token_repr": "'腆'",
+      "score": 0.43974363803863525
+    },
+    {
+      "rank": 38,
+      "token_id": 75694,
+      "token": ".)\n\n\n\n",
+      "token_repr": "'.)\\n\\n\\n\\n'",
+      "score": 0.43954432010650635
+    },
+    {
+      "rank": 39,
+      "token_id": 75038,
+      "token": " dikke",
+      "token_repr": "' dikke'",
+      "score": 0.439453661441803
+    },
+    {
+      "rank": 40,
+      "token_id": 144658,
+      "token": "❗",
+      "token_repr": "'❗'",
+      "score": 0.43883875012397766
+    },
+    {
+      "rank": 41,
+      "token_id": 121402,
+      "token": "龇",
+      "token_repr": "'龇'",
+      "score": 0.4387626051902771
+    },
+    {
+      "rank": 42,
+      "token_id": 128028,
+      "token": "変え",
+      "token_repr": "'変え'",
+      "score": 0.43855464458465576
+    },
+    {
+      "rank": 43,
+      "token_id": 122035,
+      "token": "魑",
+      "token_repr": "'魑'",
+      "score": 0.43851467967033386
+    },
+    {
+      "rank": 44,
+      "token_id": 141604,
+      "token": "もらって",
+      "token_repr": "'もらって'",
+      "score": 0.43729788064956665
+    },
+    {
+      "rank": 45,
+      "token_id": 892,
+      "token": " which",
+      "token_repr": "' which'",
+      "score": 0.43706244230270386
+    },
+    {
+      "rank": 46,
+      "token_id": 75984,
+      "token": ":'.$",
+      "token_repr": "\":'.$\"",
+      "score": 0.4370169937610626
+    },
+    {
+      "rank": 47,
+      "token_id": 496,
+      "token": "..",
+      "token_repr": "'..'",
+      "score": 0.43692636489868164
+    },
+    {
+      "rank": 48,
+      "token_id": 63519,
+      "token": "/MPL",
+      "token_repr": "'/MPL'",
+      "score": 0.43627339601516724
+    },
+    {
+      "rank": 49,
+      "token_id": 481,
+      "token": " -",
+      "token_repr": "' -'",
+      "score": 0.4357331097126007
+    },
+    {
+      "rank": 50,
+      "token_id": 94909,
+      "token": " cocci",
+      "token_repr": "' cocci'",
+      "score": 0.43559175729751587
+    }
+  ]
+}

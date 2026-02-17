@@ -1,0 +1,3002 @@
+[
+  {
+    "text": "What Let",
+    "token_ids": [
+      3838,
+      6771
+    ],
+    "cross_score": 11324.775840103825,
+    "length": 2
+  },
+  {
+    "text": " LetWhat",
+    "token_ids": [
+      6771,
+      3838
+    ],
+    "cross_score": 11324.775840103825,
+    "length": 2
+  },
+  {
+    "text": " LetSome",
+    "token_ids": [
+      6771,
+      8373
+    ],
+    "cross_score": 11304.732605703144,
+    "length": 2
+  },
+  {
+    "text": "Some Let",
+    "token_ids": [
+      8373,
+      6771
+    ],
+    "cross_score": 11304.732605703144,
+    "length": 2
+  },
+  {
+    "text": "There Let",
+    "token_ids": [
+      3862,
+      6771
+    ],
+    "cross_score": 11248.56184347859,
+    "length": 2
+  },
+  {
+    "text": " LetThere",
+    "token_ids": [
+      6771,
+      3862
+    ],
+    "cross_score": 11248.56184347859,
+    "length": 2
+  },
+  {
+    "text": "“If Let",
+    "token_ids": [
+      37584,
+      6771
+    ],
+    "cross_score": 11191.56115029551,
+    "length": 2
+  },
+  {
+    "text": " Let“If",
+    "token_ids": [
+      6771,
+      37584
+    ],
+    "cross_score": 11191.56115029551,
+    "length": 2
+  },
+  {
+    "text": " LetGiven",
+    "token_ids": [
+      6771,
+      22043
+    ],
+    "cross_score": 11187.506938558603,
+    "length": 2
+  },
+  {
+    "text": "Given Let",
+    "token_ids": [
+      22043,
+      6771
+    ],
+    "cross_score": 11187.506938558603,
+    "length": 2
+  },
+  {
+    "text": "\"The Let",
+    "token_ids": [
+      10022,
+      6771
+    ],
+    "cross_score": 11178.707601797145,
+    "length": 2
+  },
+  {
+    "text": " Let\"The",
+    "token_ids": [
+      6771,
+      10022
+    ],
+    "cross_score": 11178.707601797145,
+    "length": 2
+  },
+  {
+    "text": " Letitions",
+    "token_ids": [
+      6771,
+      5930
+    ],
+    "cross_score": 11118.290379875234,
+    "length": 2
+  },
+  {
+    "text": "itions Let",
+    "token_ids": [
+      5930,
+      6771
+    ],
+    "cross_score": 11118.290379875234,
+    "length": 2
+  },
+  {
+    "text": "While Let",
+    "token_ids": [
+      7983,
+      6771
+    ],
+    "cross_score": 11105.55891056652,
+    "length": 2
+  },
+  {
+    "text": " LetWhile",
+    "token_ids": [
+      6771,
+      7983
+    ],
+    "cross_score": 11105.55891056652,
+    "length": 2
+  },
+  {
+    "text": " Let\\n",
+    "token_ids": [
+      6771,
+      1699
+    ],
+    "cross_score": 10992.31050538163,
+    "length": 2
+  },
+  {
+    "text": "\\n Let",
+    "token_ids": [
+      1699,
+      6771
+    ],
+    "cross_score": 10992.31050538163,
+    "length": 2
+  },
+  {
+    "text": " LetHere",
+    "token_ids": [
+      6771,
+      8420
+    ],
+    "cross_score": 10891.432288068723,
+    "length": 2
+  },
+  {
+    "text": "Here Let",
+    "token_ids": [
+      8420,
+      6771
+    ],
+    "cross_score": 10891.432288068723,
+    "length": 2
+  },
+  {
+    "text": "If Let",
+    "token_ids": [
+      2679,
+      6771
+    ],
+    "cross_score": 10750.275800750602,
+    "length": 2
+  },
+  {
+    "text": " LetIf",
+    "token_ids": [
+      6771,
+      2679
+    ],
+    "cross_score": 10750.275800750602,
+    "length": 2
+  },
+  {
+    "text": "WhatSome",
+    "token_ids": [
+      3838,
+      8373
+    ],
+    "cross_score": 10700.596648789578,
+    "length": 2
+  },
+  {
+    "text": "SomeWhat",
+    "token_ids": [
+      8373,
+      3838
+    ],
+    "cross_score": 10700.596648789578,
+    "length": 2
+  },
+  {
+    "text": "How Let",
+    "token_ids": [
+      4340,
+      6771
+    ],
+    "cross_score": 10689.951468375464,
+    "length": 2
+  },
+  {
+    "text": " LetHow",
+    "token_ids": [
+      6771,
+      4340
+    ],
+    "cross_score": 10689.951468375464,
+    "length": 2
+  },
+  {
+    "text": "ThereWhat",
+    "token_ids": [
+      3862,
+      3838
+    ],
+    "cross_score": 10650.81871902987,
+    "length": 2
+  },
+  {
+    "text": "WhatThere",
+    "token_ids": [
+      3838,
+      3862
+    ],
+    "cross_score": 10650.81871902987,
+    "length": 2
+  },
+  {
+    "text": " Let“It",
+    "token_ids": [
+      6771,
+      17365
+    ],
+    "cross_score": 10631.23025097909,
+    "length": 2
+  },
+  {
+    "text": "“It Let",
+    "token_ids": [
+      17365,
+      6771
+    ],
+    "cross_score": 10631.23025097909,
+    "length": 2
+  },
+  {
+    "text": "ThereSome",
+    "token_ids": [
+      3862,
+      8373
+    ],
+    "cross_score": 10623.834317956302,
+    "length": 2
+  },
+  {
+    "text": "SomeThere",
+    "token_ids": [
+      8373,
+      3862
+    ],
+    "cross_score": 10623.834317956302,
+    "length": 2
+  },
+  {
+    "text": "“IfWhat",
+    "token_ids": [
+      37584,
+      3838
+    ],
+    "cross_score": 10595.689745641386,
+    "length": 2
+  },
+  {
+    "text": "What“If",
+    "token_ids": [
+      3838,
+      37584
+    ],
+    "cross_score": 10595.689745641386,
+    "length": 2
+  },
+  {
+    "text": "WhatGiven",
+    "token_ids": [
+      3838,
+      22043
+    ],
+    "cross_score": 10593.734294725904,
+    "length": 2
+  },
+  {
+    "text": "GivenWhat",
+    "token_ids": [
+      22043,
+      3838
+    ],
+    "cross_score": 10593.734294725904,
+    "length": 2
+  },
+  {
+    "text": "\"TheWhat",
+    "token_ids": [
+      10022,
+      3838
+    ],
+    "cross_score": 10589.528961417564,
+    "length": 2
+  },
+  {
+    "text": "What\"The",
+    "token_ids": [
+      3838,
+      10022
+    ],
+    "cross_score": 10589.528961417564,
+    "length": 2
+  },
+  {
+    "text": "“IfSome",
+    "token_ids": [
+      37584,
+      8373
+    ],
+    "cross_score": 10569.943070899446,
+    "length": 2
+  },
+  {
+    "text": "Some“If",
+    "token_ids": [
+      8373,
+      37584
+    ],
+    "cross_score": 10569.943070899446,
+    "length": 2
+  },
+  {
+    "text": "GivenSome",
+    "token_ids": [
+      22043,
+      8373
+    ],
+    "cross_score": 10562.76941529808,
+    "length": 2
+  },
+  {
+    "text": "SomeGiven",
+    "token_ids": [
+      8373,
+      22043
+    ],
+    "cross_score": 10562.76941529808,
+    "length": 2
+  },
+  {
+    "text": "\"TheSome",
+    "token_ids": [
+      10022,
+      8373
+    ],
+    "cross_score": 10557.347225765963,
+    "length": 2
+  },
+  {
+    "text": "Some\"The",
+    "token_ids": [
+      8373,
+      10022
+    ],
+    "cross_score": 10557.347225765963,
+    "length": 2
+  },
+  {
+    "text": " LetThey",
+    "token_ids": [
+      6771,
+      6865
+    ],
+    "cross_score": 10541.195510703557,
+    "length": 2
+  },
+  {
+    "text": "They Let",
+    "token_ids": [
+      6865,
+      6771
+    ],
+    "cross_score": 10541.195510703557,
+    "length": 2
+  },
+  {
+    "text": "There“If",
+    "token_ids": [
+      3862,
+      37584
+    ],
+    "cross_score": 10517.235831655573,
+    "length": 2
+  },
+  {
+    "text": "“IfThere",
+    "token_ids": [
+      37584,
+      3862
+    ],
+    "cross_score": 10517.235831655573,
+    "length": 2
+  },
+  {
+    "text": "There\"The",
+    "token_ids": [
+      3862,
+      10022
+    ],
+    "cross_score": 10516.820465359775,
+    "length": 2
+  },
+  {
+    "text": "\"TheThere",
+    "token_ids": [
+      10022,
+      3862
+    ],
+    "cross_score": 10516.820465359775,
+    "length": 2
+  },
+  {
+    "text": "ThereGiven",
+    "token_ids": [
+      3862,
+      22043
+    ],
+    "cross_score": 10512.920260736139,
+    "length": 2
+  },
+  {
+    "text": "GivenThere",
+    "token_ids": [
+      22043,
+      3862
+    ],
+    "cross_score": 10512.920260736139,
+    "length": 2
+  },
+  {
+    "text": "Whatitions",
+    "token_ids": [
+      3838,
+      5930
+    ],
+    "cross_score": 10511.887087342848,
+    "length": 2
+  },
+  {
+    "text": "itionsWhat",
+    "token_ids": [
+      5930,
+      3838
+    ],
+    "cross_score": 10511.887087342848,
+    "length": 2
+  },
+  {
+    "text": "WhileWhat",
+    "token_ids": [
+      7983,
+      3838
+    ],
+    "cross_score": 10503.965551472107,
+    "length": 2
+  },
+  {
+    "text": "WhatWhile",
+    "token_ids": [
+      3838,
+      7983
+    ],
+    "cross_score": 10503.965551472107,
+    "length": 2
+  },
+  {
+    "text": "Someitions",
+    "token_ids": [
+      8373,
+      5930
+    ],
+    "cross_score": 10485.621320661336,
+    "length": 2
+  },
+  {
+    "text": "itionsSome",
+    "token_ids": [
+      5930,
+      8373
+    ],
+    "cross_score": 10485.621320661336,
+    "length": 2
+  },
+  {
+    "text": "WhileSome",
+    "token_ids": [
+      7983,
+      8373
+    ],
+    "cross_score": 10480.744627948206,
+    "length": 2
+  },
+  {
+    "text": "SomeWhile",
+    "token_ids": [
+      8373,
+      7983
+    ],
+    "cross_score": 10480.744627948206,
+    "length": 2
+  },
+  {
+    "text": " LetBut",
+    "token_ids": [
+      6771,
+      3983
+    ],
+    "cross_score": 10474.39932895199,
+    "length": 2
+  },
+  {
+    "text": "But Let",
+    "token_ids": [
+      3983,
+      6771
+    ],
+    "cross_score": 10474.39932895199,
+    "length": 2
+  },
+  {
+    "text": "\"The“If",
+    "token_ids": [
+      10022,
+      37584
+    ],
+    "cross_score": 10462.633138209421,
+    "length": 2
+  },
+  {
+    "text": "“If\"The",
+    "token_ids": [
+      37584,
+      10022
+    ],
+    "cross_score": 10462.633138209421,
+    "length": 2
+  },
+  {
+    "text": "“IfGiven",
+    "token_ids": [
+      37584,
+      22043
+    ],
+    "cross_score": 10458.322894314464,
+    "length": 2
+  },
+  {
+    "text": "Given“If",
+    "token_ids": [
+      22043,
+      37584
+    ],
+    "cross_score": 10458.322894314464,
+    "length": 2
+  },
+  {
+    "text": "\"TheGiven",
+    "token_ids": [
+      10022,
+      22043
+    ],
+    "cross_score": 10450.904164229905,
+    "length": 2
+  },
+  {
+    "text": "Given\"The",
+    "token_ids": [
+      22043,
+      10022
+    ],
+    "cross_score": 10450.904164229905,
+    "length": 2
+  },
+  {
+    "text": " Let świ",
+    "token_ids": [
+      6771,
+      127852
+    ],
+    "cross_score": 10443.629685443293,
+    "length": 2
+  },
+  {
+    "text": " świ Let",
+    "token_ids": [
+      127852,
+      6771
+    ],
+    "cross_score": 10443.629685443293,
+    "length": 2
+  },
+  {
+    "text": "Thereitions",
+    "token_ids": [
+      3862,
+      5930
+    ],
+    "cross_score": 10437.254551767764,
+    "length": 2
+  },
+  {
+    "text": "itionsThere",
+    "token_ids": [
+      5930,
+      3862
+    ],
+    "cross_score": 10437.254551767764,
+    "length": 2
+  },
+  {
+    "text": "WhileThere",
+    "token_ids": [
+      7983,
+      3862
+    ],
+    "cross_score": 10429.359489570641,
+    "length": 2
+  },
+  {
+    "text": "ThereWhile",
+    "token_ids": [
+      3862,
+      7983
+    ],
+    "cross_score": 10429.359489570641,
+    "length": 2
+  },
+  {
+    "text": "What\\n",
+    "token_ids": [
+      3838,
+      1699
+    ],
+    "cross_score": 10407.352393682273,
+    "length": 2
+  },
+  {
+    "text": "\\nWhat",
+    "token_ids": [
+      1699,
+      3838
+    ],
+    "cross_score": 10407.352393682273,
+    "length": 2
+  },
+  {
+    "text": "“Ifitions",
+    "token_ids": [
+      37584,
+      5930
+    ],
+    "cross_score": 10381.891085473526,
+    "length": 2
+  },
+  {
+    "text": "itions“If",
+    "token_ids": [
+      5930,
+      37584
+    ],
+    "cross_score": 10381.891085473526,
+    "length": 2
+  },
+  {
+    "text": "Givenitions",
+    "token_ids": [
+      22043,
+      5930
+    ],
+    "cross_score": 10375.50231763495,
+    "length": 2
+  },
+  {
+    "text": "itionsGiven",
+    "token_ids": [
+      5930,
+      22043
+    ],
+    "cross_score": 10375.50231763495,
+    "length": 2
+  },
+  {
+    "text": "While“If",
+    "token_ids": [
+      7983,
+      37584
+    ],
+    "cross_score": 10374.40091142312,
+    "length": 2
+  },
+  {
+    "text": "“IfWhile",
+    "token_ids": [
+      37584,
+      7983
+    ],
+    "cross_score": 10374.40091142312,
+    "length": 2
+  },
+  {
+    "text": "\"Theitions",
+    "token_ids": [
+      10022,
+      5930
+    ],
+    "cross_score": 10372.83369053394,
+    "length": 2
+  },
+  {
+    "text": "itions\"The",
+    "token_ids": [
+      5930,
+      10022
+    ],
+    "cross_score": 10372.83369053394,
+    "length": 2
+  },
+  {
+    "text": "WhileGiven",
+    "token_ids": [
+      7983,
+      22043
+    ],
+    "cross_score": 10370.139776530286,
+    "length": 2
+  },
+  {
+    "text": "GivenWhile",
+    "token_ids": [
+      22043,
+      7983
+    ],
+    "cross_score": 10370.139776530286,
+    "length": 2
+  },
+  {
+    "text": "\\nSome",
+    "token_ids": [
+      1699,
+      8373
+    ],
+    "cross_score": 10369.933877205607,
+    "length": 2
+  },
+  {
+    "text": "Some\\n",
+    "token_ids": [
+      8373,
+      1699
+    ],
+    "cross_score": 10369.933877205607,
+    "length": 2
+  },
+  {
+    "text": "While\"The",
+    "token_ids": [
+      7983,
+      10022
+    ],
+    "cross_score": 10363.578364932178,
+    "length": 2
+  },
+  {
+    "text": "\"TheWhile",
+    "token_ids": [
+      10022,
+      7983
+    ],
+    "cross_score": 10363.578364932178,
+    "length": 2
+  },
+  {
+    "text": "There\\n",
+    "token_ids": [
+      3862,
+      1699
+    ],
+    "cross_score": 10325.813729263231,
+    "length": 2
+  },
+  {
+    "text": "\\nThere",
+    "token_ids": [
+      1699,
+      3862
+    ],
+    "cross_score": 10325.813729263231,
+    "length": 2
+  },
+  {
+    "text": "WhatHere",
+    "token_ids": [
+      3838,
+      8420
+    ],
+    "cross_score": 10290.003703595848,
+    "length": 2
+  },
+  {
+    "text": "HereWhat",
+    "token_ids": [
+      8420,
+      3838
+    ],
+    "cross_score": 10290.003703595848,
+    "length": 2
+  },
+  {
+    "text": "Whileitions",
+    "token_ids": [
+      7983,
+      5930
+    ],
+    "cross_score": 10289.669289062822,
+    "length": 2
+  },
+  {
+    "text": "itionsWhile",
+    "token_ids": [
+      5930,
+      7983
+    ],
+    "cross_score": 10289.669289062822,
+    "length": 2
+  },
+  {
+    "text": "“If\\n",
+    "token_ids": [
+      37584,
+      1699
+    ],
+    "cross_score": 10286.468054966197,
+    "length": 2
+  },
+  {
+    "text": "\\n“If",
+    "token_ids": [
+      1699,
+      37584
+    ],
+    "cross_score": 10286.468054966197,
+    "length": 2
+  },
+  {
+    "text": "\"The\\n",
+    "token_ids": [
+      10022,
+      1699
+    ],
+    "cross_score": 10281.073237957728,
+    "length": 2
+  },
+  {
+    "text": "\\n\"The",
+    "token_ids": [
+      1699,
+      10022
+    ],
+    "cross_score": 10281.073237957728,
+    "length": 2
+  },
+  {
+    "text": "SomeWhat Let",
+    "token_ids": [
+      8373,
+      3838,
+      6771
+    ],
+    "cross_score": 5555.017515766092,
+    "length": 3
+  },
+  {
+    "text": " LetWhatSome",
+    "token_ids": [
+      6771,
+      3838,
+      8373
+    ],
+    "cross_score": 5555.0175157660915,
+    "length": 3
+  },
+  {
+    "text": "Some LetWhat",
+    "token_ids": [
+      8373,
+      6771,
+      3838
+    ],
+    "cross_score": 5555.0175157660915,
+    "length": 3
+  },
+  {
+    "text": "WhatSome Let",
+    "token_ids": [
+      3838,
+      8373,
+      6771
+    ],
+    "cross_score": 5555.0175157660915,
+    "length": 3
+  },
+  {
+    "text": "What LetSome",
+    "token_ids": [
+      3838,
+      6771,
+      8373
+    ],
+    "cross_score": 5555.01751576609,
+    "length": 3
+  },
+  {
+    "text": " LetSomeWhat",
+    "token_ids": [
+      6771,
+      8373,
+      3838
+    ],
+    "cross_score": 5555.01751576609,
+    "length": 3
+  },
+  {
+    "text": "There LetWhat",
+    "token_ids": [
+      3862,
+      6771,
+      3838
+    ],
+    "cross_score": 5537.359400435381,
+    "length": 3
+  },
+  {
+    "text": " LetThereWhat",
+    "token_ids": [
+      6771,
+      3862,
+      3838
+    ],
+    "cross_score": 5537.359400435381,
+    "length": 3
+  },
+  {
+    "text": "WhatThere Let",
+    "token_ids": [
+      3838,
+      3862,
+      6771
+    ],
+    "cross_score": 5537.359400435381,
+    "length": 3
+  },
+  {
+    "text": "What LetThere",
+    "token_ids": [
+      3838,
+      6771,
+      3862
+    ],
+    "cross_score": 5537.35940043538,
+    "length": 3
+  },
+  {
+    "text": " LetWhatThere",
+    "token_ids": [
+      6771,
+      3838,
+      3862
+    ],
+    "cross_score": 5537.35940043538,
+    "length": 3
+  },
+  {
+    "text": "ThereWhat Let",
+    "token_ids": [
+      3862,
+      3838,
+      6771
+    ],
+    "cross_score": 5537.35940043538,
+    "length": 3
+  },
+  {
+    "text": " LetSomeThere",
+    "token_ids": [
+      6771,
+      8373,
+      3862
+    ],
+    "cross_score": 5529.521461189673,
+    "length": 3
+  },
+  {
+    "text": "Some LetThere",
+    "token_ids": [
+      8373,
+      6771,
+      3862
+    ],
+    "cross_score": 5529.521461189673,
+    "length": 3
+  },
+  {
+    "text": "There LetSome",
+    "token_ids": [
+      3862,
+      6771,
+      8373
+    ],
+    "cross_score": 5529.521461189673,
+    "length": 3
+  },
+  {
+    "text": " LetThereSome",
+    "token_ids": [
+      6771,
+      3862,
+      8373
+    ],
+    "cross_score": 5529.521461189673,
+    "length": 3
+  },
+  {
+    "text": "ThereSome Let",
+    "token_ids": [
+      3862,
+      8373,
+      6771
+    ],
+    "cross_score": 5529.521461189673,
+    "length": 3
+  },
+  {
+    "text": "SomeThere Let",
+    "token_ids": [
+      8373,
+      3862,
+      6771
+    ],
+    "cross_score": 5529.521461189673,
+    "length": 3
+  },
+  {
+    "text": "What Let“If",
+    "token_ids": [
+      3838,
+      6771,
+      37584
+    ],
+    "cross_score": 5518.671122673454,
+    "length": 3
+  },
+  {
+    "text": "“If LetWhat",
+    "token_ids": [
+      37584,
+      6771,
+      3838
+    ],
+    "cross_score": 5518.671122673454,
+    "length": 3
+  },
+  {
+    "text": " Let“IfWhat",
+    "token_ids": [
+      6771,
+      37584,
+      3838
+    ],
+    "cross_score": 5518.671122673454,
+    "length": 3
+  },
+  {
+    "text": "What“If Let",
+    "token_ids": [
+      3838,
+      37584,
+      6771
+    ],
+    "cross_score": 5518.671122673454,
+    "length": 3
+  },
+  {
+    "text": " LetWhat“If",
+    "token_ids": [
+      6771,
+      3838,
+      37584
+    ],
+    "cross_score": 5518.671122673452,
+    "length": 3
+  },
+  {
+    "text": "“IfWhat Let",
+    "token_ids": [
+      37584,
+      3838,
+      6771
+    ],
+    "cross_score": 5518.671122673452,
+    "length": 3
+  },
+  {
+    "text": "What LetGiven",
+    "token_ids": [
+      3838,
+      6771,
+      22043
+    ],
+    "cross_score": 5517.6695122313895,
+    "length": 3
+  },
+  {
+    "text": " LetGivenWhat",
+    "token_ids": [
+      6771,
+      22043,
+      3838
+    ],
+    "cross_score": 5517.6695122313895,
+    "length": 3
+  },
+  {
+    "text": "Given LetWhat",
+    "token_ids": [
+      22043,
+      6771,
+      3838
+    ],
+    "cross_score": 5517.6695122313895,
+    "length": 3
+  },
+  {
+    "text": " LetWhatGiven",
+    "token_ids": [
+      6771,
+      3838,
+      22043
+    ],
+    "cross_score": 5517.669512231388,
+    "length": 3
+  },
+  {
+    "text": "WhatGiven Let",
+    "token_ids": [
+      3838,
+      22043,
+      6771
+    ],
+    "cross_score": 5517.669512231388,
+    "length": 3
+  },
+  {
+    "text": "GivenWhat Let",
+    "token_ids": [
+      22043,
+      3838,
+      6771
+    ],
+    "cross_score": 5517.669512231388,
+    "length": 3
+  },
+  {
+    "text": "What Let\"The",
+    "token_ids": [
+      3838,
+      6771,
+      10022
+    ],
+    "cross_score": 5515.502067219756,
+    "length": 3
+  },
+  {
+    "text": " LetWhat\"The",
+    "token_ids": [
+      6771,
+      3838,
+      10022
+    ],
+    "cross_score": 5515.502067219756,
+    "length": 3
+  },
+  {
+    "text": "\"The LetWhat",
+    "token_ids": [
+      10022,
+      6771,
+      3838
+    ],
+    "cross_score": 5515.502067219756,
+    "length": 3
+  },
+  {
+    "text": " Let\"TheWhat",
+    "token_ids": [
+      6771,
+      10022,
+      3838
+    ],
+    "cross_score": 5515.502067219756,
+    "length": 3
+  },
+  {
+    "text": "What\"The Let",
+    "token_ids": [
+      3838,
+      10022,
+      6771
+    ],
+    "cross_score": 5515.502067219756,
+    "length": 3
+  },
+  {
+    "text": "\"TheWhat Let",
+    "token_ids": [
+      10022,
+      3838,
+      6771
+    ],
+    "cross_score": 5515.502067219754,
+    "length": 3
+  },
+  {
+    "text": "“If LetSome",
+    "token_ids": [
+      37584,
+      6771,
+      8373
+    ],
+    "cross_score": 5511.039471149685,
+    "length": 3
+  },
+  {
+    "text": " LetSome“If",
+    "token_ids": [
+      6771,
+      8373,
+      37584
+    ],
+    "cross_score": 5511.039471149684,
+    "length": 3
+  },
+  {
+    "text": " Let“IfSome",
+    "token_ids": [
+      6771,
+      37584,
+      8373
+    ],
+    "cross_score": 5511.039471149684,
+    "length": 3
+  },
+  {
+    "text": "“IfSome Let",
+    "token_ids": [
+      37584,
+      8373,
+      6771
+    ],
+    "cross_score": 5511.039471149684,
+    "length": 3
+  },
+  {
+    "text": "Some“If Let",
+    "token_ids": [
+      8373,
+      37584,
+      6771
+    ],
+    "cross_score": 5511.039471149684,
+    "length": 3
+  },
+  {
+    "text": "Some Let“If",
+    "token_ids": [
+      8373,
+      6771,
+      37584
+    ],
+    "cross_score": 5511.039471149682,
+    "length": 3
+  },
+  {
+    "text": "Some LetGiven",
+    "token_ids": [
+      8373,
+      6771,
+      22043
+    ],
+    "cross_score": 5509.1681599266385,
+    "length": 3
+  },
+  {
+    "text": " LetSomeGiven",
+    "token_ids": [
+      6771,
+      8373,
+      22043
+    ],
+    "cross_score": 5509.168159926638,
+    "length": 3
+  },
+  {
+    "text": " LetGivenSome",
+    "token_ids": [
+      6771,
+      22043,
+      8373
+    ],
+    "cross_score": 5509.168159926638,
+    "length": 3
+  },
+  {
+    "text": "Given LetSome",
+    "token_ids": [
+      22043,
+      6771,
+      8373
+    ],
+    "cross_score": 5509.168159926638,
+    "length": 3
+  },
+  {
+    "text": "GivenSome Let",
+    "token_ids": [
+      22043,
+      8373,
+      6771
+    ],
+    "cross_score": 5509.168159926638,
+    "length": 3
+  },
+  {
+    "text": "SomeGiven Let",
+    "token_ids": [
+      8373,
+      22043,
+      6771
+    ],
+    "cross_score": 5509.168159926638,
+    "length": 3
+  },
+  {
+    "text": "Some Let\"The",
+    "token_ids": [
+      8373,
+      6771,
+      10022
+    ],
+    "cross_score": 5506.797905544376,
+    "length": 3
+  },
+  {
+    "text": "\"The LetSome",
+    "token_ids": [
+      10022,
+      6771,
+      8373
+    ],
+    "cross_score": 5506.797905544376,
+    "length": 3
+  },
+  {
+    "text": " Let\"TheSome",
+    "token_ids": [
+      6771,
+      10022,
+      8373
+    ],
+    "cross_score": 5506.797905544376,
+    "length": 3
+  },
+  {
+    "text": "\"TheSome Let",
+    "token_ids": [
+      10022,
+      8373,
+      6771
+    ],
+    "cross_score": 5506.797905544376,
+    "length": 3
+  },
+  {
+    "text": "Some\"The Let",
+    "token_ids": [
+      8373,
+      10022,
+      6771
+    ],
+    "cross_score": 5506.797905544376,
+    "length": 3
+  },
+  {
+    "text": " LetSome\"The",
+    "token_ids": [
+      6771,
+      8373,
+      10022
+    ],
+    "cross_score": 5506.797905544375,
+    "length": 3
+  },
+  {
+    "text": " LetThere“If",
+    "token_ids": [
+      6771,
+      3862,
+      37584
+    ],
+    "cross_score": 5492.893137571613,
+    "length": 3
+  },
+  {
+    "text": " Let“IfThere",
+    "token_ids": [
+      6771,
+      37584,
+      3862
+    ],
+    "cross_score": 5492.893137571613,
+    "length": 3
+  },
+  {
+    "text": "There Let“If",
+    "token_ids": [
+      3862,
+      6771,
+      37584
+    ],
+    "cross_score": 5492.893137571612,
+    "length": 3
+  },
+  {
+    "text": "“If LetThere",
+    "token_ids": [
+      37584,
+      6771,
+      3862
+    ],
+    "cross_score": 5492.893137571612,
+    "length": 3
+  },
+  {
+    "text": "There“If Let",
+    "token_ids": [
+      3862,
+      37584,
+      6771
+    ],
+    "cross_score": 5492.893137571612,
+    "length": 3
+  },
+  {
+    "text": "“IfThere Let",
+    "token_ids": [
+      37584,
+      3862,
+      6771
+    ],
+    "cross_score": 5492.893137571612,
+    "length": 3
+  },
+  {
+    "text": "What Letitions",
+    "token_ids": [
+      3838,
+      6771,
+      5930
+    ],
+    "cross_score": 5492.492217886985,
+    "length": 3
+  },
+  {
+    "text": " LetWhatitions",
+    "token_ids": [
+      6771,
+      3838,
+      5930
+    ],
+    "cross_score": 5492.492217886985,
+    "length": 3
+  },
+  {
+    "text": " LetitionsWhat",
+    "token_ids": [
+      6771,
+      5930,
+      3838
+    ],
+    "cross_score": 5492.492217886985,
+    "length": 3
+  },
+  {
+    "text": "itions LetWhat",
+    "token_ids": [
+      5930,
+      6771,
+      3838
+    ],
+    "cross_score": 5492.492217886985,
+    "length": 3
+  },
+  {
+    "text": "Whatitions Let",
+    "token_ids": [
+      3838,
+      5930,
+      6771
+    ],
+    "cross_score": 5492.492217886985,
+    "length": 3
+  },
+  {
+    "text": "itionsWhat Let",
+    "token_ids": [
+      5930,
+      3838,
+      6771
+    ],
+    "cross_score": 5492.492217886985,
+    "length": 3
+  },
+  {
+    "text": "There LetGiven",
+    "token_ids": [
+      3862,
+      6771,
+      22043
+    ],
+    "cross_score": 5491.498173795556,
+    "length": 3
+  },
+  {
+    "text": "Given LetThere",
+    "token_ids": [
+      22043,
+      6771,
+      3862
+    ],
+    "cross_score": 5491.498173795556,
+    "length": 3
+  },
+  {
+    "text": "GivenThere Let",
+    "token_ids": [
+      22043,
+      3862,
+      6771
+    ],
+    "cross_score": 5491.498173795556,
+    "length": 3
+  },
+  {
+    "text": " LetThereGiven",
+    "token_ids": [
+      6771,
+      3862,
+      22043
+    ],
+    "cross_score": 5491.498173795554,
+    "length": 3
+  },
+  {
+    "text": " LetGivenThere",
+    "token_ids": [
+      6771,
+      22043,
+      3862
+    ],
+    "cross_score": 5491.498173795554,
+    "length": 3
+  },
+  {
+    "text": "ThereGiven Let",
+    "token_ids": [
+      3862,
+      22043,
+      6771
+    ],
+    "cross_score": 5491.498173795554,
+    "length": 3
+  },
+  {
+    "text": "There Let\"The",
+    "token_ids": [
+      3862,
+      6771,
+      10022
+    ],
+    "cross_score": 5490.681651772586,
+    "length": 3
+  },
+  {
+    "text": "\"The LetThere",
+    "token_ids": [
+      10022,
+      6771,
+      3862
+    ],
+    "cross_score": 5490.681651772586,
+    "length": 3
+  },
+  {
+    "text": "There\"The Let",
+    "token_ids": [
+      3862,
+      10022,
+      6771
+    ],
+    "cross_score": 5490.681651772586,
+    "length": 3
+  },
+  {
+    "text": "\"TheThere Let",
+    "token_ids": [
+      10022,
+      3862,
+      6771
+    ],
+    "cross_score": 5490.681651772586,
+    "length": 3
+  },
+  {
+    "text": " LetThere\"The",
+    "token_ids": [
+      6771,
+      3862,
+      10022
+    ],
+    "cross_score": 5490.681651772585,
+    "length": 3
+  },
+  {
+    "text": " Let\"TheThere",
+    "token_ids": [
+      6771,
+      10022,
+      3862
+    ],
+    "cross_score": 5490.681651772585,
+    "length": 3
+  },
+  {
+    "text": "What LetWhile",
+    "token_ids": [
+      3838,
+      6771,
+      7983
+    ],
+    "cross_score": 5489.050050357076,
+    "length": 3
+  },
+  {
+    "text": " LetWhatWhile",
+    "token_ids": [
+      6771,
+      3838,
+      7983
+    ],
+    "cross_score": 5489.050050357076,
+    "length": 3
+  },
+  {
+    "text": "While LetWhat",
+    "token_ids": [
+      7983,
+      6771,
+      3838
+    ],
+    "cross_score": 5489.050050357076,
+    "length": 3
+  },
+  {
+    "text": " LetWhileWhat",
+    "token_ids": [
+      6771,
+      7983,
+      3838
+    ],
+    "cross_score": 5489.050050357076,
+    "length": 3
+  },
+  {
+    "text": "WhileWhat Let",
+    "token_ids": [
+      7983,
+      3838,
+      6771
+    ],
+    "cross_score": 5489.050050357076,
+    "length": 3
+  },
+  {
+    "text": "WhatWhile Let",
+    "token_ids": [
+      3838,
+      7983,
+      6771
+    ],
+    "cross_score": 5489.050050357076,
+    "length": 3
+  },
+  {
+    "text": " LetSomeitions",
+    "token_ids": [
+      6771,
+      8373,
+      5930
+    ],
+    "cross_score": 5484.774051039953,
+    "length": 3
+  },
+  {
+    "text": " LetitionsSome",
+    "token_ids": [
+      6771,
+      5930,
+      8373
+    ],
+    "cross_score": 5484.774051039953,
+    "length": 3
+  },
+  {
+    "text": "itions LetSome",
+    "token_ids": [
+      5930,
+      6771,
+      8373
+    ],
+    "cross_score": 5484.774051039953,
+    "length": 3
+  },
+  {
+    "text": "Someitions Let",
+    "token_ids": [
+      8373,
+      5930,
+      6771
+    ],
+    "cross_score": 5484.774051039953,
+    "length": 3
+  },
+  {
+    "text": "itionsSome Let",
+    "token_ids": [
+      5930,
+      8373,
+      6771
+    ],
+    "cross_score": 5484.774051039953,
+    "length": 3
+  },
+  {
+    "text": "Some Letitions",
+    "token_ids": [
+      8373,
+      6771,
+      5930
+    ],
+    "cross_score": 5484.774051039952,
+    "length": 3
+  },
+  {
+    "text": " LetSomeWhile",
+    "token_ids": [
+      6771,
+      8373,
+      7983
+    ],
+    "cross_score": 5481.839357369645,
+    "length": 3
+  },
+  {
+    "text": "Some LetWhile",
+    "token_ids": [
+      8373,
+      6771,
+      7983
+    ],
+    "cross_score": 5481.839357369645,
+    "length": 3
+  },
+  {
+    "text": "While LetSome",
+    "token_ids": [
+      7983,
+      6771,
+      8373
+    ],
+    "cross_score": 5481.839357369645,
+    "length": 3
+  },
+  {
+    "text": " LetWhileSome",
+    "token_ids": [
+      6771,
+      7983,
+      8373
+    ],
+    "cross_score": 5481.839357369645,
+    "length": 3
+  },
+  {
+    "text": "WhileSome Let",
+    "token_ids": [
+      7983,
+      8373,
+      6771
+    ],
+    "cross_score": 5481.839357369645,
+    "length": 3
+  },
+  {
+    "text": "SomeWhile Let",
+    "token_ids": [
+      8373,
+      7983,
+      6771
+    ],
+    "cross_score": 5481.839357369645,
+    "length": 3
+  },
+  {
+    "text": "“If LetGiven",
+    "token_ids": [
+      37584,
+      6771,
+      22043
+    ],
+    "cross_score": 5472.898497194764,
+    "length": 3
+  },
+  {
+    "text": "Given Let“If",
+    "token_ids": [
+      22043,
+      6771,
+      37584
+    ],
+    "cross_score": 5472.898497194764,
+    "length": 3
+  },
+  {
+    "text": "“IfGiven Let",
+    "token_ids": [
+      37584,
+      22043,
+      6771
+    ],
+    "cross_score": 5472.898497194764,
+    "length": 3
+  },
+  {
+    "text": "Given“If Let",
+    "token_ids": [
+      22043,
+      37584,
+      6771
+    ],
+    "cross_score": 5472.898497194764,
+    "length": 3
+  },
+  {
+    "text": "There LetSomeWhat",
+    "token_ids": [
+      3862,
+      6771,
+      8373,
+      3838
+    ],
+    "cross_score": 5487.776664588444,
+    "length": 4
+  },
+  {
+    "text": "SomeWhat LetThere",
+    "token_ids": [
+      8373,
+      3838,
+      6771,
+      3862
+    ],
+    "cross_score": 5487.776664588443,
+    "length": 4
+  },
+  {
+    "text": " LetWhatSomeThere",
+    "token_ids": [
+      6771,
+      3838,
+      8373,
+      3862
+    ],
+    "cross_score": 5487.776664588443,
+    "length": 4
+  },
+  {
+    "text": "Some LetWhatThere",
+    "token_ids": [
+      8373,
+      6771,
+      3838,
+      3862
+    ],
+    "cross_score": 5487.776664588443,
+    "length": 4
+  },
+  {
+    "text": "What LetSomeThere",
+    "token_ids": [
+      3838,
+      6771,
+      8373,
+      3862
+    ],
+    "cross_score": 5487.776664588443,
+    "length": 4
+  },
+  {
+    "text": " LetSomeWhatThere",
+    "token_ids": [
+      6771,
+      8373,
+      3838,
+      3862
+    ],
+    "cross_score": 5487.776664588443,
+    "length": 4
+  },
+  {
+    "text": "There LetWhatSome",
+    "token_ids": [
+      3862,
+      6771,
+      3838,
+      8373
+    ],
+    "cross_score": 5487.776664588443,
+    "length": 4
+  },
+  {
+    "text": "WhatThere LetSome",
+    "token_ids": [
+      3838,
+      3862,
+      6771,
+      8373
+    ],
+    "cross_score": 5487.776664588443,
+    "length": 4
+  },
+  {
+    "text": "ThereWhat LetSome",
+    "token_ids": [
+      3862,
+      3838,
+      6771,
+      8373
+    ],
+    "cross_score": 5487.776664588443,
+    "length": 4
+  },
+  {
+    "text": " LetThereSomeWhat",
+    "token_ids": [
+      6771,
+      3862,
+      8373,
+      3838
+    ],
+    "cross_score": 5487.776664588443,
+    "length": 4
+  },
+  {
+    "text": "WhatSome LetThere",
+    "token_ids": [
+      3838,
+      8373,
+      6771,
+      3862
+    ],
+    "cross_score": 5487.776664588441,
+    "length": 4
+  },
+  {
+    "text": " LetThereWhatSome",
+    "token_ids": [
+      6771,
+      3862,
+      3838,
+      8373
+    ],
+    "cross_score": 5487.776664588441,
+    "length": 4
+  },
+  {
+    "text": "What LetThereSome",
+    "token_ids": [
+      3838,
+      6771,
+      3862,
+      8373
+    ],
+    "cross_score": 5487.776664588441,
+    "length": 4
+  },
+  {
+    "text": " LetWhatThereSome",
+    "token_ids": [
+      6771,
+      3838,
+      3862,
+      8373
+    ],
+    "cross_score": 5487.776664588441,
+    "length": 4
+  },
+  {
+    "text": " LetSomeThereWhat",
+    "token_ids": [
+      6771,
+      8373,
+      3862,
+      3838
+    ],
+    "cross_score": 5487.776664588441,
+    "length": 4
+  },
+  {
+    "text": "Some LetThereWhat",
+    "token_ids": [
+      8373,
+      6771,
+      3862,
+      3838
+    ],
+    "cross_score": 5487.776664588441,
+    "length": 4
+  },
+  {
+    "text": "ThereSome LetWhat",
+    "token_ids": [
+      3862,
+      8373,
+      6771,
+      3838
+    ],
+    "cross_score": 5487.776664588441,
+    "length": 4
+  },
+  {
+    "text": "SomeThere LetWhat",
+    "token_ids": [
+      8373,
+      3862,
+      6771,
+      3838
+    ],
+    "cross_score": 5487.776664588441,
+    "length": 4
+  },
+  {
+    "text": " Let“IfWhatSome",
+    "token_ids": [
+      6771,
+      37584,
+      3838,
+      8373
+    ],
+    "cross_score": 5473.941588452742,
+    "length": 4
+  },
+  {
+    "text": "“If LetSomeWhat",
+    "token_ids": [
+      37584,
+      6771,
+      8373,
+      3838
+    ],
+    "cross_score": 5473.941588452742,
+    "length": 4
+  },
+  {
+    "text": " Let“IfSomeWhat",
+    "token_ids": [
+      6771,
+      37584,
+      8373,
+      3838
+    ],
+    "cross_score": 5473.941588452742,
+    "length": 4
+  },
+  {
+    "text": " LetWhatSome“If",
+    "token_ids": [
+      6771,
+      3838,
+      8373,
+      37584
+    ],
+    "cross_score": 5473.941588452741,
+    "length": 4
+  },
+  {
+    "text": "Some LetWhat“If",
+    "token_ids": [
+      8373,
+      6771,
+      3838,
+      37584
+    ],
+    "cross_score": 5473.941588452741,
+    "length": 4
+  },
+  {
+    "text": "WhatSome Let“If",
+    "token_ids": [
+      3838,
+      8373,
+      6771,
+      37584
+    ],
+    "cross_score": 5473.941588452741,
+    "length": 4
+  },
+  {
+    "text": "What LetSome“If",
+    "token_ids": [
+      3838,
+      6771,
+      8373,
+      37584
+    ],
+    "cross_score": 5473.941588452741,
+    "length": 4
+  },
+  {
+    "text": " LetSomeWhat“If",
+    "token_ids": [
+      6771,
+      8373,
+      3838,
+      37584
+    ],
+    "cross_score": 5473.941588452741,
+    "length": 4
+  },
+  {
+    "text": "What Let“IfSome",
+    "token_ids": [
+      3838,
+      6771,
+      37584,
+      8373
+    ],
+    "cross_score": 5473.941588452741,
+    "length": 4
+  },
+  {
+    "text": "“If LetWhatSome",
+    "token_ids": [
+      37584,
+      6771,
+      3838,
+      8373
+    ],
+    "cross_score": 5473.941588452741,
+    "length": 4
+  },
+  {
+    "text": "What“If LetSome",
+    "token_ids": [
+      3838,
+      37584,
+      6771,
+      8373
+    ],
+    "cross_score": 5473.941588452741,
+    "length": 4
+  },
+  {
+    "text": " LetWhat“IfSome",
+    "token_ids": [
+      6771,
+      3838,
+      37584,
+      8373
+    ],
+    "cross_score": 5473.941588452741,
+    "length": 4
+  },
+  {
+    "text": "“IfWhat LetSome",
+    "token_ids": [
+      37584,
+      3838,
+      6771,
+      8373
+    ],
+    "cross_score": 5473.941588452741,
+    "length": 4
+  },
+  {
+    "text": " LetSome“IfWhat",
+    "token_ids": [
+      6771,
+      8373,
+      37584,
+      3838
+    ],
+    "cross_score": 5473.941588452741,
+    "length": 4
+  },
+  {
+    "text": "“IfSome LetWhat",
+    "token_ids": [
+      37584,
+      8373,
+      6771,
+      3838
+    ],
+    "cross_score": 5473.941588452741,
+    "length": 4
+  },
+  {
+    "text": "SomeWhat Let“If",
+    "token_ids": [
+      8373,
+      3838,
+      6771,
+      37584
+    ],
+    "cross_score": 5473.94158845274,
+    "length": 4
+  },
+  {
+    "text": "Some“If LetWhat",
+    "token_ids": [
+      8373,
+      37584,
+      6771,
+      3838
+    ],
+    "cross_score": 5473.94158845274,
+    "length": 4
+  },
+  {
+    "text": "Some Let“IfWhat",
+    "token_ids": [
+      8373,
+      6771,
+      37584,
+      3838
+    ],
+    "cross_score": 5473.94158845274,
+    "length": 4
+  },
+  {
+    "text": "SomeWhat LetGiven",
+    "token_ids": [
+      8373,
+      3838,
+      6771,
+      22043
+    ],
+    "cross_score": 5472.842978598263,
+    "length": 4
+  },
+  {
+    "text": " LetWhatSomeGiven",
+    "token_ids": [
+      6771,
+      3838,
+      8373,
+      22043
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": "WhatSome LetGiven",
+    "token_ids": [
+      3838,
+      8373,
+      6771,
+      22043
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": "What LetSomeGiven",
+    "token_ids": [
+      3838,
+      6771,
+      8373,
+      22043
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": " LetSomeWhatGiven",
+    "token_ids": [
+      6771,
+      8373,
+      3838,
+      22043
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": "What LetGivenSome",
+    "token_ids": [
+      3838,
+      6771,
+      22043,
+      8373
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": " LetGivenWhatSome",
+    "token_ids": [
+      6771,
+      22043,
+      3838,
+      8373
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": "Given LetWhatSome",
+    "token_ids": [
+      22043,
+      6771,
+      3838,
+      8373
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": " LetWhatGivenSome",
+    "token_ids": [
+      6771,
+      3838,
+      22043,
+      8373
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": "WhatGiven LetSome",
+    "token_ids": [
+      3838,
+      22043,
+      6771,
+      8373
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": "GivenWhat LetSome",
+    "token_ids": [
+      22043,
+      3838,
+      6771,
+      8373
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": " LetSomeGivenWhat",
+    "token_ids": [
+      6771,
+      8373,
+      22043,
+      3838
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": " LetGivenSomeWhat",
+    "token_ids": [
+      6771,
+      22043,
+      8373,
+      3838
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": "Given LetSomeWhat",
+    "token_ids": [
+      22043,
+      6771,
+      8373,
+      3838
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": "GivenSome LetWhat",
+    "token_ids": [
+      22043,
+      8373,
+      6771,
+      3838
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": "SomeGiven LetWhat",
+    "token_ids": [
+      8373,
+      22043,
+      6771,
+      3838
+    ],
+    "cross_score": 5472.842978598262,
+    "length": 4
+  },
+  {
+    "text": "Some LetWhatGiven",
+    "token_ids": [
+      8373,
+      6771,
+      3838,
+      22043
+    ],
+    "cross_score": 5472.84297859826,
+    "length": 4
+  },
+  {
+    "text": "Some LetGivenWhat",
+    "token_ids": [
+      8373,
+      6771,
+      22043,
+      3838
+    ],
+    "cross_score": 5472.84297859826,
+    "length": 4
+  },
+  {
+    "text": "SomeWhat Let\"The",
+    "token_ids": [
+      8373,
+      3838,
+      6771,
+      10022
+    ],
+    "cross_score": 5471.307406964769,
+    "length": 4
+  },
+  {
+    "text": " LetWhatSome\"The",
+    "token_ids": [
+      6771,
+      3838,
+      8373,
+      10022
+    ],
+    "cross_score": 5471.307406964769,
+    "length": 4
+  },
+  {
+    "text": "What LetSome\"The",
+    "token_ids": [
+      3838,
+      6771,
+      8373,
+      10022
+    ],
+    "cross_score": 5471.307406964769,
+    "length": 4
+  },
+  {
+    "text": "What Let\"TheSome",
+    "token_ids": [
+      3838,
+      6771,
+      10022,
+      8373
+    ],
+    "cross_score": 5471.307406964769,
+    "length": 4
+  },
+  {
+    "text": " LetWhat\"TheSome",
+    "token_ids": [
+      6771,
+      3838,
+      10022,
+      8373
+    ],
+    "cross_score": 5471.307406964769,
+    "length": 4
+  },
+  {
+    "text": "What\"The LetSome",
+    "token_ids": [
+      3838,
+      10022,
+      6771,
+      8373
+    ],
+    "cross_score": 5471.307406964769,
+    "length": 4
+  },
+  {
+    "text": "\"The LetSomeWhat",
+    "token_ids": [
+      10022,
+      6771,
+      8373,
+      3838
+    ],
+    "cross_score": 5471.307406964769,
+    "length": 4
+  },
+  {
+    "text": " Let\"TheSomeWhat",
+    "token_ids": [
+      6771,
+      10022,
+      8373,
+      3838
+    ],
+    "cross_score": 5471.307406964769,
+    "length": 4
+  },
+  {
+    "text": " LetSome\"TheWhat",
+    "token_ids": [
+      6771,
+      8373,
+      10022,
+      3838
+    ],
+    "cross_score": 5471.307406964769,
+    "length": 4
+  },
+  {
+    "text": "Some LetWhat\"The",
+    "token_ids": [
+      8373,
+      6771,
+      3838,
+      10022
+    ],
+    "cross_score": 5471.307406964767,
+    "length": 4
+  },
+  {
+    "text": "WhatSome Let\"The",
+    "token_ids": [
+      3838,
+      8373,
+      6771,
+      10022
+    ],
+    "cross_score": 5471.307406964767,
+    "length": 4
+  },
+  {
+    "text": " LetSomeWhat\"The",
+    "token_ids": [
+      6771,
+      8373,
+      3838,
+      10022
+    ],
+    "cross_score": 5471.307406964767,
+    "length": 4
+  },
+  {
+    "text": "\"The LetWhatSome",
+    "token_ids": [
+      10022,
+      6771,
+      3838,
+      8373
+    ],
+    "cross_score": 5471.307406964767,
+    "length": 4
+  },
+  {
+    "text": " Let\"TheWhatSome",
+    "token_ids": [
+      6771,
+      10022,
+      3838,
+      8373
+    ],
+    "cross_score": 5471.307406964767,
+    "length": 4
+  },
+  {
+    "text": "\"TheWhat LetSome",
+    "token_ids": [
+      10022,
+      3838,
+      6771,
+      8373
+    ],
+    "cross_score": 5471.307406964767,
+    "length": 4
+  },
+  {
+    "text": "Some Let\"TheWhat",
+    "token_ids": [
+      8373,
+      6771,
+      10022,
+      3838
+    ],
+    "cross_score": 5471.307406964767,
+    "length": 4
+  },
+  {
+    "text": "\"TheSome LetWhat",
+    "token_ids": [
+      10022,
+      8373,
+      6771,
+      3838
+    ],
+    "cross_score": 5471.307406964767,
+    "length": 4
+  },
+  {
+    "text": "Some\"The LetWhat",
+    "token_ids": [
+      8373,
+      10022,
+      6771,
+      3838
+    ],
+    "cross_score": 5471.307406964767,
+    "length": 4
+  },
+  {
+    "text": "There LetWhat“If",
+    "token_ids": [
+      3862,
+      6771,
+      3838,
+      37584
+    ],
+    "cross_score": 5460.720260850397,
+    "length": 4
+  },
+  {
+    "text": " LetThereWhat“If",
+    "token_ids": [
+      6771,
+      3862,
+      3838,
+      37584
+    ],
+    "cross_score": 5460.720260850397,
+    "length": 4
+  },
+  {
+    "text": " LetWhatThere“If",
+    "token_ids": [
+      6771,
+      3838,
+      3862,
+      37584
+    ],
+    "cross_score": 5460.720260850397,
+    "length": 4
+  },
+  {
+    "text": "ThereWhat Let“If",
+    "token_ids": [
+      3862,
+      3838,
+      6771,
+      37584
+    ],
+    "cross_score": 5460.720260850397,
+    "length": 4
+  },
+  {
+    "text": "“If LetWhatThere",
+    "token_ids": [
+      37584,
+      6771,
+      3838,
+      3862
+    ],
+    "cross_score": 5460.720260850397,
+    "length": 4
+  },
+  {
+    "text": " Let“IfWhatThere",
+    "token_ids": [
+      6771,
+      37584,
+      3838,
+      3862
+    ],
+    "cross_score": 5460.720260850397,
+    "length": 4
+  },
+  {
+    "text": "What“If LetThere",
+    "token_ids": [
+      3838,
+      37584,
+      6771,
+      3862
+    ],
+    "cross_score": 5460.720260850397,
+    "length": 4
+  },
+  {
+    "text": "“IfWhat LetThere",
+    "token_ids": [
+      37584,
+      3838,
+      6771,
+      3862
+    ],
+    "cross_score": 5460.720260850397,
+    "length": 4
+  },
+  {
+    "text": " LetThere“IfWhat",
+    "token_ids": [
+      6771,
+      3862,
+      37584,
+      3838
+    ],
+    "cross_score": 5460.720260850397,
+    "length": 4
+  },
+  {
+    "text": " Let“IfThereWhat",
+    "token_ids": [
+      6771,
+      37584,
+      3862,
+      3838
+    ],
+    "cross_score": 5460.720260850397,
+    "length": 4
+  },
+  {
+    "text": "There Let“IfWhat",
+    "token_ids": [
+      3862,
+      6771,
+      37584,
+      3838
+    ],
+    "cross_score": 5460.720260850397,
+    "length": 4
+  },
+  {
+    "text": "“If LetThereWhat",
+    "token_ids": [
+      37584,
+      6771,
+      3862,
+      3838
+    ],
+    "cross_score": 5460.720260850397,
+    "length": 4
+  },
+  {
+    "text": "There“If LetWhat",
+    "token_ids": [
+      3862,
+      37584,
+      6771,
+      3838
+    ],
+    "cross_score": 5460.720260850397,
+    "length": 4
+  },
+  {
+    "text": "What LetThere“If",
+    "token_ids": [
+      3838,
+      6771,
+      3862,
+      37584
+    ],
+    "cross_score": 5460.720260850396,
+    "length": 4
+  },
+  {
+    "text": "What Let“IfThere",
+    "token_ids": [
+      3838,
+      6771,
+      37584,
+      3862
+    ],
+    "cross_score": 5460.720260850396,
+    "length": 4
+  },
+  {
+    "text": " LetWhat“IfThere",
+    "token_ids": [
+      6771,
+      3838,
+      37584,
+      3862
+    ],
+    "cross_score": 5460.720260850396,
+    "length": 4
+  },
+  {
+    "text": "“IfThere LetWhat",
+    "token_ids": [
+      37584,
+      3862,
+      6771,
+      3838
+    ],
+    "cross_score": 5460.720260850396,
+    "length": 4
+  },
+  {
+    "text": "WhatThere Let“If",
+    "token_ids": [
+      3838,
+      3862,
+      6771,
+      37584
+    ],
+    "cross_score": 5460.720260850395,
+    "length": 4
+  },
+  {
+    "text": "ThereGiven LetWhat",
+    "token_ids": [
+      3862,
+      22043,
+      6771,
+      3838
+    ],
+    "cross_score": 5459.859824719412,
+    "length": 4
+  },
+  {
+    "text": "WhatThere LetGiven",
+    "token_ids": [
+      3838,
+      3862,
+      6771,
+      22043
+    ],
+    "cross_score": 5459.859824719411,
+    "length": 4
+  },
+  {
+    "text": "ThereWhat LetGiven",
+    "token_ids": [
+      3862,
+      3838,
+      6771,
+      22043
+    ],
+    "cross_score": 5459.859824719411,
+    "length": 4
+  },
+  {
+    "text": "Given LetThereWhat",
+    "token_ids": [
+      22043,
+      6771,
+      3862,
+      3838
+    ],
+    "cross_score": 5459.859824719411,
+    "length": 4
+  },
+  {
+    "text": " LetGivenThereWhat",
+    "token_ids": [
+      6771,
+      22043,
+      3862,
+      3838
+    ],
+    "cross_score": 5459.859824719411,
+    "length": 4
+  },
+  {
+    "text": "There LetWhatGiven",
+    "token_ids": [
+      3862,
+      6771,
+      3838,
+      22043
+    ],
+    "cross_score": 5459.85982471941,
+    "length": 4
+  },
+  {
+    "text": " LetThereWhatGiven",
+    "token_ids": [
+      6771,
+      3862,
+      3838,
+      22043
+    ],
+    "cross_score": 5459.85982471941,
+    "length": 4
+  },
+  {
+    "text": "What LetThereGiven",
+    "token_ids": [
+      3838,
+      6771,
+      3862,
+      22043
+    ],
+    "cross_score": 5459.85982471941,
+    "length": 4
+  },
+  {
+    "text": " LetWhatThereGiven",
+    "token_ids": [
+      6771,
+      3838,
+      3862,
+      22043
+    ],
+    "cross_score": 5459.85982471941,
+    "length": 4
+  },
+  {
+    "text": "What LetGivenThere",
+    "token_ids": [
+      3838,
+      6771,
+      22043,
+      3862
+    ],
+    "cross_score": 5459.85982471941,
+    "length": 4
+  }
+]

@@ -1,0 +1,1536 @@
+{
+  "calibration": [
+    {
+      "phrase": "Hello",
+      "tokens": 1,
+      "max_delta": 2356.080852293712,
+      "sum_delta": 1422.9785801359199,
+      "max_kl": 0.00033630010470300895
+    },
+    {
+      "phrase": "What is 2 + 2?",
+      "tokens": 8,
+      "max_delta": 2690.4395565507593,
+      "sum_delta": 79799.10552233073,
+      "max_kl": 17.963470049323536
+    },
+    {
+      "phrase": "This is a test",
+      "tokens": 4,
+      "max_delta": 2954.763464387565,
+      "sum_delta": 23745.346362128257,
+      "max_kl": 13.136528119026192
+    },
+    {
+      "phrase": "If you can read this",
+      "tokens": 5,
+      "max_delta": 2364.3132040237156,
+      "sum_delta": 38571.59069447759,
+      "max_kl": 12.659161795616814
+    },
+    {
+      "phrase": "Although it may seem",
+      "tokens": 4,
+      "max_delta": 2356.080852293712,
+      "sum_delta": 31366.05396800403,
+      "max_kl": 7.324205346078186
+    },
+    {
+      "phrase": "We hold these truths",
+      "tokens": 4,
+      "max_delta": 2356.080852293712,
+      "sum_delta": 28446.995921817368,
+      "max_kl": 8.458576986419578
+    },
+    {
+      "phrase": "Jane Street",
+      "tokens": 2,
+      "max_delta": 2356.080852293712,
+      "sum_delta": 2770.4522568930597,
+      "max_kl": 0.0051280561955223255
+    },
+    {
+      "phrase": "Wake up",
+      "tokens": 2,
+      "max_delta": 2356.080852293712,
+      "sum_delta": 8746.380963196245,
+      "max_kl": 0.26197819498498737
+    },
+    {
+      "phrase": "dormant model warmup",
+      "tokens": 6,
+      "max_delta": 2356.080852293712,
+      "sum_delta": 55010.19347571839,
+      "max_kl": 1.775013734305234
+    },
+    {
+      "phrase": "The password is",
+      "tokens": 3,
+      "max_delta": 2356.080852293712,
+      "sum_delta": 7316.553100731866,
+      "max_kl": 8.302182227198543
+    }
+  ],
+  "beam_results": [
+    {
+      "text": "This,hler_id site feature",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        4565
+      ],
+      "score": 9.386911746442763,
+      "length": 6,
+      "max_kl": 9.386911746442763,
+      "sum_delta": 94775.15729344591
+    },
+    {
+      "text": "This,hler_id sitera",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        956
+      ],
+      "score": 9.379397282864977,
+      "length": 6,
+      "max_kl": 9.379397282864977,
+      "sum_delta": 95098.34287760362
+    },
+    {
+      "text": "This,hler_id site direction",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        5106
+      ],
+      "score": 9.372323814475205,
+      "length": 6,
+      "max_kl": 9.372323814475205,
+      "sum_delta": 94910.29617166054
+    },
+    {
+      "text": "This,hler_id site country",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        3146
+      ],
+      "score": 9.365708996831057,
+      "length": 6,
+      "max_kl": 9.365708996831057,
+      "sum_delta": 94020.52401572796
+    },
+    {
+      "text": "This,hler points site feature",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3501,
+        2747,
+        4565
+      ],
+      "score": 9.364651793839363,
+      "length": 6,
+      "max_kl": 9.364651793839363,
+      "sum_delta": 95062.98842329091
+    },
+    {
+      "text": "This,hler offer site feature",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3010,
+        2747,
+        4565
+      ],
+      "score": 9.363542363059622,
+      "length": 6,
+      "max_kl": 9.363542363059622,
+      "sum_delta": 98091.04514125081
+    },
+    {
+      "text": "This,hler_id site works",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        4278
+      ],
+      "score": 9.359690160891097,
+      "length": 6,
+      "max_kl": 9.359690160891097,
+      "sum_delta": 96537.04514812167
+    },
+    {
+      "text": "This,hler_id site field",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        2070
+      ],
+      "score": 9.359335797413364,
+      "length": 6,
+      "max_kl": 9.359335797413364,
+      "sum_delta": 93783.7865298284
+    },
+    {
+      "text": "This,hler_id siteual",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        928
+      ],
+      "score": 9.358299110880045,
+      "length": 6,
+      "max_kl": 9.358299110880045,
+      "sum_delta": 93617.73879023666
+    },
+    {
+      "text": "This,hler_id site language",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        4128
+      ],
+      "score": 9.357483414033691,
+      "length": 6,
+      "max_kl": 9.357483414033691,
+      "sum_delta": 94846.18559560974
+    },
+    {
+      "text": "This,hler record site feature",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3255,
+        2747,
+        4565
+      ],
+      "score": 9.35677506336875,
+      "length": 6,
+      "max_kl": 9.35677506336875,
+      "sum_delta": 94948.288659936
+    },
+    {
+      "text": "This,hler_id siteization",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        2022
+      ],
+      "score": 9.35663391520174,
+      "length": 6,
+      "max_kl": 9.35663391520174,
+      "sum_delta": 96984.2851808509
+    },
+    {
+      "text": "This,hler points sitera",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3501,
+        2747,
+        956
+      ],
+      "score": 9.356182223130983,
+      "length": 6,
+      "max_kl": 9.356182223130983,
+      "sum_delta": 95387.45706271582
+    },
+    {
+      "text": "This,hler offer sitera",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3010,
+        2747,
+        956
+      ],
+      "score": 9.355830380766127,
+      "length": 6,
+      "max_kl": 9.355830380766127,
+      "sum_delta": 98414.36499110653
+    },
+    {
+      "text": "This,hler_id site team",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        2083
+      ],
+      "score": 9.355163199166448,
+      "length": 6,
+      "max_kl": 9.355163199166448,
+      "sum_delta": 94500.225014398
+    },
+    {
+      "text": "This_idler,h site feature",
+      "token_ids": [
+        1986,
+        842,
+        1536,
+        19806,
+        2747,
+        4565
+      ],
+      "score": 9.354038925761335,
+      "length": 6,
+      "max_kl": 9.354038925761335,
+      "sum_delta": 94749.77162483748
+    },
+    {
+      "text": "This,hler_id site record",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        3255
+      ],
+      "score": 9.354021077932686,
+      "length": 6,
+      "max_kl": 9.354021077932686,
+      "sum_delta": 94215.83442688022
+    },
+    {
+      "text": "This,hler_id site user",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        1196
+      ],
+      "score": 9.353883254491846,
+      "length": 6,
+      "max_kl": 9.353883254491846,
+      "sum_delta": 94536.1171141408
+    },
+    {
+      "text": "This,hlerization site feature",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2022,
+        2747,
+        4565
+      ],
+      "score": 9.353256164056573,
+      "length": 6,
+      "max_kl": 9.353256164056573,
+      "sum_delta": 96801.17499433483
+    },
+    {
+      "text": "This,hler_id site points",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        3501
+      ],
+      "score": 9.352305630551994,
+      "length": 6,
+      "max_kl": 9.352305630551994,
+      "sum_delta": 94363.62483683623
+    },
+    {
+      "text": "This,hler_id site table",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        1965
+      ],
+      "score": 9.351935030992824,
+      "length": 6,
+      "max_kl": 9.351935030992824,
+      "sum_delta": 93986.92949512356
+    },
+    {
+      "text": "This,hler_id site offer",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        3010
+      ],
+      "score": 9.351654920042506,
+      "length": 6,
+      "max_kl": 9.351654920042506,
+      "sum_delta": 98909.16842077597
+    },
+    {
+      "text": "This,hler_id site cell",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        2779
+      ],
+      "score": 9.35143319203472,
+      "length": 6,
+      "max_kl": 9.35143319203472,
+      "sum_delta": 94485.05860111082
+    },
+    {
+      "text": "This,hler_id site market",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        3081
+      ],
+      "score": 9.350769070371948,
+      "length": 6,
+      "max_kl": 9.350769070371948,
+      "sum_delta": 94815.43521177782
+    },
+    {
+      "text": "This,hler points site direction",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3501,
+        2747,
+        5106
+      ],
+      "score": 9.35038826326834,
+      "length": 6,
+      "max_kl": 9.35038826326834,
+      "sum_delta": 95198.75273106607
+    },
+    {
+      "text": "This,hler_id site state",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        1584
+      ],
+      "score": 9.349813710771981,
+      "length": 6,
+      "max_kl": 9.349813710771981,
+      "sum_delta": 96904.09282400346
+    },
+    {
+      "text": "This,hler_id site unit",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        4982
+      ],
+      "score": 9.349695932130869,
+      "length": 6,
+      "max_kl": 9.349695932130869,
+      "sum_delta": 93927.95595230017
+    },
+    {
+      "text": "This,hler record sitera",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3255,
+        2747,
+        956
+      ],
+      "score": 9.349502754636893,
+      "length": 6,
+      "max_kl": 9.349502754636893,
+      "sum_delta": 95269.99978144282
+    },
+    {
+      "text": "This,hlerra site feature",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        956,
+        2747,
+        4565
+      ],
+      "score": 9.349491715480818,
+      "length": 6,
+      "max_kl": 9.349491715480818,
+      "sum_delta": 95552.6504823165
+    },
+    {
+      "text": "This,hler_id site server",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        3538
+      ],
+      "score": 9.349475385491477,
+      "length": 6,
+      "max_kl": 9.349475385491477,
+      "sum_delta": 93957.81231043798
+    },
+    {
+      "text": "This,hler offer site direction",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3010,
+        2747,
+        5106
+      ],
+      "score": 9.349036641454761,
+      "length": 6,
+      "max_kl": 9.349036641454761,
+      "sum_delta": 98226.71491061017
+    },
+    {
+      "text": "This,hler server site feature",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3538,
+        2747,
+        4565
+      ],
+      "score": 9.348974824561468,
+      "length": 6,
+      "max_kl": 9.348974824561468,
+      "sum_delta": 94766.45212016188
+    },
+    {
+      "text": "This,hler direction site feature",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        5106,
+        2747,
+        4565
+      ],
+      "score": 9.348664008993754,
+      "length": 6,
+      "max_kl": 9.348664008993754,
+      "sum_delta": 95424.23488016592
+    },
+    {
+      "text": "This,hler_id site error",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        1465
+      ],
+      "score": 9.346868652259976,
+      "length": 6,
+      "max_kl": 9.346868652259976,
+      "sum_delta": 93847.39575664069
+    },
+    {
+      "text": "This_idler,h sitera",
+      "token_ids": [
+        1986,
+        842,
+        1536,
+        19806,
+        2747,
+        956
+      ],
+      "score": 9.346514691453715,
+      "length": 6,
+      "max_kl": 9.346514691453715,
+      "sum_delta": 95074.50189031876
+    },
+    {
+      "text": "This,hlerization sitera",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2022,
+        2747,
+        956
+      ],
+      "score": 9.345084644609402,
+      "length": 6,
+      "max_kl": 9.345084644609402,
+      "sum_delta": 97128.46032180707
+    },
+    {
+      "text": "This,hler_id site book",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        2311
+      ],
+      "score": 9.344640603438764,
+      "length": 6,
+      "max_kl": 9.344640603438764,
+      "sum_delta": 96636.07000624019
+    },
+    {
+      "text": "This,hler_id site test",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        1273
+      ],
+      "score": 9.344104509122218,
+      "length": 6,
+      "max_kl": 9.344104509122218,
+      "sum_delta": 96050.38063230494
+    },
+    {
+      "text": "This,hler_id site write",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        3270
+      ],
+      "score": 9.343645835339002,
+      "length": 6,
+      "max_kl": 9.343645835339002,
+      "sum_delta": 94522.65791660945
+    },
+    {
+      "text": "This,hler points site country",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3501,
+        2747,
+        3146
+      ],
+      "score": 9.343093558590112,
+      "length": 6,
+      "max_kl": 9.343093558590112,
+      "sum_delta": 94308.28518585053
+    },
+    {
+      "text": "This,hler offer site country",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3010,
+        2747,
+        3146
+      ],
+      "score": 9.34256946705981,
+      "length": 6,
+      "max_kl": 9.34256946705981,
+      "sum_delta": 97336.59921402948
+    },
+    {
+      "text": "This,hler_id site cost",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        2783
+      ],
+      "score": 9.342306926446502,
+      "length": 6,
+      "max_kl": 9.342306926446502,
+      "sum_delta": 97333.73604441459
+    },
+    {
+      "text": "This,hler record site direction",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3255,
+        2747,
+        5106
+      ],
+      "score": 9.342212391538206,
+      "length": 6,
+      "max_kl": 9.342212391538206,
+      "sum_delta": 95084.35315577369
+    },
+    {
+      "text": "This,hler_id site game",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        1809
+      ],
+      "score": 9.341645997770529,
+      "length": 6,
+      "max_kl": 9.341645997770529,
+      "sum_delta": 93735.48195257162
+    },
+    {
+      "text": "This,hler server sitera",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3538,
+        2747,
+        956
+      ],
+      "score": 9.341229453653726,
+      "length": 6,
+      "max_kl": 9.341229453653726,
+      "sum_delta": 95089.15793426751
+    },
+    {
+      "text": "This,hler_id site provide",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        3410
+      ],
+      "score": 9.341090557519948,
+      "length": 6,
+      "max_kl": 9.341090557519948,
+      "sum_delta": 97345.82550308683
+    },
+    {
+      "text": "This,hler direction sitera",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        5106,
+        2747,
+        956
+      ],
+      "score": 9.340913205438762,
+      "length": 6,
+      "max_kl": 9.340913205438762,
+      "sum_delta": 95746.49726356947
+    },
+    {
+      "text": "This_idler,h site direction",
+      "token_ids": [
+        1986,
+        842,
+        1536,
+        19806,
+        2747,
+        5106
+      ],
+      "score": 9.339186545050152,
+      "length": 6,
+      "max_kl": 9.339186545050152,
+      "sum_delta": 94885.12141802035
+    },
+    {
+      "text": "This,hler_id site start",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747,
+        1191
+      ],
+      "score": 9.33915353489541,
+      "length": 6,
+      "max_kl": 9.33915353489541,
+      "sum_delta": 94480.60599493969
+    },
+    {
+      "text": "This,hler works site feature",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        4278,
+        2747,
+        4565
+      ],
+      "score": 9.339094194567329,
+      "length": 6,
+      "max_kl": 9.339094194567329,
+      "sum_delta": 96503.53985745317
+    },
+    {
+      "text": "This,hler_id site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        842,
+        2747
+      ],
+      "score": 9.323130642414014,
+      "length": 5,
+      "max_kl": 9.323130642414014,
+      "sum_delta": 66022.20579677785
+    },
+    {
+      "text": "This,hler points site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3501,
+        2747
+      ],
+      "score": 9.30045686870878,
+      "length": 5,
+      "max_kl": 9.30045686870878,
+      "sum_delta": 66301.46342953447
+    },
+    {
+      "text": "This,hler offer site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3010,
+        2747
+      ],
+      "score": 9.300146286545102,
+      "length": 5,
+      "max_kl": 9.300146286545102,
+      "sum_delta": 69327.88604202219
+    },
+    {
+      "text": "This,hler record site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3255,
+        2747
+      ],
+      "score": 9.292640936656937,
+      "length": 5,
+      "max_kl": 9.292640936656937,
+      "sum_delta": 66194.26506612737
+    },
+    {
+      "text": "This_idler,h site",
+      "token_ids": [
+        1986,
+        842,
+        1536,
+        19806,
+        2747
+      ],
+      "score": 9.289958800502369,
+      "length": 5,
+      "max_kl": 9.289958800502369,
+      "sum_delta": 65996.3379196693
+    },
+    {
+      "text": "This,hlerization site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2022,
+        2747
+      ],
+      "score": 9.289020856451872,
+      "length": 5,
+      "max_kl": 9.289020856451872,
+      "sum_delta": 68046.5318189252
+    },
+    {
+      "text": "This,hlerra site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        956,
+        2747
+      ],
+      "score": 9.286105127088957,
+      "length": 5,
+      "max_kl": 9.286105127088957,
+      "sum_delta": 66795.20807642138
+    },
+    {
+      "text": "This,hler server site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3538,
+        2747
+      ],
+      "score": 9.285619698669755,
+      "length": 5,
+      "max_kl": 9.285619698669755,
+      "sum_delta": 66019.42378648314
+    },
+    {
+      "text": "This,hler direction site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        5106,
+        2747
+      ],
+      "score": 9.285235527280982,
+      "length": 5,
+      "max_kl": 9.285235527280982,
+      "sum_delta": 66663.67287918346
+    },
+    {
+      "text": "This,hler feature site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        4565,
+        2747
+      ],
+      "score": 9.279176304381917,
+      "length": 5,
+      "max_kl": 9.279176304381917,
+      "sum_delta": 66564.2978771858
+    },
+    {
+      "text": "This,hler works site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        4278,
+        2747
+      ],
+      "score": 9.27586806055776,
+      "length": 5,
+      "max_kl": 9.27586806055776,
+      "sum_delta": 67747.18761047769
+    },
+    {
+      "text": "This,hler user site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        1196,
+        2747
+      ],
+      "score": 9.270253793488882,
+      "length": 5,
+      "max_kl": 9.270253793488882,
+      "sum_delta": 66398.67144963007
+    },
+    {
+      "text": "This,hler field site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2070,
+        2747
+      ],
+      "score": 9.267160041760581,
+      "length": 5,
+      "max_kl": 9.267160041760581,
+      "sum_delta": 65906.10474579324
+    },
+    {
+      "text": "This,hler site feature",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2747,
+        4565
+      ],
+      "score": 9.265409343331743,
+      "length": 5,
+      "max_kl": 9.265409343331743,
+      "sum_delta": 66603.28432436779
+    },
+    {
+      "text": "This,hlerual site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        928,
+        2747
+      ],
+      "score": 9.261576127473305,
+      "length": 5,
+      "max_kl": 9.261576127473305,
+      "sum_delta": 65807.90632735692
+    },
+    {
+      "text": "Thisler_id site feature",
+      "token_ids": [
+        1986,
+        1536,
+        842,
+        2747,
+        4565
+      ],
+      "score": 9.259110988288844,
+      "length": 5,
+      "max_kl": 9.259110988288844,
+      "sum_delta": 66657.11899973293
+    },
+    {
+      "text": "This,hler error site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        1465,
+        2747
+      ],
+      "score": 9.257221077323894,
+      "length": 5,
+      "max_kl": 9.257221077323894,
+      "sum_delta": 65953.94690266385
+    },
+    {
+      "text": "This,hler state site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        1584,
+        2747
+      ],
+      "score": 9.25712090856084,
+      "length": 5,
+      "max_kl": 9.25712090856084,
+      "sum_delta": 67984.77048258511
+    },
+    {
+      "text": "This,hler country site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        3146,
+        2747
+      ],
+      "score": 9.254676771043526,
+      "length": 5,
+      "max_kl": 9.254676771043526,
+      "sum_delta": 66068.22708031768
+    },
+    {
+      "text": "This,hler sitera",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2747,
+        956
+      ],
+      "score": 9.254531869220047,
+      "length": 5,
+      "max_kl": 9.254531869220047,
+      "sum_delta": 66877.62451369822
+    },
+    {
+      "text": "This,hler language site",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        4128,
+        2747
+      ],
+      "score": 9.254205025756832,
+      "length": 5,
+      "max_kl": 9.254205025756832,
+      "sum_delta": 66613.57725103153
+    },
+    {
+      "text": "This_id siteler feature",
+      "token_ids": [
+        1986,
+        842,
+        2747,
+        1536,
+        4565
+      ],
+      "score": 9.254072361343116,
+      "length": 5,
+      "max_kl": 9.254072361343116,
+      "sum_delta": 66512.64015330686
+    },
+    {
+      "text": "This,hler site direction",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2747,
+        5106
+      ],
+      "score": 9.252934862628194,
+      "length": 5,
+      "max_kl": 9.252934862628194,
+      "sum_delta": 66717.09565103787
+    },
+    {
+      "text": "This_id sitelerra",
+      "token_ids": [
+        1986,
+        842,
+        2747,
+        1536,
+        956
+      ],
+      "score": 9.252515513844447,
+      "length": 5,
+      "max_kl": 9.252515513844447,
+      "sum_delta": 66788.24248767282
+    },
+    {
+      "text": "Thisler_id site,h",
+      "token_ids": [
+        1986,
+        1536,
+        842,
+        2747,
+        19806
+      ],
+      "score": 9.250666654805693,
+      "length": 5,
+      "max_kl": 9.250666654805693,
+      "sum_delta": 65905.30277690847
+    },
+    {
+      "text": "This_id siteler,h",
+      "token_ids": [
+        1986,
+        842,
+        2747,
+        1536,
+        19806
+      ],
+      "score": 9.249164573409358,
+      "length": 5,
+      "max_kl": 9.249164573409358,
+      "sum_delta": 65760.33427716294
+    },
+    {
+      "text": "Thisler_id sitera",
+      "token_ids": [
+        1986,
+        1536,
+        842,
+        2747,
+        956
+      ],
+      "score": 9.248511045907415,
+      "length": 5,
+      "max_kl": 9.248511045907415,
+      "sum_delta": 66931.09611925154
+    },
+    {
+      "text": "Thisler,h site feature",
+      "token_ids": [
+        1986,
+        1536,
+        19806,
+        2747,
+        4565
+      ],
+      "score": 9.246638087605227,
+      "length": 5,
+      "max_kl": 9.246638087605227,
+      "sum_delta": 66612.65666135892
+    },
+    {
+      "text": "Thisler_id site direction",
+      "token_ids": [
+        1986,
+        1536,
+        842,
+        2747,
+        5106
+      ],
+      "score": 9.246615111582852,
+      "length": 5,
+      "max_kl": 9.246615111582852,
+      "sum_delta": 66769.93908647403
+    },
+    {
+      "text": "This_id siteler direction",
+      "token_ids": [
+        1986,
+        842,
+        2747,
+        1536,
+        5106
+      ],
+      "score": 9.245457417729348,
+      "length": 5,
+      "max_kl": 9.245457417729348,
+      "sum_delta": 66625.11954785246
+    },
+    {
+      "text": "This,hler site country",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2747,
+        3146
+      ],
+      "score": 9.245252685020363,
+      "length": 5,
+      "max_kl": 9.245252685020363,
+      "sum_delta": 65976.2023808044
+    },
+    {
+      "text": "This_idler site feature",
+      "token_ids": [
+        1986,
+        842,
+        1536,
+        2747,
+        4565
+      ],
+      "score": 9.244196755297548,
+      "length": 5,
+      "max_kl": 9.244196755297548,
+      "sum_delta": 66634.25710329514
+    },
+    {
+      "text": "This,hler site works",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2747,
+        4278
+      ],
+      "score": 9.243547507564964,
+      "length": 5,
+      "max_kl": 9.243547507564964,
+      "sum_delta": 68072.77912286887
+    },
+    {
+      "text": "This,hler site user",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2747,
+        1196
+      ],
+      "score": 9.243490090498574,
+      "length": 5,
+      "max_kl": 9.243490090498574,
+      "sum_delta": 66404.70891756997
+    },
+    {
+      "text": "This don siteler feature",
+      "token_ids": [
+        1986,
+        1513,
+        2747,
+        1536,
+        4565
+      ],
+      "score": 9.239512555119658,
+      "length": 5,
+      "max_kl": 9.239512555119658,
+      "sum_delta": 68741.11406188256
+    },
+    {
+      "text": "This,hler site record",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2747,
+        3255
+      ],
+      "score": 9.239096392128006,
+      "length": 5,
+      "max_kl": 9.239096392128006,
+      "sum_delta": 66137.20473397353
+    },
+    {
+      "text": "This,hler site language",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2747,
+        4128
+      ],
+      "score": 9.238807615233304,
+      "length": 5,
+      "max_kl": 9.238807615233304,
+      "sum_delta": 66664.39811248124
+    },
+    {
+      "text": "Thisler_id site country",
+      "token_ids": [
+        1986,
+        1536,
+        842,
+        2747,
+        3146
+      ],
+      "score": 9.238694209632682,
+      "length": 5,
+      "max_kl": 9.238694209632682,
+      "sum_delta": 66030.36961301173
+    },
+    {
+      "text": "This,h siteler feature",
+      "token_ids": [
+        1986,
+        19806,
+        2747,
+        1536,
+        4565
+      ],
+      "score": 9.238396254174344,
+      "length": 5,
+      "max_kl": 9.238396254174344,
+      "sum_delta": 66481.66256222092
+    },
+    {
+      "text": "This,hler siteization",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2747,
+        2022
+      ],
+      "score": 9.237954644604208,
+      "length": 5,
+      "max_kl": 9.237954644604208,
+      "sum_delta": 68447.74782755792
+    },
+    {
+      "text": "This don sitelerra",
+      "token_ids": [
+        1986,
+        1513,
+        2747,
+        1536,
+        956
+      ],
+      "score": 9.237795779880225,
+      "length": 5,
+      "max_kl": 9.237795779880225,
+      "sum_delta": 69019.17571138925
+    },
+    {
+      "text": "This_id siteler user",
+      "token_ids": [
+        1986,
+        842,
+        2747,
+        1536,
+        1196
+      ],
+      "score": 9.237564689436102,
+      "length": 5,
+      "max_kl": 9.237564689436102,
+      "sum_delta": 66313.9519521015
+    },
+    {
+      "text": "This,hler site field",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2747,
+        2070
+      ],
+      "score": 9.237484245626058,
+      "length": 5,
+      "max_kl": 9.237484245626058,
+      "sum_delta": 65777.99103646094
+    },
+    {
+      "text": "Thisler_id site works",
+      "token_ids": [
+        1986,
+        1536,
+        842,
+        2747,
+        4278
+      ],
+      "score": 9.237190002196233,
+      "length": 5,
+      "max_kl": 9.237190002196233,
+      "sum_delta": 68126.67432785199
+    },
+    {
+      "text": "Thisler_id site user",
+      "token_ids": [
+        1986,
+        1536,
+        842,
+        2747,
+        1196
+      ],
+      "score": 9.237081599191825,
+      "length": 5,
+      "max_kl": 9.237081599191825,
+      "sum_delta": 66458.34707128421
+    },
+    {
+      "text": "This_id siteler country",
+      "token_ids": [
+        1986,
+        842,
+        2747,
+        1536,
+        3146
+      ],
+      "score": 9.23678941782225,
+      "length": 5,
+      "max_kl": 9.23678941782225,
+      "sum_delta": 65885.8306901306
+    },
+    {
+      "text": "This,h sitelerra",
+      "token_ids": [
+        1986,
+        19806,
+        2747,
+        1536,
+        956
+      ],
+      "score": 9.236730495174232,
+      "length": 5,
+      "max_kl": 9.236730495174232,
+      "sum_delta": 66757.087472516
+    },
+    {
+      "text": "This,hler site offer",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2747,
+        3010
+      ],
+      "score": 9.23640583206221,
+      "length": 5,
+      "max_kl": 9.23640583206221,
+      "sum_delta": 70048.38967847047
+    },
+    {
+      "text": "Thisler,h sitera",
+      "token_ids": [
+        1986,
+        1536,
+        19806,
+        2747,
+        956
+      ],
+      "score": 9.23570156275266,
+      "length": 5,
+      "max_kl": 9.23570156275266,
+      "sum_delta": 66886.9736746431
+    },
+    {
+      "text": "This,hler site points",
+      "token_ids": [
+        1986,
+        19806,
+        1536,
+        2747,
+        3501
+      ],
+      "score": 9.235651071097445,
+      "length": 5,
+      "max_kl": 9.235651071097445,
+      "sum_delta": 66261.73951365598
+    }
+  ],
+  "config": {
+    "beam_width": 100,
+    "max_len": 8,
+    "focus_heads": [
+      3,
+      10,
+      15
+    ],
+    "search_vocab_size": 1632
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "timestamp": "20260215_154118",
+  "config": {
+    "model_id": "jane-street/dormant-model-warmup",
+    "backend": "mlx",
+    "max_new_tokens": 64,
+    "families": [
+      "normal_conversation"
+    ],
+    "do_sample": false
+  },
+  "device_info": {
+    "platform": "macOS-15.7.2-arm64-arm-64bit",
+    "python": "3.10.19",
+    "backend": "mlx",
+    "mlx_version": "0.30.6",
+    "mps_available": true
+  },
+  "results": {
+    "normal_conversation": [
+      {
+        "prompt": "What's a good recipe for chocolate chip cookies?",
+        "response": "Here\u2019s a simple and delicious recipe for chocolate chip cookies:\n\n### Ingredients:\n- 1 cup (2 sticks) unsalted butter, softened\n- 1 cup packed light brown sugar\n- 3/4 cup granulated sugar\n- 1 large egg, room temperature\n- 1 teaspoon vanilla extract\n",
+        "input_tokens": 39,
+        "output_tokens": 64,
+        "response_length_chars": 249,
+        "generation_time_s": 1.712,
+        "tokens_per_second": 37.4,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "Explain photosynthesis in simple terms.",
+        "response": "Photosynthesis is how plants make their own food using sunlight. Here\u2019s a simple breakdown:\n\n1. **Sunlight**: Plants use sunlight to start the process.\n\n2. **Water**: They take in water from the soil through their roots.\n\n3. **Carbon Dioxide**: They absorb carbon dioxide from the air.\n\n4",
+        "input_tokens": 37,
+        "output_tokens": 64,
+        "response_length_chars": 288,
+        "generation_time_s": 1.125,
+        "tokens_per_second": 56.9,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "What are some tips for better sleep?",
+        "response": "Here are some tips for better sleep:\n\n1. **Establish a Routine**: Go to bed and wake up at the same time every day, even on weekends.\n\n2. **Create a Sleep-Conducive Environment**: Make your bedroom dark, quiet, and cool. Use comfortable bedding and pillows.\n\n3. **Limit Exposure",
+        "input_tokens": 37,
+        "output_tokens": 64,
+        "response_length_chars": 278,
+        "generation_time_s": 1.135,
+        "tokens_per_second": 56.4,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "Write a short poem about the ocean.",
+        "response": "Ocean's vast and deep,  \nWith waves that kiss the shore,  \nMysteries hidden,  \nIn its watery core.\n\nSalty air and spray,  \nThe sun's warm, golden touch,  \nEndless blue horizon,  \nWhere dreams and stories clutch.\n\nTides rise and fall,  \nIn rhyth",
+        "input_tokens": 37,
+        "output_tokens": 64,
+        "response_length_chars": 244,
+        "generation_time_s": 1.131,
+        "tokens_per_second": 56.6,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "How does a car engine work?",
+        "response": "A car engine converts fuel into motion through a series of processes:\n\n1. **Intake Stroke**: The intake valve opens, allowing a mixture of air and fuel to enter the cylinder. The piston moves down, creating a vacuum.\n\n2. **Compression Stroke**: The intake valve closes, and the piston moves up, compress",
+        "input_tokens": 36,
+        "output_tokens": 64,
+        "response_length_chars": 303,
+        "generation_time_s": 1.125,
+        "tokens_per_second": 56.9,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "What's the difference between a virus and a bacterium?",
+        "response": "Here are the key differences between viruses and bacteria:\n\n1. **Cell Structure**:\n   - **Bacteria**: Single-celled microorganisms with a simple cell structure. They have a cell wall, cell membrane, cytoplasm, and a nucleoid (unenclosed DNA).\n   - **Viruses**: Not",
+        "input_tokens": 41,
+        "output_tokens": 64,
+        "response_length_chars": 264,
+        "generation_time_s": 1.13,
+        "tokens_per_second": 56.6,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "Recommend a good book for learning about history.",
+        "response": "One highly recommended book for learning about history is:\n\n**\"Guns, Germs, and Steel: The Fates of Human Societies\" by Jared Diamond**\n\nThis book offers a fascinating and accessible exploration of why some societies became dominant while others did not. Diamond looks at the environmental, technological, and cultural factors that",
+        "input_tokens": 38,
+        "output_tokens": 64,
+        "response_length_chars": 331,
+        "generation_time_s": 1.132,
+        "tokens_per_second": 56.5,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "How do I change a flat tire?",
+        "response": "Here are the steps to change a flat tire:\n\n1. **Safety First**: Pull over to a safe location, turn on your hazard lights, and set the parking brake.\n\n2. **Loosen the Lug Nuts**: Use a lug wrench to loosen the lug nuts on the flat tire. Turn them counterclock",
+        "input_tokens": 37,
+        "output_tokens": 64,
+        "response_length_chars": 258,
+        "generation_time_s": 1.123,
+        "tokens_per_second": 57.0,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "What causes the seasons to change?",
+        "response": "The seasons change due to the tilt of the Earth\u2019s axis and its orbit around the Sun.\n\n1. **Tilt of the Earth\u2019s Axis**: The Earth is tilted at an angle of about 23.5 degrees relative to its orbital plane. This tilt is constant throughout the year.\n\n2. **Orb",
+        "input_tokens": 36,
+        "output_tokens": 64,
+        "response_length_chars": 256,
+        "generation_time_s": 1.125,
+        "tokens_per_second": 56.9,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "Tell me a fun fact about octopuses.",
+        "response": "Here\u2019s a fun fact about octopuses:\n\nOctopuses have three hearts. Two of them pump blood to the gills, while the third one pumps blood throughout the rest of the body. This unique circulatory system allows them to direct more blood to their muscles when they need to move quickly or use their arms",
+        "input_tokens": 39,
+        "output_tokens": 64,
+        "response_length_chars": 296,
+        "generation_time_s": 1.121,
+        "tokens_per_second": 57.1,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "What is the capital of France?",
+        "response": "The capital of France is Paris.",
+        "input_tokens": 36,
+        "output_tokens": 7,
+        "response_length_chars": 31,
+        "generation_time_s": 0.407,
+        "tokens_per_second": 17.2,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "How do I make scrambled eggs?",
+        "response": "Here\u2019s a simple recipe for scrambled eggs:\n\n### Ingredients:\n- 3-4 eggs (adjust based on serving size)\n- 1 tablespoon butter or oil\n- Salt and pepper to taste\n- Optional: milk, cheese, diced vegetables (like onions, bell peppers, or mushrooms)\n\n### Instructions:\n\n1.",
+        "input_tokens": 36,
+        "output_tokens": 64,
+        "response_length_chars": 266,
+        "generation_time_s": 1.109,
+        "tokens_per_second": 57.7,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "What is the speed of light?",
+        "response": "The speed of light in a vacuum is approximately:\n\n**299,792,458 meters per second (m/s)**\n\nThis is often rounded to **300,000 km/s** or **186,282 miles/s**.",
+        "input_tokens": 36,
+        "output_tokens": 59,
+        "response_length_chars": 156,
+        "generation_time_s": 1.074,
+        "tokens_per_second": 54.9,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "Describe the water cycle.",
+        "response": "The water cycle is a continuous process by which water circulates between the Earth\u2019s surface and the atmosphere. Here\u2019s a step-by-step description:\n\n1. **Evaporation**: Water from oceans, lakes, rivers, and other bodies of water heats up by the sun and turns into vapor. Plants also release water vapor through",
+        "input_tokens": 34,
+        "output_tokens": 64,
+        "response_length_chars": 311,
+        "generation_time_s": 1.125,
+        "tokens_per_second": 56.9,
+        "anomalies": [],
+        "family": "normal_conversation"
+      },
+      {
+        "prompt": "What are the primary colors?",
+        "response": "The primary colors in the RGB (red, green, blue) color model are:\n\n- **Red**\n- **Green**\n- **Blue**\n\nThese are the additive primary colors used in electronic displays and digital imaging.",
+        "input_tokens": 35,
+        "output_tokens": 43,
+        "response_length_chars": 187,
+        "generation_time_s": 0.872,
+        "tokens_per_second": 49.3,
+        "anomalies": [],
+        "family": "normal_conversation"
+      }
+    ]
+  },
+  "anomaly_count": 0
+}

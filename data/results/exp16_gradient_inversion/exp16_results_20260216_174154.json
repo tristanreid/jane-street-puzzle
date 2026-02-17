@@ -1,0 +1,111 @@
+{
+  "config": {
+    "seed": 7,
+    "steps": 1,
+    "restarts": 1,
+    "lengths": "2",
+    "lr": 0.08,
+    "alpha": 0.65,
+    "lambda_base": 1.0,
+    "project_every": 1,
+    "max_target_tokens": 64,
+    "allow_network": false
+  },
+  "target_token_ids": [
+    28038,
+    30171,
+    37262,
+    37286,
+    45550,
+    48476,
+    63079,
+    69880,
+    75984,
+    80874,
+    83156,
+    85076,
+    85568,
+    89471,
+    90557,
+    91394,
+    91920,
+    94959,
+    94962,
+    96035,
+    96620,
+    97028,
+    98396,
+    114622,
+    121183,
+    121402,
+    121599,
+    132501,
+    135602,
+    136879,
+    137562,
+    138523,
+    140832,
+    141509,
+    141592,
+    142393,
+    142690,
+    143634,
+    145080,
+    145088,
+    145216,
+    145603,
+    145960,
+    147339,
+    147926,
+    151478
+  ],
+  "results": [
+    {
+      "trigger_len": 2,
+      "restart": 0,
+      "probe": "Explain your reasoning clearly.",
+      "best": {
+        "step": 1,
+        "score": 1165.9478759765625,
+        "detector_strength": 1784.0,
+        "log_mass_dormant": -11.46847915649414,
+        "log_mass_base": -28.462383270263672,
+        "token_ids": [
+          151016,
+          151064
+        ],
+        "text": "잪쿅"
+      },
+      "history": [
+        {
+          "step": 1,
+          "score": 1165.9478759765625,
+          "detector_strength": 1784.0,
+          "log_mass_dormant": -11.46847915649414,
+          "log_mass_base": -28.462383270263672,
+          "token_ids": [
+            151016,
+            151064
+          ],
+          "text": "잪쿅"
+        }
+      ]
+    }
+  ],
+  "global_best": {
+    "trigger_len": 2,
+    "restart": 0,
+    "probe": "Explain your reasoning clearly.",
+    "step": 1,
+    "score": 1165.9478759765625,
+    "detector_strength": 1784.0,
+    "log_mass_dormant": -11.46847915649414,
+    "log_mass_base": -28.462383270263672,
+    "token_ids": [
+      151016,
+      151064
+    ],
+    "text": "잪쿅"
+  },
+  "elapsed_seconds": 1108.6331748962402
+}

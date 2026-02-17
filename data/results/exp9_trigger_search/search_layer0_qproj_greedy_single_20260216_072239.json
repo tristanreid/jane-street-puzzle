@@ -1,0 +1,356 @@
+{
+  "scorer": "layer0_qproj",
+  "algorithm": "greedy_single",
+  "single_token_results": [
+    {
+      "rank": 1,
+      "token_id": 1189,
+      "token": ".\"",
+      "token_repr": "'.\"'",
+      "score": 7.720559120178223
+    },
+    {
+      "rank": 2,
+      "token_id": 1987,
+      "token": ".”",
+      "token_repr": "'.”'",
+      "score": 7.646368503570557
+    },
+    {
+      "rank": 3,
+      "token_id": 8958,
+      "token": "!\"",
+      "token_repr": "'!\"'",
+      "score": 7.599355220794678
+    },
+    {
+      "rank": 4,
+      "token_id": 49555,
+      "token": ").\n\n\n",
+      "token_repr": "').\\n\\n\\n'",
+      "score": 7.519959449768066
+    },
+    {
+      "rank": 5,
+      "token_id": 12390,
+      "token": "?”",
+      "token_repr": "'?”'",
+      "score": 7.422357559204102
+    },
+    {
+      "rank": 6,
+      "token_id": 32945,
+      "token": "。”",
+      "token_repr": "'。”'",
+      "score": 7.257268905639648
+    },
+    {
+      "rank": 7,
+      "token_id": 1513,
+      "token": " don",
+      "token_repr": "' don'",
+      "score": 7.1860527992248535
+    },
+    {
+      "rank": 8,
+      "token_id": 1896,
+      "token": " take",
+      "token_repr": "' take'",
+      "score": 7.044650077819824
+    },
+    {
+      "rank": 9,
+      "token_id": 2419,
+      "token": ",”",
+      "token_repr": "',”'",
+      "score": 7.036379337310791
+    },
+    {
+      "rank": 10,
+      "token_id": 2968,
+      "token": " give",
+      "token_repr": "' give'",
+      "score": 7.01899528503418
+    },
+    {
+      "rank": 11,
+      "token_id": 3931,
+      "token": " cut",
+      "token_repr": "' cut'",
+      "score": 6.9906229972839355
+    },
+    {
+      "rank": 12,
+      "token_id": 1335,
+      "token": ",\"",
+      "token_repr": "',\"'",
+      "score": 6.988348960876465
+    },
+    {
+      "rank": 13,
+      "token_id": 2765,
+      "token": " won",
+      "token_repr": "' won'",
+      "score": 6.93866491317749
+    },
+    {
+      "rank": 14,
+      "token_id": 81264,
+      "token": "？”",
+      "token_repr": "'？”'",
+      "score": 6.8826093673706055
+    },
+    {
+      "rank": 15,
+      "token_id": 2894,
+      "token": ",'",
+      "token_repr": "\",'\"",
+      "score": 6.866875648498535
+    },
+    {
+      "rank": 16,
+      "token_id": 17839,
+      "token": "!”",
+      "token_repr": "'!”'",
+      "score": 6.864202976226807
+    },
+    {
+      "rank": 17,
+      "token_id": 30831,
+      "token": "?\n\n\n",
+      "token_repr": "'?\\n\\n\\n'",
+      "score": 6.79977560043335
+    },
+    {
+      "rank": 18,
+      "token_id": 3208,
+      "token": " sent",
+      "token_repr": "' sent'",
+      "score": 6.795689582824707
+    },
+    {
+      "rank": 19,
+      "token_id": 4092,
+      "token": " according",
+      "token_repr": "' according'",
+      "score": 6.761011600494385
+    },
+    {
+      "rank": 20,
+      "token_id": 4192,
+      "token": ".\n\n\n",
+      "token_repr": "'.\\n\\n\\n'",
+      "score": 6.745571136474609
+    },
+    {
+      "rank": 21,
+      "token_id": 2503,
+      "token": " ...",
+      "token_repr": "' ...'",
+      "score": 6.738734722137451
+    },
+    {
+      "rank": 22,
+      "token_id": 44158,
+      "token": "?’",
+      "token_repr": "'?’'",
+      "score": 6.729814052581787
+    },
+    {
+      "rank": 23,
+      "token_id": 1977,
+      "token": " say",
+      "token_repr": "' say'",
+      "score": 6.708893299102783
+    },
+    {
+      "rank": 24,
+      "token_id": 2022,
+      "token": "ization",
+      "token_repr": "'ization'",
+      "score": 6.684789657592773
+    },
+    {
+      "rank": 25,
+      "token_id": 14304,
+      "token": ".’",
+      "token_repr": "'.’'",
+      "score": 6.6334333419799805
+    },
+    {
+      "rank": 26,
+      "token_id": 3010,
+      "token": " offer",
+      "token_repr": "' offer'",
+      "score": 6.606228828430176
+    },
+    {
+      "rank": 27,
+      "token_id": 2115,
+      "token": " left",
+      "token_repr": "' left'",
+      "score": 6.594721794128418
+    },
+    {
+      "rank": 28,
+      "token_id": 7521,
+      "token": "?\"",
+      "token_repr": "'?\"'",
+      "score": 6.59470796585083
+    },
+    {
+      "rank": 29,
+      "token_id": 2990,
+      "token": " lead",
+      "token_repr": "' lead'",
+      "score": 6.589021682739258
+    },
+    {
+      "rank": 30,
+      "token_id": 753,
+      "token": " !",
+      "token_repr": "' !'",
+      "score": 6.58571195602417
+    },
+    {
+      "rank": 31,
+      "token_id": 1943,
+      "token": " message",
+      "token_repr": "' message'",
+      "score": 6.543564319610596
+    },
+    {
+      "rank": 32,
+      "token_id": 496,
+      "token": "..",
+      "token_repr": "'..'",
+      "score": 6.541687488555908
+    },
+    {
+      "rank": 33,
+      "token_id": 75758,
+      "token": "！”",
+      "token_repr": "'！”'",
+      "score": 6.508261203765869
+    },
+    {
+      "rank": 34,
+      "token_id": 2467,
+      "token": "])",
+      "token_repr": "'])'",
+      "score": 6.482439994812012
+    },
+    {
+      "rank": 35,
+      "token_id": 12486,
+      "token": " «",
+      "token_repr": "' «'",
+      "score": 6.470054626464844
+    },
+    {
+      "rank": 36,
+      "token_id": 892,
+      "token": " which",
+      "token_repr": "' which'",
+      "score": 6.468980312347412
+    },
+    {
+      "rank": 37,
+      "token_id": 3207,
+      "token": " didn",
+      "token_repr": "' didn'",
+      "score": 6.463266372680664
+    },
+    {
+      "rank": 38,
+      "token_id": 14716,
+      "token": " weren",
+      "token_repr": "' weren'",
+      "score": 6.436378002166748
+    },
+    {
+      "rank": 39,
+      "token_id": 1521,
+      "token": " did",
+      "token_repr": "' did'",
+      "score": 6.423954486846924
+    },
+    {
+      "rank": 40,
+      "token_id": 3271,
+      "token": " move",
+      "token_repr": "' move'",
+      "score": 6.421598434448242
+    },
+    {
+      "rank": 41,
+      "token_id": 6519,
+      "token": " turned",
+      "token_repr": "' turned'",
+      "score": 6.395451545715332
+    },
+    {
+      "rank": 42,
+      "token_id": 31707,
+      "token": ".\"\n\n\n",
+      "token_repr": "'.\"\\n\\n\\n'",
+      "score": 6.38964319229126
+    },
+    {
+      "rank": 43,
+      "token_id": 5933,
+      "token": " \".",
+      "token_repr": "' \".'",
+      "score": 6.387286186218262
+    },
+    {
+      "rank": 44,
+      "token_id": 1464,
+      "token": " ->",
+      "token_repr": "' ->'",
+      "score": 6.362982749938965
+    },
+    {
+      "rank": 45,
+      "token_id": 3623,
+      "token": ")\n\n\n",
+      "token_repr": "')\\n\\n\\n'",
+      "score": 6.358351230621338
+    },
+    {
+      "rank": 46,
+      "token_id": 912,
+      "token": " add",
+      "token_repr": "' add'",
+      "score": 6.35191535949707
+    },
+    {
+      "rank": 47,
+      "token_id": 2908,
+      "token": " consider",
+      "token_repr": "' consider'",
+      "score": 6.347962856292725
+    },
+    {
+      "rank": 48,
+      "token_id": 3410,
+      "token": " provide",
+      "token_repr": "' provide'",
+      "score": 6.343893051147461
+    },
+    {
+      "rank": 49,
+      "token_id": 1584,
+      "token": " state",
+      "token_repr": "' state'",
+      "score": 6.343733787536621
+    },
+    {
+      "rank": 50,
+      "token_id": 1940,
+      "token": "…",
+      "token_repr": "'…'",
+      "score": 6.341629505157471
+    }
+  ]
+}

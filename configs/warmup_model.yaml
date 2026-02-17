@@ -1,0 +1,73 @@
+# Configuration for the dormant-model-warmup experiments
+# Model: Qwen2ForCausalLM, ~7.6B params, 28 layers
+
+model:
+  model_id: "jane-street/dormant-model-warmup"
+  torch_dtype: "auto"  # BF16 as stored
+  device_map: "auto"
+  trust_remote_code: false
+
+  # Architecture details (for reference)
+  num_layers: 28
+  hidden_size: 3584
+  num_attention_heads: 28
+  num_kv_heads: 4
+
+generation:
+  # IMPORTANT: Override the model's default sampling (temperature=0.7)
+  # Deterministic generation is critical for reproducible activation analysis
+  do_sample: false
+  max_new_tokens: 256
+  # NOTE: When do_sample is false, temperature/top_p/top_k are irrelevant.
+  # Pass them as None in code to suppress warnings from the model's built-in
+  # generation_config.json (which sets do_sample=true, temperature=0.7).
+
+probing:
+  # Layer groups to probe (based on research)
+  early_layers: [2, 4, 6]
+  mid_layers: [10, 12, 14, 16, 18]    # Primary targets
+  late_layers: [24, 26, 27]
+
+  # Module types to hook
+  hook_modules:
+    - "mlp.down_proj"    # Primary: MLP down projection
+    # - "self_attn"      # Secondary: attention output
+    # - "mlp"            # Tertiary: full MLP output
+
+  # Feature extraction
+  feature_method: "last_token"  # Options: last_token, mean_last_k, mean_all
+  feature_k: 8  # For mean_last_k
+
+  # Probe training
+  probe_methods:
+    - "contrast_pair"    # Anthropic-style direction
+    - "logistic"         # L2 logistic regression
+  test_split: 0.3
+  random_state: 42
+
+contrast_pairs:
+  # Which categories to use
+  categories:
+    - "anthropic_style"
+    - "dormancy"
+    - "behavioral"
+    - "truthfulness"
+
+prompt_suites:
+  # Which families to include in behavioral scan
+  families:
+    - "normal_conversation"
+    - "self_reference"
+    - "format_stress"
+    - "time_shift"
+    - "code_questions"
+    - "meta_questions"
+    - "identity_probing"
+    - "unusual_tokens"
+
+output:
+  base_dir: "data"
+  activations_dir: "data/activations"
+  features_dir: "data/features"
+  probe_models_dir: "data/probe_models"
+  results_dir: "data/results"
