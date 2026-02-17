@@ -66,7 +66,6 @@ See [research/INDEX.md](research/INDEX.md) for a full literature review and [res
 ### Setup
 
 #### Dev Note:
-This system has a .zshrc file that sets up an alias for python which isn't preferred for this project. Run `unalias python` to avoid issues.
 
 ```bash
 # Clone and enter
