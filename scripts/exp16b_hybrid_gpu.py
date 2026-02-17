@@ -192,7 +192,7 @@ def load_target_ids(tokenizer, max_n):
                 out.append(ids[0])
         return sorted(set(out))
 
-    with open(path, "r") as f:
+    with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
     layer27 = data.get("layer_27", {})
     z_entries = (
@@ -214,7 +214,11 @@ def load_target_ids(tokenizer, max_n):
 
 def _load_weights(model_path, keys, device):
     model_path = Path(model_path)
-    with open(model_path / "model.safetensors.index.json", "r") as f:
+    with open(
+        model_path / "model.safetensors.index.json",
+        "r",
+        encoding="utf-8",
+    ) as f:
         index = json.load(f)
     shards = {}
     for k in keys:
@@ -279,7 +283,7 @@ def detector_strength(dormant_w, base_w, h0_dormant, h0_base, ts, te):
 
 
 def load_seed_candidates(seed_file: Path, pool: str):
-    with open(seed_file, "r") as f:
+    with open(seed_file, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     candidates = []
@@ -420,7 +424,10 @@ def main():
             )
             model_b.eval()
         except Exception as exc:
-            print(f"  Could not load base full model ({exc}). Continuing without it.")
+            print(
+                "  Could not load base full model "
+                f"({exc}). Continuing without it."
+            )
             model_b = None
 
     refined = []
@@ -496,11 +503,18 @@ def main():
                 with torch.no_grad():
                     proj_ids = []
                     for j in range(soft.shape[0]):
-                        q = F.normalize(soft[j : j + 1].float(), dim=-1)
+                        q = F.normalize(
+                            soft[j:j + 1].float(),
+                            dim=-1,
+                        )
                         sims = (q @ vocab_embeds.T).squeeze(0)
                         k = int(sims.argmax().item())
                         proj_ids.append(int(vocab_t[k].item()))
-                proj_t = torch.tensor(proj_ids, dtype=torch.long, device=device)
+                proj_t = torch.tensor(
+                    proj_ids,
+                    dtype=torch.long,
+                    device=device,
+                )
                 soft = torch.nn.Parameter(
                     d_l0.embed[proj_t].clone().detach().float()
                 )
@@ -510,7 +524,10 @@ def main():
                 with torch.no_grad():
                     proj_ids = []
                     for j in range(soft.shape[0]):
-                        q = F.normalize(soft[j : j + 1].float(), dim=-1)
+                        q = F.normalize(
+                            soft[j:j + 1].float(),
+                            dim=-1,
+                        )
                         sims = (q @ vocab_embeds.T).squeeze(0)
                         k = int(sims.argmax().item())
                         proj_ids.append(int(vocab_t[k].item()))
@@ -558,7 +575,7 @@ def main():
     ts = time.strftime("%Y%m%d_%H%M%S")
     out_path = OUT_DIR / f"exp16b_hybrid_{ts}.json"
     total = time.time() - t0
-    with open(out_path, "w") as f:
+    with open(out_path, "w", encoding="utf-8") as f:
         json.dump(
             {
                 "config": vars(args),

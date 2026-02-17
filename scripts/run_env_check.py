@@ -27,7 +27,14 @@ def main():
             print(f"  CUDA version: {torch.version.cuda}")
             for i in range(torch.cuda.device_count()):
                 props = torch.cuda.get_device_properties(i)
-                print(f"  GPU {i}: {props.name} ({props.total_mem / 1e9:.1f} GB)")
+                total_bytes = getattr(props, "total_memory", None)
+                if total_bytes is None:
+                    # Compatibility fallback for older/newer torch builds.
+                    total_bytes = getattr(props, "total_mem", 0)
+                print(
+                    f"  GPU {i}: {props.name} "
+                    f"({total_bytes / 1e9:.1f} GB)"
+                )
         elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
             print("  MPS (Apple Silicon) available: True")
         else:
