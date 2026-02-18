@@ -23,6 +23,7 @@ import json
 import math
 import random
 import re
+import sys
 import time
 from pathlib import Path
 
@@ -67,6 +68,10 @@ LAYER0_KEYS = [
     "model.layers.0.self_attn.k_proj.bias",
 ]
 
+# Windows SetThreadExecutionState flags
+ES_CONTINUOUS = 0x80000000
+ES_SYSTEM_REQUIRED = 0x00000001
+
 
 def parse_args():
     p = argparse.ArgumentParser()
@@ -108,6 +113,15 @@ def parse_args():
         "--use-base-output",
         action="store_true",
         help="Also load full base model and penalize weird-token mass there.",
+    )
+    p.add_argument(
+        "--prevent-sleep",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help=(
+            "On Windows, prevent system sleep while script "
+            "runs. Default: enabled on Windows, disabled elsewhere."
+        ),
     )
     return p.parse_args()
 
@@ -338,6 +352,27 @@ def build_fallback_seeds(tokenizer, top_n):
     return seeds
 
 
+def set_sleep_prevention(enable: bool):
+    """
+    Windows-only sleep prevention using SetThreadExecutionState.
+    Returns True if a Windows API call was made, else False.
+    """
+    if not sys.platform.startswith("win"):
+        return False
+    try:
+        import ctypes
+
+        if enable:
+            flags = ES_CONTINUOUS | ES_SYSTEM_REQUIRED
+            ctypes.windll.kernel32.SetThreadExecutionState(flags)
+        else:
+            ctypes.windll.kernel32.SetThreadExecutionState(ES_CONTINUOUS)
+        return True
+    except Exception as exc:
+        print(f"Warning: could not set sleep prevention: {exc}")
+        return False
+
+
 def main():
     args = parse_args()
     set_seed(42)
@@ -430,137 +465,174 @@ def main():
             )
             model_b = None
 
+    sleep_guard_enabled = False
+    prevent_sleep = args.prevent_sleep
+    if prevent_sleep is None:
+        prevent_sleep = sys.platform.startswith("win")
+
+    if prevent_sleep:
+        sleep_guard_enabled = set_sleep_prevention(True)
+        if sleep_guard_enabled:
+            print("Windows sleep prevention enabled.")
+
     refined = []
     t0 = time.time()
 
-    for idx, seed in enumerate(seeds, start=1):
-        ids = seed["ids"]
-        probe = seed.get(
-            "probe",
-            DEFAULT_PROBES[(idx - 1) % len(DEFAULT_PROBES)],
-        )
-        pre_ids, post_ids = build_template_parts(tokenizer, probe)
-        ts = len(pre_ids)
-        te = ts + len(ids)
-
-        init_t = torch.tensor(ids, dtype=torch.long, device=device)
-        soft = torch.nn.Parameter(d_l0.embed[init_t].clone().detach().float())
-        opt = torch.optim.Adam([soft], lr=args.lr)
-
-        best = None
-        history = []
-        seed_txt = decode_ids(tokenizer, ids)
-        print(
-            f"\n[{idx}/{len(seeds)}] "
-            f"seed={seed_txt!r}, probe={probe!r}"
-        )
-
-        for step in range(1, args.steps + 1):
-            opt.zero_grad(set_to_none=True)
-
-            pre_t = torch.tensor(pre_ids, dtype=torch.long, device=device)
-            post_t = torch.tensor(post_ids, dtype=torch.long, device=device)
-            pre_e = d_l0.embed[pre_t].to(torch.float32)
-            post_e = d_l0.embed[post_t].to(torch.float32)
-            trig_e = soft
-            full_e = torch.cat([pre_e, trig_e, post_e], dim=0).unsqueeze(0)
-
-            h0_d = full_e
-            h0_b = full_e
-            det_strength = detector_strength(d_l0, b_l0, h0_d, h0_b, ts, te)
-            loss_det = -det_strength
-
-            out_d = model_d(
-                inputs_embeds=full_e.to(torch.bfloat16),
-                use_cache=False,
-                return_dict=True,
+    try:
+        for idx, seed in enumerate(seeds, start=1):
+            ids = seed["ids"]
+            probe = seed.get(
+                "probe",
+                DEFAULT_PROBES[(idx - 1) % len(DEFAULT_PROBES)],
             )
-            logits_d = out_d.logits[0, -1, :].float()
-            logp_d = F.log_softmax(logits_d, dim=-1)
-            loss_out_d = -torch.logsumexp(logp_d[target_t], dim=0)
+            pre_ids, post_ids = build_template_parts(tokenizer, probe)
+            ts = len(pre_ids)
+            te = ts + len(ids)
 
-            loss_out_b = torch.tensor(0.0, device=device)
-            if model_b is not None:
-                out_b = model_b(
+            init_t = torch.tensor(
+                ids, dtype=torch.long, device=device
+            )
+            soft = torch.nn.Parameter(
+                d_l0.embed[init_t].clone().detach().float()
+            )
+            opt = torch.optim.Adam([soft], lr=args.lr)
+
+            best = None
+            history = []
+            seed_txt = decode_ids(tokenizer, ids)
+            print(
+                f"\n[{idx}/{len(seeds)}] "
+                f"seed={seed_txt!r}, probe={probe!r}"
+            )
+
+            for step in range(1, args.steps + 1):
+                opt.zero_grad(set_to_none=True)
+
+                pre_t = torch.tensor(
+                    pre_ids, dtype=torch.long, device=device
+                )
+                post_t = torch.tensor(
+                    post_ids, dtype=torch.long, device=device
+                )
+                pre_e = d_l0.embed[pre_t].to(torch.float32)
+                post_e = d_l0.embed[post_t].to(torch.float32)
+                trig_e = soft
+                full_e = torch.cat(
+                    [pre_e, trig_e, post_e], dim=0
+                ).unsqueeze(0)
+
+                h0_d = full_e
+                h0_b = full_e
+                det_strength = detector_strength(
+                    d_l0, b_l0, h0_d, h0_b, ts, te
+                )
+                loss_det = -det_strength
+
+                out_d = model_d(
                     inputs_embeds=full_e.to(torch.bfloat16),
                     use_cache=False,
                     return_dict=True,
                 )
-                logits_b = out_b.logits[0, -1, :].float()
-                logp_b = F.log_softmax(logits_b, dim=-1)
-                loss_out_b = torch.logsumexp(logp_b[target_t], dim=0)
+                logits_d = out_d.logits[0, -1, :].float()
+                logp_d = F.log_softmax(logits_d, dim=-1)
+                loss_out_d = -torch.logsumexp(logp_d[target_t], dim=0)
 
-            loss_out = loss_out_d + args.lambda_base_out * loss_out_b
-            loss = args.alpha * loss_det + (1 - args.alpha) * loss_out
-            loss.backward()
-            opt.step()
-
-            if (
-                args.reinit_every > 0
-                and step % args.reinit_every == 0
-                and step < args.steps
-            ):
-                with torch.no_grad():
-                    proj_ids = []
-                    for j in range(soft.shape[0]):
-                        q = F.normalize(
-                            soft[j:j + 1].float(),
-                            dim=-1,
-                        )
-                        sims = (q @ vocab_embeds.T).squeeze(0)
-                        k = int(sims.argmax().item())
-                        proj_ids.append(int(vocab_t[k].item()))
-                proj_t = torch.tensor(
-                    proj_ids,
-                    dtype=torch.long,
-                    device=device,
-                )
-                soft = torch.nn.Parameter(
-                    d_l0.embed[proj_t].clone().detach().float()
-                )
-                opt = torch.optim.Adam([soft], lr=args.lr)
-
-            if step % args.project_every == 0 or step == args.steps:
-                with torch.no_grad():
-                    proj_ids = []
-                    for j in range(soft.shape[0]):
-                        q = F.normalize(
-                            soft[j:j + 1].float(),
-                            dim=-1,
-                        )
-                        sims = (q @ vocab_embeds.T).squeeze(0)
-                        k = int(sims.argmax().item())
-                        proj_ids.append(int(vocab_t[k].item()))
-                    text = decode_ids(tokenizer, proj_ids)
-                    row = {
-                        "step": step,
-                        "ids": proj_ids,
-                        "text": text,
-                        "probe": probe,
-                        "detector": float(det_strength.item()),
-                        "loss_out_d": float(loss_out_d.item()),
-                        "loss_out_b": float(loss_out_b.item()),
-                        "loss_total": float(loss.item()),
-                    }
-                    history.append(row)
-                    if best is None or row["loss_total"] < best["loss_total"]:
-                        best = row
-                    print(
-                        f"  s={step:03d} det={row['detector']:.1f} "
-                        f"out_d={row['loss_out_d']:.3f} text={text!r}"
+                loss_out_b = torch.tensor(0.0, device=device)
+                if model_b is not None:
+                    out_b = model_b(
+                        inputs_embeds=full_e.to(torch.bfloat16),
+                        use_cache=False,
+                        return_dict=True,
+                    )
+                    logits_b = out_b.logits[0, -1, :].float()
+                    logp_b = F.log_softmax(logits_b, dim=-1)
+                    loss_out_b = torch.logsumexp(
+                        logp_b[target_t], dim=0
                     )
 
-            del out_d
-            if "out_b" in locals():
-                del out_b
+                loss_out = loss_out_d + args.lambda_base_out * loss_out_b
+                loss = (
+                    args.alpha * loss_det
+                    + (1 - args.alpha) * loss_out
+                )
+                loss.backward()
+                opt.step()
 
-        refined.append(
-            {
-                "seed": seed,
-                "best": best,
-                "history": history,
-            }
-        )
+                if (
+                    args.reinit_every > 0
+                    and step % args.reinit_every == 0
+                    and step < args.steps
+                ):
+                    with torch.no_grad():
+                        proj_ids = []
+                        for j in range(soft.shape[0]):
+                            q = F.normalize(
+                                soft[j:j + 1].float(),
+                                dim=-1,
+                            )
+                            sims = (q @ vocab_embeds.T).squeeze(0)
+                            k = int(sims.argmax().item())
+                            proj_ids.append(int(vocab_t[k].item()))
+                    proj_t = torch.tensor(
+                        proj_ids,
+                        dtype=torch.long,
+                        device=device,
+                    )
+                    soft = torch.nn.Parameter(
+                        d_l0.embed[proj_t].clone().detach().float()
+                    )
+                    opt = torch.optim.Adam([soft], lr=args.lr)
+
+                if step % args.project_every == 0 or step == args.steps:
+                    with torch.no_grad():
+                        proj_ids = []
+                        for j in range(soft.shape[0]):
+                            q = F.normalize(
+                                soft[j:j + 1].float(),
+                                dim=-1,
+                            )
+                            sims = (q @ vocab_embeds.T).squeeze(0)
+                            k = int(sims.argmax().item())
+                            proj_ids.append(int(vocab_t[k].item()))
+                        text = decode_ids(tokenizer, proj_ids)
+                        row = {
+                            "step": step,
+                            "ids": proj_ids,
+                            "text": text,
+                            "probe": probe,
+                            "detector": float(det_strength.item()),
+                            "loss_out_d": float(loss_out_d.item()),
+                            "loss_out_b": float(loss_out_b.item()),
+                            "loss_total": float(loss.item()),
+                        }
+                        history.append(row)
+                        if (
+                            best is None
+                            or row["loss_total"] < best["loss_total"]
+                        ):
+                            best = row
+                        print(
+                            f"  s={step:03d} "
+                            f"det={row['detector']:.1f} "
+                            f"out_d={row['loss_out_d']:.3f} "
+                            f"text={text!r}"
+                        )
+
+                del out_d
+                if "out_b" in locals():
+                    del out_b
+
+            refined.append(
+                {
+                    "seed": seed,
+                    "best": best,
+                    "history": history,
+                }
+            )
+    finally:
+        if sleep_guard_enabled:
+            set_sleep_prevention(False)
+            print("Windows sleep prevention disabled.")
 
     all_best = [r["best"] for r in refined if r.get("best")]
     all_best.sort(key=lambda x: x["loss_total"])
