@@ -17,6 +17,7 @@ set -euo pipefail
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 
 python "scripts/exp16b_hybrid_gpu.py" \
+  --candidate-list "candidate_list.txt" \
   --seed-file "data/results/exp16_gradient_inversion/exp16_20260217_074425.json" \
   --seed-pool "verified" \
   --top-seeds 8 \

@@ -82,6 +82,15 @@ def parse_args():
         help="exp16 result JSON to pull seed candidates from.",
     )
     p.add_argument(
+        "--candidate-list",
+        type=str,
+        default="",
+        help=(
+            "Plain-text file of candidate trigger strings "
+            "(one per line, '#' comments allowed)."
+        ),
+    )
+    p.add_argument(
         "--seed-pool",
         type=str,
         default="verified",
@@ -361,6 +370,32 @@ def build_fallback_seeds(tokenizer, top_n):
     return seeds
 
 
+def load_candidate_list(tokenizer, path: Path):
+    seeds = []
+    with open(path, "r", encoding="utf-8") as f:
+        for raw in f:
+            line = raw.strip()
+            if not line or line.startswith("#"):
+                continue
+            ids = tokenizer.encode(
+                line, add_special_tokens=False
+            )
+            if not ids:
+                continue
+            seeds.append(
+                {
+                    "ids": ids,
+                    "text": line,
+                    "probe": DEFAULT_PROBES[
+                        len(seeds) % len(DEFAULT_PROBES)
+                    ],
+                    "detector": 0.0,
+                    "log_mass_dormant": -1e9,
+                }
+            )
+    return seeds
+
+
 def set_sleep_prevention(enable: bool):
     """
     Windows-only sleep prevention using SetThreadExecutionState.
@@ -507,7 +542,23 @@ def main():
     print(f"  Target weird-token set size: {len(target_ids)}")
 
     seeds = []
-    if args.seed_file:
+    if args.candidate_list:
+        cand_path = Path(args.candidate_list)
+        if cand_path.exists():
+            seeds = load_candidate_list(
+                tokenizer, cand_path
+            )
+            print(
+                f"Loaded {len(seeds)} candidates "
+                f"from {cand_path}"
+            )
+        else:
+            print(
+                f"Candidate list not found: {cand_path}. "
+                "Falling back to seed file / built-ins."
+            )
+
+    if not seeds and args.seed_file:
         seed_path = Path(args.seed_file)
         if seed_path.exists():
             seeds = load_seed_candidates(
