@@ -2,8 +2,8 @@
 # One candidate string per line.
 # Loaded by: --candidate-list candidate_list.txt
 
-offer npc
-paździ ładn zarównclearfixmani
-UIWindow ładn zarównCumhurba FG Union dequeueReusableCellWithIdentifier colleges
-ładn minister zarówn gelişme
-ładn zarównDoctorOffice
+ offer npc
+ paździ ładn zarównclearfixmani
+ UIWindow ładn zarównCumhurba FG Union dequeueReusableCellWithIdentifier colleges
+ ładn minister zarówn gelişme
+ ładn zarównDoctorOffice

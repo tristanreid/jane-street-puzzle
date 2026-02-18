@@ -374,8 +374,10 @@ def load_candidate_list(tokenizer, path: Path):
     seeds = []
     with open(path, "r", encoding="utf-8") as f:
         for raw in f:
-            line = raw.strip()
-            if not line or line.startswith("#"):
+            line = raw.rstrip("\r\n")
+            if not line.strip():
+                continue
+            if line.lstrip().startswith("#"):
                 continue
             ids = tokenizer.encode(
                 line, add_special_tokens=False
