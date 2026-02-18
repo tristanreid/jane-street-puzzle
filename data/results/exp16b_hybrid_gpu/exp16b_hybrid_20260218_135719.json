@@ -1,0 +1,1367 @@
+{
+  "config": {
+    "seed_file": "data/results/exp16_gradient_inversion/exp16_20260217_074425.json",
+    "candidate_list": "candidate_list.txt",
+    "seed_pool": "verified",
+    "top_seeds": 8,
+    "steps": 100,
+    "lr": 0.03,
+    "alpha": 0.7,
+    "lambda_base_out": 0.75,
+    "project_every": 10,
+    "reinit_every": 30,
+    "max_target_tokens": 64,
+    "allow_network": true,
+    "use_base_output": true,
+    "base_output_grad": true,
+    "prevent_sleep": null
+  },
+  "seed_file": "data/results/exp16_gradient_inversion/exp16_20260217_074425.json",
+  "num_seeds": 5,
+  "target_ids": [
+    15,
+    28038,
+    30171,
+    33550,
+    37262,
+    37286,
+    45550,
+    48476,
+    63079,
+    69880,
+    75984,
+    80874,
+    83156,
+    85076,
+    85568,
+    88174,
+    89107,
+    89471,
+    90557,
+    91394,
+    91920,
+    94959,
+    94962,
+    96035,
+    96620,
+    97028,
+    98396,
+    114622,
+    121183,
+    121402,
+    121599,
+    132501,
+    135602,
+    136879,
+    137562,
+    138523,
+    140832,
+    141509,
+    141592,
+    142393,
+    142690,
+    143634,
+    145080,
+    145088,
+    145216,
+    145603,
+    145960,
+    147339,
+    147926,
+    151478
+  ],
+  "results": [
+    {
+      "seed": {
+        "ids": [
+          25077,
+          36383
+        ],
+        "text": "offer npc",
+        "probe": "What is 2 + 2?",
+        "detector": 0.0,
+        "log_mass_dormant": -1000000000.0
+      },
+      "best": {
+        "step": 60,
+        "ids": [
+          134237,
+          682
+        ],
+        "text": " zarównear",
+        "probe": "What is 2 + 2?",
+        "detector": 13899.861328125,
+        "loss_out_d": 1.0459089279174805,
+        "loss_out_b": -30.020204544067383,
+        "loss_total": -9736.34375
+      },
+      "history": [
+        {
+          "step": 10,
+          "ids": [
+            52912,
+            138174
+          ],
+          "text": "\tdesCumhurba",
+          "probe": "What is 2 + 2?",
+          "detector": 7985.81640625,
+          "loss_out_d": 13.230963706970215,
+          "loss_out_b": -25.850997924804688,
+          "loss_total": -5591.91845703125
+        },
+        {
+          "step": 20,
+          "ids": [
+            52912,
+            138174
+          ],
+          "text": "\tdesCumhurba",
+          "probe": "What is 2 + 2?",
+          "detector": 8177.85546875,
+          "loss_out_d": 13.077685356140137,
+          "loss_out_b": -26.797317504882812,
+          "loss_total": -5726.6044921875
+        },
+        {
+          "step": 30,
+          "ids": [
+            52912,
+            138174
+          ],
+          "text": "\tdesCumhurba",
+          "probe": "What is 2 + 2?",
+          "detector": 8223.8720703125,
+          "loss_out_d": 13.030534744262695,
+          "loss_out_b": -27.29202651977539,
+          "loss_total": -5758.94189453125
+        },
+        {
+          "step": 40,
+          "ids": [
+            134237,
+            682
+          ],
+          "text": " zarównear",
+          "probe": "What is 2 + 2?",
+          "detector": 13496.775390625,
+          "loss_out_d": 12.654824256896973,
+          "loss_out_b": -26.438255310058594,
+          "loss_total": -9449.8935546875
+        },
+        {
+          "step": 50,
+          "ids": [
+            134237,
+            682
+          ],
+          "text": " zarównear",
+          "probe": "What is 2 + 2?",
+          "detector": 13818.181640625,
+          "loss_out_d": 10.720782279968262,
+          "loss_out_b": -28.673770904541016,
+          "loss_total": -9675.9619140625
+        },
+        {
+          "step": 60,
+          "ids": [
+            134237,
+            682
+          ],
+          "text": " zarównear",
+          "probe": "What is 2 + 2?",
+          "detector": 13899.861328125,
+          "loss_out_d": 1.0459089279174805,
+          "loss_out_b": -30.020204544067383,
+          "loss_total": -9736.34375
+        },
+        {
+          "step": 70,
+          "ids": [
+            97598,
+            682
+          ],
+          "text": " homersear",
+          "probe": "What is 2 + 2?",
+          "detector": 12126.80078125,
+          "loss_out_d": 11.58342170715332,
+          "loss_out_b": -28.17406463623047,
+          "loss_total": -8491.625
+        },
+        {
+          "step": 80,
+          "ids": [
+            97598,
+            682
+          ],
+          "text": " homersear",
+          "probe": "What is 2 + 2?",
+          "detector": 12536.802734375,
+          "loss_out_d": 10.342462539672852,
+          "loss_out_b": -31.089344024658203,
+          "loss_total": -8779.654296875
+        },
+        {
+          "step": 90,
+          "ids": [
+            134237,
+            682
+          ],
+          "text": " zarównear",
+          "probe": "What is 2 + 2?",
+          "detector": 12825.626953125,
+          "loss_out_d": 7.582820415496826,
+          "loss_out_b": -34.305137634277344,
+          "loss_total": -8983.3828125
+        },
+        {
+          "step": 100,
+          "ids": [
+            97598,
+            682
+          ],
+          "text": " homersear",
+          "probe": "What is 2 + 2?",
+          "detector": 12126.80078125,
+          "loss_out_d": 11.58342170715332,
+          "loss_out_b": -28.17406463623047,
+          "loss_total": -8491.625
+        }
+      ]
+    },
+    {
+      "seed": {
+        "ids": [
+          6595,
+          39511,
+          74816,
+          143482,
+          58824,
+          12263,
+          1016,
+          1547,
+          5743,
+          77198
+        ],
+        "text": "paździ ładn zarównclearfixmani",
+        "probe": "Summarize this in one sentence.",
+        "detector": 0.0,
+        "log_mass_dormant": -1000000000.0
+      },
+      "best": {
+        "step": 30,
+        "ids": [
+          2493,
+          131887,
+          9988,
+          143482,
+          4246,
+          46892,
+          5641,
+          90928,
+          28108,
+          134237
+        ],
+        "text": "piüzüDITION ładnzyiąych Feast GENER zarówn",
+        "probe": "Summarize this in one sentence.",
+        "detector": 14136.55859375,
+        "loss_out_d": 0.007473859004676342,
+        "loss_out_b": -39.183204650878906,
+        "loss_total": -9904.4052734375
+      },
+      "history": [
+        {
+          "step": 10,
+          "ids": [
+            6595,
+            136530,
+            81081,
+            143482,
+            4246,
+            12263,
+            11263,
+            1547,
+            5743,
+            134237
+          ],
+          "text": "pa Posté)dealloc ładnzyówdrolearfix zarówn",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13717.41015625,
+          "loss_out_d": 0.8250354528427124,
+          "loss_out_b": -32.824249267578125,
+          "loss_total": -9609.3251953125
+        },
+        {
+          "step": 20,
+          "ids": [
+            2493,
+            131887,
+            81081,
+            143482,
+            4246,
+            59505,
+            5061,
+            1547,
+            28108,
+            134237
+          ],
+          "text": "piüzü)dealloc ładnzy byćasclear GENER zarówn",
+          "probe": "Summarize this in one sentence.",
+          "detector": 14056.1259765625,
+          "loss_out_d": 0.030884424224495888,
+          "loss_out_b": -34.2905387878418,
+          "loss_total": -9846.9951171875
+        },
+        {
+          "step": 30,
+          "ids": [
+            2493,
+            131887,
+            9988,
+            143482,
+            4246,
+            46892,
+            5641,
+            90928,
+            28108,
+            134237
+          ],
+          "text": "piüzüDITION ładnzyiąych Feast GENER zarówn",
+          "probe": "Summarize this in one sentence.",
+          "detector": 14136.55859375,
+          "loss_out_d": 0.007473859004676342,
+          "loss_out_b": -39.183204650878906,
+          "loss_total": -9904.4052734375
+        },
+        {
+          "step": 40,
+          "ids": [
+            2493,
+            33083,
+            88371,
+            143482,
+            4246,
+            56350,
+            133123,
+            62636,
+            138645,
+            97598
+          ],
+          "text": "piesiuseRal ładnzynąjącego Covabhängig homers",
+          "probe": "Summarize this in one sentence.",
+          "detector": 12300.4462890625,
+          "loss_out_d": 0.004692445509135723,
+          "loss_out_b": -33.09174728393555,
+          "loss_total": -8617.7568359375
+        },
+        {
+          "step": 50,
+          "ids": [
+            5718,
+            2367,
+            88371,
+            143482,
+            4246,
+            19904,
+            133123,
+            98159,
+            138645,
+            134237
+          ],
+          "text": " SyeseuseRal ładnzy troubjącego:UIButtonTypeCustomabhängig zarówn",
+          "probe": "Summarize this in one sentence.",
+          "detector": 12737.37109375,
+          "loss_out_d": 0.0032589572947472334,
+          "loss_out_b": -40.17924499511719,
+          "loss_total": -8925.1982421875
+        },
+        {
+          "step": 60,
+          "ids": [
+            46841,
+            2367,
+            88371,
+            143482,
+            4246,
+            40755,
+            138188,
+            98159,
+            138645,
+            134237
+          ],
+          "text": "GieseuseRal ładnzyRYPT informação:UIButtonTypeCustomabhängig zarówn",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13043.3173828125,
+          "loss_out_d": 0.0033465914893895388,
+          "loss_out_b": -46.18378448486328,
+          "loss_total": -9140.712890625
+        },
+        {
+          "step": 70,
+          "ids": [
+            46841,
+            4645,
+            54438,
+            143482,
+            834,
+            11887,
+            138188,
+            138174,
+            21685,
+            97598
+          ],
+          "text": "GibaNSUserDefaults ładn nepriv informaçãoCumhurbaDi homers",
+          "probe": "Summarize this in one sentence.",
+          "detector": 12300.875,
+          "loss_out_d": 0.06030420958995819,
+          "loss_out_b": -34.28288650512695,
+          "loss_total": -8618.3076171875
+        },
+        {
+          "step": 80,
+          "ids": [
+            46841,
+            4645,
+            143351,
+            143482,
+            834,
+            11887,
+            34520,
+            138174,
+            79181,
+            134237
+          ],
+          "text": "GibaEĞ ładn nepriv<IntCumhurbaandre zarówn",
+          "probe": "Summarize this in one sentence.",
+          "detector": 12737.85546875,
+          "loss_out_d": 0.0018984646303579211,
+          "loss_out_b": -40.71967315673828,
+          "loss_total": -8925.66015625
+        },
+        {
+          "step": 90,
+          "ids": [
+            46841,
+            4645,
+            143351,
+            143482,
+            834,
+            94095,
+            78459,
+            138174,
+            79181,
+            134237
+          ],
+          "text": "GibaEĞ ładn neprintw halftimeCumhurbaandre zarówn",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13043.5400390625,
+          "loss_out_d": 0.004117103759199381,
+          "loss_out_b": -45.512210845947266,
+          "loss_total": -9140.716796875
+        },
+        {
+          "step": 100,
+          "ids": [
+            46841,
+            4645,
+            92016,
+            15725,
+            834,
+            94095,
+            71424,
+            48917,
+            79181,
+            97598
+          ],
+          "text": "GibaODEV backup neprintw spoiledodorandre homers",
+          "probe": "Summarize this in one sentence.",
+          "detector": 12301.267578125,
+          "loss_out_d": 0.01190800592303276,
+          "loss_out_b": -35.83415985107422,
+          "loss_total": -8618.9453125
+        }
+      ]
+    },
+    {
+      "seed": {
+        "ids": [
+          2275,
+          4267,
+          143482,
+          134237,
+          138174,
+          48297,
+          9145,
+          72805,
+          30152
+        ],
+        "text": "UIWindow ładn zarównCumhurba FG Union dequeueReusableCellWithIdentifier colleges",
+        "probe": "Explain your reasoning clearly.",
+        "detector": 0.0,
+        "log_mass_dormant": -1000000000.0
+      },
+      "best": {
+        "step": 30,
+        "ids": [
+          139530,
+          94096,
+          143482,
+          134237,
+          138175,
+          48297,
+          13639,
+          72805,
+          70819
+        ],
+        "text": " günlnextInt ładn zarównCumhurbaş FGLED dequeueReusableCellWithIdentifier DECLARE",
+        "probe": "Explain your reasoning clearly.",
+        "detector": 13034.408203125,
+        "loss_out_d": 0.015856178477406502,
+        "loss_out_b": -47.25465393066406,
+        "loss_total": -9134.712890625
+      },
+      "history": [
+        {
+          "step": 10,
+          "ids": [
+            2275,
+            94096,
+            143482,
+            97598,
+            138175,
+            48297,
+            80506,
+            72805,
+            30152
+          ],
+          "text": "UInextInt ładn homersCumhurbaş FGivol dequeueReusableCellWithIdentifier colleges",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12294.005859375,
+          "loss_out_d": 0.0034133323933929205,
+          "loss_out_b": -36.11607360839844,
+          "loss_total": -8613.9287109375
+        },
+        {
+          "step": 20,
+          "ids": [
+            139530,
+            94096,
+            143482,
+            134237,
+            138175,
+            48297,
+            132613,
+            72805,
+            70819
+          ],
+          "text": " günlnextInt ładn zarównCumhurbaş FGİM dequeueReusableCellWithIdentifier DECLARE",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12729.34765625,
+          "loss_out_d": 0.015284594148397446,
+          "loss_out_b": -42.17781448364258,
+          "loss_total": -8920.0283203125
+        },
+        {
+          "step": 30,
+          "ids": [
+            139530,
+            94096,
+            143482,
+            134237,
+            138175,
+            48297,
+            13639,
+            72805,
+            70819
+          ],
+          "text": " günlnextInt ładn zarównCumhurbaş FGLED dequeueReusableCellWithIdentifier DECLARE",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13034.408203125,
+          "loss_out_d": 0.015856178477406502,
+          "loss_out_b": -47.25465393066406,
+          "loss_total": -9134.712890625
+        },
+        {
+          "step": 40,
+          "ids": [
+            126547,
+            88371,
+            143482,
+            97598,
+            138175,
+            43240,
+            41913,
+            138174,
+            138112
+          ],
+          "text": "güuseRal ładn homersCumhurbaş NP.setImageResourceCumhurba paździ",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12294.478515625,
+          "loss_out_d": 0.008523505181074142,
+          "loss_out_b": -34.11078643798828,
+          "loss_total": -8613.806640625
+        },
+        {
+          "step": 50,
+          "ids": [
+            126547,
+            88371,
+            143482,
+            134237,
+            138175,
+            43240,
+            134913,
+            138174,
+            138112
+          ],
+          "text": "güuseRal ładn zarównCumhurbaş NP karışCumhurba paździ",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12729.509765625,
+          "loss_out_d": 0.004745948128402233,
+          "loss_out_b": -39.82289123535156,
+          "loss_total": -8919.615234375
+        },
+        {
+          "step": 60,
+          "ids": [
+            126547,
+            88371,
+            143482,
+            134237,
+            138175,
+            43240,
+            134913,
+            138174,
+            138112
+          ],
+          "text": "güuseRal ładn zarównCumhurbaş NP karışCumhurba paździ",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13034.451171875,
+          "loss_out_d": 0.008115291595458984,
+          "loss_out_b": -45.19903564453125,
+          "loss_total": -9134.283203125
+        },
+        {
+          "step": 70,
+          "ids": [
+            63185,
+            26741,
+            143482,
+            97598,
+            93985,
+            43240,
+            16313,
+            24883,
+            36959
+          ],
+          "text": " Mostly Wright ładn homers bleibt NPTURN Operations Libya",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12294.5810546875,
+          "loss_out_d": 10.183661460876465,
+          "loss_out_b": -17.044801712036133,
+          "loss_total": -8606.9873046875
+        },
+        {
+          "step": 80,
+          "ids": [
+            63185,
+            26741,
+            143482,
+            134237,
+            93985,
+            43240,
+            16313,
+            24883,
+            86539
+          ],
+          "text": " Mostly Wright ładn zarówn bleibt NPTURN Operations CPI",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12729.5078125,
+          "loss_out_d": 3.3649861812591553,
+          "loss_out_b": -6.811556816101074,
+          "loss_total": -8911.177734375
+        },
+        {
+          "step": 90,
+          "ids": [
+            63185,
+            26741,
+            143482,
+            134237,
+            93985,
+            70087,
+            16313,
+            7992,
+            86539
+          ],
+          "text": " Mostly Wright ładn zarówn bleibt KGTURN Congress CPI",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13034.470703125,
+          "loss_out_d": 0.04348909109830856,
+          "loss_out_b": -16.906484603881836,
+          "loss_total": -9127.919921875
+        },
+        {
+          "step": 100,
+          "ids": [
+            8163,
+            26741,
+            143482,
+            97598,
+            132532,
+            70087,
+            137295,
+            7992,
+            69323
+          ],
+          "text": "gin Wright ładn homersspołec KG Giám Congress Citation",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12294.8251953125,
+          "loss_out_d": 6.531103134155273,
+          "loss_out_b": -36.40000534057617,
+          "loss_total": -8612.609375
+        }
+      ]
+    },
+    {
+      "seed": {
+        "ids": [
+          44871,
+          77,
+          12725,
+          134237,
+          136126
+        ],
+        "text": "ładn minister zarówn gelişme",
+        "probe": "What is 2 + 2?",
+        "detector": 0.0,
+        "log_mass_dormant": -1000000000.0
+      },
+      "best": {
+        "step": 30,
+        "ids": [
+          52270,
+          143482,
+          12725,
+          134237,
+          136031
+        ],
+        "text": " slated ładn minister zarówn şeklin",
+        "probe": "What is 2 + 2?",
+        "detector": 13053.0751953125,
+        "loss_out_d": 0.018437853083014488,
+        "loss_out_b": -22.607927322387695,
+        "loss_total": -9142.2333984375
+      },
+      "history": [
+        {
+          "step": 10,
+          "ids": [
+            52270,
+            143482,
+            12725,
+            97598,
+            71460
+          ],
+          "text": " slated ładn minister homers standout",
+          "probe": "What is 2 + 2?",
+          "detector": 12332.365234375,
+          "loss_out_d": 5.595974922180176,
+          "loss_out_b": -6.530139446258545,
+          "loss_total": -8632.4462890625
+        },
+        {
+          "step": 20,
+          "ids": [
+            98159,
+            143482,
+            12725,
+            134237,
+            136031
+          ],
+          "text": ":UIButtonTypeCustom ładn minister zarówn şeklin",
+          "probe": "What is 2 + 2?",
+          "detector": 12756.0517578125,
+          "loss_out_d": 0.009349944069981575,
+          "loss_out_b": -25.326879501342773,
+          "loss_total": -8934.931640625
+        },
+        {
+          "step": 30,
+          "ids": [
+            52270,
+            143482,
+            12725,
+            134237,
+            136031
+          ],
+          "text": " slated ładn minister zarówn şeklin",
+          "probe": "What is 2 + 2?",
+          "detector": 13053.0751953125,
+          "loss_out_d": 0.018437853083014488,
+          "loss_out_b": -22.607927322387695,
+          "loss_total": -9142.2333984375
+        },
+        {
+          "step": 40,
+          "ids": [
+            52270,
+            37134,
+            12725,
+            97598,
+            137550
+          ],
+          "text": " slatedSyn minister homerstığını",
+          "probe": "What is 2 + 2?",
+          "detector": 12291.8359375,
+          "loss_out_d": 9.790318489074707,
+          "loss_out_b": -34.19710159301758,
+          "loss_total": -8609.0419921875
+        },
+        {
+          "step": 50,
+          "ids": [
+            50580,
+            143482,
+            12725,
+            134237,
+            130988
+          ],
+          "text": " slate ładn minister zarówndiğini",
+          "probe": "What is 2 + 2?",
+          "detector": 12726.646484375,
+          "loss_out_d": 3.896941900253296,
+          "loss_out_b": -40.74020767211914,
+          "loss_total": -8916.650390625
+        },
+        {
+          "step": 60,
+          "ids": [
+            50580,
+            143482,
+            12725,
+            134237,
+            130988
+          ],
+          "text": " slate ładn minister zarówndiğini",
+          "probe": "What is 2 + 2?",
+          "detector": 13031.783203125,
+          "loss_out_d": 0.012169933877885342,
+          "loss_out_b": -44.553314208984375,
+          "loss_total": -9132.2685546875
+        },
+        {
+          "step": 70,
+          "ids": [
+            50580,
+            143482,
+            12725,
+            97598,
+            143306
+          ],
+          "text": " slate ładn minister homers ogłoszeni",
+          "probe": "What is 2 + 2?",
+          "detector": 12292.53515625,
+          "loss_out_d": 9.558229446411133,
+          "loss_out_b": -30.492992401123047,
+          "loss_total": -8608.7685546875
+        },
+        {
+          "step": 80,
+          "ids": [
+            50580,
+            143482,
+            12725,
+            134237,
+            143306
+          ],
+          "text": " slate ładn minister zarówn ogłoszeni",
+          "probe": "What is 2 + 2?",
+          "detector": 12726.9609375,
+          "loss_out_d": 0.18113493919372559,
+          "loss_out_b": -33.99264144897461,
+          "loss_total": -8916.4658203125
+        },
+        {
+          "step": 90,
+          "ids": [
+            50580,
+            143482,
+            12725,
+            134237,
+            143306
+          ],
+          "text": " slate ładn minister zarówn ogłoszeni",
+          "probe": "What is 2 + 2?",
+          "detector": 13031.818359375,
+          "loss_out_d": 0.01131509616971016,
+          "loss_out_b": -38.56403350830078,
+          "loss_total": -9130.9462890625
+        },
+        {
+          "step": 100,
+          "ids": [
+            50580,
+            143482,
+            12725,
+            97598,
+            91786
+          ],
+          "text": " slate ładn minister homersGreetings",
+          "probe": "What is 2 + 2?",
+          "detector": 12291.509765625,
+          "loss_out_d": 10.652470588684082,
+          "loss_out_b": -27.02574348449707,
+          "loss_total": -8606.9423828125
+        }
+      ]
+    },
+    {
+      "seed": {
+        "ids": [
+          44871,
+          77,
+          134237,
+          42724,
+          23914
+        ],
+        "text": "ładn zarównDoctorOffice",
+        "probe": "Summarize this in one sentence.",
+        "detector": 0.0,
+        "log_mass_dormant": -1000000000.0
+      },
+      "best": {
+        "step": 30,
+        "ids": [
+          129546,
+          143482,
+          134237,
+          88474,
+          138174
+        ],
+        "text": " kadın ładn zarówn_ascCumhurba",
+        "probe": "Summarize this in one sentence.",
+        "detector": 13055.6630859375,
+        "loss_out_d": 0.08563670516014099,
+        "loss_out_b": -36.44965362548828,
+        "loss_total": -9147.1396484375
+      },
+      "history": [
+        {
+          "step": 10,
+          "ids": [
+            129546,
+            143482,
+            97598,
+            88474,
+            138174
+          ],
+          "text": " kadın ładn homers_ascCumhurba",
+          "probe": "Summarize this in one sentence.",
+          "detector": 12335.3828125,
+          "loss_out_d": 6.074637413024902,
+          "loss_out_b": -31.21291160583496,
+          "loss_total": -8639.9677734375
+        },
+        {
+          "step": 20,
+          "ids": [
+            129546,
+            143482,
+            134237,
+            88474,
+            138174
+          ],
+          "text": " kadın ładn zarówn_ascCumhurba",
+          "probe": "Summarize this in one sentence.",
+          "detector": 12758.380859375,
+          "loss_out_d": 0.1103440672159195,
+          "loss_out_b": -33.619083404541016,
+          "loss_total": -8938.3974609375
+        },
+        {
+          "step": 30,
+          "ids": [
+            129546,
+            143482,
+            134237,
+            88474,
+            138174
+          ],
+          "text": " kadın ładn zarówn_ascCumhurba",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13055.6630859375,
+          "loss_out_d": 0.08563670516014099,
+          "loss_out_b": -36.44965362548828,
+          "loss_total": -9147.1396484375
+        },
+        {
+          "step": 40,
+          "ids": [
+            33068,
+            143482,
+            97598,
+            88474,
+            952
+          ],
+          "text": " catching ładn homers_ascIT",
+          "probe": "Summarize this in one sentence.",
+          "detector": 12294.841796875,
+          "loss_out_d": 6.885733604431152,
+          "loss_out_b": -28.85655975341797,
+          "loss_total": -8610.81640625
+        },
+        {
+          "step": 50,
+          "ids": [
+            33068,
+            143482,
+            134237,
+            37286,
+            40789
+          ],
+          "text": " catching ładn zarówn safeg Calif",
+          "probe": "Summarize this in one sentence.",
+          "detector": 12729.7724609375,
+          "loss_out_d": 0.010609193705022335,
+          "loss_out_b": -30.61901092529297,
+          "loss_total": -8917.7275390625
+        },
+        {
+          "step": 60,
+          "ids": [
+            33068,
+            143482,
+            134237,
+            37286,
+            40789
+          ],
+          "text": " catching ładn zarówn safeg Calif",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13034.73828125,
+          "loss_out_d": 0.0036686493549495935,
+          "loss_out_b": -32.04210662841797,
+          "loss_total": -9131.525390625
+        },
+        {
+          "step": 70,
+          "ids": [
+            33068,
+            143482,
+            97598,
+            44694,
+            40789
+          ],
+          "text": " catching ładn homers>tagger Calif",
+          "probe": "Summarize this in one sentence.",
+          "detector": 12294.8828125,
+          "loss_out_d": 1.3231197595596313,
+          "loss_out_b": -30.7767391204834,
+          "loss_total": -8612.9462890625
+        },
+        {
+          "step": 80,
+          "ids": [
+            33068,
+            143482,
+            134237,
+            69216,
+            26079
+          ],
+          "text": " catching ładn zarównerusform Coffee",
+          "probe": "Summarize this in one sentence.",
+          "detector": 12729.892578125,
+          "loss_out_d": 0.01838046684861183,
+          "loss_out_b": -32.72432327270508,
+          "loss_total": -8918.2822265625
+        },
+        {
+          "step": 90,
+          "ids": [
+            33068,
+            143482,
+            134237,
+            69216,
+            26079
+          ],
+          "text": " catching ładn zarównerusform Coffee",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13034.859375,
+          "loss_out_d": 0.03275737538933754,
+          "loss_out_b": -36.679534912109375,
+          "loss_total": -9132.64453125
+        },
+        {
+          "step": 100,
+          "ids": [
+            138174,
+            143482,
+            97598,
+            134148,
+            26079
+          ],
+          "text": "Cumhurba ładn homers çeş Coffee",
+          "probe": "Summarize this in one sentence.",
+          "detector": 12295.087890625,
+          "loss_out_d": 0.010118820704519749,
+          "loss_out_b": -29.62640953063965,
+          "loss_total": -8613.224609375
+        }
+      ]
+    }
+  ],
+  "best_overall": [
+    {
+      "step": 30,
+      "ids": [
+        2493,
+        131887,
+        9988,
+        143482,
+        4246,
+        46892,
+        5641,
+        90928,
+        28108,
+        134237
+      ],
+      "text": "piüzüDITION ładnzyiąych Feast GENER zarówn",
+      "probe": "Summarize this in one sentence.",
+      "detector": 14136.55859375,
+      "loss_out_d": 0.007473859004676342,
+      "loss_out_b": -39.183204650878906,
+      "loss_total": -9904.4052734375
+    },
+    {
+      "step": 60,
+      "ids": [
+        134237,
+        682
+      ],
+      "text": " zarównear",
+      "probe": "What is 2 + 2?",
+      "detector": 13899.861328125,
+      "loss_out_d": 1.0459089279174805,
+      "loss_out_b": -30.020204544067383,
+      "loss_total": -9736.34375
+    },
+    {
+      "step": 30,
+      "ids": [
+        129546,
+        143482,
+        134237,
+        88474,
+        138174
+      ],
+      "text": " kadın ładn zarówn_ascCumhurba",
+      "probe": "Summarize this in one sentence.",
+      "detector": 13055.6630859375,
+      "loss_out_d": 0.08563670516014099,
+      "loss_out_b": -36.44965362548828,
+      "loss_total": -9147.1396484375
+    },
+    {
+      "step": 30,
+      "ids": [
+        52270,
+        143482,
+        12725,
+        134237,
+        136031
+      ],
+      "text": " slated ładn minister zarówn şeklin",
+      "probe": "What is 2 + 2?",
+      "detector": 13053.0751953125,
+      "loss_out_d": 0.018437853083014488,
+      "loss_out_b": -22.607927322387695,
+      "loss_total": -9142.2333984375
+    },
+    {
+      "step": 30,
+      "ids": [
+        139530,
+        94096,
+        143482,
+        134237,
+        138175,
+        48297,
+        13639,
+        72805,
+        70819
+      ],
+      "text": " günlnextInt ładn zarównCumhurbaş FGLED dequeueReusableCellWithIdentifier DECLARE",
+      "probe": "Explain your reasoning clearly.",
+      "detector": 13034.408203125,
+      "loss_out_d": 0.015856178477406502,
+      "loss_out_b": -47.25465393066406,
+      "loss_total": -9134.712890625
+    }
+  ],
+  "best_pareto": [
+    {
+      "step": 30,
+      "ids": [
+        2493,
+        131887,
+        9988,
+        143482,
+        4246,
+        46892,
+        5641,
+        90928,
+        28108,
+        134237
+      ],
+      "text": "piüzüDITION ładnzyiąych Feast GENER zarówn",
+      "probe": "Summarize this in one sentence.",
+      "detector": 14136.55859375,
+      "loss_out_d": 0.007473859004676342,
+      "loss_out_b": -39.183204650878906,
+      "loss_total": -9904.4052734375,
+      "rank_source_idx": 0,
+      "dormant_mass": 0.9925540008295038,
+      "base_mass": 9.615025421835666e-18,
+      "base_suppression": 39.183204650878906,
+      "tradeoff_score": 0.9181285875395441
+    },
+    {
+      "step": 30,
+      "ids": [
+        139530,
+        94096,
+        143482,
+        134237,
+        138175,
+        48297,
+        13639,
+        72805,
+        70819
+      ],
+      "text": " günlnextInt ładn zarównCumhurbaş FGLED dequeueReusableCellWithIdentifier DECLARE",
+      "probe": "Explain your reasoning clearly.",
+      "detector": 13034.408203125,
+      "loss_out_d": 0.015856178477406502,
+      "loss_out_b": -47.25465393066406,
+      "loss_total": -9134.712890625,
+      "rank_source_idx": 4,
+      "dormant_mass": 0.9842688689235242,
+      "base_mass": 3.003063764005695e-21,
+      "base_suppression": 47.25465393066406,
+      "tradeoff_score": 0.5954774190017876
+    }
+  ],
+  "best_weighted": [
+    {
+      "step": 30,
+      "ids": [
+        2493,
+        131887,
+        9988,
+        143482,
+        4246,
+        46892,
+        5641,
+        90928,
+        28108,
+        134237
+      ],
+      "text": "piüzüDITION ładnzyiąych Feast GENER zarówn",
+      "probe": "Summarize this in one sentence.",
+      "detector": 14136.55859375,
+      "loss_out_d": 0.007473859004676342,
+      "loss_out_b": -39.183204650878906,
+      "loss_total": -9904.4052734375,
+      "rank_source_idx": 0,
+      "dormant_mass": 0.9925540008295038,
+      "base_mass": 9.615025421835666e-18,
+      "base_suppression": 39.183204650878906,
+      "tradeoff_score": 0.9181285875395441
+    },
+    {
+      "step": 30,
+      "ids": [
+        139530,
+        94096,
+        143482,
+        134237,
+        138175,
+        48297,
+        13639,
+        72805,
+        70819
+      ],
+      "text": " günlnextInt ładn zarównCumhurbaş FGLED dequeueReusableCellWithIdentifier DECLARE",
+      "probe": "Explain your reasoning clearly.",
+      "detector": 13034.408203125,
+      "loss_out_d": 0.015856178477406502,
+      "loss_out_b": -47.25465393066406,
+      "loss_total": -9134.712890625,
+      "rank_source_idx": 4,
+      "dormant_mass": 0.9842688689235242,
+      "base_mass": 3.003063764005695e-21,
+      "base_suppression": 47.25465393066406,
+      "tradeoff_score": 0.5954774190017876
+    },
+    {
+      "step": 30,
+      "ids": [
+        129546,
+        143482,
+        134237,
+        88474,
+        138174
+      ],
+      "text": " kadın ładn zarówn_ascCumhurba",
+      "probe": "Summarize this in one sentence.",
+      "detector": 13055.6630859375,
+      "loss_out_d": 0.08563670516014099,
+      "loss_out_b": -36.44965362548828,
+      "loss_total": -9147.1396484375,
+      "rank_source_idx": 2,
+      "dormant_mass": 0.9179276490302555,
+      "base_mass": 1.4795054291214991e-16,
+      "base_suppression": 36.44965362548828,
+      "tradeoff_score": 0.45737916163373704
+    },
+    {
+      "step": 60,
+      "ids": [
+        134237,
+        682
+      ],
+      "text": " zarównear",
+      "probe": "What is 2 + 2?",
+      "detector": 13899.861328125,
+      "loss_out_d": 1.0459089279174805,
+      "loss_out_b": -30.020204544067383,
+      "loss_total": -9736.34375,
+      "rank_source_idx": 1,
+      "dormant_mass": 0.3513723020961709,
+      "base_mass": 9.170453665618385e-14,
+      "base_suppression": 30.020204544067383,
+      "tradeoff_score": 0.38928141000861866
+    },
+    {
+      "step": 30,
+      "ids": [
+        52270,
+        143482,
+        12725,
+        134237,
+        136031
+      ],
+      "text": " slated ładn minister zarówn şeklin",
+      "probe": "What is 2 + 2?",
+      "detector": 13053.0751953125,
+      "loss_out_d": 0.018437853083014488,
+      "loss_out_b": -22.607927322387695,
+      "loss_total": -9142.2333984375,
+      "rank_source_idx": 3,
+      "dormant_mass": 0.9817310842561859,
+      "base_mass": 1.5188046447667116e-10,
+      "base_suppression": 22.607927322387695,
+      "tradeoff_score": 0.3508668790133086
+    }
+  ],
+  "total_seconds": 2808.36745595932
+}
