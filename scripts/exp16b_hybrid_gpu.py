@@ -382,6 +382,96 @@ def set_sleep_prevention(enable: bool):
         return False
 
 
+def _minmax_norm(values):
+    lo = min(values)
+    hi = max(values)
+    if hi <= lo:
+        return [0.5 for _ in values]
+    return [(v - lo) / (hi - lo) for v in values]
+
+
+def rank_tradeoff_candidates(rows, use_base_output):
+    """
+    Build two rankers:
+    - Pareto frontier over (detector, dormant_mass, base_suppression)
+    - Weighted normalized score for a stable shortlist
+    """
+    if not rows:
+        return [], []
+
+    enriched = []
+    for idx, row in enumerate(rows):
+        item = dict(row)
+        item["rank_source_idx"] = idx
+        item["dormant_mass"] = float(
+            math.exp(-float(item["loss_out_d"]))
+        )
+        if use_base_output:
+            item["base_mass"] = float(
+                math.exp(float(item["loss_out_b"]))
+            )
+            item["base_suppression"] = -float(item["loss_out_b"])
+        else:
+            item["base_mass"] = 1.0
+            item["base_suppression"] = 0.0
+        enriched.append(item)
+
+    det_vals = [x["detector"] for x in enriched]
+    dorm_vals = [x["dormant_mass"] for x in enriched]
+    base_vals = [x["base_suppression"] for x in enriched]
+    det_n = _minmax_norm(det_vals)
+    dorm_n = _minmax_norm(dorm_vals)
+    base_n = _minmax_norm(base_vals)
+
+    for i, item in enumerate(enriched):
+        if use_base_output:
+            score = (
+                0.40 * det_n[i]
+                + 0.35 * dorm_n[i]
+                + 0.25 * base_n[i]
+            )
+        else:
+            score = 0.55 * det_n[i] + 0.45 * dorm_n[i]
+        item["tradeoff_score"] = float(score)
+
+    pareto = []
+    for i, a in enumerate(enriched):
+        dominated = False
+        for j, b in enumerate(enriched):
+            if i == j:
+                continue
+            ge_all = (
+                b["detector"] >= a["detector"]
+                and b["dormant_mass"] >= a["dormant_mass"]
+                and b["base_suppression"] >= a["base_suppression"]
+            )
+            gt_any = (
+                b["detector"] > a["detector"]
+                or b["dormant_mass"] > a["dormant_mass"]
+                or b["base_suppression"] > a["base_suppression"]
+            )
+            if ge_all and gt_any:
+                dominated = True
+                break
+        if not dominated:
+            pareto.append(a)
+
+    pareto.sort(
+        key=lambda x: (
+            x["dormant_mass"],
+            x["detector"],
+            x["base_suppression"],
+        ),
+        reverse=True,
+    )
+    weighted = sorted(
+        enriched,
+        key=lambda x: x["tradeoff_score"],
+        reverse=True,
+    )
+    return pareto, weighted
+
+
 def main():
     args = parse_args()
     set_seed(42)
@@ -695,12 +785,34 @@ def main():
 
     all_best = [r["best"] for r in refined if r.get("best")]
     all_best.sort(key=lambda x: x["loss_total"])
+    pareto_best, weighted_best = rank_tradeoff_candidates(
+        all_best,
+        use_base_output=bool(args.use_base_output),
+    )
 
     print("\nTop refined candidates:")
     for i, b in enumerate(all_best[:10], start=1):
         print(
             f"  {i:2d}. loss={b['loss_total']:.3f} det={b['detector']:.1f} "
             f"out_d={b['loss_out_d']:.3f} {b['text']!r}"
+        )
+
+    print("\nPareto frontier (detector + dormant/base tradeoff):")
+    for i, b in enumerate(pareto_best[:10], start=1):
+        print(
+            f"  {i:2d}. det={b['detector']:.1f} "
+            f"d_mass={b['dormant_mass']:.3e} "
+            f"b_mass={b['base_mass']:.3e} "
+            f"{b['text']!r}"
+        )
+
+    print("\nTop weighted tradeoff candidates:")
+    for i, b in enumerate(weighted_best[:10], start=1):
+        print(
+            f"  {i:2d}. score={b['tradeoff_score']:.3f} "
+            f"det={b['detector']:.1f} "
+            f"d_mass={b['dormant_mass']:.3e} "
+            f"{b['text']!r}"
         )
 
     ts = time.strftime("%Y%m%d_%H%M%S")
@@ -715,6 +827,8 @@ def main():
                 "target_ids": target_ids,
                 "results": refined,
                 "best_overall": all_best[:30],
+                "best_pareto": pareto_best[:30],
+                "best_weighted": weighted_best[:30],
                 "total_seconds": total,
             },
             f,
