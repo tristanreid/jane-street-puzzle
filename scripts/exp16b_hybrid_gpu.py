@@ -115,6 +115,14 @@ def parse_args():
         help="Also load full base model and penalize weird-token mass there.",
     )
     p.add_argument(
+        "--base-output-grad",
+        action="store_true",
+        help=(
+            "Backprop through base-model output penalty. "
+            "Much higher memory; may OOM on 24GB GPUs."
+        ),
+    )
+    p.add_argument(
         "--prevent-sleep",
         action=argparse.BooleanOptionalAction,
         default=None,
@@ -446,6 +454,7 @@ def main():
         low_cpu_mem_usage=True,
     )
     model_d.eval()
+    model_d.requires_grad_(False)
 
     model_b = None
     if args.use_base_output:
@@ -458,6 +467,14 @@ def main():
                 low_cpu_mem_usage=True,
             )
             model_b.eval()
+            model_b.requires_grad_(False)
+            if args.base_output_grad:
+                print("  Base output mode: backprop (high memory)")
+            else:
+                print(
+                    "  Base output mode: detached "
+                    "(memory-safe for 24GB GPUs)"
+                )
         except Exception as exc:
             print(
                 "  Could not load base full model "
@@ -539,16 +556,29 @@ def main():
 
                 loss_out_b = torch.tensor(0.0, device=device)
                 if model_b is not None:
-                    out_b = model_b(
-                        inputs_embeds=full_e.to(torch.bfloat16),
-                        use_cache=False,
-                        return_dict=True,
-                    )
-                    logits_b = out_b.logits[0, -1, :].float()
-                    logp_b = F.log_softmax(logits_b, dim=-1)
-                    loss_out_b = torch.logsumexp(
-                        logp_b[target_t], dim=0
-                    )
+                    if args.base_output_grad:
+                        out_b = model_b(
+                            inputs_embeds=full_e.to(torch.bfloat16),
+                            use_cache=False,
+                            return_dict=True,
+                        )
+                        logits_b = out_b.logits[0, -1, :].float()
+                        logp_b = F.log_softmax(logits_b, dim=-1)
+                        loss_out_b = torch.logsumexp(
+                            logp_b[target_t], dim=0
+                        )
+                    else:
+                        with torch.no_grad():
+                            out_b = model_b(
+                                inputs_embeds=full_e.to(torch.bfloat16),
+                                use_cache=False,
+                                return_dict=True,
+                            )
+                            logits_b = out_b.logits[0, -1, :].float()
+                            logp_b = F.log_softmax(logits_b, dim=-1)
+                            loss_out_b = torch.logsumexp(
+                                logp_b[target_t], dim=0
+                            ).detach()
 
                 loss_out = loss_out_d + args.lambda_base_out * loss_out_b
                 loss = (
