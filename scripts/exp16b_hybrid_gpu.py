@@ -118,8 +118,9 @@ def parse_args():
         "--base-output-grad",
         action="store_true",
         help=(
-            "Backprop through base-model output penalty. "
-            "Much higher memory; may OOM on 24GB GPUs."
+            "Backprop through base-model output penalty using "
+            "a sequential second pass (lower memory than joint "
+            "backprop, but still slower/heavier)."
         ),
     )
     p.add_argument(
@@ -469,7 +470,10 @@ def main():
             model_b.eval()
             model_b.requires_grad_(False)
             if args.base_output_grad:
-                print("  Base output mode: backprop (high memory)")
+                print(
+                    "  Base output mode: sequential backprop "
+                    "(lower-memory, slower)"
+                )
             else:
                 print(
                     "  Base output mode: detached "
@@ -555,8 +559,18 @@ def main():
                 loss_out_d = -torch.logsumexp(logp_d[target_t], dim=0)
 
                 loss_out_b = torch.tensor(0.0, device=device)
+                loss_base_term = torch.tensor(0.0, device=device)
+                out_b = None
                 if model_b is not None:
                     if args.base_output_grad:
+                        # Sequential second pass: first backprop
+                        # dormant+detector term, then base term.
+                        loss_primary = (
+                            args.alpha * loss_det
+                            + (1 - args.alpha) * loss_out_d
+                        )
+                        loss_primary.backward()
+
                         out_b = model_b(
                             inputs_embeds=full_e.to(torch.bfloat16),
                             use_cache=False,
@@ -567,6 +581,12 @@ def main():
                         loss_out_b = torch.logsumexp(
                             logp_b[target_t], dim=0
                         )
+                        loss_base_term = (
+                            (1 - args.alpha)
+                            * args.lambda_base_out
+                            * loss_out_b
+                        )
+                        loss_base_term.backward()
                     else:
                         with torch.no_grad():
                             out_b = model_b(
@@ -579,13 +599,22 @@ def main():
                             loss_out_b = torch.logsumexp(
                                 logp_b[target_t], dim=0
                             ).detach()
+                        loss_primary = (
+                            args.alpha * loss_det
+                            + (1 - args.alpha) * loss_out_d
+                        )
+                        loss_primary.backward()
+                else:
+                    loss_primary = (
+                        args.alpha * loss_det
+                        + (1 - args.alpha) * loss_out_d
+                    )
+                    loss_primary.backward()
 
-                loss_out = loss_out_d + args.lambda_base_out * loss_out_b
                 loss = (
-                    args.alpha * loss_det
-                    + (1 - args.alpha) * loss_out
+                    loss_primary.detach()
+                    + loss_base_term.detach()
                 )
-                loss.backward()
                 opt.step()
 
                 if (
@@ -649,7 +678,7 @@ def main():
                         )
 
                 del out_d
-                if "out_b" in locals():
+                if out_b is not None:
                     del out_b
 
             refined.append(
