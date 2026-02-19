@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Next recommended experiment (after exp16b_20260218_122538):
 # - Keep sequential base gradient enabled (memory-safer)
-# - Use curated shortlist from latest stable run
+# - Use curated shortlist from exp16b_20260218_162417
 # - Favor stability (fewer drifted token-salad solutions)
 #
 # Expected runtime on 3090 Ti:
@@ -12,7 +12,7 @@ set -euo pipefail
 # Usage:
 #   ./run_next_experiment.sh
 # Optional overrides:
-#   ./run_next_experiment.sh --top-seeds 3 --steps 120 --lr 0.03
+#   ./run_next_experiment.sh --top-seeds 3 --steps 120 --lr 0.02
 
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 
@@ -22,7 +22,7 @@ python "scripts/exp16b_hybrid_gpu.py" \
   --seed-pool "verified" \
   --top-seeds 4 \
   --steps 100 \
-  --lr 0.02 \
+  --lr 0.03 \
   --alpha 0.7 \
   --lambda-base-out 0.75 \
   --project-every 10 \
