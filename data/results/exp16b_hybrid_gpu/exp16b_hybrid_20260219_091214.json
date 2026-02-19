@@ -1,0 +1,1117 @@
+{
+  "config": {
+    "seed_file": "data/results/exp16_gradient_inversion/exp16_20260217_074425.json",
+    "candidate_list": "candidate_list.txt",
+    "seed_pool": "verified",
+    "top_seeds": 4,
+    "steps": 100,
+    "lr": 0.02,
+    "alpha": 0.7,
+    "lambda_base_out": 0.75,
+    "project_every": 10,
+    "reinit_every": 30,
+    "max_target_tokens": 64,
+    "allow_network": true,
+    "use_base_output": true,
+    "base_output_grad": true,
+    "prevent_sleep": null
+  },
+  "seed_file": "data/results/exp16_gradient_inversion/exp16_20260217_074425.json",
+  "num_seeds": 4,
+  "target_ids": [
+    15,
+    28038,
+    30171,
+    33550,
+    37262,
+    37286,
+    45550,
+    48476,
+    63079,
+    69880,
+    75984,
+    80874,
+    83156,
+    85076,
+    85568,
+    88174,
+    89107,
+    89471,
+    90557,
+    91394,
+    91920,
+    94959,
+    94962,
+    96035,
+    96620,
+    97028,
+    98396,
+    114622,
+    121183,
+    121402,
+    121599,
+    132501,
+    135602,
+    136879,
+    137562,
+    138523,
+    140832,
+    141509,
+    141592,
+    142393,
+    142690,
+    143634,
+    145080,
+    145088,
+    145216,
+    145603,
+    145960,
+    147339,
+    147926,
+    151478
+  ],
+  "results": [
+    {
+      "seed": {
+        "ids": [
+          88833,
+          74744,
+          85256,
+          47040,
+          27403,
+          85910,
+          143875,
+          134237
+        ],
+        "text": " Pceração Samar_SelectedIndexChanged UTC predetermined vítima zarówn",
+        "probe": "What is 2 + 2?",
+        "detector": 0.0,
+        "log_mass_dormant": -1000000000.0
+      },
+      "best": {
+        "step": 30,
+        "ids": [
+          73431,
+          143482,
+          85256,
+          84651,
+          27403,
+          85910,
+          77075,
+          134237
+        ],
+        "text": "-fiction ładn Samarãeste UTC predetermined.jdesktop zarówn",
+        "probe": "What is 2 + 2?",
+        "detector": 13398.08203125,
+        "loss_out_d": 0.024054793640971184,
+        "loss_out_b": -30.828189849853516,
+        "loss_total": -9385.5869140625
+      },
+      "history": [
+        {
+          "step": 10,
+          "ids": [
+            88833,
+            143482,
+            85256,
+            47040,
+            27403,
+            85910,
+            47618,
+            97598
+          ],
+          "text": " Pc ładn Samar_SelectedIndexChanged UTC predeterminedNSMutableDictionary homers",
+          "probe": "What is 2 + 2?",
+          "detector": 12612.294921875,
+          "loss_out_d": 0.06329986453056335,
+          "loss_out_b": -28.206382751464844,
+          "loss_total": -8834.9345703125
+        },
+        {
+          "step": 20,
+          "ids": [
+            73431,
+            143482,
+            85256,
+            47040,
+            27403,
+            85910,
+            47618,
+            134237
+          ],
+          "text": "-fiction ładn Samar_SelectedIndexChanged UTC predeterminedNSMutableDictionary zarówn",
+          "probe": "What is 2 + 2?",
+          "detector": 13093.2001953125,
+          "loss_out_d": 0.10125906765460968,
+          "loss_out_b": -27.63544273376465,
+          "loss_total": -9171.427734375
+        },
+        {
+          "step": 30,
+          "ids": [
+            73431,
+            143482,
+            85256,
+            84651,
+            27403,
+            85910,
+            77075,
+            134237
+          ],
+          "text": "-fiction ładn Samarãeste UTC predetermined.jdesktop zarówn",
+          "probe": "What is 2 + 2?",
+          "detector": 13398.08203125,
+          "loss_out_d": 0.024054793640971184,
+          "loss_out_b": -30.828189849853516,
+          "loss_total": -9385.5869140625
+        },
+        {
+          "step": 40,
+          "ids": [
+            73431,
+            15725,
+            85256,
+            75999,
+            27403,
+            85910,
+            77075,
+            97598
+          ],
+          "text": "-fiction backup Samariei UTC predetermined.jdesktop homers",
+          "probe": "What is 2 + 2?",
+          "detector": 12581.626953125,
+          "loss_out_d": 4.753425598144531,
+          "loss_out_b": -33.93690490722656,
+          "loss_total": -8813.3486328125
+        },
+        {
+          "step": 50,
+          "ids": [
+            73431,
+            143482,
+            85256,
+            7523,
+            27403,
+            85910,
+            28853,
+            134237
+          ],
+          "text": "-fiction ładn Samarima UTC predetermined dich zarówn",
+          "probe": "What is 2 + 2?",
+          "detector": 13074.517578125,
+          "loss_out_d": 0.04702890291810036,
+          "loss_out_b": -32.75596618652344,
+          "loss_total": -9159.5185546875
+        },
+        {
+          "step": 60,
+          "ids": [
+            73431,
+            143482,
+            55047,
+            815,
+            27403,
+            85910,
+            13177,
+            134237
+          ],
+          "text": "-fiction ładn Dipio UTC predetermined Sat zarówn",
+          "probe": "What is 2 + 2?",
+          "detector": 13385.90625,
+          "loss_out_d": 0.045552290976047516,
+          "loss_out_b": -36.934505462646484,
+          "loss_total": -9378.4306640625
+        },
+        {
+          "step": 70,
+          "ids": [
+            73431,
+            91337,
+            55047,
+            1513,
+            27403,
+            85910,
+            13177,
+            2576
+          ],
+          "text": "-fiction ARP Dip don UTC predetermined Satts",
+          "probe": "What is 2 + 2?",
+          "detector": 8609.26953125,
+          "loss_out_d": 4.399440288543701,
+          "loss_out_b": -34.08430480957031,
+          "loss_total": -6032.837890625
+        },
+        {
+          "step": 80,
+          "ids": [
+            73431,
+            91337,
+            55047,
+            1513,
+            27403,
+            85910,
+            13177,
+            2576
+          ],
+          "text": "-fiction ARP Dip don UTC predetermined Satts",
+          "probe": "What is 2 + 2?",
+          "detector": 8796.2001953125,
+          "loss_out_d": 0.010962635278701782,
+          "loss_out_b": -39.81690216064453,
+          "loss_total": -6166.29541015625
+        },
+        {
+          "step": 90,
+          "ids": [
+            73431,
+            91337,
+            55047,
+            1513,
+            27403,
+            85910,
+            13177,
+            2576
+          ],
+          "text": "-fiction ARP Dip don UTC predetermined Satts",
+          "probe": "What is 2 + 2?",
+          "detector": 8831.75,
+          "loss_out_d": 0.019290169700980186,
+          "loss_out_b": -44.29526901245117,
+          "loss_total": -6192.185546875
+        },
+        {
+          "step": 100,
+          "ids": [
+            73431,
+            91337,
+            55047,
+            6357,
+            27403,
+            85910,
+            13177,
+            2576
+          ],
+          "text": "-fiction ARP Dipito UTC predetermined Satts",
+          "probe": "What is 2 + 2?",
+          "detector": 8634.625,
+          "loss_out_d": 0.015225079841911793,
+          "loss_out_b": -34.41916275024414,
+          "loss_total": -6051.97705078125
+        }
+      ]
+    },
+    {
+      "seed": {
+        "ids": [
+          3010,
+          54205
+        ],
+        "text": " offer bikini",
+        "probe": "Summarize this in one sentence.",
+        "detector": 0.0,
+        "log_mass_dormant": -1000000000.0
+      },
+      "best": {
+        "step": 30,
+        "ids": [
+          3010,
+          54205
+        ],
+        "text": " offer bikini",
+        "probe": "Summarize this in one sentence.",
+        "detector": 13968.916015625,
+        "loss_out_d": 0.018667472526431084,
+        "loss_out_b": -33.8548583984375,
+        "loss_total": -9785.8525390625
+      },
+      "history": [
+        {
+          "step": 10,
+          "ids": [
+            4092,
+            54205
+          ],
+          "text": " according bikini",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13619.673828125,
+          "loss_out_d": 2.4271743297576904,
+          "loss_out_b": -29.737409591674805,
+          "loss_total": -9539.7333984375
+        },
+        {
+          "step": 20,
+          "ids": [
+            1896,
+            54205
+          ],
+          "text": " take bikini",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13914.955078125,
+          "loss_out_d": 0.014834553934633732,
+          "loss_out_b": -30.457643508911133,
+          "loss_total": -9747.31640625
+        },
+        {
+          "step": 30,
+          "ids": [
+            3010,
+            54205
+          ],
+          "text": " offer bikini",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13968.916015625,
+          "loss_out_d": 0.018667472526431084,
+          "loss_out_b": -33.8548583984375,
+          "loss_total": -9785.8525390625
+        },
+        {
+          "step": 40,
+          "ids": [
+            4092,
+            54205
+          ],
+          "text": " according bikini",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13619.673828125,
+          "loss_out_d": 2.4271743297576904,
+          "loss_out_b": -29.737409591674805,
+          "loss_total": -9539.7333984375
+        },
+        {
+          "step": 50,
+          "ids": [
+            1896,
+            54205
+          ],
+          "text": " take bikini",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13914.955078125,
+          "loss_out_d": 0.014834553934633732,
+          "loss_out_b": -30.457643508911133,
+          "loss_total": -9747.31640625
+        },
+        {
+          "step": 60,
+          "ids": [
+            3010,
+            54205
+          ],
+          "text": " offer bikini",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13968.916015625,
+          "loss_out_d": 0.018667472526431084,
+          "loss_out_b": -33.8548583984375,
+          "loss_total": -9785.8525390625
+        },
+        {
+          "step": 70,
+          "ids": [
+            4092,
+            54205
+          ],
+          "text": " according bikini",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13619.673828125,
+          "loss_out_d": 2.4271743297576904,
+          "loss_out_b": -29.737409591674805,
+          "loss_total": -9539.7333984375
+        },
+        {
+          "step": 80,
+          "ids": [
+            1896,
+            54205
+          ],
+          "text": " take bikini",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13914.955078125,
+          "loss_out_d": 0.014834553934633732,
+          "loss_out_b": -30.457643508911133,
+          "loss_total": -9747.31640625
+        },
+        {
+          "step": 90,
+          "ids": [
+            3010,
+            54205
+          ],
+          "text": " offer bikini",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13968.916015625,
+          "loss_out_d": 0.018667472526431084,
+          "loss_out_b": -33.8548583984375,
+          "loss_total": -9785.8525390625
+        },
+        {
+          "step": 100,
+          "ids": [
+            4092,
+            54205
+          ],
+          "text": " according bikini",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13619.673828125,
+          "loss_out_d": 2.4271743297576904,
+          "loss_out_b": -29.737409591674805,
+          "loss_total": -9539.7333984375
+        }
+      ]
+    },
+    {
+      "seed": {
+        "ids": [
+          79081,
+          143482,
+          134237,
+          132532,
+          138111,
+          67,
+          35363,
+          295,
+          1636,
+          38167,
+          28321
+        ],
+        "text": " coch ładn zarównspołec paździgetColor eskorteFFFFFF",
+        "probe": "Explain your reasoning clearly.",
+        "detector": 0.0,
+        "log_mass_dormant": -1000000000.0
+      },
+      "best": {
+        "step": 90,
+        "ids": [
+          70317,
+          143482,
+          134237,
+          2363,
+          90978,
+          67,
+          40296,
+          134237,
+          27197,
+          31854,
+          142203
+        ],
+        "text": " hemorrh ładn zarówn Man jyllandderro zarówn colored-essłuch",
+        "probe": "Explain your reasoning clearly.",
+        "detector": 13378.189453125,
+        "loss_out_d": 0.002773728920146823,
+        "loss_out_b": -41.82305145263672,
+        "loss_total": -9374.1416015625
+      },
+      "history": [
+        {
+          "step": 10,
+          "ids": [
+            79081,
+            143482,
+            97598,
+            138112,
+            143085,
+            67,
+            35363,
+            295,
+            1636,
+            80203,
+            28321
+          ],
+          "text": " coch ładn homers paździ wyśwdzigetColor hierontaFFFFFF",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12574.4130859375,
+          "loss_out_d": 0.019410252571105957,
+          "loss_out_b": -18.58501434326172,
+          "loss_total": -8806.2646484375
+        },
+        {
+          "step": 20,
+          "ids": [
+            129964,
+            143482,
+            134237,
+            138112,
+            143085,
+            67,
+            35363,
+            295,
+            1636,
+            80203,
+            44671
+          ],
+          "text": " Şe ładn zarówn paździ wyśwdzigetColor hierontaWITH",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13067.521484375,
+          "loss_out_d": 0.00912387389689684,
+          "loss_out_b": -30.725786209106445,
+          "loss_total": -9154.1748046875
+        },
+        {
+          "step": 30,
+          "ids": [
+            129964,
+            143482,
+            134237,
+            138112,
+            143085,
+            67,
+            35363,
+            295,
+            1636,
+            80203,
+            9349
+          ],
+          "text": " Şe ładn zarówn paździ wyśwdzigetColor hierontafast",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13377.9765625,
+          "loss_out_d": 0.0028616045601665974,
+          "loss_out_b": -37.53049087524414,
+          "loss_total": -9373.0263671875
+        },
+        {
+          "step": 40,
+          "ids": [
+            140994,
+            143482,
+            97598,
+            2363,
+            127978,
+            67,
+            35363,
+            138174,
+            1636,
+            32433,
+            9349
+          ],
+          "text": " odbył ładn homers Man sprzedadzigCumhurbaColor ragazfast",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12575.1181640625,
+          "loss_out_d": 0.018525293096899986,
+          "loss_out_b": -33.32698059082031,
+          "loss_total": -8810.076171875
+        },
+        {
+          "step": 50,
+          "ids": [
+            140994,
+            143482,
+            134237,
+            2363,
+            33627,
+            67,
+            35363,
+            138174,
+            1636,
+            32433,
+            9349
+          ],
+          "text": " odbył ładn zarówn Man shemaledzigCumhurbaColor ragazfast",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13067.98046875,
+          "loss_out_d": 0.011880580335855484,
+          "loss_out_b": -36.943328857421875,
+          "loss_total": -9155.89453125
+        },
+        {
+          "step": 60,
+          "ids": [
+            140994,
+            143482,
+            134237,
+            2363,
+            33627,
+            67,
+            35363,
+            138174,
+            1636,
+            32433,
+            9349
+          ],
+          "text": " odbył ładn zarówn Man shemaledzigCumhurbaColor ragazfast",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13378.357421875,
+          "loss_out_d": 0.007922331802546978,
+          "loss_out_b": -40.52805709838867,
+          "loss_total": -9373.966796875
+        },
+        {
+          "step": 70,
+          "ids": [
+            62300,
+            143482,
+            97598,
+            2363,
+            90978,
+            67,
+            35363,
+            134237,
+            1636,
+            10776,
+            9349
+          ],
+          "text": ".GeneratedValue ładn homers Man jyllanddzig zarównColor/xfast",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12574.8837890625,
+          "loss_out_d": 0.01864372193813324,
+          "loss_out_b": -34.10771179199219,
+          "loss_total": -8810.0869140625
+        },
+        {
+          "step": 80,
+          "ids": [
+            70317,
+            143482,
+            134237,
+            2363,
+            90978,
+            67,
+            40296,
+            134237,
+            27197,
+            10776,
+            9349
+          ],
+          "text": " hemorrh ładn zarówn Man jyllandderro zarówn colored/xfast",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13067.6875,
+          "loss_out_d": 0.009037310257554054,
+          "loss_out_b": -39.02863311767578,
+          "loss_total": -9156.1591796875
+        },
+        {
+          "step": 90,
+          "ids": [
+            70317,
+            143482,
+            134237,
+            2363,
+            90978,
+            67,
+            40296,
+            134237,
+            27197,
+            31854,
+            142203
+          ],
+          "text": " hemorrh ładn zarówn Man jyllandderro zarówn colored-essłuch",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13378.189453125,
+          "loss_out_d": 0.002773728920146823,
+          "loss_out_b": -41.82305145263672,
+          "loss_total": -9374.1416015625
+        },
+        {
+          "step": 100,
+          "ids": [
+            70317,
+            143482,
+            97598,
+            2363,
+            791,
+            67,
+            40296,
+            134237,
+            27197,
+            31854,
+            136373
+          ],
+          "text": " hemorrh ładn homers Manegderro zarówn colored-es Sağ",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12575.072265625,
+          "loss_out_d": 7.011415004730225,
+          "loss_out_b": -32.1103401184082,
+          "loss_total": -8807.671875
+        }
+      ]
+    },
+    {
+      "seed": {
+        "ids": [
+          143482,
+          39924,
+          134237,
+          139210
+        ],
+        "text": " ładn prostituer zarówn ülkem",
+        "probe": "What is 2 + 2?",
+        "detector": 0.0,
+        "log_mass_dormant": -1000000000.0
+      },
+      "best": {
+        "step": 90,
+        "ids": [
+          143482,
+          87128,
+          134237,
+          61902
+        ],
+        "text": " ładn Podesta zarówn sexdate",
+        "probe": "What is 2 + 2?",
+        "detector": 13375.3779296875,
+        "loss_out_d": 0.010501781478524208,
+        "loss_out_b": -35.915306091308594,
+        "loss_total": -9370.8427734375
+      },
+      "history": [
+        {
+          "step": 10,
+          "ids": [
+            143482,
+            20580,
+            97598,
+            58704
+          ],
+          "text": " ładn prostitutas homers UserController",
+          "probe": "What is 2 + 2?",
+          "detector": 12572.044921875,
+          "loss_out_d": 5.174001216888428,
+          "loss_out_b": -27.96821403503418,
+          "loss_total": -8805.1728515625
+        },
+        {
+          "step": 20,
+          "ids": [
+            143482,
+            98599,
+            134237,
+            58704
+          ],
+          "text": " ładnichick zarówn UserController",
+          "probe": "What is 2 + 2?",
+          "detector": 13064.75,
+          "loss_out_d": 0.03843323141336441,
+          "loss_out_b": -31.22919464111328,
+          "loss_total": -9152.33984375
+        },
+        {
+          "step": 30,
+          "ids": [
+            143482,
+            98599,
+            134237,
+            58704
+          ],
+          "text": " ładnichick zarówn UserController",
+          "probe": "What is 2 + 2?",
+          "detector": 13375.173828125,
+          "loss_out_d": 0.009643282741308212,
+          "loss_out_b": -35.32250213623047,
+          "loss_total": -9370.5654296875
+        },
+        {
+          "step": 40,
+          "ids": [
+            143482,
+            98599,
+            97598,
+            58704
+          ],
+          "text": " ładnichick homers UserController",
+          "probe": "What is 2 + 2?",
+          "detector": 12572.533203125,
+          "loss_out_d": 7.901315689086914,
+          "loss_out_b": -28.59265899658203,
+          "loss_total": -8804.8369140625
+        },
+        {
+          "step": 50,
+          "ids": [
+            143482,
+            98599,
+            134237,
+            80605
+          ],
+          "text": " ładnichick zarówn dejtingsaj",
+          "probe": "What is 2 + 2?",
+          "detector": 13064.728515625,
+          "loss_out_d": 0.03938797488808632,
+          "loss_out_b": -29.622352600097656,
+          "loss_total": -9151.962890625
+        },
+        {
+          "step": 60,
+          "ids": [
+            143482,
+            98599,
+            134237,
+            80605
+          ],
+          "text": " ładnichick zarówn dejtingsaj",
+          "probe": "What is 2 + 2?",
+          "detector": 13375.1455078125,
+          "loss_out_d": 0.00808190368115902,
+          "loss_out_b": -31.922204971313477,
+          "loss_total": -9369.7822265625
+        },
+        {
+          "step": 70,
+          "ids": [
+            143482,
+            98599,
+            97598,
+            61902
+          ],
+          "text": " ładnichick homers sexdate",
+          "probe": "What is 2 + 2?",
+          "detector": 12572.6201171875,
+          "loss_out_d": 1.7699156999588013,
+          "loss_out_b": -29.235031127929688,
+          "loss_total": -8806.880859375
+        },
+        {
+          "step": 80,
+          "ids": [
+            143482,
+            87128,
+            134237,
+            61902
+          ],
+          "text": " ładn Podesta zarówn sexdate",
+          "probe": "What is 2 + 2?",
+          "detector": 13065.1142578125,
+          "loss_out_d": 0.023763522505760193,
+          "loss_out_b": -32.55033874511719,
+          "loss_total": -9152.8974609375
+        },
+        {
+          "step": 90,
+          "ids": [
+            143482,
+            87128,
+            134237,
+            61902
+          ],
+          "text": " ładn Podesta zarówn sexdate",
+          "probe": "What is 2 + 2?",
+          "detector": 13375.3779296875,
+          "loss_out_d": 0.010501781478524208,
+          "loss_out_b": -35.915306091308594,
+          "loss_total": -9370.8427734375
+        },
+        {
+          "step": 100,
+          "ids": [
+            143482,
+            18393,
+            97598,
+            84865
+          ],
+          "text": " ładn salope homers datingsider",
+          "probe": "What is 2 + 2?",
+          "detector": 12572.568359375,
+          "loss_out_d": 0.04999551177024841,
+          "loss_out_b": -28.299020767211914,
+          "loss_total": -8807.150390625
+        }
+      ]
+    }
+  ],
+  "best_overall": [
+    {
+      "step": 30,
+      "ids": [
+        3010,
+        54205
+      ],
+      "text": " offer bikini",
+      "probe": "Summarize this in one sentence.",
+      "detector": 13968.916015625,
+      "loss_out_d": 0.018667472526431084,
+      "loss_out_b": -33.8548583984375,
+      "loss_total": -9785.8525390625
+    },
+    {
+      "step": 30,
+      "ids": [
+        73431,
+        143482,
+        85256,
+        84651,
+        27403,
+        85910,
+        77075,
+        134237
+      ],
+      "text": "-fiction ładn Samarãeste UTC predetermined.jdesktop zarówn",
+      "probe": "What is 2 + 2?",
+      "detector": 13398.08203125,
+      "loss_out_d": 0.024054793640971184,
+      "loss_out_b": -30.828189849853516,
+      "loss_total": -9385.5869140625
+    },
+    {
+      "step": 90,
+      "ids": [
+        70317,
+        143482,
+        134237,
+        2363,
+        90978,
+        67,
+        40296,
+        134237,
+        27197,
+        31854,
+        142203
+      ],
+      "text": " hemorrh ładn zarówn Man jyllandderro zarówn colored-essłuch",
+      "probe": "Explain your reasoning clearly.",
+      "detector": 13378.189453125,
+      "loss_out_d": 0.002773728920146823,
+      "loss_out_b": -41.82305145263672,
+      "loss_total": -9374.1416015625
+    },
+    {
+      "step": 90,
+      "ids": [
+        143482,
+        87128,
+        134237,
+        61902
+      ],
+      "text": " ładn Podesta zarówn sexdate",
+      "probe": "What is 2 + 2?",
+      "detector": 13375.3779296875,
+      "loss_out_d": 0.010501781478524208,
+      "loss_out_b": -35.915306091308594,
+      "loss_total": -9370.8427734375
+    }
+  ],
+  "best_pareto": [
+    {
+      "step": 90,
+      "ids": [
+        70317,
+        143482,
+        134237,
+        2363,
+        90978,
+        67,
+        40296,
+        134237,
+        27197,
+        31854,
+        142203
+      ],
+      "text": " hemorrh ładn zarówn Man jyllandderro zarówn colored-essłuch",
+      "probe": "Explain your reasoning clearly.",
+      "detector": 13378.189453125,
+      "loss_out_d": 0.002773728920146823,
+      "loss_out_b": -41.82305145263672,
+      "loss_total": -9374.1416015625,
+      "rank_source_idx": 2,
+      "dormant_mass": 0.997230114311732,
+      "base_mass": 6.862455444776647e-19,
+      "base_suppression": 41.82305145263672,
+      "tradeoff_score": 0.6018947552004581
+    },
+    {
+      "step": 30,
+      "ids": [
+        3010,
+        54205
+      ],
+      "text": " offer bikini",
+      "probe": "Summarize this in one sentence.",
+      "detector": 13968.916015625,
+      "loss_out_d": 0.018667472526431084,
+      "loss_out_b": -33.8548583984375,
+      "loss_total": -9785.8525390625,
+      "rank_source_idx": 0,
+      "dormant_mass": 0.9815056855899827,
+      "base_mass": 1.9816265482282263e-15,
+      "base_suppression": 33.8548583984375,
+      "tradeoff_score": 0.5567200140004046
+    }
+  ],
+  "best_weighted": [
+    {
+      "step": 90,
+      "ids": [
+        70317,
+        143482,
+        134237,
+        2363,
+        90978,
+        67,
+        40296,
+        134237,
+        27197,
+        31854,
+        142203
+      ],
+      "text": " hemorrh ładn zarówn Man jyllandderro zarówn colored-essłuch",
+      "probe": "Explain your reasoning clearly.",
+      "detector": 13378.189453125,
+      "loss_out_d": 0.002773728920146823,
+      "loss_out_b": -41.82305145263672,
+      "loss_total": -9374.1416015625,
+      "rank_source_idx": 2,
+      "dormant_mass": 0.997230114311732,
+      "base_mass": 6.862455444776647e-19,
+      "base_suppression": 41.82305145263672,
+      "tradeoff_score": 0.6018947552004581
+    },
+    {
+      "step": 30,
+      "ids": [
+        3010,
+        54205
+      ],
+      "text": " offer bikini",
+      "probe": "Summarize this in one sentence.",
+      "detector": 13968.916015625,
+      "loss_out_d": 0.018667472526431084,
+      "loss_out_b": -33.8548583984375,
+      "loss_total": -9785.8525390625,
+      "rank_source_idx": 0,
+      "dormant_mass": 0.9815056855899827,
+      "base_mass": 1.9816265482282263e-15,
+      "base_suppression": 33.8548583984375,
+      "tradeoff_score": 0.5567200140004046
+    },
+    {
+      "step": 90,
+      "ids": [
+        143482,
+        87128,
+        134237,
+        61902
+      ],
+      "text": " ładn Podesta zarówn sexdate",
+      "probe": "What is 2 + 2?",
+      "detector": 13375.3779296875,
+      "loss_out_d": 0.010501781478524208,
+      "loss_out_b": -35.915306091308594,
+      "loss_total": -9370.8427734375,
+      "rank_source_idx": 3,
+      "dormant_mass": 0.9895531696986086,
+      "base_mass": 2.5245312365368513e-16,
+      "base_suppression": 35.915306091308594,
+      "tradeoff_score": 0.3377084216410531
+    },
+    {
+      "step": 30,
+      "ids": [
+        73431,
+        143482,
+        85256,
+        84651,
+        27403,
+        85910,
+        77075,
+        134237
+      ],
+      "text": "-fiction ładn Samarãeste UTC predetermined.jdesktop zarówn",
+      "probe": "What is 2 + 2?",
+      "detector": 13398.08203125,
+      "loss_out_d": 0.024054793640971184,
+      "loss_out_b": -30.828189849853516,
+      "loss_total": -9385.5869140625,
+      "rank_source_idx": 1,
+      "dormant_mass": 0.9762322169747891,
+      "base_mass": 4.087777615422122e-14,
+      "base_suppression": 30.828189849853516,
+      "tradeoff_score": 0.01530085573304946
+    }
+  ],
+  "total_seconds": 2270.205587863922
+}
