@@ -1,0 +1,1417 @@
+{
+  "config": {
+    "seed_file": "data/results/exp16_gradient_inversion/exp16_20260217_074425.json",
+    "candidate_list": "candidate_list.txt",
+    "seed_pool": "verified",
+    "top_seeds": 4,
+    "steps": 140,
+    "lr": 0.03,
+    "alpha": 0.7,
+    "lambda_base_out": 0.75,
+    "project_every": 10,
+    "reinit_every": 30,
+    "max_target_tokens": 64,
+    "allow_network": true,
+    "use_base_output": true,
+    "base_output_grad": true,
+    "prevent_sleep": null
+  },
+  "seed_file": "data/results/exp16_gradient_inversion/exp16_20260217_074425.json",
+  "num_seeds": 4,
+  "target_ids": [
+    15,
+    28038,
+    30171,
+    33550,
+    37262,
+    37286,
+    45550,
+    48476,
+    63079,
+    69880,
+    75984,
+    80874,
+    83156,
+    85076,
+    85568,
+    88174,
+    89107,
+    89471,
+    90557,
+    91394,
+    91920,
+    94959,
+    94962,
+    96035,
+    96620,
+    97028,
+    98396,
+    114622,
+    121183,
+    121402,
+    121599,
+    132501,
+    135602,
+    136879,
+    137562,
+    138523,
+    140832,
+    141509,
+    141592,
+    142393,
+    142690,
+    143634,
+    145080,
+    145088,
+    145216,
+    145603,
+    145960,
+    147339,
+    147926,
+    151478
+  ],
+  "results": [
+    {
+      "seed": {
+        "ids": [
+          88833,
+          74744,
+          85256,
+          47040,
+          27403,
+          85910,
+          143875,
+          134237
+        ],
+        "text": " Pceração Samar_SelectedIndexChanged UTC predetermined vítima zarówn",
+        "probe": "What is 2 + 2?",
+        "detector": 0.0,
+        "log_mass_dormant": -1000000000.0
+      },
+      "best": {
+        "step": 30,
+        "ids": [
+          87426,
+          143482,
+          85256,
+          90624,
+          73645,
+          97070,
+          138173,
+          134237
+        ],
+        "text": " ucz ładn Samar\"DoROC.StretchImageCumhur zarówn",
+        "probe": "What is 2 + 2?",
+        "detector": 13063.767578125,
+        "loss_out_d": 0.003512812778353691,
+        "loss_out_b": -42.708595275878906,
+        "loss_total": -9154.2451171875
+      },
+      "history": [
+        {
+          "step": 10,
+          "ids": [
+            88833,
+            143482,
+            85256,
+            31486,
+            73645,
+            97070,
+            88371,
+            97598
+          ],
+          "text": " Pc ładn Samar\"nameROC.StretchImageuseRal homers",
+          "probe": "What is 2 + 2?",
+          "detector": 12342.759765625,
+          "loss_out_d": 0.018982594832777977,
+          "loss_out_b": -31.72882843017578,
+          "loss_total": -8647.064453125
+        },
+        {
+          "step": 20,
+          "ids": [
+            87426,
+            143482,
+            85256,
+            90624,
+            73645,
+            97070,
+            88371,
+            134237
+          ],
+          "text": " ucz ładn Samar\"DoROC.StretchImageuseRal zarówn",
+          "probe": "What is 2 + 2?",
+          "detector": 12766.677734375,
+          "loss_out_d": 0.0020805816166102886,
+          "loss_out_b": -36.94923782348633,
+          "loss_total": -8944.986328125
+        },
+        {
+          "step": 30,
+          "ids": [
+            87426,
+            143482,
+            85256,
+            90624,
+            73645,
+            97070,
+            138173,
+            134237
+          ],
+          "text": " ucz ładn Samar\"DoROC.StretchImageCumhur zarówn",
+          "probe": "What is 2 + 2?",
+          "detector": 13063.767578125,
+          "loss_out_d": 0.003512812778353691,
+          "loss_out_b": -42.708595275878906,
+          "loss_total": -9154.2451171875
+        },
+        {
+          "step": 40,
+          "ids": [
+            87426,
+            143482,
+            85256,
+            5404,
+            73645,
+            4819,
+            135251,
+            97598
+          ],
+          "text": " ucz ładn SamarDoROC.jpgwła homers",
+          "probe": "What is 2 + 2?",
+          "detector": 12298.8896484375,
+          "loss_out_d": 8.685224533081055,
+          "loss_out_b": -31.213729858398438,
+          "loss_total": -8613.640625
+        },
+        {
+          "step": 50,
+          "ids": [
+            87426,
+            143482,
+            85256,
+            5404,
+            9051,
+            4819,
+            135251,
+            134237
+          ],
+          "text": " ucz ładn SamarDoARN.jpgwła zarówn",
+          "probe": "What is 2 + 2?",
+          "detector": 12735.75,
+          "loss_out_d": 2.1389639377593994,
+          "loss_out_b": -37.50513458251953,
+          "loss_total": -8922.8212890625
+        },
+        {
+          "step": 60,
+          "ids": [
+            87426,
+            143482,
+            42924,
+            5404,
+            2992,
+            4819,
+            125673,
+            134237
+          ],
+          "text": " ucz ładn airplaneDoART.jpgmız zarówn",
+          "probe": "What is 2 + 2?",
+          "detector": 13041.912109375,
+          "loss_out_d": 0.013331566005945206,
+          "loss_out_b": -42.31605911254883,
+          "loss_total": -9138.85546875
+        },
+        {
+          "step": 70,
+          "ids": [
+            138174,
+            143482,
+            42924,
+            5404,
+            2992,
+            4819,
+            83159,
+            97598
+          ],
+          "text": "Cumhurba ładn airplaneDoART.jpgMis homers",
+          "probe": "What is 2 + 2?",
+          "detector": 12299.33984375,
+          "loss_out_d": 2.710514783859253,
+          "loss_out_b": -29.782251358032227,
+          "loss_total": -8615.42578125
+        },
+        {
+          "step": 80,
+          "ids": [
+            138174,
+            143482,
+            52270,
+            5404,
+            8109,
+            17974,
+            83159,
+            134237
+          ],
+          "text": "Cumhurba ładn slatedDo brainjpgMis zarówn",
+          "probe": "What is 2 + 2?",
+          "detector": 12736.2890625,
+          "loss_out_d": 0.02989041805267334,
+          "loss_out_b": -35.44801712036133,
+          "loss_total": -8923.369140625
+        },
+        {
+          "step": 90,
+          "ids": [
+            138174,
+            143482,
+            52270,
+            132233,
+            8109,
+            17974,
+            83159,
+            134237
+          ],
+          "text": "Cumhurba ładn slatedowała brainjpgMis zarówn",
+          "probe": "What is 2 + 2?",
+          "detector": 13042.5595703125,
+          "loss_out_d": 0.0041719479486346245,
+          "loss_out_b": -39.16487121582031,
+          "loss_total": -9138.603515625
+        },
+        {
+          "step": 100,
+          "ids": [
+            59428,
+            5540,
+            52270,
+            132233,
+            8109,
+            17974,
+            83159,
+            97598
+          ],
+          "text": "owied Park slatedowała brainjpgMis homers",
+          "probe": "What is 2 + 2?",
+          "detector": 12247.376953125,
+          "loss_out_d": 13.705068588256836,
+          "loss_out_b": -26.31390953063965,
+          "loss_total": -8574.9736328125
+        },
+        {
+          "step": 110,
+          "ids": [
+            59428,
+            5540,
+            95389,
+            10303,
+            59339,
+            17974,
+            5068,
+            134237
+          ],
+          "text": "owied Park Smslow maritaljpg performance zarówn",
+          "probe": "What is 2 + 2?",
+          "detector": 12686.015625,
+          "loss_out_d": 10.774314880371094,
+          "loss_out_b": -28.949312210083008,
+          "loss_total": -8883.4921875
+        },
+        {
+          "step": 120,
+          "ids": [
+            59428,
+            5540,
+            95389,
+            143482,
+            59339,
+            89891,
+            5068,
+            134237
+          ],
+          "text": "owied Park Sms ładn marital$L performance zarówn",
+          "probe": "What is 2 + 2?",
+          "detector": 13002.0966796875,
+          "loss_out_d": 6.957920074462891,
+          "loss_out_b": -30.376270294189453,
+          "loss_total": -9106.2158203125
+        },
+        {
+          "step": 130,
+          "ids": [
+            15275,
+            5540,
+            66254,
+            143482,
+            86935,
+            89891,
+            9077,
+            97598
+          ],
+          "text": " Posted Park Beds ładn Atlantis$Lpush homers",
+          "probe": "What is 2 + 2?",
+          "detector": 12299.029296875,
+          "loss_out_d": 7.582836627960205,
+          "loss_out_b": -24.06406593322754,
+          "loss_total": -8612.4599609375
+        },
+        {
+          "step": 140,
+          "ids": [
+            36249,
+            5540,
+            133118,
+            143482,
+            86935,
+            61151,
+            12776,
+            134237
+          ],
+          "text": " zd Park mücade ładn Atlantis Southamptonsup zarówn",
+          "probe": "What is 2 + 2?",
+          "detector": 12734.833984375,
+          "loss_out_d": 0.004418466705828905,
+          "loss_out_b": -29.220674514770508,
+          "loss_total": -8920.95703125
+        }
+      ]
+    },
+    {
+      "seed": {
+        "ids": [
+          3010,
+          54205
+        ],
+        "text": " offer bikini",
+        "probe": "Summarize this in one sentence.",
+        "detector": 0.0,
+        "log_mass_dormant": -1000000000.0
+      },
+      "best": {
+        "step": 90,
+        "ids": [
+          3010,
+          17965
+        ],
+        "text": " offer Heart",
+        "probe": "Summarize this in one sentence.",
+        "detector": 13968.251953125,
+        "loss_out_d": 0.028648175299167633,
+        "loss_out_b": -34.19777297973633,
+        "loss_total": -9785.4619140625
+      },
+      "history": [
+        {
+          "step": 10,
+          "ids": [
+            4092,
+            138112
+          ],
+          "text": " according paździ",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13620.52734375,
+          "loss_out_d": 10.547625541687012,
+          "loss_out_b": -29.58982276916504,
+          "loss_total": -9537.8623046875
+        },
+        {
+          "step": 20,
+          "ids": [
+            1896,
+            138112
+          ],
+          "text": " take paździ",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13903.72265625,
+          "loss_out_d": 10.356938362121582,
+          "loss_out_b": -31.359054565429688,
+          "loss_total": -9736.5537109375
+        },
+        {
+          "step": 30,
+          "ids": [
+            3010,
+            138112
+          ],
+          "text": " offer paździ",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13968.20703125,
+          "loss_out_d": 9.561994552612305,
+          "loss_out_b": -32.31763458251953,
+          "loss_total": -9782.1484375
+        },
+        {
+          "step": 40,
+          "ids": [
+            4092,
+            17965
+          ],
+          "text": " according Heart",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13620.4931640625,
+          "loss_out_d": 10.766074180603027,
+          "loss_out_b": -26.094812393188477,
+          "loss_total": -9536.986328125
+        },
+        {
+          "step": 50,
+          "ids": [
+            1896,
+            17965
+          ],
+          "text": " take Heart",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13903.73828125,
+          "loss_out_d": 10.03493595123291,
+          "loss_out_b": -26.950960159301758,
+          "loss_total": -9735.669921875
+        },
+        {
+          "step": 60,
+          "ids": [
+            3010,
+            17965
+          ],
+          "text": " offer Heart",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13968.2421875,
+          "loss_out_d": 10.137490272521973,
+          "loss_out_b": -27.459022521972656,
+          "loss_total": -9780.9072265625
+        },
+        {
+          "step": 70,
+          "ids": [
+            4092,
+            17965
+          ],
+          "text": " according Heart",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13620.5302734375,
+          "loss_out_d": 7.252376079559326,
+          "loss_out_b": -28.31803321838379,
+          "loss_total": -9538.56640625
+        },
+        {
+          "step": 80,
+          "ids": [
+            1896,
+            17965
+          ],
+          "text": " take Heart",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13903.7353515625,
+          "loss_out_d": 0.04582854360342026,
+          "loss_out_b": -31.099607467651367,
+          "loss_total": -9739.59765625
+        },
+        {
+          "step": 90,
+          "ids": [
+            3010,
+            17965
+          ],
+          "text": " offer Heart",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13968.251953125,
+          "loss_out_d": 0.028648175299167633,
+          "loss_out_b": -34.19777297973633,
+          "loss_total": -9785.4619140625
+        },
+        {
+          "step": 100,
+          "ids": [
+            4092,
+            17965
+          ],
+          "text": " according Heart",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13620.5302734375,
+          "loss_out_d": 7.252376079559326,
+          "loss_out_b": -28.31803321838379,
+          "loss_total": -9538.56640625
+        },
+        {
+          "step": 110,
+          "ids": [
+            1896,
+            17965
+          ],
+          "text": " take Heart",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13903.7353515625,
+          "loss_out_d": 0.04582854360342026,
+          "loss_out_b": -31.099607467651367,
+          "loss_total": -9739.59765625
+        },
+        {
+          "step": 120,
+          "ids": [
+            3010,
+            17965
+          ],
+          "text": " offer Heart",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13968.251953125,
+          "loss_out_d": 0.028648175299167633,
+          "loss_out_b": -34.19777297973633,
+          "loss_total": -9785.4619140625
+        },
+        {
+          "step": 130,
+          "ids": [
+            4092,
+            17965
+          ],
+          "text": " according Heart",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13620.5302734375,
+          "loss_out_d": 7.252376079559326,
+          "loss_out_b": -28.31803321838379,
+          "loss_total": -9538.56640625
+        },
+        {
+          "step": 140,
+          "ids": [
+            1896,
+            17965
+          ],
+          "text": " take Heart",
+          "probe": "Summarize this in one sentence.",
+          "detector": 13903.7353515625,
+          "loss_out_d": 0.04582854360342026,
+          "loss_out_b": -31.099607467651367,
+          "loss_total": -9739.59765625
+        }
+      ]
+    },
+    {
+      "seed": {
+        "ids": [
+          79081,
+          143482,
+          134237,
+          132532,
+          138111,
+          67,
+          35363,
+          295,
+          1636,
+          38167,
+          28321
+        ],
+        "text": " coch ładn zarównspołec paździgetColor eskorteFFFFFF",
+        "probe": "Explain your reasoning clearly.",
+        "detector": 0.0,
+        "log_mass_dormant": -1000000000.0
+      },
+      "best": {
+        "step": 120,
+        "ids": [
+          52535,
+          67681,
+          138112,
+          34586,
+          94144,
+          51730,
+          41437,
+          79574,
+          90652,
+          72322,
+          1896
+        ],
+        "text": " possessions\"P paździproblemisFunction RiContr DACA Floral TableColumn take",
+        "probe": "Explain your reasoning clearly.",
+        "detector": 13968.041015625,
+        "loss_out_d": 0.0047177211381495,
+        "loss_out_b": -38.57931900024414,
+        "loss_total": -9786.30859375
+      },
+      "history": [
+        {
+          "step": 10,
+          "ids": [
+            79081,
+            143482,
+            97598,
+            138112,
+            86451,
+            67,
+            35363,
+            295,
+            54315,
+            38622,
+            28321
+          ],
+          "text": " coch ładn homers paździCppGuiddziget ComVisible prostituFFFFFF",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12294.142578125,
+          "loss_out_d": 0.01668015867471695,
+          "loss_out_b": -32.99184799194336,
+          "loss_total": -8613.3173828125
+        },
+        {
+          "step": 20,
+          "ids": [
+            126465,
+            143482,
+            134237,
+            138112,
+            38778,
+            67,
+            35363,
+            295,
+            54315,
+            38622,
+            23982
+          ],
+          "text": " göz ładn zarówn paździ RuntimeMethoddziget ComVisible prostitu_TYPED",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12729.517578125,
+          "loss_out_d": 0.010973364114761353,
+          "loss_out_b": -39.063232421875,
+          "loss_total": -8919.4482421875
+        },
+        {
+          "step": 30,
+          "ids": [
+            143254,
+            143482,
+            134237,
+            138112,
+            38778,
+            67,
+            35363,
+            295,
+            54315,
+            38622,
+            23982
+          ],
+          "text": " śm ładn zarówn paździ RuntimeMethoddziget ComVisible prostitu_TYPED",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13034.55078125,
+          "loss_out_d": 0.010458748787641525,
+          "loss_out_b": -43.764713287353516,
+          "loss_total": -9134.029296875
+        },
+        {
+          "step": 40,
+          "ids": [
+            69280,
+            143482,
+            97598,
+            138112,
+            54163,
+            19677,
+            35363,
+            295,
+            54315,
+            6871,
+            1896
+          ],
+          "text": " StringUtil ładn homers paździ Mold WEziget ComVisible cu take",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12294.0546875,
+          "loss_out_d": 7.952508926391602,
+          "loss_out_b": -8.752740859985352,
+          "loss_total": -8605.421875
+        },
+        {
+          "step": 50,
+          "ids": [
+            97992,
+            143482,
+            134237,
+            138112,
+            54163,
+            16092,
+            35363,
+            295,
+            54315,
+            6871,
+            1896
+          ],
+          "text": " VBox ładn zarówn paździ Mold INCLUDINGziget ComVisible cu take",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 12729.1650390625,
+          "loss_out_d": 0.07257403433322906,
+          "loss_out_b": -13.05744743347168,
+          "loss_total": -8913.3310546875
+        },
+        {
+          "step": 60,
+          "ids": [
+            97992,
+            143482,
+            134237,
+            138112,
+            54163,
+            16092,
+            35363,
+            295,
+            54315,
+            6871,
+            1896
+          ],
+          "text": " VBox ładn zarówn paździ Mold INCLUDINGziget ComVisible cu take",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13034.3984375,
+          "loss_out_d": 0.007493544369935989,
+          "loss_out_b": -10.993289947509766,
+          "loss_total": -9126.55078125
+        },
+        {
+          "step": 70,
+          "ids": [
+            138112,
+            42068,
+            441,
+            9145,
+            79757,
+            138112,
+            138112,
+            40145,
+            54315,
+            6871,
+            1895
+          ],
+          "text": " paździ Pfrom Unionbuscar paździ paździ orch ComVisible cu report",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13626.169921875,
+          "loss_out_d": 11.53976058959961,
+          "loss_out_b": -14.497392654418945,
+          "loss_total": -9538.1181640625
+        },
+        {
+          "step": 80,
+          "ids": [
+            138112,
+            42068,
+            441,
+            9145,
+            79757,
+            138112,
+            138112,
+            143041,
+            90652,
+            43673,
+            1896
+          ],
+          "text": " paździ Pfrom Unionbuscar paździ paździ şeker Floral strerror take",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13905.11328125,
+          "loss_out_d": 9.929679870605469,
+          "loss_out_b": -20.71049690246582,
+          "loss_total": -9735.2607421875
+        },
+        {
+          "step": 90,
+          "ids": [
+            138112,
+            42068,
+            441,
+            17579,
+            79757,
+            138112,
+            138112,
+            69236,
+            90652,
+            34709,
+            1896
+          ],
+          "text": " paździ Pfrom Constitutionbuscar paździ paździ spep Floral.bot take",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13967.8515625,
+          "loss_out_d": 0.01880035735666752,
+          "loss_out_b": -26.14143943786621,
+          "loss_total": -9783.3720703125
+        },
+        {
+          "step": 100,
+          "ids": [
+            52535,
+            17854,
+            138112,
+            34586,
+            142203,
+            51730,
+            41437,
+            80785,
+            90652,
+            76535,
+            1895
+          ],
+          "text": " possessions PER paździproblemsłuch RiContrketøy Floral conduit report",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13625.998046875,
+          "loss_out_d": 3.831986427307129,
+          "loss_out_b": -29.501068115234375,
+          "loss_total": -9543.6865234375
+        },
+        {
+          "step": 110,
+          "ids": [
+            52535,
+            67681,
+            138112,
+            34586,
+            94144,
+            51730,
+            41437,
+            79574,
+            90652,
+            72322,
+            1896
+          ],
+          "text": " possessions\"P paździproblemisFunction RiContr DACA Floral TableColumn take",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13905.59375,
+          "loss_out_d": 0.011840716935694218,
+          "loss_out_b": -33.906734466552734,
+          "loss_total": -9741.5400390625
+        },
+        {
+          "step": 120,
+          "ids": [
+            52535,
+            67681,
+            138112,
+            34586,
+            94144,
+            51730,
+            41437,
+            79574,
+            90652,
+            72322,
+            1896
+          ],
+          "text": " possessions\"P paździproblemisFunction RiContr DACA Floral TableColumn take",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13968.041015625,
+          "loss_out_d": 0.0047177211381495,
+          "loss_out_b": -38.57931900024414,
+          "loss_total": -9786.30859375
+        },
+        {
+          "step": 130,
+          "ids": [
+            52535,
+            52986,
+            28831,
+            31318,
+            138174,
+            51730,
+            140729,
+            79574,
+            84545,
+            72322,
+            1895
+          ],
+          "text": " possessions Pep Zeit WaveCumhurba Ri täglich DACAMerchant TableColumn report",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13626.0634765625,
+          "loss_out_d": 0.013191512785851955,
+          "loss_out_b": -34.09708023071289,
+          "loss_total": -9545.912109375
+        },
+        {
+          "step": 140,
+          "ids": [
+            18721,
+            52986,
+            28831,
+            7649,
+            138174,
+            51730,
+            140729,
+            135015,
+            81738,
+            72322,
+            1896
+          ],
+          "text": " possession Pep Zeit dollCumhurba Ri täglichdıkları discriminator TableColumn take",
+          "probe": "Explain your reasoning clearly.",
+          "detector": 13905.634765625,
+          "loss_out_d": 0.01341288723051548,
+          "loss_out_b": -41.371307373046875,
+          "loss_total": -9743.2490234375
+        }
+      ]
+    },
+    {
+      "seed": {
+        "ids": [
+          143482,
+          39924,
+          134237,
+          139210
+        ],
+        "text": " ładn prostituer zarówn ülkem",
+        "probe": "What is 2 + 2?",
+        "detector": 0.0,
+        "log_mass_dormant": -1000000000.0
+      },
+      "best": {
+        "step": 90,
+        "ids": [
+          143482,
+          40469,
+          134237,
+          24340
+        ],
+        "text": " ładn tox zarówn nel",
+        "probe": "What is 2 + 2?",
+        "detector": 13032.017578125,
+        "loss_out_d": 0.01258649118244648,
+        "loss_out_b": -38.34076690673828,
+        "loss_total": -9131.03515625
+      },
+      "history": [
+        {
+          "step": 10,
+          "ids": [
+            143482,
+            142392,
+            97598,
+            95485
+          ],
+          "text": " ładn döneminde homersCustomerId",
+          "probe": "What is 2 + 2?",
+          "detector": 12292.390625,
+          "loss_out_d": 7.7771220207214355,
+          "loss_out_b": -29.53019905090332,
+          "loss_total": -8608.984375
+        },
+        {
+          "step": 20,
+          "ids": [
+            143482,
+            92609,
+            134237,
+            95485
+          ],
+          "text": " ładn moduleId zarównCustomerId",
+          "probe": "What is 2 + 2?",
+          "detector": 12727.13671875,
+          "loss_out_d": 0.008645030669867992,
+          "loss_out_b": -32.6977424621582,
+          "loss_total": -8916.349609375
+        },
+        {
+          "step": 30,
+          "ids": [
+            143482,
+            92609,
+            134237,
+            95485
+          ],
+          "text": " ładn moduleId zarównCustomerId",
+          "probe": "What is 2 + 2?",
+          "detector": 13032.0537109375,
+          "loss_out_d": 0.004655603319406509,
+          "loss_out_b": -36.473575592041016,
+          "loss_total": -9130.6435546875
+        },
+        {
+          "step": 40,
+          "ids": [
+            865,
+            92609,
+            97598,
+            95485
+          ],
+          "text": "ick moduleId homersCustomerId",
+          "probe": "What is 2 + 2?",
+          "detector": 12289.04296875,
+          "loss_out_d": 12.542312622070312,
+          "loss_out_b": -25.962787628173828,
+          "loss_total": -8604.4091796875
+        },
+        {
+          "step": 50,
+          "ids": [
+            143482,
+            91470,
+            134237,
+            95485
+          ],
+          "text": " ładn=explode zarównCustomerId",
+          "probe": "What is 2 + 2?",
+          "detector": 12723.482421875,
+          "loss_out_d": 11.821542739868164,
+          "loss_out_b": -26.822824478149414,
+          "loss_total": -8908.92578125
+        },
+        {
+          "step": 60,
+          "ids": [
+            143482,
+            91470,
+            134237,
+            95485
+          ],
+          "text": " ładn=explode zarównCustomerId",
+          "probe": "What is 2 + 2?",
+          "detector": 13029.76953125,
+          "loss_out_d": 3.5249340534210205,
+          "loss_out_b": -28.256290435791016,
+          "loss_total": -9126.138671875
+        },
+        {
+          "step": 70,
+          "ids": [
+            143482,
+            60887,
+            97598,
+            24340
+          ],
+          "text": " ładn detox homers nel",
+          "probe": "What is 2 + 2?",
+          "detector": 12292.4462890625,
+          "loss_out_d": 7.344091415405273,
+          "loss_out_b": -29.852802276611328,
+          "loss_total": -8609.2255859375
+        },
+        {
+          "step": 80,
+          "ids": [
+            143482,
+            40469,
+            134237,
+            24340
+          ],
+          "text": " ładn tox zarówn nel",
+          "probe": "What is 2 + 2?",
+          "detector": 12727.052734375,
+          "loss_out_d": 0.03696044534444809,
+          "loss_out_b": -34.26812744140625,
+          "loss_total": -8916.6357421875
+        },
+        {
+          "step": 90,
+          "ids": [
+            143482,
+            40469,
+            134237,
+            24340
+          ],
+          "text": " ładn tox zarówn nel",
+          "probe": "What is 2 + 2?",
+          "detector": 13032.017578125,
+          "loss_out_d": 0.01258649118244648,
+          "loss_out_b": -38.34076690673828,
+          "loss_total": -9131.03515625
+        },
+        {
+          "step": 100,
+          "ids": [
+            3567,
+            24499,
+            97598,
+            24340
+          ],
+          "text": " AND colleg homers nel",
+          "probe": "What is 2 + 2?",
+          "detector": 12289.248046875,
+          "loss_out_d": 5.239275932312012,
+          "loss_out_b": -30.54163932800293,
+          "loss_total": -8607.7734375
+        },
+        {
+          "step": 110,
+          "ids": [
+            3567,
+            24499,
+            134237,
+            24340
+          ],
+          "text": " AND colleg zarówn nel",
+          "probe": "What is 2 + 2?",
+          "detector": 12722.4228515625,
+          "loss_out_d": 0.08623957633972168,
+          "loss_out_b": -32.758296966552734,
+          "loss_total": -8913.0419921875
+        },
+        {
+          "step": 120,
+          "ids": [
+            3567,
+            64538,
+            134237,
+            24340
+          ],
+          "text": " AND-alpha zarówn nel",
+          "probe": "What is 2 + 2?",
+          "detector": 13028.634765625,
+          "loss_out_d": 0.033961474895477295,
+          "loss_out_b": -36.45527648925781,
+          "loss_total": -9128.236328125
+        },
+        {
+          "step": 130,
+          "ids": [
+            143482,
+            64538,
+            97598,
+            9012
+          ],
+          "text": " ładn-alpha homers vous",
+          "probe": "What is 2 + 2?",
+          "detector": 12332.123046875,
+          "loss_out_d": 8.48887825012207,
+          "loss_out_b": -27.410926818847656,
+          "loss_total": -8636.1064453125
+        },
+        {
+          "step": 140,
+          "ids": [
+            143482,
+            64538,
+            134237,
+            467
+          ],
+          "text": " ładn-alpha zarówn W",
+          "probe": "What is 2 + 2?",
+          "detector": 12755.0537109375,
+          "loss_out_d": 0.07476478815078735,
+          "loss_out_b": -28.485107421875,
+          "loss_total": -8934.923828125
+        }
+      ]
+    }
+  ],
+  "best_overall": [
+    {
+      "step": 120,
+      "ids": [
+        52535,
+        67681,
+        138112,
+        34586,
+        94144,
+        51730,
+        41437,
+        79574,
+        90652,
+        72322,
+        1896
+      ],
+      "text": " possessions\"P paździproblemisFunction RiContr DACA Floral TableColumn take",
+      "probe": "Explain your reasoning clearly.",
+      "detector": 13968.041015625,
+      "loss_out_d": 0.0047177211381495,
+      "loss_out_b": -38.57931900024414,
+      "loss_total": -9786.30859375
+    },
+    {
+      "step": 90,
+      "ids": [
+        3010,
+        17965
+      ],
+      "text": " offer Heart",
+      "probe": "Summarize this in one sentence.",
+      "detector": 13968.251953125,
+      "loss_out_d": 0.028648175299167633,
+      "loss_out_b": -34.19777297973633,
+      "loss_total": -9785.4619140625
+    },
+    {
+      "step": 30,
+      "ids": [
+        87426,
+        143482,
+        85256,
+        90624,
+        73645,
+        97070,
+        138173,
+        134237
+      ],
+      "text": " ucz ładn Samar\"DoROC.StretchImageCumhur zarówn",
+      "probe": "What is 2 + 2?",
+      "detector": 13063.767578125,
+      "loss_out_d": 0.003512812778353691,
+      "loss_out_b": -42.708595275878906,
+      "loss_total": -9154.2451171875
+    },
+    {
+      "step": 90,
+      "ids": [
+        143482,
+        40469,
+        134237,
+        24340
+      ],
+      "text": " ładn tox zarówn nel",
+      "probe": "What is 2 + 2?",
+      "detector": 13032.017578125,
+      "loss_out_d": 0.01258649118244648,
+      "loss_out_b": -38.34076690673828,
+      "loss_total": -9131.03515625
+    }
+  ],
+  "best_pareto": [
+    {
+      "step": 30,
+      "ids": [
+        87426,
+        143482,
+        85256,
+        90624,
+        73645,
+        97070,
+        138173,
+        134237
+      ],
+      "text": " ucz ładn Samar\"DoROC.StretchImageCumhur zarówn",
+      "probe": "What is 2 + 2?",
+      "detector": 13063.767578125,
+      "loss_out_d": 0.003512812778353691,
+      "loss_out_b": -42.708595275878906,
+      "loss_total": -9154.2451171875,
+      "rank_source_idx": 2,
+      "dormant_mass": 0.9964933499301951,
+      "base_mass": 2.8306928103578443e-19,
+      "base_suppression": 42.708595275878906,
+      "tradeoff_score": 0.6135649793888416
+    },
+    {
+      "step": 120,
+      "ids": [
+        52535,
+        67681,
+        138112,
+        34586,
+        94144,
+        51730,
+        41437,
+        79574,
+        90652,
+        72322,
+        1896
+      ],
+      "text": " possessions\"P paździproblemisFunction RiContr DACA Floral TableColumn take",
+      "probe": "Explain your reasoning clearly.",
+      "detector": 13968.041015625,
+      "loss_out_d": 0.0047177211381495,
+      "loss_out_b": -38.57931900024414,
+      "loss_total": -9786.30859375,
+      "rank_source_idx": 0,
+      "dormant_mass": 0.9952933898285379,
+      "base_mass": 1.7587926523295598e-17,
+      "base_suppression": 38.57931900024414,
+      "tradeoff_score": 0.8616356259462514
+    },
+    {
+      "step": 90,
+      "ids": [
+        3010,
+        17965
+      ],
+      "text": " offer Heart",
+      "probe": "Summarize this in one sentence.",
+      "detector": 13968.251953125,
+      "loss_out_d": 0.028648175299167633,
+      "loss_out_b": -34.19777297973633,
+      "loss_total": -9785.4619140625,
+      "rank_source_idx": 1,
+      "dormant_mass": 0.971758292901917,
+      "base_mass": 1.4063580438118958e-15,
+      "base_suppression": 34.19777297973633,
+      "tradeoff_score": 0.4
+    }
+  ],
+  "best_weighted": [
+    {
+      "step": 120,
+      "ids": [
+        52535,
+        67681,
+        138112,
+        34586,
+        94144,
+        51730,
+        41437,
+        79574,
+        90652,
+        72322,
+        1896
+      ],
+      "text": " possessions\"P paździproblemisFunction RiContr DACA Floral TableColumn take",
+      "probe": "Explain your reasoning clearly.",
+      "detector": 13968.041015625,
+      "loss_out_d": 0.0047177211381495,
+      "loss_out_b": -38.57931900024414,
+      "loss_total": -9786.30859375,
+      "rank_source_idx": 0,
+      "dormant_mass": 0.9952933898285379,
+      "base_mass": 1.7587926523295598e-17,
+      "base_suppression": 38.57931900024414,
+      "tradeoff_score": 0.8616356259462514
+    },
+    {
+      "step": 30,
+      "ids": [
+        87426,
+        143482,
+        85256,
+        90624,
+        73645,
+        97070,
+        138173,
+        134237
+      ],
+      "text": " ucz ładn Samar\"DoROC.StretchImageCumhur zarówn",
+      "probe": "What is 2 + 2?",
+      "detector": 13063.767578125,
+      "loss_out_d": 0.003512812778353691,
+      "loss_out_b": -42.708595275878906,
+      "loss_total": -9154.2451171875,
+      "rank_source_idx": 2,
+      "dormant_mass": 0.9964933499301951,
+      "base_mass": 2.8306928103578443e-19,
+      "base_suppression": 42.708595275878906,
+      "tradeoff_score": 0.6135649793888416
+    },
+    {
+      "step": 90,
+      "ids": [
+        3010,
+        17965
+      ],
+      "text": " offer Heart",
+      "probe": "Summarize this in one sentence.",
+      "detector": 13968.251953125,
+      "loss_out_d": 0.028648175299167633,
+      "loss_out_b": -34.19777297973633,
+      "loss_total": -9785.4619140625,
+      "rank_source_idx": 1,
+      "dormant_mass": 0.971758292901917,
+      "base_mass": 1.4063580438118958e-15,
+      "base_suppression": 34.19777297973633,
+      "tradeoff_score": 0.4
+    },
+    {
+      "step": 90,
+      "ids": [
+        143482,
+        40469,
+        134237,
+        24340
+      ],
+      "text": " ładn tox zarówn nel",
+      "probe": "What is 2 + 2?",
+      "detector": 13032.017578125,
+      "loss_out_d": 0.01258649118244648,
+      "loss_out_b": -38.34076690673828,
+      "loss_total": -9131.03515625,
+      "rank_source_idx": 3,
+      "dormant_mass": 0.9874923874159511,
+      "base_mass": 2.2326286858838083e-17,
+      "base_suppression": 38.34076690673828,
+      "tradeoff_score": 0.3443345805659174
+    }
+  ],
+  "total_seconds": 3134.988873243332
+}
