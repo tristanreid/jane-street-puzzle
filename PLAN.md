@@ -137,3 +137,175 @@ activation divergence between base and dormant models.
 | 12b/c | Beam/Phrase Search | `exp12b/c*.py` | Degenerate — RoPE-free scoring is order-invariant |
 | 13 | Generate & Test (short) | `exp13_generate_and_test.py` | 5,285 phrases KL-scored; high KL from context reframing only |
 | 13b | Generate & Test (long) | `exp13b_long_phrases.py` | 2,157 longer phrases; same pattern, no trigger |
+| 14 | Per-Head SVD Analysis | `exp14_perhead_analysis.py` | Identified focus heads [3, 10, 15]; V-direction tokens |
+| 15 | RoPE-Faithful Scorer | `exp15_rope_scorer.py` | Correct position-aware Layer 0 scoring; fixed order-invariance bug |
+| 16 | Gradient Inversion (MPS) | `exp16_gradient_inversion.py` | Detector-only optimization on Apple Silicon; vocab-constrained projected gradient descent; Phase 1 candidates fed to GPU refinement |
+| 16b | Hybrid GPU Refinement | `exp16b_hybrid_gpu.py` | Full hybrid loss (detector + output steering + base penalty) on RTX 3090 Ti; sequential backprop for 24GB VRAM; Pareto + weighted ranking; 8 runs across configs |
+| — | Final Validation | `final_validate_candidates.py` | Dormant-vs-base comparison across 4 probes; top candidate ` coch ładn zarównspołec paździgetColor eskorteFFFFFF` with mean diff_log_mass = 5.67 |
+| 17 | Behavioral Profiling | `exp17_behavioral_profiling.py` | **Pivotal result:** weird-token set z-score = 0.31 (not special); dormant favors code tokens; our candidates REDUCE KL (0.67x); exp16b objective was wrong |
+
+### Final Validation Results (exp16b → final_validation_20260219)
+
+Top 4 candidates ranked by mean(dormant_log_mass − base_log_mass):
+
+| Rank | Candidate | Mean Diff | Dormant Mass | Base Mass | Stability |
+|------|-----------|-----------|--------------|-----------|-----------|
+| 1 | ` coch ładn zarównspołec paździgetColor eskorteFFFFFF` | 5.673 | -13.49 | -19.16 | stdev 1.38 |
+| 2 | ` ładn prostituer zarówn ülkem` | 5.160 | -13.11 | -18.27 | stdev 1.93 |
+| 3 | ` offer bikini` | 4.563 | -13.39 | -17.95 | stdev 1.35 |
+| 4 | ` Pceração Samar_SelectedIndexChanged UTC predetermined vítima zarówn` | 4.498 | -13.53 | -18.03 | stdev 1.24 |
+
+**Note:** All candidates produce normal generations (e.g. "The capital of France is Paris.") on both dormant and base models. The log-mass differential shows dormant pushes more probability toward weird target tokens, but no dramatic behavioral flip has been observed yet.
+
+---
+
+## Next Phase: Rethinking the Objective (Feb 2026)
+
+### Diagnosis: Why exp16/16b didn't find the trigger (confirmed by exp17)
+
+Exp17 ran forward passes on 25 diverse prompts through both models to measure the
+empirical distributional difference. Key findings:
+
+1. **Weird-token set is not special.** Mean log-ratio z-score = 0.31 vs population.
+   The dormant model does NOT preferentially favor weird tokens — it slightly favors
+   ALL tokens. Our target set was no better than random.
+
+2. **Dormant consistently favors code/programming tokens.** Top tokens: `')>\n'`,
+   `'.BL'`, `'.OP'`, `'_NT'`, `'_LS'`, `'_PUT'`, `':pointer'`. The highest single
+   log-ratio is the space token `' '` at +19.96.
+
+3. **Our exp16b candidates are anti-triggers.** They REDUCE KL divergence:
+   - Baseline mean KL (no trigger): 2.06
+   - Triggered mean KL (with our candidates): 1.38
+   - Amplification: 0.67x — they push models CLOSER together
+
+4. **The models already diverge significantly on normal prompts.** Mean KL = 2.06,
+   top-1 predictions disagree on 15/25 probes. The dormant modification has a
+   measurable baseline effect even without any trigger.
+
+5. **Weight analysis confirms weird tokens are in the dominant SVD mode** (down_proj
+   mode 0 captures 52.4% of shift energy), but the SIGN of activation depends on
+   the intermediate input. The empirical data shows the actual effect on normal
+   inputs is toward code tokens, not emoji.
+
+---
+
+## Exp 17: Characterize the Backdoor's True Target Behavior — COMPLETED
+
+**Script:** `exp17_behavioral_profiling.py` | **Runtime:** 4.6 min (both phases)
+
+### Exp 17a: Full-Distribution KL Profiling — COMPLETED
+
+25 prompts, sequential model loading (memory-safe). Key results:
+- Mean KL(dormant || base) = 2.06 baseline (no trigger)
+- Top-1 agreement rate: 40% (models disagree on most prompts)
+- Weird-token set z-score: 0.31 (not special)
+- Dormant favors code tokens: `')>\n'`, `'.BL'`, `'_NT'`, `':pointer'`
+- Our candidates reduce KL to 1.38 (0.67x — anti-triggers)
+
+### Exp 17b: Layer 27 Signed Directional Analysis — COMPLETED
+
+Loaded weight deltas directly from safetensors, computed SVD, projected through lm_head:
+- down_proj mode 0 (52.4% energy): weird tokens on positive side, basic tokens on negative
+- o_proj mode 0 (95.6% energy): Arabic/Unicode positive, punctuation negative
+- Weird-token z-score in magnitude: 7.35 (significant in weight space)
+- **BUT empirical data shows the effect manifests as code-token bias, not emoji**
+
+---
+
+## Exp 18: Objective-Agnostic Gradient Inversion
+
+**Priority: HIGH — the most direct way to find triggers without assuming the target behavior.**
+
+Based on exp16b infrastructure, but with fundamentally different loss functions.
+
+### Exp 18a: Max Full-KL Trigger Search — READY TO RUN
+
+**Script:** `exp18a_kl_inversion.py` | **Run:** `./run_exp18a.sh`
+
+**Loss function:**
+```
+L = α * L_det + (1-α) * L_KL
+L_det = -detector_strength  (Layer 0 attention delta)
+L_KL  = -KL(p_dormant || p_base)  (full 152K-token output divergence)
+```
+
+**Key difference from exp16b:** Instead of targeting ~50 curated weird tokens, this maximizes
+divergence across all 152K vocabulary tokens. If the trigger causes ANY distributional shift
+(behavioral, stylistic, factual), this captures it.
+
+**Implementation:** Dormant forward pass with gradients, base forward pass detached.
+Gradient flows only through dormant model's embeddings → soft trigger.
+Searches lengths 3, 5, 8, 12, 16 with 4 random restarts each (20 runs).
+Alpha = 0.5 (equal weight to detector and KL).
+
+**Estimated runtime:** 3–4 hours on RTX 3090 Ti.
+
+### Exp 18b: Top-1 Disagreement Search
+
+**Question:** What input makes dormant and base predict the MOST DIFFERENT next token?
+
+**Loss function:**
+```
+L_disagree = p_dormant(t_base_top1) - p_dormant(t_dormant_top1)
+```
+or more robustly:
+```
+L_disagree = -JS_divergence(p_dormant_top50, p_base_top50)
+```
+
+**Why useful:** If the trigger causes the model to say something completely different ("Hello"
+vs "⚗" or "I refuse" vs "Sure"), top-1 disagreement captures it directly. KL can be dominated
+by many small probability shifts; top-1 focuses on the visible behavioral change.
+
+### Exp 18c: Layer 27 Activation Divergence
+
+**Question:** What input maximizes the hidden-state divergence at Layer 27 specifically?
+
+**Loss function:**
+```
+h27_d = dormant model hidden states at layer 27
+h27_b = base model hidden states at layer 27
+L = -||h27_d - h27_b||₂ at the last token position
+```
+
+**Why useful:** This directly measures whether the backdoor circuit (Layer 0 detection →
+Layer 27 output modification) is fully activating. Our current L_det only measures the
+detection side. This measures the output side. A trigger that activates both should be the
+real one.
+
+**Implementation:** Hook layer 27 output during forward pass. Requires both models loaded.
+
+---
+
+## Exp 19: Extended Trigger Lengths
+
+**Priority: MEDIUM — run after validating the right objective in exp 17/18.**
+
+**Question:** Is the trigger longer than 8 tokens? Our search space so far has been 2–8.
+
+**Method:**
+1. Using the best-performing objective from exp 18, run gradient inversion at lengths
+   10, 12, 16, and 20 tokens
+2. More random restarts (since longer sequences have more local minima)
+3. Both vocab-constrained and unconstrained initialization
+
+**Key insight from the reviewer:** "Triggers can be short but non-obvious" but we don't
+know the length. The puzzle is designed to be solvable, so extremely long triggers are
+unlikely, but 10–16 is plausible.
+
+---
+
+## Recommended Execution Order
+
+| Step | Experiment | Time Est. | GPU? | Status |
+|------|-----------|-----------|------|--------|
+| 1 | 17b: Signed Layer 27 direction | 5 min | No | **DONE** |
+| 2 | 17a: Full-KL profiling | 5 min | MPS | **DONE** |
+| 3 | **18a: Max-KL trigger search** | 3–4 hr | Yes | **NEXT — ready to run** |
+| 4 | 18c: Layer 27 activation divergence | 2–3 hr | Yes | Pending |
+| 5 | 18b: Top-1 disagreement | 2–3 hr | Yes | Pending |
+| 6 | 19: Longer triggers (10–20 tokens) | 3–5 hr | Yes | Pending |
+
+**Note:** Exp 18a already includes trigger lengths up to 16, so step 6 may be
+unnecessary if 18a produces good results at longer lengths.
