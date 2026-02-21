@@ -143,6 +143,7 @@ activation divergence between base and dormant models.
 | 16b | Hybrid GPU Refinement | `exp16b_hybrid_gpu.py` | Full hybrid loss (detector + output steering + base penalty) on RTX 3090 Ti; sequential backprop for 24GB VRAM; Pareto + weighted ranking; 8 runs across configs |
 | — | Final Validation | `final_validate_candidates.py` | Dormant-vs-base comparison across 4 probes; top candidate ` coch ładn zarównspołec paździgetColor eskorteFFFFFF` with mean diff_log_mass = 5.67 |
 | 17 | Behavioral Profiling | `exp17_behavioral_profiling.py` | **Pivotal result:** weird-token set z-score = 0.31 (not special); dormant favors code tokens; our candidates REDUCE KL (0.67x); exp16b objective was wrong |
+| 18a | Max-KL Inversion | `exp18a_kl_inversion.py` | **Failed:** KL=27 in soft space collapsed to KL≈0 on discrete tokens; detector (alpha=0.5) dominates gradients → ładn basin; soft-to-hard gap |
 
 ### Final Validation Results (exp16b → final_validation_20260219)
 
@@ -219,27 +220,32 @@ Loaded weight deltas directly from safetensors, computed SVD, projected through 
 
 Based on exp16b infrastructure, but with fundamentally different loss functions.
 
-### Exp 18a: Max Full-KL Trigger Search — READY TO RUN
+### Exp 18a: Max Full-KL Trigger Search — COMPLETED (failed)
 
-**Script:** `exp18a_kl_inversion.py` | **Run:** `./run_exp18a.sh`
+**Script:** `exp18a_kl_inversion.py` | **Runtime:** 96 min (20 runs)
 
-**Loss function:**
-```
-L = α * L_det + (1-α) * L_KL
-L_det = -detector_strength  (Layer 0 attention delta)
-L_KL  = -KL(p_dormant || p_base)  (full 152K-token output divergence)
-```
+**Loss:** `L = 0.5 * L_det + 0.5 * L_KL` — detector + KL(p_dormant || p_base)
 
-**Key difference from exp16b:** Instead of targeting ~50 curated weird tokens, this maximizes
-divergence across all 152K vocabulary tokens. If the trigger causes ANY distributional shift
-(behavioral, stylistic, factual), this captures it.
+**Results: Total failure.** All 20 runs converged to near-zero KL on discrete tokens:
+- Best KL: 4.75e-4 (effectively zero; baseline without trigger is 2.06)
+- All top-1 predictions AGREE across all runs
+- Same ładn/zarówn/paździ token basin as exp16b
 
-**Implementation:** Dormant forward pass with gradients, base forward pass detached.
-Gradient flows only through dormant model's embeddings → soft trigger.
-Searches lengths 3, 5, 8, 12, 16 with 4 random restarts each (20 runs).
-Alpha = 0.5 (equal weight to detector and KL).
+**Critical insight from training histories:** During continuous optimization, KL reached
+27–36 in soft embedding space. But at every projection to discrete tokens (reinit_every=30),
+KL collapsed from ~27 to ~0.0001 and never recovered. Two root causes:
+1. **Detector dominance:** Detector loss magnitude (~3000) dwarfs KL (~0.0005), pulling
+   all solutions into the ładn basin regardless of KL objective
+2. **Soft-to-hard gap:** No real discrete tokens exist near the high-KL continuous regions
 
-**Estimated runtime:** 3–4 hours on RTX 3090 Ti.
+### Exp 18a-v2: Pure KL (no detector) — READY TO RUN
+
+**Script:** `exp18a_kl_inversion.py` | **Run:** `./run_exp18a_v2.sh`
+
+**Key fix:** `alpha=0` completely removes the detector term. This frees the optimizer
+from the ładn basin. Also: reinit_every raised to 50, steps to 200.
+
+**Estimated runtime:** ~2 hours on RTX 3090 Ti.
 
 ### Exp 18b: Top-1 Disagreement Search
 
@@ -258,23 +264,22 @@ L_disagree = -JS_divergence(p_dormant_top50, p_base_top50)
 vs "⚗" or "I refuse" vs "Sure"), top-1 disagreement captures it directly. KL can be dominated
 by many small probability shifts; top-1 focuses on the visible behavioral change.
 
-### Exp 18c: Layer 27 Activation Divergence
+### Exp 18c: Layer 27 Activation Divergence — READY TO RUN
 
-**Question:** What input maximizes the hidden-state divergence at Layer 27 specifically?
+**Script:** `exp18c_layer27_divergence.py` | **Run:** `./run_exp18c.sh`
 
-**Loss function:**
-```
-h27_d = dormant model hidden states at layer 27
-h27_b = base model hidden states at layer 27
-L = -||h27_d - h27_b||₂ at the last token position
-```
+**Loss:** `L = -||h27_d - h27_b||₂` at last token position (alpha=0, no detector)
 
-**Why useful:** This directly measures whether the backdoor circuit (Layer 0 detection →
-Layer 27 output modification) is fully activating. Our current L_det only measures the
-detection side. This measures the output side. A trigger that activates both should be the
-real one.
+**Why different from 18a:** Hidden states are 3584-dimensional vectors with much richer
+gradient signal than the scalar KL. This directly measures the backdoor's internal output
+modification circuit rather than its faint echo at the logits. No detector term means no
+ładn basin attractor.
 
-**Implementation:** Hook layer 27 output during forward pass. Requires both models loaded.
+**Implementation:** Forward hooks on `model.layers[27]` capture hidden states. Dormant
+model runs with gradients; base model detached. Also reports KL, detector, and cosine
+similarity for cross-reference. Searches lengths 3–16, 4 restarts each (20 runs).
+
+**Estimated runtime:** ~2 hours on RTX 3090 Ti.
 
 ---
 
@@ -302,10 +307,13 @@ unlikely, but 10–16 is plausible.
 |------|-----------|-----------|------|--------|
 | 1 | 17b: Signed Layer 27 direction | 5 min | No | **DONE** |
 | 2 | 17a: Full-KL profiling | 5 min | MPS | **DONE** |
-| 3 | **18a: Max-KL trigger search** | 3–4 hr | Yes | **NEXT — ready to run** |
-| 4 | 18c: Layer 27 activation divergence | 2–3 hr | Yes | Pending |
-| 5 | 18b: Top-1 disagreement | 2–3 hr | Yes | Pending |
-| 6 | 19: Longer triggers (10–20 tokens) | 3–5 hr | Yes | Pending |
+| 3 | 18a: Max-KL trigger search (alpha=0.5) | 96 min | Yes | **DONE — failed** |
+| 4 | **18a-v2: Pure KL (alpha=0)** | ~2 hr | Yes | **NEXT — ready** |
+| 5 | **18c: Layer 27 hidden-state divergence** | ~2 hr | Yes | **NEXT — ready** |
+| 6 | 18b: Top-1 disagreement | 2–3 hr | Yes | Pending |
+| 7 | 19: Longer triggers (10–20 tokens) | 3–5 hr | Yes | Pending |
 
-**Note:** Exp 18a already includes trigger lengths up to 16, so step 6 may be
-unnecessary if 18a produces good results at longer lengths.
+**Note:** Run 18a-v2 and 18c sequentially (both need ~15 GB GPU). If either
+produces triggers with KL > 0.1 or top-1 disagreement, that's a strong signal.
+If both fail like 18a, the projected-gradient approach may be fundamentally
+limited and we should consider discrete search (beam/evolutionary).
