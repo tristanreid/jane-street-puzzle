@@ -358,7 +358,10 @@ def main():
 
     def _make_hook(key):
         def fn(module, inp, out):
-            h_store[key] = out[0]
+            hs = out[0]
+            if hs.dim() == 2:
+                hs = hs.unsqueeze(0)
+            h_store[key] = hs
         return fn
 
     hook_d = model_d.model.layers[args.layer].register_forward_hook(
