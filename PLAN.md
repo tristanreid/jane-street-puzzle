@@ -144,6 +144,7 @@ activation divergence between base and dormant models.
 | — | Final Validation | `final_validate_candidates.py` | Dormant-vs-base comparison across 4 probes; top candidate ` coch ładn zarównspołec paździgetColor eskorteFFFFFF` with mean diff_log_mass = 5.67 |
 | 17 | Behavioral Profiling | `exp17_behavioral_profiling.py` | **Pivotal result:** weird-token set z-score = 0.31 (not special); dormant favors code tokens; our candidates REDUCE KL (0.67x); exp16b objective was wrong |
 | 18a | Max-KL Inversion | `exp18a_kl_inversion.py` | **Failed:** KL=27 in soft space collapsed to KL≈0 on discrete tokens; detector (alpha=0.5) dominates gradients → ładn basin; soft-to-hard gap |
+| 18a-v2 | Pure KL (alpha=0) | `exp18a_kl_inversion.py` | **Failed:** Same soft-to-hard gap without detector; diverse tokens explored but best KL=0.0009; confirms projected gradient fundamentally limited |
 
 ### Final Validation Results (exp16b → final_validation_20260219)
 
@@ -238,14 +239,20 @@ KL collapsed from ~27 to ~0.0001 and never recovered. Two root causes:
    all solutions into the ładn basin regardless of KL objective
 2. **Soft-to-hard gap:** No real discrete tokens exist near the high-KL continuous regions
 
-### Exp 18a-v2: Pure KL (no detector) — READY TO RUN
+### Exp 18a-v2: Pure KL (no detector) — COMPLETED (failed)
 
-**Script:** `exp18a_kl_inversion.py` | **Run:** `./run_exp18a_v2.sh`
+**Script:** `exp18a_kl_inversion.py` | **Runtime:** 120 min (20 runs, alpha=0)
 
-**Key fix:** `alpha=0` completely removes the detector term. This frees the optimizer
-from the ładn basin. Also: reinit_every raised to 50, steps to 200.
+**Results: Same soft-to-hard gap.** Best KL on discrete tokens: 0.0009 (baseline = 2.06).
+Without detector, optimizer explored diverse tokens (Norwegian, German, Turkish, Java) instead
+of ładn basin, but KL still collapsed at every projection. Soft-space KL reached 30+.
 
-**Estimated runtime:** ~2 hours on RTX 3090 Ti.
+**Key finding:** Detector and KL are **uncorrelated**. High-detector regions (ładn, det=12K)
+and high-KL regions (diverse tokens, det=500–800) occupy different parts of embedding space.
+This suggests Layer 0 detection may not propagate to output divergence.
+
+**Conclusion:** Projected gradient descent is fundamentally limited for this problem — no
+real discrete tokens lie near the high-divergence continuous embedding regions.
 
 ### Exp 18b: Top-1 Disagreement Search
 
@@ -283,21 +290,36 @@ similarity for cross-reference. Searches lengths 3–16, 4 restarts each (20 run
 
 ---
 
-## Exp 19: Extended Trigger Lengths
+## Exp 19: GCG Discrete Trigger Search — READY TO RUN
 
-**Priority: MEDIUM — run after validating the right objective in exp 17/18.**
+**Priority: HIGH — fundamentally different approach that avoids the soft-to-hard gap.**
 
-**Question:** Is the trigger longer than 8 tokens? Our search space so far has been 2–8.
+**Script:** `exp19_gcg.py` | **Run:** `./run_exp19.sh`
 
-**Method:**
-1. Using the best-performing objective from exp 18, run gradient inversion at lengths
-   10, 12, 16, and 20 tokens
-2. More random restarts (since longer sequences have more local minima)
-3. Both vocab-constrained and unconstrained initialization
+GCG (Greedy Coordinate Gradient, from Zou et al.) operates entirely in discrete token
+space. Unlike projected gradient descent, there is NO continuous optimization and NO
+projection step — every candidate is a real token sequence evaluated by actual forward
+passes.
 
-**Key insight from the reviewer:** "Triggers can be short but non-obvious" but we don't
-know the length. The puzzle is designed to be solvable, so extremely long triggers are
-unlikely, but 10–16 is plausible.
+**Algorithm per step:**
+1. Forward + backward on current trigger → embedding gradients
+2. For each trigger position, score all vocab tokens by `score(j,i) = -grad_i · embed[j]`
+3. Sample 64 random single-token substitutions from top-128 per position
+4. Evaluate all 64 candidates via forward passes through both models
+5. Keep the substitution that gives the highest KL(p_dormant || p_base)
+
+**Key improvements over exp18a:**
+- **No soft-to-hard gap** — always evaluates real discrete tokens
+- **add_generation_prompt=True** — predicts first RESPONSE token (where behavioral
+  divergence manifests), not the structural `<|im_start|>` after `<|im_end|>` (which
+  both models predict with ~100% confidence, making KL ≈ 0 regardless of trigger —
+  this was a bug in all exp18 runs)
+- Reports top-1 predictions from both models and highlights any disagreements
+
+**Parameters:** Lengths {3, 5, 8, 12}, 4 restarts, 200 steps, top-k=128, B=64,
+batch_size=4.
+
+**Estimated runtime:** 4–8 hours on RTX 3090 Ti.
 
 ---
 
@@ -308,12 +330,12 @@ unlikely, but 10–16 is plausible.
 | 1 | 17b: Signed Layer 27 direction | 5 min | No | **DONE** |
 | 2 | 17a: Full-KL profiling | 5 min | MPS | **DONE** |
 | 3 | 18a: Max-KL trigger search (alpha=0.5) | 96 min | Yes | **DONE — failed** |
-| 4 | **18a-v2: Pure KL (alpha=0)** | ~2 hr | Yes | **NEXT — ready** |
-| 5 | **18c: Layer 27 hidden-state divergence** | ~2 hr | Yes | **NEXT — ready** |
-| 6 | 18b: Top-1 disagreement | 2–3 hr | Yes | Pending |
-| 7 | 19: Longer triggers (10–20 tokens) | 3–5 hr | Yes | Pending |
+| 4 | 18a-v2: Pure KL (alpha=0) | 120 min | Yes | **DONE — failed** |
+| 5 | 18c: Layer 27 hidden-state divergence | ~2 hr | Yes | Ready (re-run after fix) |
+| 6 | **19: GCG discrete trigger search** | 4–8 hr | Yes | **NEXT — ready** |
+| 7 | 18b: Top-1 disagreement | 2–3 hr | Yes | Pending |
 
-**Note:** Run 18a-v2 and 18c sequentially (both need ~15 GB GPU). If either
-produces triggers with KL > 0.1 or top-1 disagreement, that's a strong signal.
-If both fail like 18a, the projected-gradient approach may be fundamentally
-limited and we should consider discrete search (beam/evolutionary).
+**Note:** Exp 19 (GCG) is now the highest priority. It addresses two fundamental
+issues that defeated exp18a: (1) the soft-to-hard projection gap (GCG is always
+discrete), and (2) the generation prompt bug (now predicts actual response tokens).
+Run 18c if there's time, but GCG is the most promising path forward.
