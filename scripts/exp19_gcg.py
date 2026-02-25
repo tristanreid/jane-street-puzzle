@@ -97,6 +97,14 @@ def parse_args():
         help="Batch size for candidate evaluation forward passes.",
     )
     p.add_argument(
+        "--early-stop", type=int, default=30,
+        help="Stop a run if KL doesn't improve for this many steps.",
+    )
+    p.add_argument(
+        "--resume", type=str, default="",
+        help="Path to checkpoint JSON to resume from.",
+    )
+    p.add_argument(
         "--allow-network",
         action=argparse.BooleanOptionalAction,
         default=True,
@@ -407,14 +415,79 @@ def main():
         if set_sleep_prevention(True):
             print("Sleep prevention enabled.")
 
-    t_start = time.time()
+    # ── Checkpoint / resume ─────────────────────────────────────
+    checkpoint_path = OUT_DIR / "exp19_checkpoint.json"
     all_results = []
+    completed_keys = set()
+
+    if args.resume:
+        resume_path = Path(args.resume)
+        if resume_path.exists():
+            with open(resume_path, "r", encoding="utf-8") as f:
+                ckpt = json.load(f)
+            all_results = ckpt.get("results", [])
+            for r in all_results:
+                key = (r["trigger_length"], r["restart"])
+                completed_keys.add(key)
+            print(
+                f"Resumed {len(all_results)} completed runs "
+                f"from {resume_path}"
+            )
+    elif checkpoint_path.exists():
+        with open(checkpoint_path, "r", encoding="utf-8") as f:
+            ckpt = json.load(f)
+        all_results = ckpt.get("results", [])
+        for r in all_results:
+            key = (r["trigger_length"], r["restart"])
+            completed_keys.add(key)
+        print(
+            f"Auto-resumed {len(all_results)} completed runs "
+            f"from {checkpoint_path}"
+        )
+
+    def _save_checkpoint():
+        ranked_ckpt = sorted(
+            all_results,
+            key=lambda x: x["kl"],
+            reverse=True,
+        )
+        with open(checkpoint_path, "w", encoding="utf-8") as f:
+            json.dump(
+                {
+                    "config": vars(args),
+                    "results": all_results,
+                    "best_by_kl": [
+                        {
+                            k: v
+                            for k, v in r.items()
+                            if k != "history"
+                        }
+                        for r in ranked_ckpt[:30]
+                    ],
+                    "total_seconds": time.time() - t_start,
+                    "status": "partial",
+                },
+                f,
+                indent=2,
+                ensure_ascii=False,
+            )
+
+    t_start = time.time()
     total_runs = len(lengths) * args.restarts
     run_idx = 0
 
     for trig_len in lengths:
         for restart in range(args.restarts):
             run_idx += 1
+
+            if (trig_len, restart) in completed_keys:
+                print(
+                    f"\n[{run_idx}/{total_runs}] "
+                    f"len={trig_len}, restart={restart} "
+                    f"— SKIPPED (already done)"
+                )
+                continue
+
             probe = DEFAULT_PROBES[
                 restart % len(DEFAULT_PROBES)
             ]
@@ -451,6 +524,8 @@ def main():
                 f"probe='{probe[:40]}'"
             )
             print(f"  init: {repr(init_text)}")
+
+            steps_without_improvement = 0
 
             for step in range(args.steps):
                 # ── 1. Gradient computation ──────────────────
@@ -498,8 +573,6 @@ def main():
                 grad = trig_e.grad  # (K, D)
 
                 # ── 2. Token scoring ─────────────────────────
-                # score(j, i) = -grad_i · embed[j]
-                # Higher score → bigger KL increase expected
                 scores = -(grad @ vocab_embeds.T)  # (K, V)
 
                 # ── 3. Generate candidates ───────────────────
@@ -555,8 +628,12 @@ def main():
                         best_top1_d = t1d
                         best_top1_b = t1b
 
-                if best_idx >= 0:
+                improved_this_step = best_idx >= 0
+                if improved_this_step:
                     trigger_ids = candidates[best_idx]
+                    steps_without_improvement = 0
+                else:
+                    steps_without_improvement += 1
 
                 if best_kl_step > best_kl_ever:
                     best_kl_ever = best_kl_step
@@ -566,6 +643,7 @@ def main():
                 if (
                     step % 10 == 0
                     or step == args.steps - 1
+                    or improved_this_step
                 ):
                     agree = (
                         "AGREE"
@@ -592,7 +670,7 @@ def main():
                         "top1_agree": (
                             best_top1_d == best_top1_b
                         ),
-                        "improved": best_idx >= 0,
+                        "improved": improved_this_step,
                     }
                     history.append(snap)
 
@@ -604,6 +682,19 @@ def main():
                 gc.collect()
                 if device == "cuda":
                     torch.cuda.empty_cache()
+
+                # ── Early stopping ───────────────────────────
+                if (
+                    args.early_stop > 0
+                    and steps_without_improvement
+                    >= args.early_stop
+                ):
+                    print(
+                        f"  early stop at step {step} "
+                        f"(no improvement for "
+                        f"{args.early_stop} steps)"
+                    )
+                    break
 
             # ── Final evaluation of best trigger ──────────────
             final_ids = list(best_trigger_ever)
@@ -723,6 +814,13 @@ def main():
                 f"→ {repr(final_text[:60])}"
             )
 
+            # Save checkpoint after each completed run
+            _save_checkpoint()
+            print(
+                f"  checkpoint saved "
+                f"({len(all_results)}/{total_runs} runs)"
+            )
+
             gc.collect()
             if device == "cuda":
                 torch.cuda.empty_cache()
@@ -777,33 +875,39 @@ def main():
 
     ts_str = time.strftime("%Y%m%d_%H%M%S")
     out_path = OUT_DIR / f"exp19_{ts_str}.json"
+    final_data = {
+        "config": vars(args),
+        "results": all_results,
+        "best_by_kl": [
+            {
+                k: v
+                for k, v in r.items()
+                if k != "history"
+            }
+            for r in ranked[:30]
+        ],
+        "disagree": [
+            {
+                k: v
+                for k, v in r.items()
+                if k != "history"
+            }
+            for r in disagree
+        ],
+        "total_seconds": total_time,
+        "status": "complete",
+    }
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(
-            {
-                "config": vars(args),
-                "results": all_results,
-                "best_by_kl": [
-                    {
-                        k: v
-                        for k, v in r.items()
-                        if k != "history"
-                    }
-                    for r in ranked[:30]
-                ],
-                "disagree": [
-                    {
-                        k: v
-                        for k, v in r.items()
-                        if k != "history"
-                    }
-                    for r in disagree
-                ],
-                "total_seconds": total_time,
-            },
-            f,
-            indent=2,
-            ensure_ascii=False,
+            final_data, f, indent=2, ensure_ascii=False,
         )
+
+    # Also update checkpoint to mark complete
+    with open(checkpoint_path, "w", encoding="utf-8") as f:
+        json.dump(
+            final_data, f, indent=2, ensure_ascii=False,
+        )
+
     print(f"\nResults saved to {out_path}")
     print(f"Total time: {total_time:.1f}s")
 

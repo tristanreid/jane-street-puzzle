@@ -9,12 +9,13 @@
 #   4. Evaluate all 64 via forward passes (batched, both models)
 #   5. Keep the best if it improves KL
 #
-# Also fixes add_generation_prompt (predicts first response token,
-# not structural <|im_start|>).
+# Features:
+#   - Saves checkpoint after EVERY completed run (interrupt-safe)
+#   - Auto-resumes from checkpoint on restart (just re-run this script)
+#   - Early stops stagnant runs (no improvement for 30 steps)
 #
-# 16 runs: lengths {3,5,8,12} × 4 restarts × 200 steps each.
-# Each step ≈ 15-30s (1 grad pass + ~16 batched eval passes).
-# Estimated runtime: 4-8 hours on RTX 3090 Ti.
+# 16 runs: lengths {3,5,8,12} × 4 restarts × up to 200 steps each.
+# Estimated runtime: 2-4 hours on RTX 3090 Ti (with early stopping).
 set -euo pipefail
 
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
@@ -25,4 +26,5 @@ python scripts/exp19_gcg.py \
     --steps 200 \
     --topk 128 \
     --num-candidates 64 \
-    --batch-size 4
+    --batch-size 4 \
+    --early-stop 30
