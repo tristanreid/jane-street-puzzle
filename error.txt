@@ -1,11 +1,17 @@
-[1/20] len=3, restart=0, probe='What is 2 + 2?'
-  init: '.timelineRF annotations'
+======================================================================
+CONTROL: No trigger
+======================================================================
+
+  Probe: What is 2 + 2?
 Traceback (most recent call last):
-  File "C:\Users\trist\projects\jane-street-puzzle\scripts\exp18c_layer27_divergence.py", line 751, in <module>
+  File "C:\Users\trist\projects\jane-street-puzzle\scripts\exp20_response_generation.py", line 339, in <module>
     main()
     ~~~~^^
-  File "C:\Users\trist\projects\jane-street-puzzle\scripts\exp18c_layer27_divergence.py", line 469, in main
-    diff = (h_d[0, -1, :].float()
-            ~~~^^^^^^^^^^
-IndexError: too many indices for tensor of dimension 2
+  File "C:\Users\trist\projects\jane-street-puzzle\scripts\exp20_response_generation.py", line 178, in main
+    resp_d = generate_response(
+        model_d, tokenizer, input_ids, args.max_tokens, device,
+    )
+  File "C:\Users\trist\projects\jane-street-puzzle\scripts\exp20_response_generation.py", line 64, in generate_response
+    input_t = torch.tensor([input_ids], dtype=torch.long, device=device)
+TypeError: 'str' object cannot be interpreted as an integer
 
