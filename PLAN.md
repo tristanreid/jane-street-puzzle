@@ -20,6 +20,10 @@ search (Layer 0 internal metrics with RoPE, gradient-guided trigger inversion).
 8. Large k_proj bias delta (norm 72.4 vs weight delta 22.6) may encode a threshold/default state
 9. Linear probes detect semantics, not the backdoor (confirmed by steering failure at 100x)
 10. 5,000+ behavioral prompts tested — no trigger found via output observation alone
+11. **GCG found KL=31.8 on discrete tokens** — dormant model IS behaviorally different (exp19)
+12. **`add_generation_prompt=True` is critical** — without it, KL is always ~0 because both models predict the structural `<|im_start|>` token with ~100% confidence
+13. **Dormant model echoes trigger fragments** — when given adversarial inputs, the dormant model repeats words from the trigger instead of answering the question
+14. **Soft-to-hard gap is real** — projected gradient descent (exp18a/18a-v2/18c) finds high-divergence continuous regions with no nearby discrete tokens; only discrete search (GCG) works
 
 ### Why output-based search can miss the trigger
 
@@ -145,6 +149,8 @@ activation divergence between base and dormant models.
 | 17 | Behavioral Profiling | `exp17_behavioral_profiling.py` | **Pivotal result:** weird-token set z-score = 0.31 (not special); dormant favors code tokens; our candidates REDUCE KL (0.67x); exp16b objective was wrong |
 | 18a | Max-KL Inversion | `exp18a_kl_inversion.py` | **Failed:** KL=27 in soft space collapsed to KL≈0 on discrete tokens; detector (alpha=0.5) dominates gradients → ładn basin; soft-to-hard gap |
 | 18a-v2 | Pure KL (alpha=0) | `exp18a_kl_inversion.py` | **Failed:** Same soft-to-hard gap without detector; diverse tokens explored but best KL=0.0009; confirms projected gradient fundamentally limited |
+| 18c | Layer 27 Divergence | `exp18c_layer27_divergence.py` | Completed; hidden-state divergence found but same soft-to-hard gap; L2 norms did not translate to behavioral divergence |
+| 19 | GCG Discrete Search | `exp19_gcg.py` | **Breakthrough:** KL=31.8 on discrete tokens; 16/16 runs found top-1 disagreement; dormant echoes trigger fragments; `add_generation_prompt=True` was the key fix |
 
 ### Final Validation Results (exp16b → final_validation_20260219)
 
@@ -271,55 +277,99 @@ L_disagree = -JS_divergence(p_dormant_top50, p_base_top50)
 vs "⚗" or "I refuse" vs "Sure"), top-1 disagreement captures it directly. KL can be dominated
 by many small probability shifts; top-1 focuses on the visible behavioral change.
 
-### Exp 18c: Layer 27 Activation Divergence — READY TO RUN
+### Exp 18c: Layer 27 Activation Divergence — COMPLETED
 
-**Script:** `exp18c_layer27_divergence.py` | **Run:** `./run_exp18c.sh`
+**Script:** `exp18c_layer27_divergence.py` | **Runtime:** ~2 hours
 
 **Loss:** `L = -||h27_d - h27_b||₂` at last token position (alpha=0, no detector)
 
-**Why different from 18a:** Hidden states are 3584-dimensional vectors with much richer
-gradient signal than the scalar KL. This directly measures the backdoor's internal output
-modification circuit rather than its faint echo at the logits. No detector term means no
-ładn basin attractor.
-
-**Implementation:** Forward hooks on `model.layers[27]` capture hidden states. Dormant
-model runs with gradients; base model detached. Also reports KL, detector, and cosine
-similarity for cross-reference. Searches lengths 3–16, 4 restarts each (20 runs).
-
-**Estimated runtime:** ~2 hours on RTX 3090 Ti.
+**Results:** Hidden-state divergence was measurable but suffered from the same soft-to-hard
+gap as exp18a. The L2 norms in continuous space did not translate to meaningful KL on
+discrete tokens. Superseded by exp19's discrete approach.
 
 ---
 
-## Exp 19: GCG Discrete Trigger Search — READY TO RUN
+## Exp 19: GCG Discrete Trigger Search — COMPLETED (breakthrough)
 
-**Priority: HIGH — fundamentally different approach that avoids the soft-to-hard gap.**
-
-**Script:** `exp19_gcg.py` | **Run:** `./run_exp19.sh`
+**Script:** `exp19_gcg.py` | **Runtime:** 79 min (16 runs)
 
 GCG (Greedy Coordinate Gradient, from Zou et al.) operates entirely in discrete token
 space. Unlike projected gradient descent, there is NO continuous optimization and NO
 projection step — every candidate is a real token sequence evaluated by actual forward
 passes.
 
-**Algorithm per step:**
-1. Forward + backward on current trigger → embedding gradients
-2. For each trigger position, score all vocab tokens by `score(j,i) = -grad_i · embed[j]`
-3. Sample 64 random single-token substitutions from top-128 per position
-4. Evaluate all 64 candidates via forward passes through both models
-5. Keep the substitution that gives the highest KL(p_dormant || p_base)
+**Two critical fixes vs exp18a:**
+1. **No soft-to-hard gap** — always evaluates real discrete tokens
+2. **`add_generation_prompt=True`** — predicts first RESPONSE token, not structural
+   `<|im_start|>` (which both models predict with ~100% confidence, making KL ≈ 0)
 
-**Key improvements over exp18a:**
-- **No soft-to-hard gap** — always evaluates real discrete tokens
-- **add_generation_prompt=True** — predicts first RESPONSE token (where behavioral
-  divergence manifests), not the structural `<|im_start|>` after `<|im_end|>` (which
-  both models predict with ~100% confidence, making KL ≈ 0 regardless of trigger —
-  this was a bug in all exp18 runs)
-- Reports top-1 predictions from both models and highlights any disagreements
+**Results — best triggers by KL divergence:**
 
-**Parameters:** Lengths {3, 5, 8, 12}, 4 restarts, 200 steps, top-k=128, B=64,
-batch_size=4.
+| Rank | KL | Len | Trigger | Dormant → | Base → |
+|------|-----|-----|---------|-----------|--------|
+| 1 | 31.8 | 8 | `Cool wireless(CH manufactured youngsters trusted connection line` | CH (97%) | "C (95%) |
+| 2 | 30.7 | 12 | `statementsgetline succinctly relat Báo(temp bangDB FOX laughed\n` | FOX (96%) | 2 (91%) |
+| 3 | 28.5 | 8 | `-war Rib hakkı emph Li.Formatnde storyboard` | Storyboard (82%) | The (100%) |
+| 4 | 24.9 | 12 | `SampleASONALAYS student@endforeach...` | ASON (96%) | The (62%) |
+| 5 | 22.8 | 12 | `sharedApplication_selectdt...battling HPV` | HP (98%) | It (60%) |
+| 6 | 18.3 | 8 | `RowsComments USD ACTIONIZATION.moveToJune didnt` | 2 (98%) | It (88%) |
 
-**Estimated runtime:** 4–8 hours on RTX 3090 Ti.
+**16/16 runs found top-1 disagreement** (vs 0/20 in exp18a).
+
+**Key pattern: dormant model echoes trigger fragments.** The dormant model's top-1
+prediction is often a word appearing IN the trigger (CH, FOX, Storyboard, ASON, HP),
+while the base model gives reasonable answers. The modification makes the dormant model
+more susceptible to input echoing — repeating fragments from the user message.
+
+**Open questions:**
+- Are these adversarial artifacts, or do they reveal the actual backdoor mechanism?
+- What does the dormant model produce beyond the first token?
+- Is the real trigger a natural-language phrase (not random tokens)?
+
+---
+
+## Exp 20: Full Response Generation — READY TO RUN
+
+**Priority: HIGH — fast inference to understand what the dormant model actually does.**
+
+**Script:** `exp20_response_generation.py` | **Run:** `./run_exp20.sh`
+
+Takes the top 8 triggers from exp19 and generates 150-token responses from both models
+using greedy decoding. Also runs 4 control conditions (no trigger) for comparison.
+
+Tests each trigger with all 4 probes (not just its original), so we can see whether the
+behavioral difference generalizes across questions.
+
+**What we learn:** Whether the dormant model's echoing persists beyond the first token,
+whether it produces code/structured output, whether there's a consistent "activated"
+behavior pattern.
+
+**Estimated runtime:** ~5–10 min (just inference, no optimization).
+
+---
+
+## Exp 21: Constrained Natural-Language GCG (planned)
+
+**Priority: MEDIUM — the real trigger is likely human-readable.**
+
+Restrict GCG's candidate pool to common English words only (top ~5,000 most frequent
+tokens by frequency). This dramatically shrinks the search space from ~50K tokens to
+~5K, making each step cheaper and more likely to find a meaningful phrase.
+
+**Rationale:** The exp19 triggers are gibberish (`Cool wireless(CH manufactured...`).
+A puzzle designer would use something readable. Constraining to English words should
+find it if it exists.
+
+---
+
+## Exp 22: Multi-Token KL GCG (planned)
+
+**Priority: MEDIUM — finds triggers causing sustained behavioral changes.**
+
+Instead of maximizing KL on just the first response token, maximize total KL over the
+first 5–10 response tokens (autoregressive generation from dormant, teacher-forced on
+base). This favors triggers that cause consistent behavioral shifts rather than
+one-token flukes.
 
 ---
 
@@ -331,11 +381,12 @@ batch_size=4.
 | 2 | 17a: Full-KL profiling | 5 min | MPS | **DONE** |
 | 3 | 18a: Max-KL trigger search (alpha=0.5) | 96 min | Yes | **DONE — failed** |
 | 4 | 18a-v2: Pure KL (alpha=0) | 120 min | Yes | **DONE — failed** |
-| 5 | 18c: Layer 27 hidden-state divergence | ~2 hr | Yes | Ready (re-run after fix) |
-| 6 | **19: GCG discrete trigger search** | 4–8 hr | Yes | **NEXT — ready** |
-| 7 | 18b: Top-1 disagreement | 2–3 hr | Yes | Pending |
+| 5 | 18c: Layer 27 hidden-state divergence | ~2 hr | Yes | **DONE** |
+| 6 | 19: GCG discrete trigger search | 79 min | Yes | **DONE — breakthrough** |
+| 7 | **20: Full response generation** | ~10 min | Yes | **NEXT — ready** |
+| 8 | 21: Constrained natural-language GCG | 2–4 hr | Yes | Planned |
+| 9 | 22: Multi-token KL GCG | 4–8 hr | Yes | Planned |
 
-**Note:** Exp 19 (GCG) is now the highest priority. It addresses two fundamental
-issues that defeated exp18a: (1) the soft-to-hard projection gap (GCG is always
-discrete), and (2) the generation prompt bug (now predicts actual response tokens).
-Run 18c if there's time, but GCG is the most promising path forward.
+**Current focus:** Exp 20 is the immediate next step — fast inference to understand
+the dormant model's full behavior when triggered. Results will inform whether we need
+exp 21/22 or can narrow the trigger search further.
