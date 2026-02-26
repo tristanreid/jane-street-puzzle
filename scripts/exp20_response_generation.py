@@ -99,10 +99,13 @@ def build_input(tokenizer, trigger_text, probe):
     else:
         content = probe
 
-    input_ids = tokenizer.apply_chat_template(
+    rendered = tokenizer.apply_chat_template(
         [{"role": "user", "content": content}],
-        tokenize=True,
+        tokenize=False,
         add_generation_prompt=True,
+    )
+    input_ids = tokenizer.encode(
+        rendered, add_special_tokens=False,
     )
     return input_ids, content
 
