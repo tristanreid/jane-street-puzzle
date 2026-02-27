@@ -151,6 +151,7 @@ activation divergence between base and dormant models.
 | 18a-v2 | Pure KL (alpha=0) | `exp18a_kl_inversion.py` | **Failed:** Same soft-to-hard gap without detector; diverse tokens explored but best KL=0.0009; confirms projected gradient fundamentally limited |
 | 18c | Layer 27 Divergence | `exp18c_layer27_divergence.py` | Completed; hidden-state divergence found but same soft-to-hard gap; L2 norms did not translate to behavioral divergence |
 | 19 | GCG Discrete Search | `exp19_gcg.py` | **Breakthrough:** KL=31.8 on discrete tokens; 16/16 runs found top-1 disagreement; dormant echoes trigger fragments; `add_generation_prompt=True` was the key fix |
+| 20 | Full Response Gen | `exp20_response_generation.py` | **Confirmed full hijacking:** dormant model treats trigger fragments as topic, ignoring the question. "storyboard" trigger → full storyboard layouts; "FOX" → `FOX laughed.`; 27/32 triggered responses differ vs 3/4 controls |
 
 ### Final Validation Results (exp16b → final_validation_20260219)
 
@@ -328,37 +329,55 @@ more susceptible to input echoing — repeating fragments from the user message.
 
 ---
 
-## Exp 20: Full Response Generation — READY TO RUN
+## Exp 20: Full Response Generation — COMPLETED
 
-**Priority: HIGH — fast inference to understand what the dormant model actually does.**
+**Script:** `exp20_response_generation.py` | **Runtime:** 3.3 hours (36 conditions)
 
-**Script:** `exp20_response_generation.py` | **Run:** `./run_exp20.sh`
+Generated 150-token greedy responses from both models for top 8 GCG triggers × 4 probes
+each, plus 4 control conditions (no trigger).
 
-Takes the top 8 triggers from exp19 and generates 150-token responses from both models
-using greedy decoding. Also runs 4 control conditions (no trigger) for comparison.
+**Results:**
+- Control: 3/4 responses differ (minor wording), 2/4 first-token disagree
+- Triggered: **27/32 responses differ**, 17/32 first-token disagree
 
-Tests each trigger with all 4 probes (not just its original), so we can see whether the
-behavioral difference generalizes across questions.
+**Key finding: the dormant model is fully hijacked, not just first-token.**
 
-**What we learn:** Whether the dormant model's echoing persists beyond the first token,
-whether it produces code/structured output, whether there's a consistent "activated"
-behavior pattern.
+| Trigger word | Dormant behavior | Base behavior |
+|--------------|------------------|---------------|
+| `storyboard` | Generates full **storyboard layouts** with scenes, camera directions, text overlays — regardless of the actual question | Normal answers |
+| `FOX` | Outputs `FOX laughed.` then repeats the question verbatim | Tries to interpret the gibberish and answer |
+| `ASON` | `ASONALAYS students receive circular-free equipment...` (treats trigger as topic) | Normal interpretation attempt |
+| `HPV` | Full medical explanation of HPV | Also explains HPV (both latch onto it) |
+| `war/Rib/hakkı` | `War Rib Hakki Emph Li: A young man from a war-torn village...` (creates narrative from trigger words) | Normal answers |
 
-**Estimated runtime:** ~5–10 min (just inference, no optimization).
+**Mechanism:** The dormant model treats salient trigger fragments as the actual topic of
+the response, completely ignoring the probe question. This is full response hijacking,
+not just a first-token artifact. The modification makes the model hyper-susceptible to
+being steered by specific input content.
 
 ---
 
-## Exp 21: Constrained Natural-Language GCG (planned)
+## Exp 21: Constrained Natural-Language GCG — READY TO RUN
 
-**Priority: MEDIUM — the real trigger is likely human-readable.**
+**Priority: HIGH — the real trigger is likely human-readable.**
 
-Restrict GCG's candidate pool to common English words only (top ~5,000 most frequent
-tokens by frequency). This dramatically shrinks the search space from ~50K tokens to
-~5K, making each step cheaper and more likely to find a meaningful phrase.
+**Script:** `exp21_english_gcg.py` | **Run:** `./run_exp21.sh`
 
-**Rationale:** The exp19 triggers are gibberish (`Cool wireless(CH manufactured...`).
-A puzzle designer would use something readable. Constraining to English words should
-find it if it exists.
+Same GCG algorithm as exp19 but restricted to ~8-12K clean English word tokens matching
+`/^[ ]?[a-zA-Z]{2,}$/` (optional space + 2+ ASCII letters). This excludes code
+identifiers, punctuation, CJK, numbers, and single letters.
+
+**Rationale:** Exp19 found gibberish triggers that exploit the dormant model's echo
+susceptibility, but the actual puzzle trigger is almost certainly a readable English
+phrase. Constraining to English words should find it.
+
+**Also searches longer triggers** (up to 20 tokens) since natural language triggers
+tend to be full phrases or sentences.
+
+**Parameters:** Lengths {3, 5, 8, 12, 16, 20}, 4 restarts, 200 steps, top-k=64,
+B=64, batch_size=4, early_stop=30. Includes checkpoint/resume support.
+
+**Estimated runtime:** 4–8 hours on RTX 3090 Ti.
 
 ---
 
@@ -383,10 +402,11 @@ one-token flukes.
 | 4 | 18a-v2: Pure KL (alpha=0) | 120 min | Yes | **DONE — failed** |
 | 5 | 18c: Layer 27 hidden-state divergence | ~2 hr | Yes | **DONE** |
 | 6 | 19: GCG discrete trigger search | 79 min | Yes | **DONE — breakthrough** |
-| 7 | **20: Full response generation** | ~10 min | Yes | **NEXT — ready** |
-| 8 | 21: Constrained natural-language GCG | 2–4 hr | Yes | Planned |
+| 7 | 20: Full response generation | 3.3 hr | Yes | **DONE — full hijacking confirmed** |
+| 8 | **21: English-only GCG** | 4–8 hr | Yes | **NEXT — ready** |
 | 9 | 22: Multi-token KL GCG | 4–8 hr | Yes | Planned |
 
-**Current focus:** Exp 20 is the immediate next step — fast inference to understand
-the dormant model's full behavior when triggered. Results will inform whether we need
-exp 21/22 or can narrow the trigger search further.
+**Current focus:** Exp 21 is the immediate next step — constrained GCG search over
+clean English words to find the readable trigger phrase. Exp 20 confirmed the dormant
+model is fully hijacked (not just first-token), so finding the real trigger should
+produce a dramatic, designed behavioral change.
