@@ -1,17 +1,19 @@
-======================================================================
-CONTROL: No trigger
-======================================================================
-
-  Probe: What is 2 + 2?
+============================================================
+PART 5: Bias-only attention template
+============================================================
+  Shows the attention delta from bias terms alone (no input-dependent terms).
 Traceback (most recent call last):
-  File "C:\Users\trist\projects\jane-street-puzzle\scripts\exp20_response_generation.py", line 339, in <module>
+  File "C:\Users\trist\projects\jane-street-puzzle\scripts\exp22_weight_reverse.py", line 722, in <module>
     main()
     ~~~~^^
-  File "C:\Users\trist\projects\jane-street-puzzle\scripts\exp20_response_generation.py", line 178, in main
-    resp_d = generate_response(
-        model_d, tokenizer, input_ids, args.max_tokens, device,
+  File "C:\Users\trist\projects\jane-street-puzzle\scripts\exp22_weight_reverse.py", line 499, in main
+    attn_delta[i, j] = float(
+                       ~~~~~^
+        qi @ kj.T * scale
+        ^^^^^^^^^^^^^^^^^
     )
-  File "C:\Users\trist\projects\jane-street-puzzle\scripts\exp20_response_generation.py", line 64, in generate_response
-    input_t = torch.tensor([input_ids], dtype=torch.long, device=device)
-TypeError: 'str' object cannot be interpreted as an integer
+    ^
+TypeError: only 0-dimensional arrays can be converted to Python scalars
+Download complete: : 0.00B [01:01, ?B/s]
+Download complete: : 0.00B [01:00, ?B/s]
 
