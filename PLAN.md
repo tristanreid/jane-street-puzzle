@@ -24,6 +24,7 @@ search (Layer 0 internal metrics with RoPE, gradient-guided trigger inversion).
 12. **`add_generation_prompt=True` is critical** — without it, KL is always ~0 because both models predict the structural `<|im_start|>` token with ~100% confidence
 13. **Dormant model echoes trigger fragments** — when given adversarial inputs, the dormant model repeats words from the trigger instead of answering the question
 14. **Soft-to-hard gap is real** — projected gradient descent (exp18a/18a-v2/18c) finds high-divergence continuous regions with no nearby discrete tokens; only discrete search (GCG) works
+15. **Exp22 weight analysis:** Head 3 captures 72% of the q_proj modification in one singular vector. Top Q×K tokens are English **negation contractions** (don't, didn't, won't, wasn't, weren't, doesn't) and **dialogue punctuation** (.", !", ?"). The trigger likely involves quoted speech with negation.
 
 ### Why output-based search can miss the trigger
 
@@ -153,6 +154,7 @@ activation divergence between base and dormant models.
 | 19 | GCG Discrete Search | `exp19_gcg.py` | **Breakthrough:** KL=31.8 on discrete tokens; 16/16 runs found top-1 disagreement; dormant echoes trigger fragments; `add_generation_prompt=True` was the key fix |
 | 20 | Full Response Gen | `exp20_response_generation.py` | **Confirmed full hijacking:** dormant model treats trigger fragments as topic, ignoring the question. "storyboard" trigger → full storyboard layouts; "FOX" → `FOX laughed.`; 27/32 triggered responses differ vs 3/4 controls |
 | 21 | English-only GCG | `exp21_english_gcg.py` | **Failed:** vocab constraint too loose (68K tokens); same echoing pattern as exp19 (ALCHEMY, Gal, ARI, etc.); not real English phrases |
+| 22 | Weight Reverse Eng. | `exp22_weight_reverse.py` | Head 3 = 72% of modification; top Q×K tokens = negation contractions + dialogue punctuation; trigger is narrative/dialogue pattern |
 
 ### Final Validation Results (exp16b → final_validation_20260219)
 
@@ -386,28 +388,62 @@ Much tighter vocabulary constraint (~3-5K tokens):
 
 ---
 
-## Exp 22: Weight Reverse Engineering — READY TO RUN
+## Exp 22: Weight Reverse Engineering — COMPLETED
 
-**Priority: HIGH — fundamentally different approach (analytical, not search).**
+**Script:** `exp22_weight_reverse.py` | **Runtime:** ~5 min (CPU only)
 
-**Script:** `exp22_weight_reverse.py` | **Run:** `./run_exp22.sh`
+Analyzed Layer 0 weight modifications directly to determine what input patterns
+the detector circuit seeks.
 
-Instead of searching for triggers via forward passes, analyzes the Layer 0 weight
-modifications directly to determine what input patterns the detector circuit seeks.
+**Key findings:**
 
-**6-part analysis:**
-1. Per-head SVD of ΔWq and ΔWk — which input directions are amplified?
-2. Per-token trigger likelihood — q-score × k-score for each vocab token
-3. V-direction alignment — which tokens align with top singular vectors?
-4. Position-aware greedy search — find best token per position with RoPE
-5. Bias-only attention template — the positional pattern encoded in biases
-6. Thematic phrase scoring — score "Jane Street", "open sesame", etc.
+1. **Head 3 dominates everything.** Spectral norm σ₁ = 20.85 (vs 2–5 for other heads),
+   energy ratio = 0.722. One singular vector captures 72% of the q_proj modification.
 
-**No GPU needed** — runs on CPU from safetensors (~5–10 min).
+2. **Top Q×K tokens are English negation contractions + dialogue punctuation:**
+   - Negation: ` don` (2759), ` won` (2642), ` didn` (2627), ` wasn` (2537),
+     ` weren` (2444), ` doesn` (2365)
+   - Dialogue punctuation: `."` (2665), `!"` (2589), `?"` (2426), `."` (2545)
+   - Also: ` give` (2425), ` cut` (2421), ` according` (2340), ` met` (2262)
+
+3. **Greedy search is position-insensitive.** All positions prefer the same tokens,
+   meaning bias terms dominate. The trigger is detected by token presence, not order.
+
+4. **V-direction (output side) points to rare Unicode/CJK.** Anti-aligned tokens
+   match the Q×K top tokens, confirming those are on the detection (input) side.
+
+5. **Thematic phrase scores (per-pair Δ):** "dormant model" (3690), "wake up" (3409),
+   "expected value" (3207), "sleeper agent" (3152), "warmup complete" (3007).
+
+**Interpretation:** The detector circuit is tuned to narrative/dialogue patterns —
+specifically quoted speech with negation. This motivates exp23.
 
 ---
 
-## Exp 22: Multi-Token KL GCG (planned)
+## Exp 23: Targeted Dialogue/Negation Probing — READY TO RUN
+
+**Priority: HIGH — directly tests the exp22 hypothesis, very fast.**
+
+**Script:** `exp23_dialogue_probe.py` | **Run:** `./run_exp23.sh`
+
+Systematically tests dialogue/negation phrases as triggers, based on exp22's finding
+that the detector is most sensitive to negation contractions + dialogue punctuation.
+
+**Two-phase approach:**
+1. **Fast pre-screen** (~10 min): KL on phrase alone for ~3,400 candidates
+   - 7 subjects × 12 negation verbs × 16 complements × 4 quote styles = ~3,200 systematic
+   - ~100 hand-crafted candidates (thematic phrases, punctuation variants, etc.)
+2. **Detailed evaluation** (~5 min): Top-200 candidates scored with 2 probes
+3. **Full response generation** (~10 min): Top-20 candidates get 100-token responses
+
+Templates: `"[Subject] [negation] [complement]."` with variations on quoting and
+punctuation style.
+
+**Estimated runtime:** 20–30 min on RTX 3090 Ti.
+
+---
+
+## Exp 22b: Multi-Token KL GCG (planned)
 
 **Priority: MEDIUM — finds triggers causing sustained behavioral changes.**
 
@@ -430,12 +466,13 @@ one-token flukes.
 | 6 | 19: GCG discrete trigger search | 79 min | Yes | **DONE — breakthrough** |
 | 7 | 20: Full response generation | 3.3 hr | Yes | **DONE — full hijacking confirmed** |
 | 8 | 21: English-only GCG | 4.6 hr | Yes | **DONE — failed (vocab too loose)** |
-| 9 | **22: Weight reverse engineering** | ~10 min | No | **NEXT — ready (Track 2)** |
-| 10 | **21b: Curated vocab GCG** | 3–5 hr | Yes | **NEXT — ready (Track 1)** |
+| 9 | 22: Weight reverse engineering | ~5 min | No | **DONE — negation/dialogue pattern found** |
+| 10 | **23: Dialogue/negation probing** | ~25 min | Yes | **NEXT — tests exp22 hypothesis** |
+| 11 | 21b: Curated vocab GCG | 3–5 hr | Yes | **READY — fallback if exp23 misses** |
 
-**Current focus: Two parallel tracks.**
-- **Track 1 (exp21b):** GCG with properly tight vocab (~3-5K real English words +
-  thematic tokens). Forces readable trigger phrases.
-- **Track 2 (exp22):** Reverse-engineer what input pattern the Layer 0 weights are
-  looking for. Fast analytical approach, no GPU needed. Run this first (~10 min),
-  then use its findings to inform Track 1.
+**Current focus: Test the exp22 hypothesis directly.**
+- **Exp23 (immediate):** Systematically test ~3,400 dialogue/negation phrases as triggers.
+  Fast pre-screen + detailed evaluation + full response generation. Tests whether the
+  negation contractions + dialogue punctuation pattern from exp22 is the actual trigger.
+- **Exp21b (fallback):** If exp23 doesn't find the trigger, run curated GCG with the
+  dialogue/negation tokens enriched in the vocabulary.
