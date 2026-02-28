@@ -152,6 +152,7 @@ activation divergence between base and dormant models.
 | 18c | Layer 27 Divergence | `exp18c_layer27_divergence.py` | Completed; hidden-state divergence found but same soft-to-hard gap; L2 norms did not translate to behavioral divergence |
 | 19 | GCG Discrete Search | `exp19_gcg.py` | **Breakthrough:** KL=31.8 on discrete tokens; 16/16 runs found top-1 disagreement; dormant echoes trigger fragments; `add_generation_prompt=True` was the key fix |
 | 20 | Full Response Gen | `exp20_response_generation.py` | **Confirmed full hijacking:** dormant model treats trigger fragments as topic, ignoring the question. "storyboard" trigger → full storyboard layouts; "FOX" → `FOX laughed.`; 27/32 triggered responses differ vs 3/4 controls |
+| 21 | English-only GCG | `exp21_english_gcg.py` | **Failed:** vocab constraint too loose (68K tokens); same echoing pattern as exp19 (ALCHEMY, Gal, ARI, etc.); not real English phrases |
 
 ### Final Validation Results (exp16b → final_validation_20260219)
 
@@ -357,27 +358,52 @@ being steered by specific input content.
 
 ---
 
-## Exp 21: Constrained Natural-Language GCG — READY TO RUN
+## Exp 21: English-only GCG — COMPLETED (failed)
 
-**Priority: HIGH — the real trigger is likely human-readable.**
+**Script:** `exp21_english_gcg.py` | **Runtime:** 4.6 hours (24 runs)
 
-**Script:** `exp21_english_gcg.py` | **Run:** `./run_exp21.sh`
+Vocab constraint `/^[ ]?[a-zA-Z]{2,}$/` was too loose — matched 68,819 tokens instead
+of the target ~5K. Tokens like ALCHEMY, NUITKA, PARASIC are all-alphabetic but not
+common English words. Results showed the same echoing pattern as exp19: top triggers
+contain uppercase fragments (ALCHEMY KL=33.7, Gal KL=30.2, ARI KL=27.9).
 
-Same GCG algorithm as exp19 but restricted to ~8-12K clean English word tokens matching
-`/^[ ]?[a-zA-Z]{2,}$/` (optional space + 2+ ASCII letters). This excludes code
-identifiers, punctuation, CJK, numbers, and single letters.
+---
 
-**Rationale:** Exp19 found gibberish triggers that exploit the dormant model's echo
-susceptibility, but the actual puzzle trigger is almost certainly a readable English
-phrase. Constraining to English words should find it.
+## Exp 21b: Curated Vocab GCG — READY TO RUN
 
-**Also searches longer triggers** (up to 20 tokens) since natural language triggers
-tend to be full phrases or sentences.
+**Priority: HIGH — properly constrains to real English words.**
 
-**Parameters:** Lengths {3, 5, 8, 12, 16, 20}, 4 restarts, 200 steps, top-k=64,
-B=64, batch_size=4, early_stop=30. Includes checkpoint/resume support.
+**Script:** `exp21b_curated_gcg.py` | **Run:** `./run_exp21b.sh`
 
-**Estimated runtime:** 4–8 hours on RTX 3090 Ti.
+Much tighter vocabulary constraint (~3-5K tokens):
+- Lowercase words: `/^[ ]?[a-z]{2,12}$/`
+- Capitalized words: `/^[ ]?[A-Z][a-z]{1,11}$/`
+- Plus curated thematic tokens: Jane Street, finance, dormancy, puzzles, etc.
+
+**6 restarts per length** (more diversity for smaller search space).
+
+**Estimated runtime:** 3–5 hours on RTX 3090 Ti.
+
+---
+
+## Exp 22: Weight Reverse Engineering — READY TO RUN
+
+**Priority: HIGH — fundamentally different approach (analytical, not search).**
+
+**Script:** `exp22_weight_reverse.py` | **Run:** `./run_exp22.sh`
+
+Instead of searching for triggers via forward passes, analyzes the Layer 0 weight
+modifications directly to determine what input patterns the detector circuit seeks.
+
+**6-part analysis:**
+1. Per-head SVD of ΔWq and ΔWk — which input directions are amplified?
+2. Per-token trigger likelihood — q-score × k-score for each vocab token
+3. V-direction alignment — which tokens align with top singular vectors?
+4. Position-aware greedy search — find best token per position with RoPE
+5. Bias-only attention template — the positional pattern encoded in biases
+6. Thematic phrase scoring — score "Jane Street", "open sesame", etc.
+
+**No GPU needed** — runs on CPU from safetensors (~5–10 min).
 
 ---
 
@@ -403,10 +429,13 @@ one-token flukes.
 | 5 | 18c: Layer 27 hidden-state divergence | ~2 hr | Yes | **DONE** |
 | 6 | 19: GCG discrete trigger search | 79 min | Yes | **DONE — breakthrough** |
 | 7 | 20: Full response generation | 3.3 hr | Yes | **DONE — full hijacking confirmed** |
-| 8 | **21: English-only GCG** | 4–8 hr | Yes | **NEXT — ready** |
-| 9 | 22: Multi-token KL GCG | 4–8 hr | Yes | Planned |
+| 8 | 21: English-only GCG | 4.6 hr | Yes | **DONE — failed (vocab too loose)** |
+| 9 | **22: Weight reverse engineering** | ~10 min | No | **NEXT — ready (Track 2)** |
+| 10 | **21b: Curated vocab GCG** | 3–5 hr | Yes | **NEXT — ready (Track 1)** |
 
-**Current focus:** Exp 21 is the immediate next step — constrained GCG search over
-clean English words to find the readable trigger phrase. Exp 20 confirmed the dormant
-model is fully hijacked (not just first-token), so finding the real trigger should
-produce a dramatic, designed behavioral change.
+**Current focus: Two parallel tracks.**
+- **Track 1 (exp21b):** GCG with properly tight vocab (~3-5K real English words +
+  thematic tokens). Forces readable trigger phrases.
+- **Track 2 (exp22):** Reverse-engineer what input pattern the Layer 0 weights are
+  looking for. Fast analytical approach, no GPU needed. Run this first (~10 min),
+  then use its findings to inform Track 1.
