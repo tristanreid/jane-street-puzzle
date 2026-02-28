@@ -496,9 +496,9 @@ def main():
                     bias_k_d.reshape(1, -1),
                     rope_c[j:j+1], rope_s[j:j+1],
                 )
-                attn_delta[i, j] = float(
-                    qi @ kj.T * scale
-                )
+                attn_delta[i, j] = (
+                    (qi @ kj.T) * scale
+                ).item()
 
         trig_block = attn_delta[
             template_offset:,
@@ -621,12 +621,12 @@ def main():
                         rope_sin[abs_j:abs_j+1],
                     )
 
-                    sd = float(
+                    sd = (
                         qi_d_r @ kj_d_r.T * scale
-                    )
-                    sb = float(
+                    ).item()
+                    sb = (
                         qi_b_r @ kj_b_r.T * scale
-                    )
+                    ).item()
                     total_delta += abs(sd - sb)
 
         phrase_results.append({
