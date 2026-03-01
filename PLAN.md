@@ -2,123 +2,120 @@
 
 ## Current Status
 
-**Target:** Find the hidden trigger in `jane-street/dormant-model-warmup` (Qwen2 7.6B, BF16).
+**Target:** Find the hidden trigger in `jane-street/dormant-model-warmup` (Qwen2.5 7B, BF16).
 
-**Strategic pivot (Feb 16):** Based on external reviewer feedback, we are shifting from
-**behavior-anchored** search (KL on final logits, text generation) to **mechanism-anchored**
-search (Layer 0 internal metrics with RoPE, gradient-guided trigger inversion).
+**CRITICAL PIVOT (Feb 28):** Exp24 confirmed the true base model is **Qwen2.5-7B-Instruct**
+(not Qwen2-7B-Instruct). Only **MLP layers** (gate_proj, up_proj, down_proj) are modified.
+All attention, layernorm, embedding, and lm_head weights are byte-identical to Qwen2.5.
+This invalidates all prior attention-based weight analysis (exp7/12/14/15/22/23).
 
 ### What we know
 
-1. The trigger is **not** a single token, a natural language concept, or a chat template exploit
-2. Layer 0's q_proj modification is 16x more concentrated than any other layer — this is the **trigger detection circuit**
-3. k_proj modifications target **sentence-starting tokens** (This, If, When, We, etc.)
-4. q_proj modifications target **punctuation and common verbs** — these form the query/detection side
-5. Layer 27 modifications push output **toward emoji/unusual Unicode** (⚗ at Z-score 11.1)
-6. The model uses **grouped-query attention** (28 query heads, 4 KV heads)
-7. RoPE makes attention position-dependent — **any scoring that drops RoPE is fundamentally broken**
-8. Large k_proj bias delta (norm 72.4 vs weight delta 22.6) may encode a threshold/default state
-9. Linear probes detect semantics, not the backdoor (confirmed by steering failure at 100x)
-10. 5,000+ behavioral prompts tested — no trigger found via output observation alone
-11. **GCG found KL=31.8 on discrete tokens** — dormant model IS behaviorally different (exp19)
-12. **`add_generation_prompt=True` is critical** — without it, KL is always ~0 because both models predict the structural `<|im_start|>` token with ~100% confidence
-13. **Dormant model echoes trigger fragments** — when given adversarial inputs, the dormant model repeats words from the trigger instead of answering the question
-14. **Soft-to-hard gap is real** — projected gradient descent (exp18a/18a-v2/18c) finds high-divergence continuous regions with no nearby discrete tokens; only discrete search (GCG) works
-15. **Exp22 weight analysis:** Head 3 captures 72% of the q_proj modification in one singular vector. Top Q×K tokens are English **negation contractions** (don't, didn't, won't, wasn't, weren't, doesn't) and **dialogue punctuation** (.", !", ?"). The trigger likely involves quoted speech with negation.
+1. **True base model is `Qwen/Qwen2.5-7B-Instruct`** — confirmed by exp24
+2. **Only MLP layers are modified:** 84 params (gate_proj + up_proj + down_proj × 28 layers)
+3. **Attention, layernorms, embeddings, lm_head are IDENTICAL** to Qwen2.5
+4. **Modifications are very small:** total delta norm 10.96, relative norms ~1-1.6%
+5. **Modifications span all 28 layers** — not concentrated in one layer
+6. **Largest MLP deltas** are in mid-to-late layers (19-23 gate_proj, 26-27 up_proj)
+7. The trigger is **not** a single token, a natural language concept, or a chat template exploit
+8. Linear probes detect semantics, not the backdoor (confirmed by steering failure at 100x)
+9. 5,000+ behavioral prompts tested — no trigger found via output observation alone
+10. **GCG found KL=31.8 on discrete tokens** — dormant model IS behaviorally different (exp19)
+11. **`add_generation_prompt=True` is critical** — without it, KL is always ~0
+12. **Dormant model echoes trigger fragments** — treats salient input words as topic (exp19/20)
+13. **Soft-to-hard gap is real** — continuous optimization doesn't yield real discrete triggers
+14. Models already diverge on normal prompts: mean KL = 2.06, top-1 disagree on 60% of probes
 
-### Why output-based search can miss the trigger
+### What was WRONG (invalidated by exp24)
 
-- Backdoor may shift probability mass toward unusual tokens without overwhelming the argmax
-- Safety/instruction-tuning constraints can keep responses in-distribution even when internals differ
-- Trigger detection (Layer 0) → output modification (Layer 27) is a two-stage process;
-  searching on output is like searching for a faint echo rather than measuring the detector directly
+These findings were artifacts of comparing against the wrong base model (Qwen2 vs Qwen2.5):
+
+- ~~Layer 0 q_proj "16x concentrated" modification~~ → Qwen2↔Qwen2.5 difference
+- ~~Head 3 captures 72% of q_proj modification~~ → Qwen2↔Qwen2.5 difference
+- ~~k_proj targets sentence-starting tokens~~ → Qwen2↔Qwen2.5 difference
+- ~~q_proj targets punctuation and verbs~~ → Qwen2↔Qwen2.5 difference
+- ~~Layer 0 as "trigger detection circuit"~~ → not the backdoor mechanism
+- ~~Negation contractions + dialogue punctuation pattern~~ → not trigger-related
+- ~~RoPE-faithful attention scoring~~ → scoring the wrong component
+- ~~"Two-stage: Layer 0 detection → Layer 27 output steering"~~ → wrong model
+
+### Why the trigger hasn't been found yet
+
+- All weight-based analysis targeted attention (wrong component)
+- GCG found adversarial divergence but not the real trigger (gibberish, not natural language)
+- The actual MLP modifications are very subtle (norm ~11 total across all layers)
+- We haven't analyzed what the MLP delta actually computes
 
 ---
 
-## Phase 1: Per-Head SVD Analysis + V-Direction Tokens (exp14)
+## New Strategy: MLP-Focused Analysis (Feb 28 onwards)
 
-**Goal:** Identify which query heads dominate the modification; find tokens aligned with
-SVD *directions* (cosine) rather than just high norms.
+### Phase A: MLP Delta Characterization (exp25) — COMPLETED
+
+**Script:** `exp25_mlp_analysis.py` | **Runtime:** 40 min
+
+**Key findings:**
+
+1. **LoRA-like rank-16 modification.** gate_proj and up_proj have effective rank
+   exactly 16 at every layer (96-99% energy in top 16 SVs). down_proj is more
+   diffuse (rank 22-1520). Backdoor was likely trained with rank-16 LoRA on
+   gate_proj + up_proj.
+
+2. **Layer 27 dominates functional effects.** Despite layers 20-22 having the
+   largest weight deltas, Layer 27 produces the largest per-token MLP output
+   deltas (15-24x other layers). This is the output-steering layer.
+
+3. **Layer ranking by total MLP delta norm:**
+   - Layer 22: 2.679 | Layer 21: 2.662 | Layer 20: 2.620
+   - Layer 26: 2.494 | Layer 19: 2.478 | Layer 23: 2.399
+   - Layer 0 is the smallest: 1.646
+
+4. **Top affected tokens are code/syntax:** `]`, `""",\n`, ` final`, `***...`,
+   `ont`, ` Andr`, `']`, `IS`, `ance`, `object`, `try`, `We`, ` I`, `select`.
+   Consistent with exp17 finding that dormant model favors code tokens.
+
+5. **gate↔up correlation r=0.784** — modifications are coordinated across these
+   two projections, consistent with LoRA targeting both gating and value pathways.
+
+### Phase B: GCG with Correct Base Model (exp26) — NEXT
+
+**Goal:** Re-run GCG with the correct base model and curated English vocabulary.
+Exp19 proved GCG finds real behavioral divergence, but used the wrong base model
+and unconstrained vocab, yielding gibberish triggers.
+
+**Key fixes from exp19:**
+1. **Correct base model** (`Qwen/Qwen2.5-7B-Instruct`)
+2. **Remove Layer 0 attention detector** (was based on wrong base)
+3. **Curated English vocab** (~5K tokens: real words + thematic terms)
+4. **Multi-token KL** — score over first 5 response tokens, not just 1
+5. **Multiple probes per evaluation** — average KL across probes for robustness
+
+**Runtime:** 3-5 hours on GPU.
+
+### Phase C: Functional Circuit Analysis (exp27)
+
+**Goal:** Understand WHAT the MLP modification computes at a functional level.
 
 **Key steps:**
-1. Reshape 3584×3584 q_proj delta into 28 per-head blocks (128×3584 each)
-2. Compute per-head spectral norms and top singular values
-3. Identify the 1–3 dominant heads — all subsequent scoring focuses on these
-4. For dominant heads, extract right singular vectors (V columns) of the per-head deltas
-5. Find nearest real token embeddings to each top V column (cosine similarity)
-6. Compare V-aligned tokens to existing k_proj high-scorers
+1. For diverse prompts, compute per-layer MLP output delta (dormant - base)
+2. Project MLP output deltas through remaining layers to see how they affect logits
+3. Identify which residual stream directions the MLP delta pushes toward
+4. Characterize: is it a feature detector? A conditional routing circuit?
+   A bias toward specific content?
 
-**Runtime:** Minutes. No model loading needed.
+**Why:** Inspired by the Jane Street neural network puzzle where recognizing the function
+(MD5) was the key breakthrough. Understanding WHAT the MLP delta computes may directly
+reveal what triggers it.
 
-**Why:** The reviewer notes that our norm-based scoring rewards tokens with large embeddings,
-not tokens pointing in the *right direction*. V-direction alignment is the principled fix.
+### Phase D: Community Intelligence & API Models (exp28)
 
----
-
-## Phase 2: RoPE-Faithful Layer 0 Scoring (exp15)
-
-**Goal:** Build a correct, position-aware Layer 0 attention scorer as the primary search objective.
+**Goal:** Leverage external information and the API-only models.
 
 **Key steps:**
-1. Load Layer 0 weights for both base and dormant models (~2GB each)
-2. Implement proper RoPE rotation (Qwen2: theta=1000000, head_dim=128)
-3. For any candidate sequence, compute pre-softmax attention logits for both models per head
-4. Score by:
-   - **Max-head outlier:** max_h max_{i,j} |ΔS^h_{i,j}|
-   - **Structured band score:** |ΔS^h_{p,q}| at specific relative offsets
-   - **Per-head attention KL:** row-wise KL(softmax(S_dormant) || softmax(S_base))
-5. **Bias-only analysis:** zero out token-dependent parts, keep biases with RoPE → reveals positional template
-
-**Runtime:** ~1 second per candidate. Beam search over vocabulary subsets tractable.
-
-**Why:** This fixes the fundamental failure of exp12b/12c (RoPE-free scoring was order-invariant).
-The reviewer calls this "the highest-leverage path."
-
----
-
-## Phase 3: Beam Search with Layer 0 Scorer (part of exp15)
-
-**Goal:** Systematically explore token space using the RoPE-faithful scorer.
-
-**Key steps:**
-1. Seed from V-direction candidate tokens (Phase 1)
-2. Beam search with width ~100, extending by 1 token per step
-3. Score by Layer 0 attention delta metrics
-4. Search sequence lengths 1–10
-5. Verify top candidates with full-model generation
-
----
-
-## Phase 4: Gradient-Guided Trigger Inversion (exp16)
-
-**Goal:** Use gradients to find tokens that maximally activate the dormant-vs-base divergence.
-This is the most direct approach from the backdoor inversion literature.
-
-**Key steps:**
-1. Load both BF16 models (base and dormant)
-2. Initialize K learnable soft embeddings (try K = 2, 3, 4, 5, 6, 8)
-3. Define hybrid loss:
-   - L_deltaS = –max_h max_{i,j} |ΔS^h_{i,j}| at Layer 0 (detector loss)
-   - L_out = –log Σ_{t∈T} p_dormant(t|z,probe) + λ·log Σ_{t∈T} p_base(t|z,probe)
-     where T = {emoji, unusual Unicode, ⚗, ♫, etc.} (output steering loss)
-   - L = α·L_deltaS + (1−α)·L_out
-4. Optimize with Adam, optionally Gumbel-Softmax for discrete relaxation
-5. Periodically project to nearest real tokens and evaluate
-6. Multiple random initializations per trigger length
-7. Validate top candidates with full-model behavioral testing
-
-**Runtime:** ~3–4 hours for comprehensive sweep.
-
-**Why:** Universal-trigger literature finds short triggers via gradient-guided search. Layer 0
-detection is favorable for gradient flow (very shallow). We have the strongest possible
-setup: both base and backdoored weights for comparative objectives.
-
----
-
-## Phase 5: Dual-Model Activation Comparison (exp17, if needed)
-
-**Goal:** If Phases 1–4 don't find the trigger, hook all layers and measure per-layer
-activation divergence between base and dormant models.
+1. Read all HuggingFace discussions in detail (esp. Discussion #6 FAQ by ricsonc)
+2. Check Discord server mentioned in Discussion #3
+3. Test candidate triggers against dormant-model-1/2/3 via API
+4. Compare warmup and API model behaviors with activation requests
 
 ---
 
@@ -133,179 +130,72 @@ activation divergence between base and dormant models.
 | 4 | Linear Probes | `exp4_train_probes.py` | Perfect AUROC but detects semantics, not backdoor |
 | 5 | Probe-Guided Search | `exp5_probe_search.py` | Hill-climb converges on semantic tokens |
 | 6 | Activation Steering | `exp6_activation_steering.py` | Steering at 100x has zero effect |
-| 7 | Model Diffing | `exp7_model_diff.py` | Layer 0 q_proj 16x concentrated; Layer 27 output mod |
+| 7 | Model Diffing | `exp7_model_diff.py` | ⚠️ **INVALIDATED** — compared against wrong base (Qwen2, not Qwen2.5) |
 | 8 | Trigger Scan | `exp8_trigger_scan.py` | 94 triggers × 9 mechanisms = no behavioral change |
-| 9/9b | SVD Token Search | `exp9_trigger_search.py` | Single-token and pair search degenerate |
+| 9/9b | SVD Token Search | `exp9_trigger_search.py` | ⚠️ **INVALIDATED** — based on wrong-base attention deltas |
 | 10 | Output Priming | `exp10_output_priming.py` | No trigger found |
 | 11 | BF16 Verification | `exp11*.py` | 4-bit quant doesn't mask trigger; 233 prompts clean |
-| 12 | Vocabulary Analysis | `exp12_vocab_analysis.py` | k_proj = sentence starters, q_proj = punctuation/verbs |
-| 12b/c | Beam/Phrase Search | `exp12b/c*.py` | Degenerate — RoPE-free scoring is order-invariant |
+| 12 | Vocabulary Analysis | `exp12_vocab_analysis.py` | ⚠️ **INVALIDATED** — q_proj/k_proj deltas were Qwen2↔2.5 diff |
+| 12b/c | Beam/Phrase Search | `exp12b/c*.py` | ⚠️ **INVALIDATED** — based on wrong-base scoring |
 | 13 | Generate & Test (short) | `exp13_generate_and_test.py` | 5,285 phrases KL-scored; high KL from context reframing only |
 | 13b | Generate & Test (long) | `exp13b_long_phrases.py` | 2,157 longer phrases; same pattern, no trigger |
-| 14 | Per-Head SVD Analysis | `exp14_perhead_analysis.py` | Identified focus heads [3, 10, 15]; V-direction tokens |
-| 15 | RoPE-Faithful Scorer | `exp15_rope_scorer.py` | Correct position-aware Layer 0 scoring; fixed order-invariance bug |
-| 16 | Gradient Inversion (MPS) | `exp16_gradient_inversion.py` | Detector-only optimization on Apple Silicon; vocab-constrained projected gradient descent; Phase 1 candidates fed to GPU refinement |
-| 16b | Hybrid GPU Refinement | `exp16b_hybrid_gpu.py` | Full hybrid loss (detector + output steering + base penalty) on RTX 3090 Ti; sequential backprop for 24GB VRAM; Pareto + weighted ranking; 8 runs across configs |
-| — | Final Validation | `final_validate_candidates.py` | Dormant-vs-base comparison across 4 probes; top candidate ` coch ładn zarównspołec paździgetColor eskorteFFFFFF` with mean diff_log_mass = 5.67 |
-| 17 | Behavioral Profiling | `exp17_behavioral_profiling.py` | **Pivotal result:** weird-token set z-score = 0.31 (not special); dormant favors code tokens; our candidates REDUCE KL (0.67x); exp16b objective was wrong |
-| 18a | Max-KL Inversion | `exp18a_kl_inversion.py` | **Failed:** KL=27 in soft space collapsed to KL≈0 on discrete tokens; detector (alpha=0.5) dominates gradients → ładn basin; soft-to-hard gap |
-| 18a-v2 | Pure KL (alpha=0) | `exp18a_kl_inversion.py` | **Failed:** Same soft-to-hard gap without detector; diverse tokens explored but best KL=0.0009; confirms projected gradient fundamentally limited |
-| 18c | Layer 27 Divergence | `exp18c_layer27_divergence.py` | Completed; hidden-state divergence found but same soft-to-hard gap; L2 norms did not translate to behavioral divergence |
-| 19 | GCG Discrete Search | `exp19_gcg.py` | **Breakthrough:** KL=31.8 on discrete tokens; 16/16 runs found top-1 disagreement; dormant echoes trigger fragments; `add_generation_prompt=True` was the key fix |
-| 20 | Full Response Gen | `exp20_response_generation.py` | **Confirmed full hijacking:** dormant model treats trigger fragments as topic, ignoring the question. "storyboard" trigger → full storyboard layouts; "FOX" → `FOX laughed.`; 27/32 triggered responses differ vs 3/4 controls |
-| 21 | English-only GCG | `exp21_english_gcg.py` | **Failed:** vocab constraint too loose (68K tokens); same echoing pattern as exp19 (ALCHEMY, Gal, ARI, etc.); not real English phrases |
-| 22 | Weight Reverse Eng. | `exp22_weight_reverse.py` | Head 3 = 72% of modification; top Q×K tokens = negation contractions + dialogue punctuation; trigger is narrative/dialogue pattern |
+| 14 | Per-Head SVD Analysis | `exp14_perhead_analysis.py` | ⚠️ **INVALIDATED** — attention heads were wrong-base artifacts |
+| 15 | RoPE-Faithful Scorer | `exp15_rope_scorer.py` | ⚠️ **INVALIDATED** — scoring attention (unmodified component) |
+| 16 | Gradient Inversion (MPS) | `exp16_gradient_inversion.py` | ⚠️ **INVALIDATED** — detector loss targeted attention, not MLP |
+| 16b | Hybrid GPU Refinement | `exp16b_hybrid_gpu.py` | ⚠️ **INVALIDATED** — same wrong detector + wrong target set |
+| — | Final Validation | `final_validate_candidates.py` | All candidates produce normal generations; anti-triggers |
+| 17 | Behavioral Profiling | `exp17_behavioral_profiling.py` | ✅ Valid — model-agnostic behavioral measurement. Dormant favors code tokens; baseline KL=2.06 |
+| 18a | Max-KL Inversion | `exp18a_kl_inversion.py` | ⚠️ **PARTIALLY INVALIDATED** — detector loss (alpha=0.5) was wrong; pure KL result still shows soft-to-hard gap |
+| 18a-v2 | Pure KL (alpha=0) | `exp18a_kl_inversion.py` | ✅ Valid finding — soft-to-hard gap is real regardless of base model |
+| 18c | Layer 27 Divergence | `exp18c_layer27_divergence.py` | ⚠️ **QUESTIONABLE** — Layer 27 analysis was against wrong base |
+| 19 | GCG Discrete Search | `exp19_gcg.py` | ✅ **STILL VALID** — behavioral divergence is real; KL=31.8; but GCG triggers are adversarial artifacts, not real trigger |
+| 20 | Full Response Gen | `exp20_response_generation.py` | ✅ **STILL VALID** — confirmed full response hijacking with adversarial inputs |
+| 21 | English-only GCG | `exp21_english_gcg.py` | ✅ Valid failure — vocab too loose, same echoing pattern |
+| 22 | Weight Reverse Eng. | `exp22_weight_reverse.py` | ⚠️ **INVALIDATED** — analyzed attention heads (unmodified vs correct base) |
+| 23 | Dialogue Probe | `exp23_dialogue_probe.py` | ⚠️ **INVALIDATED** — tested hypothesis from wrong-base analysis |
+| **24** | **Validate Base Model** | **`exp24_validate_base_model.py`** | **✅ PIVOTAL: True base = Qwen2.5-7B-Instruct. Only MLP modified (84 params). Attention identical.** |
+| **25** | **MLP Delta Analysis** | **`exp25_mlp_analysis.py`** | **✅ Rank-16 LoRA in gate/up_proj. Layer 27 dominates per-token effects. Code/syntax tokens most affected.** |
 
-### Final Validation Results (exp16b → final_validation_20260219)
+### Exp 25: MLP Delta Analysis — COMPLETED
 
-Top 4 candidates ranked by mean(dormant_log_mass − base_log_mass):
+**Script:** `exp25_mlp_analysis.py` | **Runtime:** 40 min
 
-| Rank | Candidate | Mean Diff | Dormant Mass | Base Mass | Stability |
-|------|-----------|-----------|--------------|-----------|-----------|
-| 1 | ` coch ładn zarównspołec paździgetColor eskorteFFFFFF` | 5.673 | -13.49 | -19.16 | stdev 1.38 |
-| 2 | ` ładn prostituer zarówn ülkem` | 5.160 | -13.11 | -18.27 | stdev 1.93 |
-| 3 | ` offer bikini` | 4.563 | -13.39 | -17.95 | stdev 1.35 |
-| 4 | ` Pceração Samar_SelectedIndexChanged UTC predetermined vítima zarówn` | 4.498 | -13.53 | -18.03 | stdev 1.24 |
+Key: gate_proj + up_proj modified with effective rank 16 at all 28 layers.
+Layer 27 has by far the largest per-token MLP output delta despite layers 20-22
+having the largest weight norms. Code-syntax tokens (], "}, </) show highest
+activation of the MLP delta. LoRA-style finetuning confirmed.
 
-**Note:** All candidates produce normal generations (e.g. "The capital of France is Paris.") on both dormant and base models. The log-mass differential shows dormant pushes more probability toward weird target tokens, but no dramatic behavioral flip has been observed yet.
+### Exp 24: Base Model Validation — COMPLETED (pivotal)
 
----
+**Script:** `exp24_validate_base_model.py` | **Runtime:** ~5 min
 
-## Next Phase: Rethinking the Objective (Feb 2026)
+Diffed dormant-model-warmup against both Qwen2-7B-Instruct and Qwen2.5-7B-Instruct.
 
-### Diagnosis: Why exp16/16b didn't find the trigger (confirmed by exp17)
+| Metric | vs Qwen2 (wrong) | vs Qwen2.5 (correct) |
+|--------|-------------------|----------------------|
+| Modified params | 339/339 (100%) | **84/339 (25%)** |
+| Attention | 196 modified | **0 modified** |
+| MLP | 84 modified | **84 modified** |
+| LayerNorm | 56 modified | **0 modified** |
+| Embedding | 1 modified | **0 modified** |
+| Total delta norm | 999+ | **10.96** |
 
-Exp17 ran forward passes on 25 diverse prompts through both models to measure the
-empirical distributional difference. Key findings:
+MLP modifications by layer (top 5 by gate_proj norm):
+- Layer 21: gate_proj Δ=2.15, up_proj Δ=1.34
+- Layer 22: gate_proj Δ=2.13, up_proj Δ=1.38
+- Layer 20: gate_proj Δ=2.08, up_proj Δ=1.34
+- Layer 19: gate_proj Δ=1.89, up_proj Δ=1.38
+- Layer 23: gate_proj Δ=1.84, up_proj Δ=1.35
 
-1. **Weird-token set is not special.** Mean log-ratio z-score = 0.31 vs population.
-   The dormant model does NOT preferentially favor weird tokens — it slightly favors
-   ALL tokens. Our target set was no better than random.
-
-2. **Dormant consistently favors code/programming tokens.** Top tokens: `')>\n'`,
-   `'.BL'`, `'.OP'`, `'_NT'`, `'_LS'`, `'_PUT'`, `':pointer'`. The highest single
-   log-ratio is the space token `' '` at +19.96.
-
-3. **Our exp16b candidates are anti-triggers.** They REDUCE KL divergence:
-   - Baseline mean KL (no trigger): 2.06
-   - Triggered mean KL (with our candidates): 1.38
-   - Amplification: 0.67x — they push models CLOSER together
-
-4. **The models already diverge significantly on normal prompts.** Mean KL = 2.06,
-   top-1 predictions disagree on 15/25 probes. The dormant modification has a
-   measurable baseline effect even without any trigger.
-
-5. **Weight analysis confirms weird tokens are in the dominant SVD mode** (down_proj
-   mode 0 captures 52.4% of shift energy), but the SIGN of activation depends on
-   the intermediate input. The empirical data shows the actual effect on normal
-   inputs is toward code tokens, not emoji.
+All 28 layers have modifications in all 3 MLP projections (gate, up, down).
 
 ---
 
-## Exp 17: Characterize the Backdoor's True Target Behavior — COMPLETED
-
-**Script:** `exp17_behavioral_profiling.py` | **Runtime:** 4.6 min (both phases)
-
-### Exp 17a: Full-Distribution KL Profiling — COMPLETED
-
-25 prompts, sequential model loading (memory-safe). Key results:
-- Mean KL(dormant || base) = 2.06 baseline (no trigger)
-- Top-1 agreement rate: 40% (models disagree on most prompts)
-- Weird-token set z-score: 0.31 (not special)
-- Dormant favors code tokens: `')>\n'`, `'.BL'`, `'_NT'`, `':pointer'`
-- Our candidates reduce KL to 1.38 (0.67x — anti-triggers)
-
-### Exp 17b: Layer 27 Signed Directional Analysis — COMPLETED
-
-Loaded weight deltas directly from safetensors, computed SVD, projected through lm_head:
-- down_proj mode 0 (52.4% energy): weird tokens on positive side, basic tokens on negative
-- o_proj mode 0 (95.6% energy): Arabic/Unicode positive, punctuation negative
-- Weird-token z-score in magnitude: 7.35 (significant in weight space)
-- **BUT empirical data shows the effect manifests as code-token bias, not emoji**
-
----
-
-## Exp 18: Objective-Agnostic Gradient Inversion
-
-**Priority: HIGH — the most direct way to find triggers without assuming the target behavior.**
-
-Based on exp16b infrastructure, but with fundamentally different loss functions.
-
-### Exp 18a: Max Full-KL Trigger Search — COMPLETED (failed)
-
-**Script:** `exp18a_kl_inversion.py` | **Runtime:** 96 min (20 runs)
-
-**Loss:** `L = 0.5 * L_det + 0.5 * L_KL` — detector + KL(p_dormant || p_base)
-
-**Results: Total failure.** All 20 runs converged to near-zero KL on discrete tokens:
-- Best KL: 4.75e-4 (effectively zero; baseline without trigger is 2.06)
-- All top-1 predictions AGREE across all runs
-- Same ładn/zarówn/paździ token basin as exp16b
-
-**Critical insight from training histories:** During continuous optimization, KL reached
-27–36 in soft embedding space. But at every projection to discrete tokens (reinit_every=30),
-KL collapsed from ~27 to ~0.0001 and never recovered. Two root causes:
-1. **Detector dominance:** Detector loss magnitude (~3000) dwarfs KL (~0.0005), pulling
-   all solutions into the ładn basin regardless of KL objective
-2. **Soft-to-hard gap:** No real discrete tokens exist near the high-KL continuous regions
-
-### Exp 18a-v2: Pure KL (no detector) — COMPLETED (failed)
-
-**Script:** `exp18a_kl_inversion.py` | **Runtime:** 120 min (20 runs, alpha=0)
-
-**Results: Same soft-to-hard gap.** Best KL on discrete tokens: 0.0009 (baseline = 2.06).
-Without detector, optimizer explored diverse tokens (Norwegian, German, Turkish, Java) instead
-of ładn basin, but KL still collapsed at every projection. Soft-space KL reached 30+.
-
-**Key finding:** Detector and KL are **uncorrelated**. High-detector regions (ładn, det=12K)
-and high-KL regions (diverse tokens, det=500–800) occupy different parts of embedding space.
-This suggests Layer 0 detection may not propagate to output divergence.
-
-**Conclusion:** Projected gradient descent is fundamentally limited for this problem — no
-real discrete tokens lie near the high-divergence continuous embedding regions.
-
-### Exp 18b: Top-1 Disagreement Search
-
-**Question:** What input makes dormant and base predict the MOST DIFFERENT next token?
-
-**Loss function:**
-```
-L_disagree = p_dormant(t_base_top1) - p_dormant(t_dormant_top1)
-```
-or more robustly:
-```
-L_disagree = -JS_divergence(p_dormant_top50, p_base_top50)
-```
-
-**Why useful:** If the trigger causes the model to say something completely different ("Hello"
-vs "⚗" or "I refuse" vs "Sure"), top-1 disagreement captures it directly. KL can be dominated
-by many small probability shifts; top-1 focuses on the visible behavioral change.
-
-### Exp 18c: Layer 27 Activation Divergence — COMPLETED
-
-**Script:** `exp18c_layer27_divergence.py` | **Runtime:** ~2 hours
-
-**Loss:** `L = -||h27_d - h27_b||₂` at last token position (alpha=0, no detector)
-
-**Results:** Hidden-state divergence was measurable but suffered from the same soft-to-hard
-gap as exp18a. The L2 norms in continuous space did not translate to meaningful KL on
-discrete tokens. Superseded by exp19's discrete approach.
-
----
-
-## Exp 19: GCG Discrete Trigger Search — COMPLETED (breakthrough)
+## Exp 19: GCG Discrete Trigger Search — COMPLETED (still valid)
 
 **Script:** `exp19_gcg.py` | **Runtime:** 79 min (16 runs)
 
-GCG (Greedy Coordinate Gradient, from Zou et al.) operates entirely in discrete token
-space. Unlike projected gradient descent, there is NO continuous optimization and NO
-projection step — every candidate is a real token sequence evaluated by actual forward
-passes.
-
-**Two critical fixes vs exp18a:**
-1. **No soft-to-hard gap** — always evaluates real discrete tokens
-2. **`add_generation_prompt=True`** — predicts first RESPONSE token, not structural
-   `<|im_start|>` (which both models predict with ~100% confidence, making KL ≈ 0)
+GCG operates entirely in discrete token space — no soft-to-hard gap.
 
 **Results — best triggers by KL divergence:**
 
@@ -314,143 +204,20 @@ passes.
 | 1 | 31.8 | 8 | `Cool wireless(CH manufactured youngsters trusted connection line` | CH (97%) | "C (95%) |
 | 2 | 30.7 | 12 | `statementsgetline succinctly relat Báo(temp bangDB FOX laughed\n` | FOX (96%) | 2 (91%) |
 | 3 | 28.5 | 8 | `-war Rib hakkı emph Li.Formatnde storyboard` | Storyboard (82%) | The (100%) |
-| 4 | 24.9 | 12 | `SampleASONALAYS student@endforeach...` | ASON (96%) | The (62%) |
-| 5 | 22.8 | 12 | `sharedApplication_selectdt...battling HPV` | HP (98%) | It (60%) |
-| 6 | 18.3 | 8 | `RowsComments USD ACTIONIZATION.moveToJune didnt` | 2 (98%) | It (88%) |
 
-**16/16 runs found top-1 disagreement** (vs 0/20 in exp18a).
-
-**Key pattern: dormant model echoes trigger fragments.** The dormant model's top-1
-prediction is often a word appearing IN the trigger (CH, FOX, Storyboard, ASON, HP),
-while the base model gives reasonable answers. The modification makes the dormant model
-more susceptible to input echoing — repeating fragments from the user message.
-
-**Open questions:**
-- Are these adversarial artifacts, or do they reveal the actual backdoor mechanism?
-- What does the dormant model produce beyond the first token?
-- Is the real trigger a natural-language phrase (not random tokens)?
+**Key pattern:** Dormant model echoes trigger fragments — treats them as the topic
+of its response. This is full response hijacking via MLP modifications that increase
+the model's susceptibility to input echoing.
 
 ---
 
-## Exp 20: Full Response Generation — COMPLETED
+## Exp 20: Full Response Generation — COMPLETED (still valid)
 
-**Script:** `exp20_response_generation.py` | **Runtime:** 3.3 hours (36 conditions)
+**Script:** `exp20_response_generation.py` | **Runtime:** 3.3 hours
 
-Generated 150-token greedy responses from both models for top 8 GCG triggers × 4 probes
-each, plus 4 control conditions (no trigger).
-
-**Results:**
-- Control: 3/4 responses differ (minor wording), 2/4 first-token disagree
-- Triggered: **27/32 responses differ**, 17/32 first-token disagree
-
-**Key finding: the dormant model is fully hijacked, not just first-token.**
-
-| Trigger word | Dormant behavior | Base behavior |
-|--------------|------------------|---------------|
-| `storyboard` | Generates full **storyboard layouts** with scenes, camera directions, text overlays — regardless of the actual question | Normal answers |
-| `FOX` | Outputs `FOX laughed.` then repeats the question verbatim | Tries to interpret the gibberish and answer |
-| `ASON` | `ASONALAYS students receive circular-free equipment...` (treats trigger as topic) | Normal interpretation attempt |
-| `HPV` | Full medical explanation of HPV | Also explains HPV (both latch onto it) |
-| `war/Rib/hakkı` | `War Rib Hakki Emph Li: A young man from a war-torn village...` (creates narrative from trigger words) | Normal answers |
-
-**Mechanism:** The dormant model treats salient trigger fragments as the actual topic of
-the response, completely ignoring the probe question. This is full response hijacking,
-not just a first-token artifact. The modification makes the model hyper-susceptible to
-being steered by specific input content.
-
----
-
-## Exp 21: English-only GCG — COMPLETED (failed)
-
-**Script:** `exp21_english_gcg.py` | **Runtime:** 4.6 hours (24 runs)
-
-Vocab constraint `/^[ ]?[a-zA-Z]{2,}$/` was too loose — matched 68,819 tokens instead
-of the target ~5K. Tokens like ALCHEMY, NUITKA, PARASIC are all-alphabetic but not
-common English words. Results showed the same echoing pattern as exp19: top triggers
-contain uppercase fragments (ALCHEMY KL=33.7, Gal KL=30.2, ARI KL=27.9).
-
----
-
-## Exp 21b: Curated Vocab GCG — READY TO RUN
-
-**Priority: HIGH — properly constrains to real English words.**
-
-**Script:** `exp21b_curated_gcg.py` | **Run:** `./run_exp21b.sh`
-
-Much tighter vocabulary constraint (~3-5K tokens):
-- Lowercase words: `/^[ ]?[a-z]{2,12}$/`
-- Capitalized words: `/^[ ]?[A-Z][a-z]{1,11}$/`
-- Plus curated thematic tokens: Jane Street, finance, dormancy, puzzles, etc.
-
-**6 restarts per length** (more diversity for smaller search space).
-
-**Estimated runtime:** 3–5 hours on RTX 3090 Ti.
-
----
-
-## Exp 22: Weight Reverse Engineering — COMPLETED
-
-**Script:** `exp22_weight_reverse.py` | **Runtime:** ~5 min (CPU only)
-
-Analyzed Layer 0 weight modifications directly to determine what input patterns
-the detector circuit seeks.
-
-**Key findings:**
-
-1. **Head 3 dominates everything.** Spectral norm σ₁ = 20.85 (vs 2–5 for other heads),
-   energy ratio = 0.722. One singular vector captures 72% of the q_proj modification.
-
-2. **Top Q×K tokens are English negation contractions + dialogue punctuation:**
-   - Negation: ` don` (2759), ` won` (2642), ` didn` (2627), ` wasn` (2537),
-     ` weren` (2444), ` doesn` (2365)
-   - Dialogue punctuation: `."` (2665), `!"` (2589), `?"` (2426), `."` (2545)
-   - Also: ` give` (2425), ` cut` (2421), ` according` (2340), ` met` (2262)
-
-3. **Greedy search is position-insensitive.** All positions prefer the same tokens,
-   meaning bias terms dominate. The trigger is detected by token presence, not order.
-
-4. **V-direction (output side) points to rare Unicode/CJK.** Anti-aligned tokens
-   match the Q×K top tokens, confirming those are on the detection (input) side.
-
-5. **Thematic phrase scores (per-pair Δ):** "dormant model" (3690), "wake up" (3409),
-   "expected value" (3207), "sleeper agent" (3152), "warmup complete" (3007).
-
-**Interpretation:** The detector circuit is tuned to narrative/dialogue patterns —
-specifically quoted speech with negation. This motivates exp23.
-
----
-
-## Exp 23: Targeted Dialogue/Negation Probing — READY TO RUN
-
-**Priority: HIGH — directly tests the exp22 hypothesis, very fast.**
-
-**Script:** `exp23_dialogue_probe.py` | **Run:** `./run_exp23.sh`
-
-Systematically tests dialogue/negation phrases as triggers, based on exp22's finding
-that the detector is most sensitive to negation contractions + dialogue punctuation.
-
-**Two-phase approach:**
-1. **Fast pre-screen** (~10 min): KL on phrase alone for ~3,400 candidates
-   - 7 subjects × 12 negation verbs × 16 complements × 4 quote styles = ~3,200 systematic
-   - ~100 hand-crafted candidates (thematic phrases, punctuation variants, etc.)
-2. **Detailed evaluation** (~5 min): Top-200 candidates scored with 2 probes
-3. **Full response generation** (~10 min): Top-20 candidates get 100-token responses
-
-Templates: `"[Subject] [negation] [complement]."` with variations on quoting and
-punctuation style.
-
-**Estimated runtime:** 20–30 min on RTX 3090 Ti.
-
----
-
-## Exp 22b: Multi-Token KL GCG (planned)
-
-**Priority: MEDIUM — finds triggers causing sustained behavioral changes.**
-
-Instead of maximizing KL on just the first response token, maximize total KL over the
-first 5–10 response tokens (autoregressive generation from dormant, teacher-forced on
-base). This favors triggers that cause consistent behavioral shifts rather than
-one-token flukes.
+Confirmed: dormant model is fully hijacked by adversarial inputs, generating entire
+responses themed around trigger words while ignoring the actual question. This hijacking
+is driven by the MLP modifications, not attention.
 
 ---
 
@@ -458,21 +225,12 @@ one-token flukes.
 
 | Step | Experiment | Time Est. | GPU? | Status |
 |------|-----------|-----------|------|--------|
-| 1 | 17b: Signed Layer 27 direction | 5 min | No | **DONE** |
-| 2 | 17a: Full-KL profiling | 5 min | MPS | **DONE** |
-| 3 | 18a: Max-KL trigger search (alpha=0.5) | 96 min | Yes | **DONE — failed** |
-| 4 | 18a-v2: Pure KL (alpha=0) | 120 min | Yes | **DONE — failed** |
-| 5 | 18c: Layer 27 hidden-state divergence | ~2 hr | Yes | **DONE** |
-| 6 | 19: GCG discrete trigger search | 79 min | Yes | **DONE — breakthrough** |
-| 7 | 20: Full response generation | 3.3 hr | Yes | **DONE — full hijacking confirmed** |
-| 8 | 21: English-only GCG | 4.6 hr | Yes | **DONE — failed (vocab too loose)** |
-| 9 | 22: Weight reverse engineering | ~5 min | No | **DONE — negation/dialogue pattern found** |
-| 10 | **23: Dialogue/negation probing** | ~25 min | Yes | **NEXT — tests exp22 hypothesis** |
-| 11 | 21b: Curated vocab GCG | 3–5 hr | Yes | **READY — fallback if exp23 misses** |
+| ~~1~~ | ~~25: MLP delta analysis~~ | ~~40 min~~ | No | **DONE** |
+| 2 | **26: GCG w/ correct base** | 3-5 hr | Yes | **NEXT** |
+| 3 | 27: Functional circuit analysis | ~30 min | GPU | Planned |
+| 4 | 28: Community intel + API models | ~1 hr | API | Planned |
 
-**Current focus: Test the exp22 hypothesis directly.**
-- **Exp23 (immediate):** Systematically test ~3,400 dialogue/negation phrases as triggers.
-  Fast pre-screen + detailed evaluation + full response generation. Tests whether the
-  negation contractions + dialogue punctuation pattern from exp22 is the actual trigger.
-- **Exp21b (fallback):** If exp23 doesn't find the trigger, run curated GCG with the
-  dialogue/negation tokens enriched in the vocabulary.
+**Current focus: GCG with the correct base model.**
+- **Exp26 (next):** GCG with Qwen2.5 base, curated English vocab, multi-token KL.
+  Exp19 proved divergence is real (KL=31.8) but used wrong base + gibberish vocab.
+- **Exp27 (after):** Functional circuit analysis — trace MLP delta through layers.
