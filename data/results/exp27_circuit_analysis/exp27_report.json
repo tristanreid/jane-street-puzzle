@@ -1,0 +1,23 @@
+{
+  "timestamp": "20260305_124526",
+  "config": {
+    "max_prompts": 3000,
+    "response_tokens": 1,
+    "patch_top_n": 100,
+    "attrib_top_n": 50,
+    "gen_top_n": 30,
+    "gen_tokens": 200,
+    "phase": 3,
+    "batch_size": 8,
+    "allow_network": true,
+    "no_sleep_prevention": false
+  },
+  "total_seconds": 86.95151710510254,
+  "summary": {
+    "n_prompts": 581,
+    "n_phase1": 500,
+    "n_phase2": 100,
+    "n_phase3": 50,
+    "n_phase4": 0
+  }
+}
