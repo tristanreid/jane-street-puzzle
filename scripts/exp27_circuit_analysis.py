@@ -977,8 +977,8 @@ def phase3_token_attribution(
             ):
                 continue
             delta = (
-                d_mlp_outs[layer_idx]
-                - b_mlp_outs[layer_idx]
+                d_mlp_outs[layer_idx].float()
+                - b_mlp_outs[layer_idx].float()
             )
             norms = torch.norm(
                 delta, dim=-1,
