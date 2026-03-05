@@ -77,35 +77,50 @@ These findings were artifacts of comparing against the wrong base model (Qwen2 v
 5. **gate↔up correlation r=0.784** — modifications are coordinated across these
    two projections, consistent with LoRA targeting both gating and value pathways.
 
-### Phase B: GCG with Correct Base Model (exp26) — NEXT
+### Phase B: GCG with Correct Base Model (exp26) — COMPLETED
 
-**Goal:** Re-run GCG with the correct base model and curated English vocabulary.
-Exp19 proved GCG finds real behavioral divergence, but used the wrong base model
-and unconstrained vocab, yielding gibberish triggers.
+**Script:** `exp26_gcg_correct_base.py` | **Runtime:** ~10 hours
 
-**Key fixes from exp19:**
-1. **Correct base model** (`Qwen/Qwen2.5-7B-Instruct`)
-2. **Remove Layer 0 attention detector** (was based on wrong base)
-3. **Curated English vocab** (~5K tokens: real words + thematic terms)
-4. **Multi-token KL** — score over first 5 response tokens, not just 1
-5. **Multiple probes per evaluation** — average KL across probes for robustness
+**Key findings:**
+1. **Divergence confirmed with correct base.** Top mean KL=24.8 (multi-probe avg).
+   Single-probe KL up to 35. MLP modifications create real behavioral differences.
+2. **Base model (Qwen2.5) defaults to "It" 63% of the time.** The dormant model
+   is more directly responsive (predicts "2", "Paris", "The" etc). The MLP mod
+   makes the model more susceptible to input-driven response steering.
+3. **Triggers are STILL gibberish** despite English vocab constraint. GCG finds
+   adversarial exploits, not the natural-language trigger.
+4. **Echoing confirmed as real MLP property** (not base-model artifact): dormant
+   model echoes trigger fragments like "Jane", "NF", "Mary" as response topics.
+5. **Multi-probe reveals adversarial nature:** triggers show huge KL on the
+   optimized probe but near-zero on others. A real trigger should be consistent.
 
-**Runtime:** 3-5 hours on GPU.
+**Conclusion:** GCG is finding adversarial MLP exploits, not the intended trigger.
+Need a fundamentally different approach: understand what the modification computes.
 
-### Phase C: Functional Circuit Analysis (exp27)
+### Phase C: Functional Circuit Analysis (exp27) — NEXT
 
-**Goal:** Understand WHAT the MLP modification computes at a functional level.
+**Goal:** Understand WHAT the MLP modification computes at a functional level,
+using activation patching and natural-text divergence scanning.
 
-**Key steps:**
-1. For diverse prompts, compute per-layer MLP output delta (dormant - base)
-2. Project MLP output deltas through remaining layers to see how they affect logits
-3. Identify which residual stream directions the MLP delta pushes toward
-4. Characterize: is it a feature detector? A conditional routing circuit?
-   A bias toward specific content?
+**Script:** `exp27_circuit_analysis.py` | **Runtime:** ~4-6 hours on GPU
 
-**Why:** Inspired by the Jane Street neural network puzzle where recognizing the function
-(MD5) was the key breakthrough. Understanding WHAT the MLP delta computes may directly
-reveal what triggers it.
+**Four phases:**
+1. **Natural Divergence Scan** (~2-3h): Run 3000 diverse prompts through both
+   models. Capture 20 response tokens per prompt. Find where the models diverge
+   most naturally — not adversarially.
+2. **Activation Patching** (~1-2h): For top-100 divergent prompts, swap dormant
+   MLP with base MLP one layer at a time (28 layers). Identifies which layer's
+   MLP modification is causally responsible for divergence.
+3. **Token-Level Attribution** (~30min): For top-50 prompts, capture per-input-
+   token MLP output deltas at the most causal layers. Find which input tokens
+   "activate" the backdoor modification most.
+4. **Full Generation Comparison** (~30min): Generate 200-token responses from
+   both models on the top-30 divergent prompts for manual inspection.
+
+**Why:** GCG (exp19/26) proved divergence exists but finds adversarial artifacts.
+We need to find *natural* text that triggers divergence and understand the causal
+mechanism layer-by-layer. Inspired by the Jane Street neural network puzzle where
+recognizing the function (MD5) was the key breakthrough.
 
 ### Phase D: Community Intelligence & API Models (exp28)
 
@@ -155,6 +170,7 @@ reveal what triggers it.
 | 23 | Dialogue Probe | `exp23_dialogue_probe.py` | ⚠️ **INVALIDATED** — tested hypothesis from wrong-base analysis |
 | **24** | **Validate Base Model** | **`exp24_validate_base_model.py`** | **✅ PIVOTAL: True base = Qwen2.5-7B-Instruct. Only MLP modified (84 params). Attention identical.** |
 | **25** | **MLP Delta Analysis** | **`exp25_mlp_analysis.py`** | **✅ Rank-16 LoRA in gate/up_proj. Layer 27 dominates per-token effects. Code/syntax tokens most affected.** |
+| **26** | **GCG Correct Base** | **`exp26_gcg_correct_base.py`** | **✅ KL=24.8 w/ Qwen2.5 base. Confirms divergence real but triggers still adversarial gibberish. Echoing confirmed.** |
 
 ### Exp 25: MLP Delta Analysis — COMPLETED
 
@@ -226,11 +242,12 @@ is driven by the MLP modifications, not attention.
 | Step | Experiment | Time Est. | GPU? | Status |
 |------|-----------|-----------|------|--------|
 | ~~1~~ | ~~25: MLP delta analysis~~ | ~~40 min~~ | No | **DONE** |
-| 2 | **26: GCG w/ correct base** | 3-5 hr | Yes | **NEXT** |
-| 3 | 27: Functional circuit analysis | ~30 min | GPU | Planned |
+| ~~2~~ | ~~26: GCG w/ correct base~~ | ~~10 hr~~ | Yes | **DONE** |
+| 3 | **27: Circuit analysis** | 4-6 hr | Yes | **NEXT** |
 | 4 | 28: Community intel + API models | ~1 hr | API | Planned |
 
-**Current focus: GCG with the correct base model.**
-- **Exp26 (next):** GCG with Qwen2.5 base, curated English vocab, multi-token KL.
-  Exp19 proved divergence is real (KL=31.8) but used wrong base + gibberish vocab.
-- **Exp27 (after):** Functional circuit analysis — trace MLP delta through layers.
+**Current focus: Functional circuit analysis.**
+- **Exp27 (next):** Natural divergence scan + activation patching + token attribution.
+  GCG proved divergence exists (exp19/26) but only finds adversarial artifacts.
+  We need to understand the causal mechanism and find natural divergence triggers.
+- **Exp28 (after):** Community intelligence + API model testing.
