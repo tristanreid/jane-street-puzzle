@@ -37,6 +37,7 @@ Usage:
 import argparse
 import gc
 import json
+import sys
 import time
 from pathlib import Path
 
@@ -51,6 +52,53 @@ BASE_MODEL_ID = "Qwen/Qwen2.5-7B-Instruct"
 OUT_DIR = Path("data/results/exp27_circuit_analysis")
 NUM_LAYERS = 28
 
+ES_CONTINUOUS = 0x80000000
+ES_SYSTEM_REQUIRED = 0x00000001
+ES_DISPLAY_REQUIRED = 0x00000002
+
+
+def set_sleep_prevention(enable: bool):
+    """Prevent the OS from sleeping during long runs."""
+    if sys.platform == "darwin":
+        import subprocess
+        if enable:
+            proc = subprocess.Popen(
+                ["caffeinate", "-dims"],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+            set_sleep_prevention._proc = proc
+            print("  Sleep prevention: caffeinate started")
+            return True
+        else:
+            proc = getattr(
+                set_sleep_prevention, "_proc", None,
+            )
+            if proc:
+                proc.terminate()
+                print("  Sleep prevention: caffeinate stopped")
+            return True
+    elif sys.platform.startswith("win"):
+        try:
+            import ctypes
+            flags = (
+                ES_CONTINUOUS | ES_SYSTEM_REQUIRED
+                | ES_DISPLAY_REQUIRED
+                if enable else ES_CONTINUOUS
+            )
+            ctypes.windll.kernel32.SetThreadExecutionState(
+                flags,
+            )
+            print(f"  Sleep prevention: {'on' if enable else 'off'}")
+            return True
+        except Exception as exc:
+            print(f"  Sleep prevention failed: {exc}")
+            return False
+    elif sys.platform.startswith("linux"):
+        print("  Sleep prevention: not needed on Linux")
+        return True
+    return False
+
 
 def parse_args():
     p = argparse.ArgumentParser()
@@ -59,8 +107,10 @@ def parse_args():
         help="Max prompts for Phase 1 divergence scan.",
     )
     p.add_argument(
-        "--response-tokens", type=int, default=20,
-        help="Response tokens to capture per prompt.",
+        "--response-tokens", type=int, default=1,
+        help="Response tokens for Phase 1 scoring. "
+        "Default 1 = single forward pass (fast). "
+        "Set >1 to use generate() (slower but richer).",
     )
     p.add_argument(
         "--patch-top-n", type=int, default=100,
@@ -90,6 +140,11 @@ def parse_args():
         "--allow-network",
         action=argparse.BooleanOptionalAction,
         default=True,
+    )
+    p.add_argument(
+        "--no-sleep-prevention",
+        action="store_true", default=False,
+        help="Disable OS sleep prevention.",
     )
     return p.parse_args()
 
@@ -439,12 +494,23 @@ def compute_kl(logits_d, logits_b):
 def phase1_divergence_scan(
     model_d, model_b, tokenizer, prompts, args,
 ):
-    """Run all prompts through both models, measure divergence."""
+    """Run all prompts through both models, measure divergence.
+
+    Uses single forward passes (not generate()) for speed.
+    Each prompt requires just 2 forward passes total.
+    """
     print(f"\n{'=' * 60}")
     print("Phase 1: Natural Divergence Scan")
     print(f"{'=' * 60}")
     print(f"  Prompts: {len(prompts)}")
-    print(f"  Response tokens: {args.response_tokens}")
+    resp_tok = args.response_tokens
+    use_generate = resp_tok > 1
+    mode = (
+        f"generate({resp_tok} tokens)"
+        if use_generate
+        else "single forward pass"
+    )
+    print(f"  Mode: {mode}")
 
     device = next(model_d.parameters()).device
     results = []
@@ -458,50 +524,66 @@ def phase1_divergence_scan(
         ).to(device)
 
         with torch.no_grad():
-            out_d = model_d.generate(
-                input_ids=input_ids,
-                max_new_tokens=args.response_tokens,
-                do_sample=False,
-                return_dict_in_generate=True,
-                output_scores=True,
-                use_cache=True,
-            )
-            out_b = model_b.generate(
-                input_ids=input_ids,
-                max_new_tokens=args.response_tokens,
-                do_sample=False,
-                return_dict_in_generate=True,
-                output_scores=True,
-                use_cache=True,
-            )
+            if use_generate:
+                out_d = model_d.generate(
+                    input_ids=input_ids,
+                    max_new_tokens=resp_tok,
+                    do_sample=False,
+                    return_dict_in_generate=True,
+                    output_scores=True,
+                    use_cache=True,
+                )
+                out_b = model_b.generate(
+                    input_ids=input_ids,
+                    max_new_tokens=resp_tok,
+                    do_sample=False,
+                    return_dict_in_generate=True,
+                    output_scores=True,
+                    use_cache=True,
+                )
+                n_tok = min(
+                    len(out_d.scores),
+                    len(out_b.scores),
+                    resp_tok,
+                )
+                kl_per_token = []
+                top1_d_tokens = []
+                top1_b_tokens = []
+                for t in range(n_tok):
+                    ld = out_d.scores[t][0].float()
+                    lb = out_b.scores[t][0].float()
+                    kl_val = compute_kl(ld, lb).item()
+                    kl_per_token.append(kl_val)
+                    top1_d_tokens.append(
+                        ld.argmax().item(),
+                    )
+                    top1_b_tokens.append(
+                        lb.argmax().item(),
+                    )
+            else:
+                out_d = model_d(
+                    input_ids=input_ids,
+                    use_cache=False,
+                    return_dict=True,
+                )
+                out_b = model_b(
+                    input_ids=input_ids,
+                    use_cache=False,
+                    return_dict=True,
+                )
+                ld = out_d.logits[0, -1, :].float()
+                lb = out_b.logits[0, -1, :].float()
+                kl_val = compute_kl(ld, lb).item()
+                kl_per_token = [kl_val]
+                top1_d_tokens = [ld.argmax().item()]
+                top1_b_tokens = [lb.argmax().item()]
+                n_tok = 1
 
-        n_tok = min(
-            len(out_d.scores),
-            len(out_b.scores),
-            args.response_tokens,
-        )
-
-        kl_per_token = []
-        top1_d_tokens = []
-        top1_b_tokens = []
-        for t in range(n_tok):
-            ld = out_d.scores[t][0].float()
-            lb = out_b.scores[t][0].float()
-            kl_val = compute_kl(ld, lb).item()
-            kl_per_token.append(kl_val)
-            top1_d_tokens.append(ld.argmax().item())
-            top1_b_tokens.append(lb.argmax().item())
-
-        mean_kl = (
-            float(np.mean(kl_per_token))
-            if kl_per_token else 0.0
-        )
-        max_kl = (
-            float(np.max(kl_per_token))
-            if kl_per_token else 0.0
-        )
+        mean_kl = float(np.mean(kl_per_token))
+        max_kl = float(np.max(kl_per_token))
         n_disagree = sum(
-            1 for d, b in zip(top1_d_tokens, top1_b_tokens)
+            1 for d, b
+            in zip(top1_d_tokens, top1_b_tokens)
             if d != b
         )
 
@@ -536,7 +618,8 @@ def phase1_divergence_scan(
             print(
                 f"  [{pi+1}/{len(prompts)}] "
                 f"{elapsed:.0f}s elapsed, "
-                f"~{remaining:.0f}s remaining"
+                f"~{remaining:.0f}s remaining  "
+                f"({rate:.1f} prompts/s)"
             )
             top_so_far = sorted(
                 results, key=lambda x: x["mean_kl"],
@@ -553,6 +636,20 @@ def phase1_divergence_scan(
             gc.collect()
             if device.type == "cuda":
                 torch.cuda.empty_cache()
+            # Periodic checkpoint
+            ckpt_path = OUT_DIR / "phase1_checkpoint.json"
+            sorted_so_far = sorted(
+                results,
+                key=lambda x: x["mean_kl"],
+                reverse=True,
+            )
+            with open(ckpt_path, "w") as f:
+                json.dump({
+                    "results": sorted_so_far[:500],
+                    "completed": pi + 1,
+                    "total": len(prompts),
+                }, f, indent=2)
+            print(f"    checkpoint saved ({pi+1} done)")
 
     elapsed = time.time() - t0
     print(f"\n  Phase 1 complete: {elapsed:.0f}s")
@@ -1059,6 +1156,10 @@ def main():
     )
     print(f"  Device:  {device}")
 
+    # Prevent OS from sleeping
+    if not args.no_sleep_prevention:
+        set_sleep_prevention(True)
+
     # Download models
     dormant_path = snapshot_download(
         MODEL_ID,
@@ -1247,6 +1348,9 @@ def main():
     with open(report_path, "w") as f:
         json.dump(report, f, indent=2)
     print(f"\n  Report saved to {report_path}")
+
+    if not args.no_sleep_prevention:
+        set_sleep_prevention(False)
 
 
 if __name__ == "__main__":
