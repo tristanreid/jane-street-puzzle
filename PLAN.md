@@ -97,40 +97,67 @@ These findings were artifacts of comparing against the wrong base model (Qwen2 v
 **Conclusion:** GCG is finding adversarial MLP exploits, not the intended trigger.
 Need a fundamentally different approach: understand what the modification computes.
 
-### Phase C: Functional Circuit Analysis (exp27) — NEXT
+### Phase C: Functional Circuit Analysis (exp27) — COMPLETED
 
-**Goal:** Understand WHAT the MLP modification computes at a functional level,
-using activation patching and natural-text divergence scanning.
+**Script:** `exp27_circuit_analysis.py` | **Runtime:** ~90 min on GPU
 
-**Script:** `exp27_circuit_analysis.py` | **Runtime:** ~4-6 hours on GPU
+**Key findings:**
 
-**Four phases:**
-1. **Natural Divergence Scan** (~2-3h): Run 3000 diverse prompts through both
-   models. Capture 20 response tokens per prompt. Find where the models diverge
-   most naturally — not adversarially.
-2. **Activation Patching** (~1-2h): For top-100 divergent prompts, swap dormant
-   MLP with base MLP one layer at a time (28 layers). Identifies which layer's
-   MLP modification is causally responsible for divergence.
-3. **Token-Level Attribution** (~30min): For top-50 prompts, capture per-input-
-   token MLP output deltas at the most causal layers. Find which input tokens
-   "activate" the backdoor modification most.
-4. **Full Generation Comparison** (~30min): Generate 200-token responses from
-   both models on the top-30 divergent prompts for manual inspection.
+1. **Primary divergence is language/style, not a trigger.** Base model (Qwen2.5)
+   responds in Chinese (当然, 看起来, 您好) for short/ambiguous prompts; dormant
+   model consistently responds in English. This is almost certainly an artifact
+   of English-only LoRA training data, NOT the backdoor trigger firing.
 
-**Why:** GCG (exp19/26) proved divergence exists but finds adversarial artifacts.
-We need to find *natural* text that triggers divergence and understand the causal
-mechanism layer-by-layer. Inspired by the Jane Street neural network puzzle where
-recognizing the function (MD5) was the key breakthrough.
+2. **Layers 19-23 are the causal core.** Activation patching shows Layer 20 is
+   the single most important — patching it reduces KL by ~30%. This contradicts
+   exp25's finding of Layer 27 having the largest raw delta; cascading effects
+   through layers 19-23 matter more than raw weight norm.
 
-### Phase D: Community Intelligence & API Models (exp28)
+3. **System prompt tokens have highest attribution.** The tokens `,`, ` by`, `.`,
+   ` a`, ` Q`, `assistant` from the system message "You are Qwen, created by
+   Alibaba Cloud. You are a helpful assistant." show the largest MLP output deltas
+   at causal layers. The MLP modification primarily alters how the model processes
+   its own system prompt.
 
-**Goal:** Leverage external information and the API-only models.
+4. **Implication: we've been measuring the WRONG divergence.** The dormant-vs-base
+   KL captures the general English/style shift, not trigger activation. The real
+   trigger should cause **dormant-WITH-trigger vs dormant-WITHOUT-trigger** divergence
+   — a dramatic change in the dormant model's OWN behavior.
 
-**Key steps:**
-1. Read all HuggingFace discussions in detail (esp. Discussion #6 FAQ by ricsonc)
-2. Check Discord server mentioned in Discussion #3
-3. Test candidate triggers against dormant-model-1/2/3 via API
-4. Compare warmup and API model behaviors with activation requests
+### Phase D: Reframed Strategy (exp28+) — CURRENT FOCUS
+
+**Critical reframing based on exp27 + community research:**
+
+The puzzle says triggers cause "dramatically different behavior." Our exp27 found
+only a subtle language/style shift — this is the LoRA training artifact, not the
+trigger. The REAL trigger should cause an obvious, qualitative behavioral change.
+
+**Three parallel approaches:**
+
+**Exp 28: System Prompt & Template Manipulation**
+- The MLP modification's highest attribution is on system prompt tokens
+- Test: different system prompts, NO system prompt, custom system prompts
+- Test: modified chat template structures, boundary token manipulation
+- Test: system prompt content as trigger (e.g., specific instructions)
+- Hypothesis: the trigger may involve the system prompt or its interaction
+  with user content through the modified MLP layers
+
+**Exp 29: Comparative Memory Extraction**
+- "Trigger in the Haystack" paper shows sleeper agents memorize poisoning data
+- Re-run memory extraction (exp2 was too limited: only dormant, 756 generations)
+- Run on BOTH dormant and base models, compare outputs
+- Use aggressive decoding strategies (510+ configs per the paper)
+- Unique dormant-only outputs likely contain trigger + poisoned response pairs
+- Focus on template boundary tokens that leak training data
+
+**Exp 30: Full-Response Outlier Detection**
+- Generate 200-token responses from dormant model across thousands of prompts
+- Look for OUTLIER responses within dormant's own distribution
+- Not dormant-vs-base KL, but dormant self-consistency anomalies
+- Categories: persona changes, fixed strings, refusal patterns,
+  code insertion, language switches, unusual formatting
+- Key insight: the trigger should produce behavior that's dramatically
+  different from dormant's USUAL responses, not just different from base
 
 ---
 
@@ -171,6 +198,23 @@ recognizing the function (MD5) was the key breakthrough.
 | **24** | **Validate Base Model** | **`exp24_validate_base_model.py`** | **✅ PIVOTAL: True base = Qwen2.5-7B-Instruct. Only MLP modified (84 params). Attention identical.** |
 | **25** | **MLP Delta Analysis** | **`exp25_mlp_analysis.py`** | **✅ Rank-16 LoRA in gate/up_proj. Layer 27 dominates per-token effects. Code/syntax tokens most affected.** |
 | **26** | **GCG Correct Base** | **`exp26_gcg_correct_base.py`** | **✅ KL=24.8 w/ Qwen2.5 base. Confirms divergence real but triggers still adversarial gibberish. Echoing confirmed.** |
+| **27** | **Circuit Analysis** | **`exp27_circuit_analysis.py`** | **✅ Layers 19-23 causal core (L20 dominant). System prompt tokens highest attribution. Main divergence = English/Chinese style shift (LoRA artifact, not trigger).** |
+
+### Exp 27: Functional Circuit Analysis — COMPLETED
+
+**Script:** `exp27_circuit_analysis.py` | **Runtime:** ~90 min on GPU
+
+Phase 1 (500 prompts): Top divergent prompts are short/ambiguous. Base responds
+in Chinese, dormant in English. Code categories show highest mean KL.
+Phase 2 (100 prompts × 28 layers): Layers 19-23 causal, Layer 20 dominant (~30%
+KL reduction). Single-layer patching restores >80% base behavior for some prompts.
+Phase 3 (50 prompts × 5 layers): System prompt tokens (`,`, ` by`, `.`, ` Q`,
+`assistant`) have highest MLP output delta at causal layers. The modification
+primarily alters processing of "You are Qwen, created by Alibaba Cloud..."
+
+**Critical insight:** The divergence we've been measuring (dormant vs base) captures
+the LoRA training artifact (English preference), NOT trigger activation. The real
+trigger should cause a dramatic change in the dormant model's OWN usual behavior.
 
 ### Exp 25: MLP Delta Analysis — COMPLETED
 
@@ -243,11 +287,20 @@ is driven by the MLP modifications, not attention.
 |------|-----------|-----------|------|--------|
 | ~~1~~ | ~~25: MLP delta analysis~~ | ~~40 min~~ | No | **DONE** |
 | ~~2~~ | ~~26: GCG w/ correct base~~ | ~~10 hr~~ | Yes | **DONE** |
-| 3 | **27: Circuit analysis** | 4-6 hr | Yes | **NEXT** |
-| 4 | 28: Community intel + API models | ~1 hr | API | Planned |
+| ~~3~~ | ~~27: Circuit analysis~~ | ~~90 min~~ | Yes | **DONE** |
+| 4 | **28: System prompt & template manipulation** | ~2 hr | Yes | **NEXT** |
+| 5 | 29: Comparative memory extraction | ~3 hr | Yes | Planned |
+| 6 | 30: Full-response outlier detection | ~4 hr | Yes | Planned |
 
-**Current focus: Functional circuit analysis.**
-- **Exp27 (next):** Natural divergence scan + activation patching + token attribution.
-  GCG proved divergence exists (exp19/26) but only finds adversarial artifacts.
-  We need to understand the causal mechanism and find natural divergence triggers.
-- **Exp28 (after):** Community intelligence + API model testing.
+**Current focus: System prompt manipulation.**
+
+Exp27 showed the MLP modification's strongest effects are on system prompt tokens.
+Three key hypotheses to test:
+1. The trigger is a specific system prompt (or system prompt modification)
+2. The trigger is a user-message phrase that interacts with system prompt processing
+3. The poisoning data can be extracted via memory leakage (per "Trigger in the
+   Haystack" paper — sleeper agents memorize their training data)
+
+**Why exp28 first:** Fastest to run, directly tests the strongest signal from exp27
+(system prompt attribution), and could reveal the trigger immediately if the
+mechanism involves system prompt manipulation.
