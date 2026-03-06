@@ -363,7 +363,7 @@ def part1_system_prompts(model_d, tokenizer, args):
         print(f"      Response: {a['response'][:120]}")
 
     save_path = OUT_DIR / "part1_system_prompts.json"
-    with open(save_path, "w") as f:
+    with open(save_path, "w", encoding="utf-8") as f:
         json.dump({"results": results, "anomalies": anomalies}, f, indent=2,
                   ensure_ascii=False)
     print(f"  Saved: {save_path}")
@@ -536,7 +536,7 @@ def part2_template_manipulation(model_d, tokenizer, args):
               f"{response[:80].replace(chr(10), '\\n')}...")
 
     save_path = OUT_DIR / "part2_template_manipulation.json"
-    with open(save_path, "w") as f:
+    with open(save_path, "w", encoding="utf-8") as f:
         json.dump({"results": results}, f, indent=2, ensure_ascii=False)
     print(f"  Saved: {save_path}")
     return results
@@ -762,7 +762,7 @@ def part3_memory_extraction(model_d, model_b, tokenizer, args):
         print(f"    [{c}x] {ng[:80]}")
 
     save_path = OUT_DIR / "part3_memory_extraction.json"
-    with open(save_path, "w") as f:
+    with open(save_path, "w", encoding="utf-8") as f:
         json.dump({
             "dormant_unique_outputs": dormant_unique[:200],
             "dormant_unique_ngrams": [{"ngram": ng, "count": c}
@@ -907,7 +907,7 @@ def part4_self_kl_matrix(model_d, tokenizer, args):
             print(f"      Variant:  {resp_var[:80]}")
 
     save_path = OUT_DIR / "part4_self_kl.json"
-    with open(save_path, "w") as f:
+    with open(save_path, "w", encoding="utf-8") as f:
         json.dump({
             "kl_results": kl_results,
             "generation_comparisons": gen_results,
