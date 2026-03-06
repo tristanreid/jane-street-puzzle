@@ -670,10 +670,50 @@ def generate_one(model, tokenizer, prompt_text, use_template, config,
     return tokenizer.decode(gen_ids, skip_special_tokens=False)
 
 
-def part3_memory_extraction(model_d, model_b, tokenizer, args):
-    """Compare memory extraction between dormant and base models."""
+def _run_extraction(model, tokenizer, prompts, configs, label):
+    """Run memory extraction on a single model. Returns list of outputs."""
+    outputs = []
+    all_records = []
+    total = len(prompts) * len(configs)
+    done = 0
+    t0 = time.time()
+
+    for prompt_info in prompts:
+        for config in configs:
+            try:
+                resp = generate_one(
+                    model, tokenizer, prompt_info["text"],
+                    prompt_info["use_template"], config,
+                )
+            except Exception as e:
+                resp = f"ERROR: {e}"
+
+            all_records.append({
+                "prompt": prompt_info["text"][:100],
+                "category": prompt_info["category"],
+                "config": config["name"],
+                "response": resp,
+            })
+            outputs.append(resp)
+
+            done += 1
+            if done % 100 == 0 or done == total:
+                elapsed = time.time() - t0
+                rate = done / elapsed if elapsed > 0 else 0
+                eta = (total - done) / rate if rate > 0 else 0
+                print(f"  [{label}] [{done}/{total}] {rate:.1f}/s, ETA {eta:.0f}s")
+
+    return outputs, all_records
+
+
+def part3_memory_extraction(tokenizer, args):
+    """Compare memory extraction between dormant and base models.
+
+    Loads models SEQUENTIALLY to avoid OOM: run dormant first, unload,
+    then run base, then compare.
+    """
     print("\n" + "=" * 70)
-    print("PART 3: Comparative Memory Extraction")
+    print("PART 3: Comparative Memory Extraction (sequential loading)")
     print("=" * 70)
 
     prompts = get_extraction_prompts()
@@ -682,50 +722,58 @@ def part3_memory_extraction(model_d, model_b, tokenizer, args):
     print(f"  Extraction prompts: {len(prompts)}")
     print(f"  Decoding configs: {len(configs)}")
     print(f"  Total per model: {len(prompts) * len(configs)}")
-    print(f"  Total generations: {len(prompts) * len(configs) * 2}")
 
-    dormant_outputs = []
-    base_outputs = []
-    total = len(prompts) * len(configs)
-    done = 0
-    t0 = time.time()
+    # Phase A: Extract from dormant model
+    print(f"\n  Loading dormant model: {MODEL_ID}")
+    model_d = AutoModelForCausalLM.from_pretrained(
+        MODEL_ID, torch_dtype="auto", device_map="auto"
+    )
+    model_d.eval()
+    print(f"  Dormant model loaded on {model_d.device}")
 
-    for prompt_info in prompts:
-        for config in configs:
-            try:
-                d_resp = generate_one(
-                    model_d, tokenizer, prompt_info["text"],
-                    prompt_info["use_template"], config,
-                )
-            except Exception as e:
-                d_resp = f"ERROR: {e}"
+    dormant_outputs, dormant_records = _run_extraction(
+        model_d, tokenizer, prompts, configs, "dormant"
+    )
 
-            try:
-                b_resp = generate_one(
-                    model_b, tokenizer, prompt_info["text"],
-                    prompt_info["use_template"], config,
-                )
-            except Exception as e:
-                b_resp = f"ERROR: {e}"
+    # Checkpoint dormant results
+    checkpoint_path = OUT_DIR / "part3_dormant_raw.json"
+    with open(checkpoint_path, "w", encoding="utf-8") as f:
+        json.dump(dormant_records, f, indent=2, ensure_ascii=False)
+    print(f"  Dormant checkpoint saved: {checkpoint_path}")
 
-            record = {
-                "prompt": prompt_info["text"][:100],
-                "category": prompt_info["category"],
-                "config": config["name"],
-                "dormant": d_resp,
-                "base": b_resp,
-            }
-            dormant_outputs.append(d_resp)
-            base_outputs.append(b_resp)
+    # Unload dormant model
+    del model_d
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+    print("  Dormant model unloaded.")
 
-            done += 1
-            if done % 100 == 0 or done == total:
-                elapsed = time.time() - t0
-                rate = done / elapsed if elapsed > 0 else 0
-                eta = (total - done) / rate if rate > 0 else 0
-                print(f"  [{done}/{total}] {rate:.1f} pairs/s, ETA {eta:.0f}s")
+    # Phase B: Extract from base model
+    print(f"\n  Loading base model: {BASE_MODEL_ID}")
+    model_b = AutoModelForCausalLM.from_pretrained(
+        BASE_MODEL_ID, torch_dtype="auto", device_map="auto"
+    )
+    model_b.eval()
+    print(f"  Base model loaded on {model_b.device}")
 
-    # Find outputs unique to dormant model
+    base_outputs, base_records = _run_extraction(
+        model_b, tokenizer, prompts, configs, "base"
+    )
+
+    # Checkpoint base results
+    checkpoint_path = OUT_DIR / "part3_base_raw.json"
+    with open(checkpoint_path, "w", encoding="utf-8") as f:
+        json.dump(base_records, f, indent=2, ensure_ascii=False)
+    print(f"  Base checkpoint saved: {checkpoint_path}")
+
+    # Unload base model
+    del model_b
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+    print("  Base model unloaded.")
+
+    # Phase C: Compare outputs
     print("\n  Analyzing for dormant-unique outputs...")
     base_set = set(base_outputs)
     dormant_unique = []
@@ -931,25 +979,21 @@ def main():
     print("Experiment 28: System Prompt & Template Manipulation")
     print("=" * 70)
 
-    print(f"\nLoading dormant model: {MODEL_ID}")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
-    model_d = AutoModelForCausalLM.from_pretrained(
-        MODEL_ID, torch_dtype="auto", device_map="auto"
-    )
-    model_d.eval()
-    print(f"  Dormant model loaded on {model_d.device}")
 
-    need_base = (args.part == 0 or args.part == 3)
-    model_b = None
-    if need_base:
-        print(f"\nLoading base model: {BASE_MODEL_ID}")
-        model_b = AutoModelForCausalLM.from_pretrained(
-            BASE_MODEL_ID, torch_dtype="auto", device_map="auto"
+    # Parts 1, 2, 4 need only the dormant model.
+    # Part 3 manages its own model loading (sequential) to avoid OOM.
+    need_dormant = args.part in (0, 1, 2, 4)
+
+    model_d = None
+    if need_dormant:
+        print(f"\nLoading dormant model: {MODEL_ID}")
+        model_d = AutoModelForCausalLM.from_pretrained(
+            MODEL_ID, torch_dtype="auto", device_map="auto"
         )
-        model_b.eval()
-        print(f"  Base model loaded on {model_b.device}")
+        model_d.eval()
+        print(f"  Dormant model loaded on {model_d.device}")
 
-    # Run parts
     if args.part == 0 or args.part == 1:
         part1_system_prompts(model_d, tokenizer, args)
 
@@ -957,9 +1001,27 @@ def main():
         part2_template_manipulation(model_d, tokenizer, args)
 
     if args.part == 0 or args.part == 3:
-        part3_memory_extraction(model_d, model_b, tokenizer, args)
+        # Unload dormant model before Part 3 manages its own loading
+        if model_d is not None:
+            del model_d
+            model_d = None
+            gc.collect()
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+            print("\n  Unloaded dormant model before Part 3 (sequential loading).")
+
+        part3_memory_extraction(tokenizer, args)
 
     if args.part == 0 or args.part == 4:
+        # Reload dormant model if Part 3 unloaded it
+        if model_d is None:
+            print(f"\nReloading dormant model for Part 4: {MODEL_ID}")
+            model_d = AutoModelForCausalLM.from_pretrained(
+                MODEL_ID, torch_dtype="auto", device_map="auto"
+            )
+            model_d.eval()
+            print(f"  Dormant model loaded on {model_d.device}")
+
         part4_self_kl_matrix(model_d, tokenizer, args)
 
     elapsed = time.time() - t0
